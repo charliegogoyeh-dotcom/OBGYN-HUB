@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>การคลอดยาก Dystocia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: "สมุดชมพู" OB/GYN series notebook. */
+:root{
+  --bg:#fbf5f8; --surface:#ffffff; --surface-2:#f6ecf2;
+  --ink:#2a1530; --muted:#6c5873; --line:#ead8e3;
+  --rose:#c0185a; --rose-soft:#fbe1ec; --rose-mid:#f2a9c6;
+  --teal:#0d7471; --teal-soft:#dcf1ee;
+  --amber:#a86400; --amber-soft:#fcefd8;
+  --plum:#6a3d8a; --plum-soft:#efe4f6;
+  --red:#c42626; --red-soft:#fde4e2;
+  --skin:#f4d6c6; --hand:#e9b79c; --fetus:#f8c9ab; --fetus-line:#b9775a; --bone:#e8dccf; --bone-line:#9d8573; --blood:#c42626;
+  --font-display:"Mitr","IBM Plex Sans Thai",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.3;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.45rem,3.2vw,1.9rem)} h3{font-size:1.08rem}
+p{margin:0} b,strong{font-weight:600}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+a{color:var(--rose)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:2px;border-radius:6px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:8px max(16px,env(safe-area-inset-left,0px))}
+.toc-inner{max-width:1040px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.toc a{flex:none;text-decoration:none;color:var(--muted);font-size:.84rem;padding:4px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.toc a:hover{color:var(--rose);border-color:var(--rose-mid)}
+.toc a.hub{color:var(--plum);border-color:var(--plum)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;padding-block:36px 20px}
+.hero h1{font-size:clamp(2rem,5.2vw,3.2rem);font-weight:600}
+.hero h1 span{color:var(--rose)}
+.hero .lede{margin-top:14px;font-size:1.04rem;max-width:58ch}
+.pitch{margin-top:18px;padding:14px 16px;border-radius:var(--r);background:var(--rose-soft);border:1px solid var(--rose-mid)}
+.pitch .eyebrow{display:block;margin-bottom:4px}
+.hero-art{max-width:340px;justify-self:center;width:100%}
+section{padding-block:40px 8px;scroll-margin-top:64px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;max-width:72ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2>*,.g3>*,.g4>*{min-width:0}
+.mt{margin-top:14px}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.callout{border-left:4px solid var(--teal);background:var(--teal-soft);padding:12px 14px;border-radius:0 10px 10px 0;font-size:.94rem}
+.callout.warn{border-color:var(--amber);background:var(--amber-soft)}
+.callout.risk{border-color:var(--red);background:var(--red-soft)}
+.callout.plum{border-color:var(--plum);background:var(--plum-soft)}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;padding:1px 8px;border-radius:999px;border:1px solid currentColor;vertical-align:middle}
+.tag.th{color:var(--rose)} .tag.us{color:var(--teal)} .tag.who{color:var(--plum)} .tag.crit{color:var(--red)}
+ul.clean{margin:0;padding-left:1.1em} ul.clean li{margin:3px 0}
+ol.steps{margin:0;padding-left:1.3em} ol.steps li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;background:var(--surface-2)}
+td.mono{white-space:nowrap}
+.dose{font-family:var(--font-mono);font-size:.84rem;background:var(--surface-2);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.svg-t{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
+.svg-b{font-family:var(--font-body);font-size:12px;fill:var(--ink);font-weight:600}
+.fig{width:100%;display:block;margin-inline:auto}
+.ut{fill:var(--rose-soft);stroke:var(--rose);stroke-width:2}
+.fet{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.head{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.plac{fill:var(--rose-mid);stroke:var(--rose);stroke-width:1.5}
+.mat{fill:var(--skin);stroke:var(--fetus-line);stroke-width:1.3}
+.bone{fill:var(--bone);stroke:var(--bone-line);stroke-width:1.5}
+.bone-l{fill:none;stroke:var(--bone-line);stroke-width:7;stroke-linecap:round}
+.hand-f{fill:var(--hand);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.hand-l{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-linecap:round;opacity:.7}
+.arw{fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.arw-r{fill:none;stroke:var(--red);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.blood{fill:var(--blood)}
+.tool-line{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tool-f{fill:var(--surface-2);stroke:var(--muted);stroke-width:1.6;stroke-linejoin:round}
+.ico{width:40px;height:40px;stroke:var(--rose);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico .f{fill:var(--rose-soft)}
+.step{padding:12px;display:flex;flex-direction:column;gap:6px}
+.step svg{width:100%;max-width:230px;align-self:center}
+.step h3{font-size:.98rem;display:flex;gap:8px;align-items:baseline}
+.step h3 b,.num-b{font-family:var(--font-mono);color:var(--bg);background:var(--plum);border-radius:6px;padding:0 7px;font-size:.8rem}
+.step p{font-size:.86rem;line-height:1.55;color:var(--muted)}
+.sim{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:18px;align-items:center}
+.sim svg{width:100%;max-width:260px;justify-self:center}
+.sim input[type=range]{width:100%;accent-color:var(--rose)}
+.read{font-family:var(--font-display);font-size:1.9rem;color:var(--rose);line-height:1.1}
+.read small{font-size:.95rem;color:var(--muted)}
+.desc{background:var(--surface-2);border-radius:12px;padding:10px 14px;min-height:76px;font-size:.92rem}
+.ticks{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:6px}
+.btn{font:600 .86rem var(--font-body);padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--bg)}
+.pill{display:inline-block;font:600 .74rem var(--font-mono);padding:1px 9px;border-radius:999px}
+.p-ok{background:var(--teal-soft);color:var(--teal)} .p-mid{background:var(--amber-soft);color:var(--amber)} .p-hi{background:var(--red-soft);color:var(--red)}
+.pimp{background:var(--plum-soft);border:1.5px solid var(--plum);border-radius:var(--r);padding:20px}
+.pimp h2{color:var(--plum)}
+details{margin-top:14px;background:var(--surface);border-radius:12px;border:1px solid var(--line);padding:10px 14px}
+summary{cursor:pointer;font-weight:600;color:var(--plum)}
+details[open] summary{margin-bottom:8px}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+footer ol{padding-left:1.2em}
+/* OSCE checklist */
+.osce-bar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 46px);z-index:4;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);margin-bottom:14px}
+.osce-bar .meter{flex:1 1 160px;height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.osce-bar .meter i{display:block;height:100%;width:0;background:var(--teal);transition:width .2s ease}
+.osce-bar .score{font-family:var(--font-mono);font-weight:600}
+.osce-sec{margin-bottom:16px}
+.osce-sec h3{font-size:1.02rem;margin-bottom:6px;display:flex;gap:8px;align-items:baseline}
+.osce-item{display:grid;grid-template-columns:auto auto 1fr;gap:10px;align-items:start;padding:8px 10px;border-radius:10px;border:1px solid transparent;cursor:pointer}
+.osce-item:hover{background:var(--surface-2)}
+.osce-item input{margin-top:5px;width:18px;height:18px;accent-color:var(--teal)}
+.osce-item .k{font:600 .68rem var(--font-mono);padding:2px 7px;border-radius:6px;margin-top:3px;white-space:nowrap}
+.k.do{background:var(--teal-soft);color:var(--teal)} .k.say{background:var(--plum-soft);color:var(--plum)}
+.osce-item.crit{border-color:var(--red-soft)}
+.osce-item.crit .t::after{content:" ⚠ critical";font:600 .68rem var(--font-mono);color:var(--red)}
+.osce-item.done .t{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--teal)}
+.osce-item .t{font-size:.94rem;line-height:1.55}
+.osce-item .why{display:block;font-size:.82rem;color:var(--muted);text-decoration:none}
+@media (max-width:860px){ .g4{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:620px){ .hero{grid-template-columns:1fr} .hero-art{max-width:240px;order:-1} .g2,.g3,.sim{grid-template-columns:1fr} }
+@media (max-width:440px){ .g4{grid-template-columns:1fr} }
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+
+.mvu{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px;align-items:center}
+.mvu svg{width:100%}
+.mvu input[type=range]{width:100%;accent-color:var(--rose)}
+.diam text{font-family:var(--font-body)}
+.dline{stroke-width:3;stroke-linecap:round;opacity:.25;transition:opacity .2s}
+.dline.on{opacity:1}
+.pelv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.pelv figure{margin:0;text-align:center}
+.pelv svg{width:100%;max-width:140px}
+.pelv figcaption{font-size:.84rem;color:var(--muted)}
+.pelv figcaption b{color:var(--ink);display:block}
+@media (max-width:620px){.mvu{grid-template-columns:1fr}.pelv{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="hand" viewBox="-30 -20 60 36" overflow="visible"><path class="hand-f" d="M-27 -1 C-27 -10 -19 -13 -9 -12 L19 -10 C27 -9 28 -3 27 0 C28 4 26 10 19 10 L-9 12 C-19 13 -27 8 -27 -1Z"/><path class="hand-f" d="M-8 -11 C-6 -19 6 -21 11 -15 C12 -13 9 -11 4 -11Z"/><path class="hand-l" d="M7 -5 L24 -4 M7 0 L25 0.5 M7 5 L23 5.5"/></symbol>
+<marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--teal)"/></marker>
+<marker id="ahr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--red)"/></marker>
+</defs></svg>
+
+<nav class="toc" aria-label="สารบัญ"><div class="toc-inner"><a class="hub" href="index.html">← คลังเรียน</a><a href="#def">นิยาม</a><a href="#curve">กราฟความก้าวหน้า</a><a href="#power">Power</a><a href="#passenger">Passenger</a><a href="#passage">Passage</a><a href="#mgmt">การจัดการ</a><a href="#comp">ภาวะแทรกซ้อน</a><a href="#pimp">Pimp Q</a></div></nav>
+<div class="wrap">
+
+
+<header class="hero">
+  <div>
+    <span class="eyebrow">Lecture 3 · Abnormal labor</span>
+    <h1>การคลอดยาก<br><span>Dystocia</span> ฉบับภาพ</h1>
+    <p class="lede">เมื่อการคลอดไม่ก้าวหน้าตามเกณฑ์ ให้หาว่าปัญหาอยู่ที่ P ตัวไหน แล้วแก้ให้ตรงจุด อ้างอิง <b>ACOG CPG No. 8 (2024)</b>, <b>Williams Obstetrics</b> และ <b>Beckmann &amp; Ling</b></p>
+    <div class="pitch"><span class="eyebrow">Elevator pitch</span><b>Dystocia คือการคลอดที่ช้าหรือหยุดชะงักผิดปกติ</b> สาเหตุมาจาก 3P: แรงหดรัดตัวไม่พอ (Power) ทารกใหญ่หรือท่าไม่ดี (Passenger) หรือช่องเชิงกรานแคบ (Passage) สาเหตุที่พบบ่อยที่สุดคือ Power ซึ่งแก้ได้ด้วย oxytocin</div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 300 280" role="img" aria-label="แผนภาพ 3P">
+    <circle cx="150" cy="96" r="70" style="fill:var(--rose-soft);stroke:var(--rose)" stroke-width="2"/>
+    <circle cx="96" cy="186" r="70" style="fill:var(--teal-soft);stroke:var(--teal)" stroke-width="2" opacity=".9"/>
+    <circle cx="204" cy="186" r="70" style="fill:var(--plum-soft);stroke:var(--plum)" stroke-width="2" opacity=".9"/>
+    <text x="150" y="70" text-anchor="middle" class="svg-b" style="font-size:15px;fill:var(--rose)">Power</text>
+    <text x="150" y="88" text-anchor="middle" class="svg-t">มดลูกหดรัดตัว</text>
+    <text x="74" y="206" text-anchor="middle" class="svg-b" style="font-size:15px;fill:var(--teal)">Passenger</text>
+    <text x="74" y="224" text-anchor="middle" class="svg-t">ทารก</text>
+    <text x="226" y="206" text-anchor="middle" class="svg-b" style="font-size:15px;fill:var(--plum)">Passage</text>
+    <text x="226" y="224" text-anchor="middle" class="svg-t">เชิงกราน</text>
+    <text x="150" y="160" text-anchor="middle" class="svg-b" style="font-size:13px">Dystocia</text>
+  </svg>
+</header>
+
+<section id="def">
+  <div class="sec-head"><span class="eyebrow">Definitions · ACOG CPG 8</span><h2>Protraction กับ Arrest ต่างกันอย่างไร</h2>
+  <p class="muted"><b>Protraction</b> = ยังเดินหน้า แต่ช้ากว่าเกณฑ์ · <b>Arrest</b> = หยุดนิ่ง ไม่เปลี่ยนเลย แม้แรงหดรัดตัวพอ · แยกให้ออก เพราะ protraction มักแก้ด้วย augmentation ส่วน arrest คือข้อบ่งชี้ผ่าคลอด</p></div>
+  <div class="card scroll-x" style="padding:6px">
+    <table>
+      <thead><tr><th>ระยะ</th><th>ภาวะ</th><th>เกณฑ์</th><th>จัดการ</th></tr></thead>
+      <tbody>
+        <tr><td>Latent</td><td><b>Prolonged latent phase</b></td><td>ครรภ์แรก <b>&gt;20 ชม.</b> · ครรภ์หลัง <b>&gt;14 ชม.</b> (Friedman)</td><td>พักผ่อน (therapeutic rest) หรือ oxytocin/amniotomy · <b>ไม่ผ่าคลอดด้วยเหตุนี้</b></td></tr>
+        <tr><td>Active (≥6 cm)</td><td><b>Protraction</b></td><td>ปากมดลูกเปิด <b>&lt;1 cm ใน 2 ชม.</b></td><td>ประเมิน 3P · amniotomy · oxytocin</td></tr>
+        <tr><td>Active (≥6 cm)</td><td><b>Arrest</b></td><td>≥6 cm + <b>ถุงน้ำแตก</b> + ไม่เปิดเพิ่ม <b>≥4 ชม.</b> ทั้งที่หดรัดตัวพอ (&gt;200 MVU) หรือ <b>≥6 ชม.</b> ขณะได้ oxytocin ถ้ายังหดรัดตัวไม่พอ</td><td><b>Cesarean</b></td></tr>
+        <tr><td>Second stage</td><td><b>Prolonged</b></td><td>เบ่ง <b>&gt;3 ชม.</b> ครรภ์แรก · <b>&gt;2 ชม.</b> ครรภ์หลัง</td><td>ประเมิน descent/rotation</td></tr>
+        <tr><td>Second stage</td><td><b>Arrest</b></td><td>ศีรษะไม่เคลื่อนต่ำหรือไม่หมุน แม้หดรัดตัวและเบ่งเพียงพอ</td><td><b>Operative vaginal delivery</b> ถ้าเข้าเกณฑ์ หรือ cesarean</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="curve">
+  <div class="sec-head"><span class="eyebrow">Visual</span><h2>กราฟปากมดลูก: ปกติ vs protraction vs arrest</h2>
+  <p class="muted">แกนนอนคือเวลาตั้งแต่ปากมดลูกเปิด 6 cm ตัวอย่างสมมติเพื่อให้เห็นรูปแบบ วาดตามสเกล</p></div>
+  <div class="card scroll-x">
+    <svg viewBox="0 0 600 280" style="min-width:540px;width:100%" role="img" aria-label="กราฟเปรียบเทียบความก้าวหน้าของการคลอด">
+      <!-- x 60..560 = 0..10 h (50 px/h); y 240..40 = 4..10 cm (33.3 px/cm) -->
+      <g style="stroke:var(--line)">
+        <line x1="60" y1="40" x2="560" y2="40"/><line x1="60" y1="106.7" x2="560" y2="106.7"/><line x1="60" y1="173.3" x2="560" y2="173.3"/><line x1="60" y1="240" x2="560" y2="240"/>
+        <line x1="60" y1="40" x2="60" y2="240"/><line x1="160" y1="40" x2="160" y2="240"/><line x1="260" y1="40" x2="260" y2="240"/><line x1="360" y1="40" x2="360" y2="240"/><line x1="460" y1="40" x2="460" y2="240"/><line x1="560" y1="40" x2="560" y2="240"/>
+      </g>
+      <g class="mono" style="font-size:11px;fill:var(--muted)" text-anchor="end"><text x="52" y="44">10</text><text x="52" y="111">8</text><text x="52" y="177">6</text><text x="52" y="244">4 cm</text></g>
+      <g class="mono" style="font-size:11px;fill:var(--muted)" text-anchor="middle"><text x="60" y="260">0</text><text x="160" y="260">2</text><text x="260" y="260">4</text><text x="360" y="260">6</text><text x="460" y="260">8</text><text x="560" y="260">10 ชม.</text></g>
+      <!-- normal: 6cm@0 -> 10cm@4h -->
+      <polyline points="60,173.3 160,123.3 260,40" fill="none" style="stroke:var(--teal)" stroke-width="3"/>
+      <text x="200" y="62" style="fill:var(--teal);font-weight:600" class="svg-b">ปกติ</text>
+      <!-- protraction: 6 -> 9 cm in 8h (0.75 cm/2h) -->
+      <polyline points="60,173.3 160,148.3 260,123.3 360,98.3 460,73.3" fill="none" style="stroke:var(--amber)" stroke-width="3"/>
+      <text x="468" y="70" style="fill:var(--amber)" class="svg-b">Protraction</text>
+      <text x="468" y="84" class="svg-t">&lt;1 cm / 2 ชม.</text>
+      <!-- arrest: 6 -> 7 at 2h then flat to 7h -->
+      <polyline points="60,173.3 160,156.7 260,156.7 360,156.7 410,156.7" fill="none" style="stroke:var(--red)" stroke-width="3"/>
+      <line x1="160" y1="196" x2="360" y2="196" style="stroke:var(--red)" stroke-width="1.5" marker-start="url(#ahr)" marker-end="url(#ahr)"/>
+      <text x="260" y="214" text-anchor="middle" style="fill:var(--red)" class="svg-b">Arrest: ไม่เปลี่ยน ≥4 ชม.</text>
+    </svg>
+  </div>
+</section>
+
+<section id="power">
+  <div class="sec-head"><span class="eyebrow">P1 · Power</span><h2>แรงหดรัดตัวพอหรือยัง: Montevideo units</h2>
+  <p class="muted">วัดด้วย <b>IUPC</b> (intrauterine pressure catheter) · <b>MVU</b> = ผลรวมความแรงของการหดรัดตัวที่สูงกว่า baseline (mmHg) ทุกครั้งใน 10 นาที · <b>&gt;200 MVU</b> = เพียงพอ ลองปรับค่าด้านล่าง</p></div>
+  <div class="card mvu">
+    <svg viewBox="0 0 420 180" role="img" aria-label="กราฟความดันในโพรงมดลูก 10 นาที">
+      <line x1="30" y1="150" x2="410" y2="150" style="stroke:var(--line)"/>
+      <line x1="30" y1="130" x2="410" y2="130" style="stroke:var(--muted);stroke-dasharray:4 4"/>
+      <text x="32" y="124" class="svg-t">baseline 10 mmHg</text>
+      <text x="410" y="170" text-anchor="end" class="svg-t">10 นาที</text>
+      <path id="iup" fill="none" style="stroke:var(--rose)" stroke-width="2.5"/>
+      <g id="iup-lab"></g>
+    </svg>
+    <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+      <label for="freq" class="small">จำนวนครั้งใน 10 นาที: <b id="freq-v" class="mono">3</b></label>
+      <input type="range" id="freq" min="1" max="6" value="3">
+      <label for="amp" class="small">ความแรงเหนือ baseline (mmHg): <b id="amp-v" class="mono">40</b></label>
+      <input type="range" id="amp" min="20" max="80" step="5" value="40">
+      <div class="desc" id="mvu-d" aria-live="polite"></div>
+    </div>
+  </div>
+  <div class="grid g2 mt">
+    <div class="card"><h3>Oxytocin augmentation</h3>
+      <div class="scroll-x"><table class="mt" style="font-size:.86rem"><thead><tr><th></th><th>เริ่ม</th><th>เพิ่มทีละ</th><th>ทุก</th></tr></thead>
+      <tbody><tr><td><b>Low-dose</b></td><td class="mono">0.5–2 mU/min</td><td class="mono">1–2 mU/min</td><td class="mono">15–40 นาที</td></tr>
+      <tr><td><b>High-dose</b></td><td class="mono">6 mU/min</td><td class="mono">3–6 mU/min</td><td class="mono">15–40 นาที</td></tr></tbody></table></div>
+      <p class="small muted mt">ตาม ACOG PB 107 · ระวัง <b>tachysystole</b> = หดรัดตัว &gt;5 ครั้งใน 10 นาที (เฉลี่ย 30 นาที) → ลด/หยุดยา ดู FHR</p>
+    </div>
+    <div class="card"><h3>Hypotonic vs Hypertonic dysfunction</h3>
+      <ul class="clean small">
+        <li><b>Hypotonic</b> (พบบ่อย): หดรัดตัวไม่ถี่ ไม่แรง ตอบสนองดีต่อ <b>oxytocin</b> และ amniotomy</li>
+        <li><b>Hypertonic/incoordinate</b>: baseline tone สูง เจ็บมากแต่ไม่ก้าวหน้า ระวัง placental abruption · ให้ระงับปวด/พัก ไม่เร่งด้วย oxytocin</li>
+        <li>สาเหตุอื่นของ power ไม่พอ: แม่อ่อนเพลีย ได้ยาระงับปวดมาก กระเพาะปัสสาวะเต็ม</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="passenger">
+  <div class="sec-head"><span class="eyebrow">P2 · Passenger</span><h2>ศีรษะยิ่งเงย เส้นผ่านศูนย์กลางยิ่งใหญ่</h2>
+  <p class="muted">ท่าศีรษะ (attitude) กำหนดว่าเส้นผ่านศูนย์กลางไหนต้องผ่านช่องเชิงกราน กดปุ่มเพื่อดูแต่ละแบบ</p></div>
+  <div class="card sim">
+    <svg viewBox="0 0 260 230" class="diam" role="img" aria-label="ศีรษะทารกและเส้นผ่านศูนย์กลาง">
+      <path d="M62 120 C56 66 104 30 152 34 C206 40 232 86 222 132 C214 170 186 186 170 190 L162 206 C150 214 132 212 124 200 L120 186 C100 186 88 178 82 166 C70 162 64 150 62 120Z" class="head"/>
+      <path d="M96 150 q-12 6 -8 18" fill="none" style="stroke:var(--fetus-line)" stroke-width="1.5"/>
+      <circle cx="104" cy="122" r="4" style="fill:var(--fetus-line)"/>
+      <path d="M90 138 l-10 6 l10 2" fill="none" style="stroke:var(--fetus-line)" stroke-width="1.5"/>
+      <text x="196" y="66" class="svg-t">Occiput</text><text x="100" y="40" class="svg-t">Vertex/Bregma</text><text x="128" y="224" class="svg-t">Chin</text>
+      <line id="d-sob" class="dline on" x1="196" y1="168" x2="112" y2="44" style="stroke:var(--teal)"/>
+      <line id="d-of" class="dline" x1="70" y1="104" x2="222" y2="110" style="stroke:var(--amber)"/>
+      <line id="d-mv" class="dline" x1="146" y1="208" x2="168" y2="36" style="stroke:var(--red)"/>
+      <line id="d-smb" class="dline" x1="124" y1="186" x2="110" y2="48" style="stroke:var(--plum)"/>
+    </svg>
+    <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+      <div class="btns" role="group" aria-label="เลือกท่าศีรษะ" id="att">
+        <button class="btn" type="button" data-k="sob" aria-pressed="true">Vertex (ก้มดี)</button>
+        <button class="btn" type="button" data-k="of" aria-pressed="false">Military</button>
+        <button class="btn" type="button" data-k="mv" aria-pressed="false">Brow</button>
+        <button class="btn" type="button" data-k="smb" aria-pressed="false">Face</button>
+      </div>
+      <div class="desc" id="att-d" aria-live="polite"></div>
+    </div>
+  </div>
+  <div class="grid g3 mt">
+    <div class="card"><h3>Malposition</h3><p class="small muted"><b>OP</b> (occiput posterior): ระยะที่ 2 ยาว ปวดหลังมาก · <b>Deep transverse arrest</b>: ศีรษะค้างในแนวขวางที่ระดับ spines · แก้ด้วยเปลี่ยนท่าแม่ manual rotation หรือ operative delivery</p></div>
+    <div class="card"><h3>Malpresentation</h3><p class="small muted"><b>Face</b>: mentum anterior คลอดทางช่องคลอดได้ แต่ <b>mentum posterior คลอดไม่ได้</b> · <b>Brow</b> ถ้าไม่เปลี่ยนท่า ต้องผ่าคลอด · Breech, transverse lie, compound</p></div>
+    <div class="card"><h3>ขนาดทารก</h3><p class="small muted"><b>Macrosomia</b> (มักใช้เกณฑ์ ≥4,000–4,500 g) · ความผิดปกติ เช่น hydrocephalus · เสี่ยง <b>shoulder dystocia</b> (ดูหัวข้อ OPOB)</p></div>
+  </div>
+</section>
+
+<section id="passage">
+  <div class="sec-head"><span class="eyebrow">P3 · Passage</span><h2>รูปร่างและขนาดเชิงกราน</h2>
+  <p class="muted">Caldwell–Moloy แบ่งตามรูปร่าง pelvic inlet (มองจากด้านบน ด้านบนของภาพคือ symphysis)</p></div>
+  <div class="card pelv">
+    <figure><svg viewBox="0 0 140 120" aria-hidden="true"><ellipse cx="70" cy="62" rx="52" ry="46" class="bone" style="fill:var(--teal-soft);stroke:var(--teal)"/></svg><figcaption><b>Gynecoid</b>กลม พบบ่อยที่สุด เหมาะกับการคลอด</figcaption></figure>
+    <figure><svg viewBox="0 0 140 120" aria-hidden="true"><path d="M70 14 C96 14 124 40 120 66 C116 92 86 110 70 110 C54 110 24 92 20 66 C16 40 44 14 70 14Z M70 14 L70 40" class="bone" style="fill:var(--amber-soft);stroke:var(--amber)" transform="rotate(180 70 62)"/></svg><figcaption><b>Android</b>รูปหัวใจ แบบผู้ชาย เสี่ยง deep transverse arrest</figcaption></figure>
+    <figure><svg viewBox="0 0 140 120" aria-hidden="true"><ellipse cx="70" cy="62" rx="38" ry="54" class="bone" style="fill:var(--plum-soft);stroke:var(--plum)"/></svg><figcaption><b>Anthropoid</b>รียาวหน้า–หลัง มักคลอดท่า OP</figcaption></figure>
+    <figure><svg viewBox="0 0 140 120" aria-hidden="true"><ellipse cx="70" cy="62" rx="62" ry="32" class="bone" style="fill:var(--rose-soft);stroke:var(--rose)"/></svg><figcaption><b>Platypelloid</b>แบนแนวขวาง พบน้อย</figcaption></figure>
+  </div>
+  <div class="grid g2 mt">
+    <div class="card">
+      <h3>Clinical pelvimetry: Diagonal conjugate</h3>
+      <svg viewBox="0 0 280 200" class="fig" style="max-width:320px" role="img" aria-label="การวัด diagonal conjugate">
+        <path class="bone-l" d="M218 40 C246 80 248 128 228 164 C220 176 208 184 196 186"/>
+        <circle cx="214" cy="46" r="9" class="bone"/><text x="270" y="30" text-anchor="end" class="svg-t">Sacral promontory</text>
+        <rect x="70" y="112" width="14" height="44" rx="7" class="bone" transform="rotate(-22 77 134)"/><text x="20" y="104" class="svg-t">Symphysis</text>
+        <line x1="84" y1="156" x2="210" y2="50" style="stroke:var(--rose)" stroke-width="2.5"/>
+        <text x="118" y="92" class="svg-b" style="fill:var(--rose)" transform="rotate(-40 118 92)">DC ≥11.5 cm</text>
+        <line x1="88" y1="120" x2="206" y2="54" style="stroke:var(--teal)" stroke-width="2" stroke-dasharray="5 4"/>
+        <text x="150" y="112" class="svg-b" style="fill:var(--teal)">OC = DC − 1.5–2 cm</text>
+        <g transform="translate(70 170) rotate(-40)"><use href="#hand" x="-30" y="-20" width="60" height="36"/></g>
+      </svg>
+      <p class="small muted">นิ้วกลางแตะ sacral promontory ขอบล่าง symphysis อยู่ที่โคนนิ้ว · <b>Obstetric conjugate</b> คือระยะที่สั้นที่สุดที่ศีรษะต้องผ่านใน inlet (ปกติ ≥10 cm)</p>
+    </div>
+    <div class="card">
+      <h3>ระยะสำคัญของเชิงกราน</h3>
+      <table class="mt" style="font-size:.88rem"><tbody>
+        <tr><td><b>Obstetric conjugate</b> (inlet)</td><td class="mono">≥10 cm</td></tr>
+        <tr><td><b>Diagonal conjugate</b></td><td class="mono">≥11.5 cm</td></tr>
+        <tr><td><b>Interspinous</b> (midpelvis) แคบที่สุด</td><td class="mono">~10 cm</td></tr>
+        <tr><td><b>Intertuberous</b> (outlet)</td><td class="mono">&gt;8 cm</td></tr>
+      </tbody></table>
+      <div class="callout warn mt small"><b>CPD</b> (cephalopelvic disproportion) มักวินิจฉัยได้<b>ย้อนหลัง</b> เมื่อการคลอดหยุดชะงักร่วมกับ molding มาก caput ใหญ่ ปากมดลูกบวม ศีรษะไม่ engage · X-ray pelvimetry ทำนายผลได้ไม่ดี จึงไม่ใช้เป็น routine</div>
+    </div>
+  </div>
+</section>
+
+<section id="mgmt">
+  <div class="sec-head"><span class="eyebrow">Management</span><h2>เมื่อการคลอดไม่ก้าวหน้า: ทำตามลำดับนี้</h2></div>
+  <div class="grid g4">
+    <div class="card step"><h3><b>1</b>ยืนยันว่าอยู่ active phase</h3><p>≥6 cm (ACOG) · ถ้ายัง latent ให้รอ ไม่เรียกว่า arrest</p></div>
+    <div class="card step"><h3><b>2</b>ประเมิน Power</h3><p>นับหดรัดตัว หรือใส่ IUPC · ไม่พอ → <b>amniotomy + oxytocin</b></p></div>
+    <div class="card step"><h3><b>3</b>ประเมิน Passenger/Passage</h3><p>ท่า position, attitude, molding, caput, ขนาดทารก, ลักษณะเชิงกราน</p></div>
+    <div class="card step"><h3><b>4</b>ตัดสินใจ</h3><p>เข้าเกณฑ์ arrest → <b>cesarean</b> · second stage arrest → <b>OVD</b> ถ้าเข้าเกณฑ์ หรือ cesarean</p></div>
+  </div>
+  <div class="callout mt">อย่าลืมดูแลทั่วไป: ให้น้ำและพลังงาน ปัสสาวะ เปลี่ยนท่า และ <b>continuous labor support</b> ซึ่งช่วยลดการผ่าคลอดได้</div>
+</section>
+
+<section id="comp">
+  <div class="sec-head"><span class="eyebrow">Complications</span><h2>ถ้าปล่อยให้คลอดติดขัดนาน (obstructed labor)</h2></div>
+  <div class="grid g2">
+    <div class="card"><h3 style="color:var(--red)">สัญญาณอันตราย</h3>
+      <ul class="clean small">
+        <li><b>Bandl's ring</b> (pathological retraction ring): รอยคอดที่หน้าท้องระหว่างมดลูกส่วนบนกับส่วนล่าง → ใกล้ <b>uterine rupture</b></li>
+        <li>แม่ชีพจรเร็ว ไข้ ขาดน้ำ ปัสสาวะเป็นเลือด</li>
+        <li>FHR ผิดปกติ · ปากมดลูก/ปากช่องคลอดบวม</li>
+      </ul>
+    </div>
+    <div class="card"><h3>ผลแทรกซ้อน</h3>
+      <ul class="clean small">
+        <li><b>แม่</b>: chorioamnionitis, PPH (มดลูกล้า), uterine rupture, <b>obstetric fistula</b> (VVF/RVF จากเนื้อเยื่อขาดเลือด)</li>
+        <li><b>ทารก</b>: hypoxic injury, ติดเชื้อ, บาดเจ็บจากการคลอด</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="pimp">
+  <div class="pimp"><span class="eyebrow" style="color:var(--plum)">The pimp question</span><h2 style="margin:6px 0 10px">ลองตอบก่อนเปิดเฉลย</h2>
+  <p>G1P0 GA 40 wk ปากมดลูก <b>6 cm ถุงน้ำแตกแล้ว</b> ผ่านไป <b>3 ชม.</b> ยังเปิด 6 cm · IUPC พบหดรัดตัว <b>3 ครั้ง/10 นาที ครั้งละ 40 mmHg</b> · FHR category I</p>
+  <p style="margin-top:8px"><b>นี่คือ active phase arrest หรือยัง? ขั้นต่อไปคืออะไร?</b></p>
+  <details><summary>เปิดเฉลย</summary>
+    <ul class="clean small">
+      <li>MVU = 3 × 40 = <b>120</b> → หดรัดตัว<b>ไม่พอ</b> (ต้อง &gt;200)</li>
+      <li>จึง<b>ยังไม่ใช่ arrest</b> ทั้งเวลา (ยังไม่ถึง 4 ชม.) และ power ยังไม่ได้แก้</li>
+      <li>ขั้นต่อไป: <b>oxytocin augmentation</b> ไตเตรตจน &gt;200 MVU · ถ้าหดรัดตัวพอแล้วยังไม่เปิดเพิ่ม ≥4 ชม. หรือได้ oxytocin ≥6 ชม. แต่หดรัดตัวไม่พอและไม่เปิดเพิ่ม → arrest → cesarean</li>
+    </ul>
+  </details></div>
+</section>
+
+<footer>
+  <p><b>หมายเหตุ</b>: สื่อการเรียนสำหรับนักศึกษาแพทย์ ไม่ใช่คำแนะนำทางการแพทย์สำหรับบุคคล ภาพเป็นแผนภาพเพื่อการสอน ให้ตรวจสอบ protocol ห้องคลอดของโรงพยาบาลอีกครั้ง</p>
+  <p style="margin-top:10px"><b>แหล่งอ้างอิง</b></p>
+  <ol>
+    <li>ACOG Clinical Practice Guideline No. 8: First and Second Stage Labor Management (2024) · <a href="https://www.aafp.org/afp/2025/0400/practice-guidelines-labor-management" target="_blank" rel="noopener">AAFP summary 2025</a></li>
+    <li>ACOG Practice Bulletin 107: Induction of Labor (oxytocin regimens).</li>
+    <li>Cunningham FG, et al. <i>Williams Obstetrics</i>, 26th ed. Ch. Abnormal Labor; Maternal Pelvis.</li>
+    <li>Beckmann CRB, et al. <i>Beckmann and Ling's Obstetrics and Gynecology</i>, 9th ed. Ch. Abnormal Labor and Intrapartum Fetal Surveillance.</li>
+  </ol>
+</footer>
+
+
+</div>
+<script>
+
+(function(){
+  var f=document.getElementById('freq'), a=document.getElementById('amp'), path=document.getElementById('iup'), lab=document.getElementById('iup-lab'), d=document.getElementById('mvu-d');
+  function draw(){
+    var n=+f.value, amp=+a.value; document.getElementById('freq-v').textContent=n; document.getElementById('amp-v').textContent=amp;
+    var x0=30, w=380, base=130, sc=1.4, p='M'+x0+' '+base, lb='';
+    for(var i=0;i<n;i++){
+      var c=x0+w*(i+0.5)/n, hw=Math.min(26, w/n/2-4), top=base-amp*sc;
+      p+=' L'+(c-hw).toFixed(1)+' '+base+' C'+(c-hw/2).toFixed(1)+' '+base+' '+(c-hw/2).toFixed(1)+' '+top.toFixed(1)+' '+c.toFixed(1)+' '+top.toFixed(1)+' C'+(c+hw/2).toFixed(1)+' '+top.toFixed(1)+' '+(c+hw/2).toFixed(1)+' '+base+' '+(c+hw).toFixed(1)+' '+base;
+      lb+='<text x="'+c.toFixed(1)+'" y="'+(top-6).toFixed(1)+'" text-anchor="middle" class="svg-t" style="fill:var(--rose)">'+amp+'</text>';
+    }
+    p+=' L'+(x0+w)+' '+base; path.setAttribute('d',p); lab.innerHTML=lb;
+    var m=n*amp, ok=m>200;
+    d.innerHTML='<b class="mono">'+n+' × '+amp+' = '+m+' MVU</b> · '+(ok?'<span class="pill p-ok">Adequate</span> แรงพอแล้ว ถ้ายังไม่ก้าวหน้า ให้มองหาปัญหาที่ Passenger/Passage':'<span class="pill p-hi">Inadequate</span> แรงยังไม่พอ ยังวินิจฉัย arrest ไม่ได้ → augment ด้วย oxytocin');
+  }
+  f.addEventListener('input',draw); a.addEventListener('input',draw); draw();
+
+  var T={sob:['Suboccipitobregmatic','~9.5 cm','ศีรษะก้มดี (well-flexed vertex) ใช้เส้นที่<b>เล็กที่สุด</b> คลอดง่ายที่สุด'],
+    of:['Occipitofrontal','~11.5 cm','ศีรษะไม่ก้ม (military / deflexed) เช่นในท่า OP คลอดช้าลง'],
+    mv:['Mentovertical','~13.5 cm','<b>Brow</b> ใช้เส้นที่<b>ใหญ่ที่สุด</b> ผ่านเชิงกรานปกติไม่ได้ ถ้าไม่เปลี่ยนเป็น face หรือ vertex ต้องผ่าคลอด'],
+    smb:['Submentobregmatic','~9.5 cm','<b>Face</b> ศีรษะเงยเต็มที่ คลอดได้ถ้า <b>mentum anterior</b> · mentum posterior คลอดทางช่องคลอดไม่ได้']};
+  var att=document.getElementById('att'), ad=document.getElementById('att-d');
+  function sel(k){
+    Object.keys(T).forEach(function(x){ document.getElementById('d-'+x).classList.toggle('on',x===k); });
+    Array.prototype.forEach.call(att.children,function(b){ b.setAttribute('aria-pressed', b.dataset.k===k?'true':'false'); });
+    ad.innerHTML='<b>'+T[k][0]+'</b> <span class="mono">'+T[k][1]+'</span><br>'+T[k][2];
+  }
+  att.addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) sel(b.dataset.k); });
+  sel('sob');
+})();
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>การคุมกำเนิด ฉบับภาพ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: "สมุดชมพู" OB/GYN series notebook. */
+:root{
+  --bg:#fbf5f8; --surface:#ffffff; --surface-2:#f6ecf2;
+  --ink:#2a1530; --muted:#6c5873; --line:#ead8e3;
+  --rose:#c0185a; --rose-soft:#fbe1ec; --rose-mid:#f2a9c6;
+  --teal:#0d7471; --teal-soft:#dcf1ee;
+  --amber:#a86400; --amber-soft:#fcefd8;
+  --plum:#6a3d8a; --plum-soft:#efe4f6;
+  --red:#c42626; --red-soft:#fde4e2;
+  --skin:#f4d6c6; --hand:#e9b79c; --fetus:#f8c9ab; --fetus-line:#b9775a; --bone:#e8dccf; --bone-line:#9d8573; --blood:#c42626;
+  --font-display:"Mitr","IBM Plex Sans Thai",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.3;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.45rem,3.2vw,1.9rem)} h3{font-size:1.08rem}
+p{margin:0} b,strong{font-weight:600}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+a{color:var(--rose)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:2px;border-radius:6px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:8px max(16px,env(safe-area-inset-left,0px))}
+.toc-inner{max-width:1040px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.toc a{flex:none;text-decoration:none;color:var(--muted);font-size:.84rem;padding:4px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.toc a:hover{color:var(--rose);border-color:var(--rose-mid)}
+.toc a.hub{color:var(--plum);border-color:var(--plum)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;padding-block:36px 20px}
+.hero h1{font-size:clamp(2rem,5.2vw,3.2rem);font-weight:600}
+.hero h1 span{color:var(--rose)}
+.hero .lede{margin-top:14px;font-size:1.04rem;max-width:58ch}
+.pitch{margin-top:18px;padding:14px 16px;border-radius:var(--r);background:var(--rose-soft);border:1px solid var(--rose-mid)}
+.pitch .eyebrow{display:block;margin-bottom:4px}
+.hero-art{max-width:340px;justify-self:center;width:100%}
+section{padding-block:40px 8px;scroll-margin-top:64px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;max-width:72ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2>*,.g3>*,.g4>*{min-width:0}
+.mt{margin-top:14px}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.callout{border-left:4px solid var(--teal);background:var(--teal-soft);padding:12px 14px;border-radius:0 10px 10px 0;font-size:.94rem}
+.callout.warn{border-color:var(--amber);background:var(--amber-soft)}
+.callout.risk{border-color:var(--red);background:var(--red-soft)}
+.callout.plum{border-color:var(--plum);background:var(--plum-soft)}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;padding:1px 8px;border-radius:999px;border:1px solid currentColor;vertical-align:middle}
+.tag.th{color:var(--rose)} .tag.us{color:var(--teal)} .tag.who{color:var(--plum)} .tag.crit{color:var(--red)}
+ul.clean{margin:0;padding-left:1.1em} ul.clean li{margin:3px 0}
+ol.steps{margin:0;padding-left:1.3em} ol.steps li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;background:var(--surface-2)}
+td.mono{white-space:nowrap}
+.dose{font-family:var(--font-mono);font-size:.84rem;background:var(--surface-2);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.svg-t{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
+.svg-b{font-family:var(--font-body);font-size:12px;fill:var(--ink);font-weight:600}
+.fig{width:100%;display:block;margin-inline:auto}
+.ut{fill:var(--rose-soft);stroke:var(--rose);stroke-width:2}
+.fet{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.head{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.plac{fill:var(--rose-mid);stroke:var(--rose);stroke-width:1.5}
+.mat{fill:var(--skin);stroke:var(--fetus-line);stroke-width:1.3}
+.bone{fill:var(--bone);stroke:var(--bone-line);stroke-width:1.5}
+.bone-l{fill:none;stroke:var(--bone-line);stroke-width:7;stroke-linecap:round}
+.hand-f{fill:var(--hand);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.hand-l{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-linecap:round;opacity:.7}
+.arw{fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.arw-r{fill:none;stroke:var(--red);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.blood{fill:var(--blood)}
+.tool-line{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tool-f{fill:var(--surface-2);stroke:var(--muted);stroke-width:1.6;stroke-linejoin:round}
+.ico{width:40px;height:40px;stroke:var(--rose);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico .f{fill:var(--rose-soft)}
+.step{padding:12px;display:flex;flex-direction:column;gap:6px}
+.step svg{width:100%;max-width:230px;align-self:center}
+.step h3{font-size:.98rem;display:flex;gap:8px;align-items:baseline}
+.step h3 b,.num-b{font-family:var(--font-mono);color:var(--bg);background:var(--plum);border-radius:6px;padding:0 7px;font-size:.8rem}
+.step p{font-size:.86rem;line-height:1.55;color:var(--muted)}
+.sim{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:18px;align-items:center}
+.sim svg{width:100%;max-width:260px;justify-self:center}
+.sim input[type=range]{width:100%;accent-color:var(--rose)}
+.read{font-family:var(--font-display);font-size:1.9rem;color:var(--rose);line-height:1.1}
+.read small{font-size:.95rem;color:var(--muted)}
+.desc{background:var(--surface-2);border-radius:12px;padding:10px 14px;min-height:76px;font-size:.92rem}
+.ticks{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:6px}
+.btn{font:600 .86rem var(--font-body);padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--bg)}
+.pill{display:inline-block;font:600 .74rem var(--font-mono);padding:1px 9px;border-radius:999px}
+.p-ok{background:var(--teal-soft);color:var(--teal)} .p-mid{background:var(--amber-soft);color:var(--amber)} .p-hi{background:var(--red-soft);color:var(--red)}
+.pimp{background:var(--plum-soft);border:1.5px solid var(--plum);border-radius:var(--r);padding:20px}
+.pimp h2{color:var(--plum)}
+details{margin-top:14px;background:var(--surface);border-radius:12px;border:1px solid var(--line);padding:10px 14px}
+summary{cursor:pointer;font-weight:600;color:var(--plum)}
+details[open] summary{margin-bottom:8px}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+footer ol{padding-left:1.2em}
+/* OSCE checklist */
+.osce-bar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 46px);z-index:4;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);margin-bottom:14px}
+.osce-bar .meter{flex:1 1 160px;height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.osce-bar .meter i{display:block;height:100%;width:0;background:var(--teal);transition:width .2s ease}
+.osce-bar .score{font-family:var(--font-mono);font-weight:600}
+.osce-sec{margin-bottom:16px}
+.osce-sec h3{font-size:1.02rem;margin-bottom:6px;display:flex;gap:8px;align-items:baseline}
+.osce-item{display:grid;grid-template-columns:auto auto 1fr;gap:10px;align-items:start;padding:8px 10px;border-radius:10px;border:1px solid transparent;cursor:pointer}
+.osce-item:hover{background:var(--surface-2)}
+.osce-item input{margin-top:5px;width:18px;height:18px;accent-color:var(--teal)}
+.osce-item .k{font:600 .68rem var(--font-mono);padding:2px 7px;border-radius:6px;margin-top:3px;white-space:nowrap}
+.k.do{background:var(--teal-soft);color:var(--teal)} .k.say{background:var(--plum-soft);color:var(--plum)}
+.osce-item.crit{border-color:var(--red-soft)}
+.osce-item.crit .t::after{content:" ⚠ critical";font:600 .68rem var(--font-mono);color:var(--red)}
+.osce-item.done .t{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--teal)}
+.osce-item .t{font-size:.94rem;line-height:1.55}
+.osce-item .why{display:block;font-size:.82rem;color:var(--muted);text-decoration:none}
+@media (max-width:860px){ .g4{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:620px){ .hero{grid-template-columns:1fr} .hero-art{max-width:240px;order:-1} .g2,.g3,.sim{grid-template-columns:1fr} }
+@media (max-width:440px){ .g4{grid-template-columns:1fr} }
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+
+.eff text{font-family:var(--font-body)}
+.mec-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.mec-list{display:grid;gap:6px;max-height:440px;overflow:auto;padding-right:4px}
+.mec-list label{display:flex;gap:8px;align-items:flex-start;font-size:.9rem;padding:6px 8px;border-radius:8px;cursor:pointer}
+.mec-list label:hover{background:var(--surface-2)}
+.mec-list input{margin-top:5px;accent-color:var(--rose)}
+.cat{display:flex;gap:6px;margin:8px 0}
+.cat span{flex:1;text-align:center;font:600 1.1rem var(--font-mono);padding:8px 0;border-radius:10px;background:var(--surface-2);color:var(--muted);border:2px solid transparent}
+.cat span.on{color:var(--bg)}
+.cat span.on.c1{background:var(--teal)} .cat span.on.c2{background:#4f9a5a} .cat span.on.c3{background:var(--amber)} .cat span.on.c4{background:var(--red)}
+@media (max-width:700px){.mec-g{grid-template-columns:1fr}}
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="hand" viewBox="-30 -20 60 36" overflow="visible"><path class="hand-f" d="M-27 -1 C-27 -10 -19 -13 -9 -12 L19 -10 C27 -9 28 -3 27 0 C28 4 26 10 19 10 L-9 12 C-19 13 -27 8 -27 -1Z"/><path class="hand-f" d="M-8 -11 C-6 -19 6 -21 11 -15 C12 -13 9 -11 4 -11Z"/><path class="hand-l" d="M7 -5 L24 -4 M7 0 L25 0.5 M7 5 L23 5.5"/></symbol>
+<marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--teal)"/></marker>
+<marker id="ahr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--red)"/></marker>
+</defs></svg>
+
+<nav class="toc" aria-label="สารบัญ"><div class="toc-inner"><a class="hub" href="index.html">← คลังเรียน</a><a href="#eff">ประสิทธิภาพ</a><a href="#where">ออกฤทธิ์ตรงไหน</a><a href="#methods">เปรียบเทียบวิธี</a><a href="#mec">US MEC</a><a href="#start">เริ่มใช้</a><a href="#ec">Emergency</a><a href="#pimp">Pimp Q</a></div></nav>
+<div class="wrap">
+
+
+<header class="hero">
+  <div>
+    <span class="eyebrow">Lecture 8 · Contraception</span>
+    <h1>การคุมกำเนิด<br><span>Contraception</span></h1>
+    <p class="lede">เลือกวิธีให้เหมาะกับผู้ป่วยด้วย 2 คำถาม: <b>ได้ผลแค่ไหน</b> และ <b>ปลอดภัยกับโรคที่เขามีหรือไม่</b> อ้างอิง <b>CDC US MEC 2024</b>, <b>US SPR 2024</b>, <b>ACOG</b> และ <b>Williams Gynecology</b></p>
+    <div class="pitch"><span class="eyebrow">Elevator pitch</span><b>วิธีที่ได้ผลที่สุดคือวิธีที่ไม่ต้องจำ</b> (LARC: ห่วงและยาฝัง) เพราะความล้มเหลวส่วนใหญ่มาจากการใช้ไม่สม่ำเสมอ ส่วนความปลอดภัยใช้ <b>US MEC</b> แบ่งเป็น category 1–4 ระวังที่สุดคือ<b>ยาที่มี estrogen</b> ซึ่งเพิ่มความเสี่ยงลิ่มเลือด</div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 300 260" role="img" aria-label="ห่วงอนามัยและยาฝัง">
+    <path d="M150 40 C220 40 250 80 240 130 C232 170 196 196 150 236 C104 196 68 170 60 130 C50 80 80 40 150 40Z" class="ut"/>
+    <path d="M110 80 H190" style="stroke:var(--teal)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M150 80 V180" style="stroke:var(--teal)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M150 180 C150 200 146 220 142 240" fill="none" style="stroke:var(--muted)" stroke-width="1.5"/>
+    <rect x="200" y="196" width="80" height="10" rx="5" style="fill:var(--plum)" transform="rotate(-20 240 201)"/>
+    <text x="230" y="236" text-anchor="middle" class="svg-t">Implant</text>
+    <text x="150" y="66" text-anchor="middle" class="svg-t">IUD</text>
+  </svg>
+</header>
+
+<section id="eff">
+  <div class="sec-head"><span class="eyebrow">Effectiveness · typical use</span><h2>ได้ผลแค่ไหนเมื่อใช้จริง</h2><p class="muted">ร้อยละของผู้ที่ตั้งครรภ์ในปีแรกของการใช้แบบทั่วไป (typical use) ตามแผนภูมิของ CDC · วาดตามสเกล</p></div>
+  <div class="card scroll-x">
+    <svg viewBox="0 0 640 420" class="eff" style="min-width:560px;width:100%" role="img" aria-label="กราฟแท่งอัตราการตั้งครรภ์ในปีแรกของแต่ละวิธี">
+      <!-- x: 0..25% → 200..600 (16 px/%) -->
+      <g style="stroke:var(--line)"><line x1="200" y1="10" x2="200" y2="390"/><line x1="280" y1="10" x2="280" y2="390"/><line x1="360" y1="10" x2="360" y2="390"/><line x1="440" y1="10" x2="440" y2="390"/><line x1="520" y1="10" x2="520" y2="390"/><line x1="600" y1="10" x2="600" y2="390"/></g>
+      <g class="mono" style="font-size:11px;fill:var(--muted)" text-anchor="middle"><text x="200" y="408">0</text><text x="280" y="408">5</text><text x="360" y="408">10</text><text x="440" y="408">15</text><text x="520" y="408">20</text><text x="600" y="408">25%</text></g>
+      <g id="eff-bars"></g>
+    </svg>
+  </div>
+  <div class="grid g3 mt">
+    <div class="callout"><b>Tier 1 · &lt;1%</b>: implant, IUD, ทำหมัน · ใส่ครั้งเดียว ไม่ต้องจำ</div>
+    <div class="callout warn"><b>Tier 2 · 4–7%</b>: ยาฉีด ยาเม็ด แผ่นแปะ วงแหวน · ต้องใช้ให้ตรงเวลา</div>
+    <div class="callout risk"><b>Tier 3 · ≥13%</b>: ถุงยาง หลั่งนอก นับวัน · ถุงยางป้องกัน STI ได้ ควรใช้ร่วมเสมอ</div>
+  </div>
+</section>
+
+<section id="where">
+  <div class="sec-head"><span class="eyebrow">The "Why" · Mechanism</span><h2>แต่ละวิธีออกฤทธิ์ตรงไหน</h2></div>
+  <div class="card scroll-x">
+    <svg viewBox="0 0 680 320" style="min-width:600px;width:100%" role="img" aria-label="ตำแหน่งที่วิธีคุมกำเนิดออกฤทธิ์">
+      <rect x="290" y="10" width="100" height="36" rx="10" style="fill:var(--plum-soft);stroke:var(--plum)"/><text x="340" y="33" text-anchor="middle" class="svg-b">Pituitary</text>
+      <path d="M340 46 L340 70" class="arw" marker-end="url(#ah)"/><text x="350" y="64" class="svg-t">LH surge</text>
+      <path d="M340 80 C400 80 410 120 400 160 C392 196 368 216 340 252 C312 216 288 196 280 160 C270 120 280 80 340 80Z" class="ut"/>
+      <path d="M290 100 C250 90 220 96 200 110 M390 100 C430 90 460 96 480 110" fill="none" style="stroke:var(--rose)" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="186" cy="124" rx="22" ry="15" style="fill:var(--amber-soft);stroke:var(--amber)" stroke-width="2"/>
+      <ellipse cx="494" cy="124" rx="22" ry="15" style="fill:var(--amber-soft);stroke:var(--amber)" stroke-width="2"/>
+      <rect x="326" y="252" width="28" height="30" rx="6" style="fill:var(--rose-mid);stroke:var(--rose)"/>
+      <path d="M332 282 L326 314 M348 282 L354 314" style="stroke:var(--rose)" stroke-width="2"/>
+      <!-- labels -->
+      <g style="font-size:12px">
+        <rect x="16" y="150" width="190" height="64" rx="10" style="fill:var(--amber-soft);stroke:var(--amber)"/>
+        <text x="26" y="170" class="svg-b" style="fill:var(--amber)">① ยับยั้งการตกไข่</text><text x="26" y="188" class="svg-t" style="fill:var(--ink)">COC, patch, ring, DMPA,</text><text x="26" y="204" class="svg-t" style="fill:var(--ink)">implant (สูงมาก)</text>
+        <line x1="186" y1="140" x2="160" y2="150" style="stroke:var(--amber)"/>
+        <rect x="474" y="20" width="190" height="48" rx="10" style="fill:var(--teal-soft);stroke:var(--teal)"/>
+        <text x="484" y="40" class="svg-b" style="fill:var(--teal)">② ปิดท่อนำไข่</text><text x="484" y="58" class="svg-t" style="fill:var(--ink)">ทำหมันหญิง (TR/salpingectomy)</text>
+        <line x1="470" y1="100" x2="540" y2="68" style="stroke:var(--teal)"/>
+        <rect x="474" y="170" width="190" height="64" rx="10" style="fill:var(--rose-soft);stroke:var(--rose)"/>
+        <text x="484" y="190" class="svg-b" style="fill:var(--rose)">③ ในโพรงมดลูก</text><text x="484" y="208" class="svg-t" style="fill:var(--ink)">Cu-IUD: เป็นพิษต่ออสุจิ/ไข่</text><text x="484" y="224" class="svg-t" style="fill:var(--ink)">LNG-IUS: เยื่อบุบาง</text>
+        <line x1="380" y1="170" x2="474" y2="200" style="stroke:var(--rose)"/>
+        <rect x="16" y="246" width="190" height="64" rx="10" style="fill:var(--plum-soft);stroke:var(--plum)"/>
+        <text x="26" y="266" class="svg-b" style="fill:var(--plum)">④ มูกปากมดลูกข้น</text><text x="26" y="284" class="svg-t" style="fill:var(--ink)">ทุกวิธีที่มี progestin</text><text x="26" y="300" class="svg-t" style="fill:var(--ink)">POP, LNG-IUS (เด่น)</text>
+        <line x1="206" y1="276" x2="326" y2="266" style="stroke:var(--plum)"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section id="methods">
+  <div class="sec-head"><span class="eyebrow">Compare</span><h2>เปรียบเทียบวิธีหลัก</h2></div>
+  <div class="card scroll-x" style="padding:6px"><table>
+    <thead><tr><th>วิธี</th><th>ใช้ได้นาน</th><th>ข้อดี</th><th>ผลข้างเคียง / ข้อระวัง</th></tr></thead>
+    <tbody>
+      <tr><td><b>Copper IUD</b> (TCu380A)</td><td class="mono">10 ปี</td><td>ไม่มีฮอร์โมน · ใช้เป็น EC ได้ · กลับมาเจริญพันธุ์ทันที</td><td>ประจำเดือนมากขึ้นและปวดมากขึ้น</td></tr>
+      <tr><td><b>LNG-IUS 52 mg</b> (Mirena)</td><td class="mono">สูงสุด 8 ปี</td><td>ลดประจำเดือน · รักษา HMB และป้องกัน endometrial hyperplasia</td><td>เลือดออกกะปริดกะปรอยช่วงแรก</td></tr>
+      <tr><td><b>Implant</b> (etonogestrel)</td><td class="mono">3 ปี (ข้อมูลถึง 5 ปี)</td><td>ได้ผลสูงสุด · ใส่ง่ายที่ OPD</td><td>เลือดออกไม่สม่ำเสมอ (สาเหตุหลักที่ขอถอด) · ไทยมี Jadelle (LNG) ใช้ 5 ปี</td></tr>
+      <tr><td><b>DMPA</b></td><td class="mono">ฉีดทุก 3 เดือน</td><td>ไม่ต้องกินทุกวัน</td><td>น้ำหนักเพิ่ม · <b>มวลกระดูกลดลง</b> (กลับคืนได้) · กลับมาเจริญพันธุ์ช้า (อาจถึง 10 เดือน)</td></tr>
+      <tr><td><b>COC</b> / patch / ring</td><td class="mono">ทุกวัน/สัปดาห์/เดือน</td><td>คุมรอบเดือน ลดปวดประจำเดือน ลดสิว ลดมะเร็งรังไข่และเยื่อบุโพรงมดลูก</td><td><b>VTE</b> จาก estrogen · ความดันสูง · ตรวจ BP ก่อนให้</td></tr>
+      <tr><td><b>POP</b></td><td class="mono">ทุกวัน</td><td>ใช้ได้ในผู้ที่ห้ามใช้ estrogen · หลังคลอดให้นม</td><td>ต้องกินตรงเวลา (norethindrone ช้าเกิน 3 ชม. ต้องใช้ backup)</td></tr>
+      <tr><td><b>ทำหมัน</b></td><td class="mono">ถาวร</td><td>หลังคลอดทำได้สะดวก (ดู OPOB ข้อ 2)</td><td>เสียใจภายหลังพบมากในผู้ที่อายุน้อย · เสี่ยง ectopic ถ้าล้มเหลว</td></tr>
+    </tbody></table></div>
+</section>
+
+<section id="mec">
+  <div class="sec-head"><span class="eyebrow">Interactive · US MEC 2024</span><h2>COC ให้ได้ไหม: ลองติ๊กโรคของผู้ป่วย</h2><p class="muted">Category 1 ใช้ได้ไม่จำกัด · 2 ประโยชน์มากกว่าความเสี่ยง · 3 ความเสี่ยงมากกว่าประโยชน์ · <b>4 ห้ามใช้</b></p></div>
+  <div class="card mec-g">
+    <div class="mec-list" id="mec-list"></div>
+    <div>
+      <div class="cat" aria-hidden="true"><span class="c1" id="c1">1</span><span class="c2" id="c2">2</span><span class="c3" id="c3">3</span><span class="c4" id="c4">4</span></div>
+      <div class="desc" id="mec-out" aria-live="polite" style="min-height:150px"></div>
+      <p class="small muted mt">แสดงเฉพาะ combined hormonal contraception (COC/patch/ring) · Copper IUD เป็น category 1 ในโรคส่วนใหญ่เหล่านี้ · ใช้ประกอบการเรียน ตรวจสอบตาราง US MEC ฉบับเต็มก่อนใช้จริง</p>
+    </div>
+  </div>
+</section>
+
+<section id="start">
+  <div class="sec-head"><span class="eyebrow">US SPR 2024</span><h2>เริ่มใช้เมื่อไร และต้องใช้ backup กี่วัน</h2><p class="muted"><b>Quick start</b>: เริ่มได้ทุกวันถ้ามั่นใจพอสมควรว่าไม่ได้ตั้งครรภ์ · ถ้าเริ่มในช่วงต้นรอบเดือนตามตาราง ไม่ต้องใช้ backup</p></div>
+  <div class="card scroll-x" style="padding:6px"><table>
+    <thead><tr><th>วิธี</th><th>ไม่ต้อง backup ถ้าเริ่มภายใน</th><th>นอกช่วงนั้น ใช้ backup</th></tr></thead>
+    <tbody>
+      <tr><td><b>Copper IUD</b></td><td colspan="2">ไม่ต้องใช้ backup เลย</td></tr>
+      <tr><td><b>LNG-IUS</b></td><td class="mono">7 วันแรกของรอบ</td><td class="mono">7 วัน</td></tr>
+      <tr><td><b>Implant</b></td><td class="mono">5 วันแรกของรอบ</td><td class="mono">7 วัน</td></tr>
+      <tr><td><b>DMPA</b></td><td class="mono">7 วันแรกของรอบ</td><td class="mono">7 วัน</td></tr>
+      <tr><td><b>COC</b></td><td class="mono">5 วันแรกของรอบ</td><td class="mono">7 วัน</td></tr>
+      <tr><td><b>POP</b></td><td class="mono">5 วันแรกของรอบ</td><td class="mono">2 วัน</td></tr>
+    </tbody></table></div>
+  <div class="callout warn mt"><b>ลืมกิน COC</b>: ลืม 1 เม็ด → กินทันทีที่นึกได้ ไม่ต้อง backup · ลืม ≥2 เม็ดติดกัน → กินเม็ดล่าสุดทันที ใช้ backup 7 วัน ถ้าลืมในสัปดาห์สุดท้ายของเม็ดฮอร์โมน ให้ข้ามเม็ดแป้งเริ่มแผงใหม่เลย (และพิจารณา EC ถ้าลืมในสัปดาห์แรกและมีเพศสัมพันธ์)</div>
+</section>
+
+<section id="ec">
+  <div class="sec-head"><span class="eyebrow">Emergency contraception</span><h2>คุมกำเนิดฉุกเฉิน: ยิ่งเร็วยิ่งดี</h2></div>
+  <div class="card scroll-x">
+    <svg viewBox="0 0 640 170" style="min-width:560px;width:100%" role="img" aria-label="ช่วงเวลาที่ใช้คุมกำเนิดฉุกเฉินได้">
+      <!-- x: 0..120 h → 60..600 (4.5 px/h) -->
+      <line x1="60" y1="30" x2="600" y2="30" style="stroke:var(--line)" stroke-width="4"/>
+      <g class="mono" style="font-size:11px;fill:var(--muted)" text-anchor="middle"><text x="60" y="20">0</text><text x="168" y="20">24</text><text x="276" y="20">48</text><text x="384" y="20">72 ชม.</text><text x="492" y="20">96</text><text x="600" y="20">120 ชม. (5 วัน)</text></g>
+      <rect x="60" y="50" width="540" height="26" rx="8" style="fill:var(--teal-soft);stroke:var(--teal)"/><text x="70" y="68" class="svg-b">Copper IUD · ได้ผลสูงสุด (&gt;99%) และใช้คุมกำเนิดต่อได้</text>
+      <rect x="60" y="86" width="540" height="26" rx="8" style="fill:var(--plum-soft);stroke:var(--plum)"/><text x="70" y="104" class="svg-b">Ulipristal acetate 30 mg · ตลอด 120 ชม.</text>
+      <rect x="60" y="122" width="324" height="26" rx="8" style="fill:var(--amber-soft);stroke:var(--amber)"/><rect x="384" y="122" width="216" height="26" rx="8" style="fill:var(--amber-soft);stroke:var(--amber)" stroke-dasharray="4 3" opacity=".6"/>
+      <text x="70" y="140" class="svg-b">Levonorgestrel 1.5 mg · ดีที่สุดใน 72 ชม.</text><text x="394" y="140" class="svg-t">ได้ผลลดลงถึง 120 ชม.</text>
+    </svg>
+  </div>
+  <p class="small muted mt">LNG ได้ผลลดลงในผู้ที่ BMI ≥30 → แนะนำ Cu-IUD หรือ ulipristal · ในไทย LNG (เช่น 0.75 mg × 2 เม็ด หรือ 1.5 mg × 1 เม็ด) หาได้ง่ายที่สุด · EC ไม่ใช่ยาทำแท้ง ไม่มีผลถ้าฝังตัวแล้ว</p>
+</section>
+
+<section id="pimp">
+  <div class="pimp"><span class="eyebrow" style="color:var(--plum)">The pimp question</span><h2 style="margin:6px 0 10px">ลองตอบก่อนเปิดเฉลย</h2>
+  <p>หญิงอายุ 37 ปี สูบบุหรี่วันละ 20 มวน มี <b>migraine with aura</b> ขอยาคุมกำเนิดชนิดเม็ดแบบที่เพื่อนใช้ (COC)</p>
+  <p style="margin-top:8px"><b>MEC category ของ COC เป็นเท่าไร และคุณจะเสนอทางเลือกอะไร?</b></p>
+  <details><summary>เปิดเฉลย</summary><ul class="clean small">
+    <li>อายุ ≥35 + สูบ ≥15 มวน/วัน = <b>category 4</b> · migraine with aura = <b>category 4</b> → <b>ห้ามใช้ COC</b> (เสี่ยง stroke และ MI)</li>
+    <li>ทางเลือก: <b>Copper IUD</b>, <b>LNG-IUS</b>, <b>implant</b> หรือ POP (ไม่มี estrogen)</li>
+    <li>ให้คำแนะนำและช่วยเลิกบุหรี่ด้วย</li>
+  </ul></details></div>
+</section>
+
+<footer>
+  <p><b>หมายเหตุ</b>: สื่อการเรียนสำหรับนักศึกษาแพทย์ ไม่ใช่คำแนะนำทางการแพทย์สำหรับบุคคล</p>
+  <p style="margin-top:10px"><b>แหล่งอ้างอิง</b></p>
+  <ol>
+    <li><a href="https://www.cdc.gov/contraception/hcp/usmec/" target="_blank" rel="noopener">CDC. U.S. Medical Eligibility Criteria for Contraceptive Use, 2024</a> · U.S. Selected Practice Recommendations for Contraceptive Use, 2024.</li>
+    <li><a href="https://www.contemporaryobgyn.net/view/key-changes-from-the-2024-update-to-the-us-medical-eligibility-criteria-for-contraceptive-use" target="_blank" rel="noopener">Key changes from the 2024 US MEC update</a></li>
+    <li>CDC. Effectiveness of Family Planning Methods (chart).</li>
+    <li>Hoffman BL, et al. <i>Williams Gynecology</i>, 4th ed. Ch. Contraception and Sterilization.</li>
+  </ol>
+</footer>
+
+
+</div>
+<script>
+
+(function(){
+  var E=[['Implant',0.1,'t1'],['ทำหมันชาย',0.15,'t1'],['LNG-IUS',0.4,'t1',0.1],['ทำหมันหญิง',0.5,'t1'],['Copper IUD',0.8,'t1'],['ยาฉีด DMPA',4,'t2'],['ยาเม็ด / แผ่นแปะ / วงแหวน',7,'t2'],['ถุงยางชาย',13,'t3'],['Diaphragm',17,'t3'],['หลั่งนอก',20,'t3'],['ถุงยางหญิง',21,'t3'],['Spermicide',21,'t3'],['นับวัน (fertility awareness)',23,'t3',2]];
+  var col={t1:'var(--teal)',t2:'var(--amber)',t3:'var(--red)'}, g=document.getElementById('eff-bars'), h='';
+  E.forEach(function(e,i){ var y=14+i*28, w=Math.max(2,e[1]*16), x0=200+(e[3]?e[3]*16:0);
+    h+='<text x="190" y="'+(y+14)+'" text-anchor="end" class="svg-b" style="font-size:11.5px">'+e[0]+'</text>';
+    if(e[3]){ h+='<rect x="'+x0+'" y="'+(y+2)+'" width="'+(200+w-x0)+'" height="16" rx="3" style="fill:'+col[e[2]]+'" opacity=".85"/>'; }
+    else h+='<rect x="200" y="'+(y+2)+'" width="'+w+'" height="16" rx="3" style="fill:'+col[e[2]]+'" opacity=".85"/>';
+    h+='<text x="'+(206+w)+'" y="'+(y+15)+'" class="mono" style="font-size:11px;fill:var(--ink)">'+(e[3]?(e[3]+'–'+e[1]):e[1])+'%</text>';
+  });
+  g.innerHTML=h;
+
+  var C=[['สูบบุหรี่ อายุ ≥35 ปี และ ≥15 มวน/วัน',4],['สูบบุหรี่ อายุ ≥35 ปี และ &lt;15 มวน/วัน',3],['Migraine with aura',4],['Migraine without aura',2],['BP ≥160/100',4],['BP 140–159/90–99 หรือคุมด้วยยาได้แล้ว',3],['เคยเป็น DVT/PE',4],['Known thrombogenic mutation',4],['ผ่าตัดใหญ่และต้องนอนนาน',4],['หลังคลอด &lt;21 วัน',4],['หลังคลอด 21–42 วัน มีปัจจัยเสี่ยง VTE',3],['Breast cancer ปัจจุบัน',4],['Ischemic heart disease / stroke',4],['Complicated valvular heart disease',4],['SLE ที่ antiphospholipid antibody บวก',4],['Sickle cell disease (US MEC 2024)',4],['CKD มี nephrotic syndrome หรือฟอกไต (2024)',4],['เบาหวานมี vascular complications',3],['Cirrhosis รุนแรง (decompensated)',4],['BMI ≥30',2]];
+  var list=document.getElementById('mec-list'), out=document.getElementById('mec-out');
+  list.innerHTML=C.map(function(c,i){return '<label><input type="checkbox" data-i="'+i+'"> <span>'+c[0]+'</span></label>';}).join('');
+  function draw(){
+    var sel=[]; list.querySelectorAll('input:checked').forEach(function(x){sel.push(C[+x.dataset.i]);});
+    var m=sel.reduce(function(a,c){return Math.max(a,c[1]);},1);
+    [1,2,3,4].forEach(function(k){ document.getElementById('c'+k).className='c'+k+(k===m?' on':''); });
+    var msg={1:'ไม่มีข้อจำกัด: ให้ COC ได้',2:'โดยทั่วไปให้ได้ ประโยชน์มากกว่าความเสี่ยง',3:'ไม่แนะนำ เว้นแต่ไม่มีทางเลือกที่เหมาะกว่า',4:'<b>ห้ามใช้ COC</b> · เสนอ Cu-IUD, LNG-IUS, implant หรือ POP ตามความเหมาะสม'}[m];
+    out.innerHTML='<b>Category '+m+'</b><br>'+msg+(sel.length?'<br><span class="small muted">ตัวที่กำหนด: '+sel.filter(function(c){return c[1]===m;}).map(function(c){return c[0];}).join(' · ')+'</span>':'<br><span class="small muted">ยังไม่ได้ติ๊กโรคใด</span>');
+  }
+  list.addEventListener('change',draw); draw();
+})();
+
+
+</script>
+
+</body>
+</html>

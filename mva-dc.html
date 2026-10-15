@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>MVA และ D/C OSCE</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: "สมุดชมพู" OB/GYN series notebook. */
+:root{
+  --bg:#fbf5f8; --surface:#ffffff; --surface-2:#f6ecf2;
+  --ink:#2a1530; --muted:#6c5873; --line:#ead8e3;
+  --rose:#c0185a; --rose-soft:#fbe1ec; --rose-mid:#f2a9c6;
+  --teal:#0d7471; --teal-soft:#dcf1ee;
+  --amber:#a86400; --amber-soft:#fcefd8;
+  --plum:#6a3d8a; --plum-soft:#efe4f6;
+  --red:#c42626; --red-soft:#fde4e2;
+  --skin:#f4d6c6; --hand:#e9b79c; --fetus:#f8c9ab; --fetus-line:#b9775a; --bone:#e8dccf; --bone-line:#9d8573; --blood:#c42626;
+  --font-display:"Mitr","IBM Plex Sans Thai",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.3;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.45rem,3.2vw,1.9rem)} h3{font-size:1.08rem}
+p{margin:0} b,strong{font-weight:600}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+a{color:var(--rose)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:2px;border-radius:6px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:8px max(16px,env(safe-area-inset-left,0px))}
+.toc-inner{max-width:1040px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.toc a{flex:none;text-decoration:none;color:var(--muted);font-size:.84rem;padding:4px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.toc a:hover{color:var(--rose);border-color:var(--rose-mid)}
+.toc a.hub{color:var(--plum);border-color:var(--plum)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;padding-block:36px 20px}
+.hero h1{font-size:clamp(2rem,5.2vw,3.2rem);font-weight:600}
+.hero h1 span{color:var(--rose)}
+.hero .lede{margin-top:14px;font-size:1.04rem;max-width:58ch}
+.pitch{margin-top:18px;padding:14px 16px;border-radius:var(--r);background:var(--rose-soft);border:1px solid var(--rose-mid)}
+.pitch .eyebrow{display:block;margin-bottom:4px}
+.hero-art{max-width:340px;justify-self:center;width:100%}
+section{padding-block:40px 8px;scroll-margin-top:64px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;max-width:72ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2>*,.g3>*,.g4>*{min-width:0}
+.mt{margin-top:14px}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.callout{border-left:4px solid var(--teal);background:var(--teal-soft);padding:12px 14px;border-radius:0 10px 10px 0;font-size:.94rem}
+.callout.warn{border-color:var(--amber);background:var(--amber-soft)}
+.callout.risk{border-color:var(--red);background:var(--red-soft)}
+.callout.plum{border-color:var(--plum);background:var(--plum-soft)}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;padding:1px 8px;border-radius:999px;border:1px solid currentColor;vertical-align:middle}
+.tag.th{color:var(--rose)} .tag.us{color:var(--teal)} .tag.who{color:var(--plum)} .tag.crit{color:var(--red)}
+ul.clean{margin:0;padding-left:1.1em} ul.clean li{margin:3px 0}
+ol.steps{margin:0;padding-left:1.3em} ol.steps li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;background:var(--surface-2)}
+td.mono{white-space:nowrap}
+.dose{font-family:var(--font-mono);font-size:.84rem;background:var(--surface-2);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.svg-t{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
+.svg-b{font-family:var(--font-body);font-size:12px;fill:var(--ink);font-weight:600}
+.fig{width:100%;display:block;margin-inline:auto}
+.ut{fill:var(--rose-soft);stroke:var(--rose);stroke-width:2}
+.fet{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.head{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.plac{fill:var(--rose-mid);stroke:var(--rose);stroke-width:1.5}
+.mat{fill:var(--skin);stroke:var(--fetus-line);stroke-width:1.3}
+.bone{fill:var(--bone);stroke:var(--bone-line);stroke-width:1.5}
+.bone-l{fill:none;stroke:var(--bone-line);stroke-width:7;stroke-linecap:round}
+.hand-f{fill:var(--hand);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.hand-l{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-linecap:round;opacity:.7}
+.arw{fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.arw-r{fill:none;stroke:var(--red);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.blood{fill:var(--blood)}
+.tool-line{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tool-f{fill:var(--surface-2);stroke:var(--muted);stroke-width:1.6;stroke-linejoin:round}
+.ico{width:40px;height:40px;stroke:var(--rose);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico .f{fill:var(--rose-soft)}
+.step{padding:12px;display:flex;flex-direction:column;gap:6px}
+.step svg{width:100%;max-width:230px;align-self:center}
+.step h3{font-size:.98rem;display:flex;gap:8px;align-items:baseline}
+.step h3 b,.num-b{font-family:var(--font-mono);color:var(--bg);background:var(--plum);border-radius:6px;padding:0 7px;font-size:.8rem}
+.step p{font-size:.86rem;line-height:1.55;color:var(--muted)}
+.sim{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:18px;align-items:center}
+.sim svg{width:100%;max-width:260px;justify-self:center}
+.sim input[type=range]{width:100%;accent-color:var(--rose)}
+.read{font-family:var(--font-display);font-size:1.9rem;color:var(--rose);line-height:1.1}
+.read small{font-size:.95rem;color:var(--muted)}
+.desc{background:var(--surface-2);border-radius:12px;padding:10px 14px;min-height:76px;font-size:.92rem}
+.ticks{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:6px}
+.btn{font:600 .86rem var(--font-body);padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--bg)}
+.pill{display:inline-block;font:600 .74rem var(--font-mono);padding:1px 9px;border-radius:999px}
+.p-ok{background:var(--teal-soft);color:var(--teal)} .p-mid{background:var(--amber-soft);color:var(--amber)} .p-hi{background:var(--red-soft);color:var(--red)}
+.pimp{background:var(--plum-soft);border:1.5px solid var(--plum);border-radius:var(--r);padding:20px}
+.pimp h2{color:var(--plum)}
+details{margin-top:14px;background:var(--surface);border-radius:12px;border:1px solid var(--line);padding:10px 14px}
+summary{cursor:pointer;font-weight:600;color:var(--plum)}
+details[open] summary{margin-bottom:8px}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+footer ol{padding-left:1.2em}
+/* OSCE checklist */
+.osce-bar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 46px);z-index:4;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);margin-bottom:14px}
+.osce-bar .meter{flex:1 1 160px;height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.osce-bar .meter i{display:block;height:100%;width:0;background:var(--teal);transition:width .2s ease}
+.osce-bar .score{font-family:var(--font-mono);font-weight:600}
+.osce-sec{margin-bottom:16px}
+.osce-sec h3{font-size:1.02rem;margin-bottom:6px;display:flex;gap:8px;align-items:baseline}
+.osce-item{display:grid;grid-template-columns:auto auto 1fr;gap:10px;align-items:start;padding:8px 10px;border-radius:10px;border:1px solid transparent;cursor:pointer}
+.osce-item:hover{background:var(--surface-2)}
+.osce-item input{margin-top:5px;width:18px;height:18px;accent-color:var(--teal)}
+.osce-item .k{font:600 .68rem var(--font-mono);padding:2px 7px;border-radius:6px;margin-top:3px;white-space:nowrap}
+.k.do{background:var(--teal-soft);color:var(--teal)} .k.say{background:var(--plum-soft);color:var(--plum)}
+.osce-item.crit{border-color:var(--red-soft)}
+.osce-item.crit .t::after{content:" ⚠ critical";font:600 .68rem var(--font-mono);color:var(--red)}
+.osce-item.done .t{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--teal)}
+.osce-item .t{font-size:.94rem;line-height:1.55}
+.osce-item .why{display:block;font-size:.82rem;color:var(--muted);text-decoration:none}
+@media (max-width:860px){ .g4{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:620px){ .hero{grid-template-columns:1fr} .hero-art{max-width:240px;order:-1} .g2,.g3,.sim{grid-template-columns:1fr} }
+@media (max-width:440px){ .g4{grid-template-columns:1fr} }
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="hand" viewBox="-30 -20 60 36" overflow="visible"><path class="hand-f" d="M-27 -1 C-27 -10 -19 -13 -9 -12 L19 -10 C27 -9 28 -3 27 0 C28 4 26 10 19 10 L-9 12 C-19 13 -27 8 -27 -1Z"/><path class="hand-f" d="M-8 -11 C-6 -19 6 -21 11 -15 C12 -13 9 -11 4 -11Z"/><path class="hand-l" d="M7 -5 L24 -4 M7 0 L25 0.5 M7 5 L23 5.5"/></symbol>
+<marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--teal)"/></marker>
+<marker id="ahr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--red)"/></marker>
+</defs></svg>
+
+<nav class="toc" aria-label="สารบัญ"><div class="toc-inner"><a class="hub" href="index.html">← คลังเรียน</a><a href="#ind">ข้อบ่งชี้</a><a href="#mva">อุปกรณ์ MVA</a><a href="#steps">ขั้นตอนด้วยภาพ</a><a href="#tissue">ตรวจชิ้นเนื้อ</a><a href="#dc">D/C</a><a href="#osce">OSCE checklist</a><a href="#pimp">คำถามผู้คุมสอบ</a></div></nav>
+<div class="wrap">
+<header class="hero">
+  <div>
+    <span class="eyebrow">OPOB 9 · Uterine evacuation</span>
+    <h1>MVA และ <span>D/C</span></h1>
+    <p class="lede">Manual vacuum aspiration เป็นวิธีมาตรฐานในการขูดเอาเนื้อเยื่อออกจากโพรงมดลูกในไตรมาสแรก ทำได้ที่ OPD ภายใต้ยาชาเฉพาะที่ อ้างอิง <b>WHO abortion care guideline 2022</b>, <b>ACOG PB 200 (early pregnancy loss)</b> และ <b>Williams Gynecology</b></p>
+    <div class="pitch"><span class="eyebrow">ใจความสำคัญ</span>WHO แนะนำ <b>vacuum aspiration แทน sharp curettage</b> (D&amp;C) เพราะเร็วกว่า เจ็บน้อยกว่า ทะลุน้อยกว่า · ก่อนทำต้อง<b>ตัด ectopic</b> และ<b>รู้ขนาดและท่ามดลูก</b> · หลังทำต้อง<b>ตรวจชิ้นเนื้อ</b>และให้ <b>anti-D</b> ถ้า Rh ลบ</div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 300 220" role="img" aria-label="กระบอกฉีด MVA และ cannula">
+    <rect x="40" y="80" width="150" height="56" rx="14" class="tool-f"/>
+    <rect x="190" y="98" width="30" height="20" rx="4" class="tool-f"/>
+    <rect x="10" y="96" width="36" height="24" rx="6" style="fill:var(--plum-soft);stroke:var(--plum)" stroke-width="1.6"/>
+    <line x1="220" y1="108" x2="290" y2="108" style="stroke:var(--teal)" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="282" cy="104" r="3" style="fill:var(--surface)"/>
+    <rect x="160" y="68" width="20" height="14" rx="4" style="fill:var(--amber)"/>
+    <text x="150" y="60" class="svg-t">Valve</text><text x="236" y="136" class="svg-t">Cannula 4–12 mm</text><text x="60" y="160" class="svg-t">กระบอก 60 mL สร้างสุญญากาศ</text>
+  </svg>
+</header>
+
+<section id="ind">
+  <div class="sec-head"><span class="eyebrow">Indications</span><h2>ใช้เมื่อไร</h2></div>
+  <div class="grid g3">
+    <div class="card"><h3>Early pregnancy loss</h3><p class="small muted">Incomplete / missed / inevitable abortion ขนาดมดลูกไตรมาสแรก · ทางเลือกอื่น: รอให้หลุดเอง หรือ misoprostol ± mifepristone</p></div>
+    <div class="card"><h3>เลือดออกมาก</h3><p class="small muted">Incomplete abortion ที่เลือดออกมากหรือ hemodynamics ไม่คงที่ → evacuate ด่วน</p></div>
+    <div class="card"><h3>เก็บชิ้นเนื้อ</h3><p class="small muted">Endometrial sampling ใน AUB · molar pregnancy (ใช้ suction เสมอ)</p></div>
+  </div>
+  <div class="callout risk mt">ก่อนทำ: ยืนยันการตั้งครรภ์ในโพรงมดลูก (U/S) เพื่อ<b>ตัด ectopic pregnancy</b> · ถ้าไม่เห็นการตั้งครรภ์ในโพรง ให้ตรวจชิ้นเนื้อที่ได้อย่างละเอียดและติดตาม β-hCG</div>
+</section>
+
+<section id="mva">
+  <div class="sec-head"><span class="eyebrow">Equipment</span><h2>เตรียมอุปกรณ์</h2></div>
+  <div class="grid g4">
+    <div class="card"><h3>ยาและสารน้ำ</h3><p class="small muted">Lidocaine 1% สำหรับ paracervical block · NSAIDs ก่อนทำ · uterotonic · antibiotic prophylaxis ตามแนวทาง</p></div>
+    <div class="card"><h3>เครื่องมือ</h3><p class="small muted">Speculum · tenaculum · dilators · MVA syringe · cannula หลายขนาด · ring forceps · ชามใส่ชิ้นเนื้อ</p></div>
+    <div class="card"><h3>เลือก cannula</h3><p class="small muted">ขนาด (mm) ประมาณเท่ากับอายุครรภ์ (สัปดาห์) · incomplete abortion อาจใช้เล็กกว่า</p></div>
+    <div class="card"><h3>Charge syringe</h3><p class="small muted">ปิด valve ดึงลูกสูบจนล็อก สร้างสุญญากาศ · ตรวจว่าไม่รั่ว</p></div>
+  </div>
+</section>
+
+<section id="steps">
+  <div class="sec-head"><span class="eyebrow">Technique</span><h2>ขั้นตอนด้วยภาพ</h2></div>
+  <div class="grid g4">
+    <div class="card step"><svg viewBox="0 0 200 140" aria-hidden="true"><circle cx="100" cy="70" r="46" style="fill:var(--rose-soft);stroke:var(--rose)" stroke-width="2"/><ellipse cx="100" cy="70" rx="10" ry="6" style="fill:var(--rose)"/><circle cx="70" cy="104" r="6" style="fill:var(--teal)"/><circle cx="130" cy="104" r="6" style="fill:var(--teal)"/><text x="40" y="132" class="svg-b" style="fill:var(--teal)">8</text><text x="146" y="132" class="svg-b" style="fill:var(--teal)">4</text><text x="20" y="18" class="svg-t">ฉีดที่ cervicovaginal junction</text></svg><h3><b>1</b>Paracervical block</h3><p>ฉีด lidocaine ที่ตำแหน่ง 4 และ 8 นาฬิกา (หรือ 2-4-8-10) <b>aspirate ก่อนฉีด</b>เสมอ · ไม่เกินขนาดสูงสุด</p></div>
+    <div class="card step"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M70 100 C40 70 60 20 110 24 C160 28 170 80 140 100 C126 110 110 112 100 110Z" class="ut"/><rect x="88" y="104" width="22" height="20" rx="6" class="ut"/><path d="M99 140 L99 112 C99 80 104 56 112 36" fill="none" style="stroke:var(--teal)" stroke-width="6"/><text x="120" y="80" class="svg-t">สอด cannula</text><text x="120" y="94" class="svg-t">หมุนเบาๆ ผ่าน os</text></svg><h3><b>2</b>สอด cannula</h3><p>จับ tenaculum ดึงให้มดลูกตรง · dilate ถ้าจำเป็น · สอด cannula ผ่าน os เข้าไปจนเกือบถึง fundus (ไม่ดันแรง)</p></div>
+    <div class="card step"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M70 100 C40 70 60 20 110 24 C160 28 170 80 140 100 C126 110 110 112 100 110Z" class="ut"/><rect x="88" y="104" width="22" height="20" rx="6" class="ut"/><path d="M99 140 L99 112 C99 80 104 56 112 36" fill="none" style="stroke:var(--teal)" stroke-width="6"/><path class="arw" d="M130 50 C150 60 150 90 130 100" marker-end="url(#ah)"/><path class="arw" d="M70 100 C50 90 50 60 70 50" marker-end="url(#ah)"/></svg><h3><b>3</b>ดูด</h3><p>ต่อ syringe เปิด valve · <b>หมุน 180° ไปมา + เลื่อนเข้าออก</b>ช้าๆ ไม่ดึง cannula พ้น os (สุญญากาศหาย)</p></div>
+    <div class="card step"><svg viewBox="0 0 200 140" aria-hidden="true"><rect x="40" y="40" width="120" height="50" rx="12" class="tool-f"/><g style="fill:var(--rose-mid)"><circle cx="70" cy="64" r="8"/><circle cx="90" cy="58" r="6"/><circle cx="110" cy="68" r="7"/></g><text x="20" y="116" class="svg-t">ฟองสีชมพู · ผิวสาก · มดลูกบีบ</text></svg><h3><b>4</b>สัญญาณว่าเสร็จ</h3><p>เห็น<b>ฟองสีแดง/ชมพู</b>ไม่มีเนื้อเยื่อ · รู้สึก<b>สากๆ</b> · มดลูกบีบรัด cannula · ผู้ป่วยปวดบีบมากขึ้น</p></div>
+  </div>
+</section>
+
+<section id="tissue">
+  <div class="sec-head"><span class="eyebrow">Tissue inspection</span><h2>ตรวจชิ้นเนื้อทันที</h2></div>
+  <div class="grid g2">
+    <div class="card">
+      <svg viewBox="0 0 260 150" class="fig" style="max-width:280px" role="img" aria-label="villi ลอยในน้ำ">
+        <rect x="20" y="20" width="220" height="110" rx="16" style="fill:var(--teal-soft);stroke:var(--teal)" stroke-width="2"/>
+        <g fill="none" style="stroke:var(--rose)" stroke-width="2" stroke-linecap="round">
+          <path d="M80 100 C80 80 70 70 64 56 M80 84 C90 74 96 62 96 50 M80 92 C70 86 60 82 54 72"/>
+          <path d="M170 104 C170 84 160 74 154 60 M170 88 C180 78 186 66 186 54 M170 96 C160 90 150 86 144 76"/>
+        </g>
+        <g style="fill:var(--rose)"><circle cx="64" cy="56" r="4"/><circle cx="96" cy="50" r="4"/><circle cx="54" cy="72" r="4"/><circle cx="154" cy="60" r="4"/><circle cx="186" cy="54" r="4"/><circle cx="144" cy="76" r="4"/></g>
+        <text x="130" y="146" text-anchor="middle" class="svg-t">Chorionic villi ลอยเป็นพุ่มในน้ำ ส่องกับแสง</text>
+      </svg>
+    </div>
+    <div class="card"><ul class="clean small">
+      <li>เทชิ้นเนื้อลงในน้ำเกลือ/น้ำ ส่องกับแสง หา <b>chorionic villi</b> (พุ่มฟู), decidua, gestational sac</li>
+      <li>ไม่พบ villi ในรายที่คาดว่าตั้งครรภ์ → นึกถึง <b>ectopic</b> หรือยังเอาออกไม่หมด · ตรวจ β-hCG ติดตาม</li>
+      <li>พบ <b>vesicles</b> คล้ายพวงองุ่น → molar pregnancy · ส่งพยาธิทุกราย</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="dc">
+  <div class="sec-head"><span class="eyebrow">Dilatation &amp; curettage</span><h2>D/C: ใช้เมื่อไร</h2></div>
+  <div class="grid g2">
+    <div class="card"><h3>Diagnostic / fractional curettage</h3><ul class="clean small"><li>ใช้ใน AUB เมื่อ office biopsy ไม่พอหรือทำไม่ได้ ควรทำร่วมกับ <b>hysteroscopy</b></li><li><b>Fractional</b>: ขูด endocervix ก่อน แล้วค่อย sound และขูด endometrium แยกขวด (บอกตำแหน่งของมะเร็ง)</li><li>ขูดเป็นระบบตามเข็มนาฬิกาจนรู้สึกผิวสาก</li></ul></div>
+    <div class="card"><h3>ภาวะแทรกซ้อน</h3><ul class="clean small"><li><b>Uterine perforation</b>: เครื่องมือไปลึกเกินค่า sound → หยุดทำ เฝ้าระวังเลือดออก/อวัยวะในช่องท้องบาดเจ็บ (โดยเฉพาะถ้าใช้ suction ขณะทะลุ)</li><li>เอาออกไม่หมด · ติดเชื้อ · ปากมดลูกฉีก</li><li><b>Asherman syndrome</b> (พังผืดในโพรงมดลูก) จากการขูดแรง โดยเฉพาะหลังคลอด/แท้ง</li></ul></div>
+  </div>
+</section>
+
+<section id="osce">
+  <div class="sec-head"><span class="eyebrow">OSCE checklist · ฝึกบนหุ่น</span><h2>ซ้อม MVA ทีละข้อ</h2></div>
+  <div id="osce-root"></div>
+</section>
+
+<section id="pimp">
+  <div class="pimp"><span class="eyebrow" style="color:var(--plum)">คำถามที่ผู้คุมสอบชอบถาม</span><h2 style="margin:6px 0 10px">ลองตอบก่อนเปิดเฉลย</h2>
+  <p>ระหว่างทำ MVA ที่ GA 8 wk (sound ได้ 9 cm) cannula เข้าไปได้ลึก 13 cm โดยไม่รู้สึกถึง fundus</p>
+  <p style="margin-top:8px"><b>นึกถึงอะไร และทำอย่างไรต่อ?</b></p>
+  <details><summary>เปิดเฉลย</summary><ul class="clean small"><li>นึกถึง <b>uterine perforation</b></li><li><b>หยุด</b>ดูดทันที ถอดสุญญากาศก่อนถอน cannula (ไม่ดูดลำไส้/omentum ออกมา)</li><li>ประเมิน V/S อาการปวดท้อง เลือดออก · ให้ uterotonic · ถ้าคงที่และไม่ได้ใช้ suction ขณะทะลุ อาจเฝ้าสังเกต · ถ้าไม่คงที่หรือสงสัยอวัยวะบาดเจ็บ → laparoscopy/laparotomy</li><li>งานที่เหลือให้ทำภายใต้ U/S guidance หรือโดยผู้มีประสบการณ์</li></ul></details></div>
+</section>
+
+<footer>
+  <p><b>หมายเหตุ</b>: checklist รวบรวมจากหลักการมาตรฐานเพื่อการซ้อม ให้ใช้ร่วมกับแบบประเมินของภาควิชาและข้อกฎหมายของประเทศไทย</p>
+  <p style="margin-top:10px"><b>แหล่งอ้างอิง</b></p>
+  <ol><li>WHO. Abortion care guideline (2022) — vacuum aspiration recommended over dilatation and sharp curettage.</li><li>ACOG Practice Bulletin 200: Early Pregnancy Loss.</li><li>Ipas. Manual Vacuum Aspiration (MVA) clinical guidance.</li><li>Hoffman BL, et al. <i>Williams Gynecology</i>, 4th ed. Ch. Surgeries for Benign Gynecologic Disorders.</li></ol>
+</footer>
+
+
+</div>
+<script>
+
+window.OSCE={id:'mva-dc',sections:[
+ {name:'ก่อนทำ',items:[
+  {t:'แนะนำตัว ยืนยันตัวผู้ป่วย อธิบายข้อบ่งชี้ ทางเลือก ความเสี่ยง ขอ<b>ความยินยอม</b>',say:1,crit:1},
+  {t:'ยืนยัน<b>การตั้งครรภ์ในโพรงมดลูก</b>/ตัด ectopic · ตรวจ Hb, blood group, Rh',crit:1},
+  {t:'ให้ยาแก้ปวด (NSAIDs) ล่วงหน้า · antibiotic prophylaxis ตามแนวทาง'},
+  {t:'ให้ปัสสาวะก่อน · ท่า lithotomy'}]},
+ {name:'เตรียมและระงับความรู้สึก',items:[
+  {t:'<b>Bimanual exam</b>: ขนาดและท่ามดลูก',crit:1},
+  {t:'ใส่ speculum · ทำความสะอาดปากมดลูกด้วยน้ำยาฆ่าเชื้อ'},
+  {t:'Paracervical block (aspirate ก่อนฉีด)'},
+  {t:'จับ tenaculum ดึงให้มดลูกตรง · dilate ตามขนาด cannula ที่เลือก'},
+  {t:'ตรวจและ charge syringe (สุญญากาศไม่รั่ว)'}]},
+ {name:'ดูดเนื้อเยื่อ',items:[
+  {t:'สอด cannula แบบ no-touch ผ่าน os จนเกือบถึง fundus',crit:1},
+  {t:'ต่อ syringe เปิด valve · หมุนและเลื่อนเข้าออกช้าๆ ไม่ให้ปลายหลุดพ้น os'},
+  {t:'เปลี่ยน syringe เมื่อเต็ม'},
+  {t:'บอกสัญญาณว่าเสร็จ: ฟองชมพู ผิวสาก มดลูกบีบ',say:1}]},
+ {name:'หลังทำ',items:[
+  {t:'<b>ตรวจชิ้นเนื้อ</b> หา villi และส่งพยาธิ',crit:1},
+  {t:'ตรวจเลือดออก · ถอดเครื่องมือ'},
+  {t:'ให้ <b>anti-D immunoglobulin</b> ถ้า Rh ลบ',say:1,crit:1},
+  {t:'เฝ้าสังเกตอาการ · คุมกำเนิด (เริ่มได้ทันที รวมถึงใส่ IUD) · อาการที่ต้องกลับมา',say:1}]}
+]};
+
+(function(){
+  var root=document.getElementById('osce-root'); if(!root||!window.OSCE) return;
+  var KEY='osce-'+window.OSCE.id, st={};
+  try{ st=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ st={}; }
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(st)); }catch(e){} }
+  var total=0, html='<div class="osce-bar"><span class="score" id="osce-score"></span><div class="meter"><i id="osce-m"></i></div><span class="small muted" id="osce-crit"></span><button class="btn" type="button" id="osce-reset">เริ่มใหม่</button></div>';
+  window.OSCE.sections.forEach(function(s,si){
+    html+='<div class="osce-sec card"><h3><span class="num-b">'+(si+1)+'</span>'+s.name+'</h3>';
+    s.items.forEach(function(it,ii){
+      var id='o'+si+'-'+ii; total++;
+      html+='<label class="osce-item'+(it.crit?' crit':'')+(st[id]?' done':'')+'" data-crit="'+(it.crit?1:0)+'"><input type="checkbox" data-id="'+id+'"'+(st[id]?' checked':'')+'><span class="k '+(it.say?'say':'do')+'">'+(it.say?'พูด':'ทำ')+'</span><span class="t">'+it.t+(it.why?'<span class="why">'+it.why+'</span>':'')+'</span></label>';
+    });
+    html+='</div>';
+  });
+  root.innerHTML=html;
+  function upd(){
+    var n=0, cm=0, ct=0;
+    root.querySelectorAll('.osce-item').forEach(function(l){ var c=l.querySelector('input').checked; if(c) n++; if(l.dataset.crit==='1'){ ct++; if(!c) cm++; } l.classList.toggle('done',c); });
+    document.getElementById('osce-score').textContent=n+'/'+total;
+    document.getElementById('osce-m').style.width=(total?n/total*100:0)+'%';
+    document.getElementById('osce-crit').textContent= ct ? (cm? 'critical ที่ยังไม่ทำ '+cm+' ข้อ' : 'critical ครบแล้ว ✓') : '';
+  }
+  root.addEventListener('change',function(e){ var i=e.target; if(!i.dataset.id) return; if(i.checked) st[i.dataset.id]=1; else delete st[i.dataset.id]; save(); upd(); });
+  document.getElementById('osce-reset').addEventListener('click',function(){ st={}; save(); root.querySelectorAll('input[data-id]').forEach(function(i){i.checked=false;}); upd(); });
+  upd();
+})();
+
+</script>
+
+</body>
+</html>

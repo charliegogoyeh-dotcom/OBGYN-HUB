@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>AUB-O และ AUB-E ฉบับภาพ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: "สมุดชมพู" OB/GYN series notebook. */
+:root{
+  --bg:#fbf5f8; --surface:#ffffff; --surface-2:#f6ecf2;
+  --ink:#2a1530; --muted:#6c5873; --line:#ead8e3;
+  --rose:#c0185a; --rose-soft:#fbe1ec; --rose-mid:#f2a9c6;
+  --teal:#0d7471; --teal-soft:#dcf1ee;
+  --amber:#a86400; --amber-soft:#fcefd8;
+  --plum:#6a3d8a; --plum-soft:#efe4f6;
+  --red:#c42626; --red-soft:#fde4e2;
+  --skin:#f4d6c6; --hand:#e9b79c; --fetus:#f8c9ab; --fetus-line:#b9775a; --bone:#e8dccf; --bone-line:#9d8573; --blood:#c42626;
+  --font-display:"Mitr","IBM Plex Sans Thai",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.3;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.45rem,3.2vw,1.9rem)} h3{font-size:1.08rem}
+p{margin:0} b,strong{font-weight:600}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+a{color:var(--rose)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:2px;border-radius:6px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:8px max(16px,env(safe-area-inset-left,0px))}
+.toc-inner{max-width:1040px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.toc a{flex:none;text-decoration:none;color:var(--muted);font-size:.84rem;padding:4px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.toc a:hover{color:var(--rose);border-color:var(--rose-mid)}
+.toc a.hub{color:var(--plum);border-color:var(--plum)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;padding-block:36px 20px}
+.hero h1{font-size:clamp(2rem,5.2vw,3.2rem);font-weight:600}
+.hero h1 span{color:var(--rose)}
+.hero .lede{margin-top:14px;font-size:1.04rem;max-width:58ch}
+.pitch{margin-top:18px;padding:14px 16px;border-radius:var(--r);background:var(--rose-soft);border:1px solid var(--rose-mid)}
+.pitch .eyebrow{display:block;margin-bottom:4px}
+.hero-art{max-width:340px;justify-self:center;width:100%}
+section{padding-block:40px 8px;scroll-margin-top:64px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;max-width:72ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2>*,.g3>*,.g4>*{min-width:0}
+.mt{margin-top:14px}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.callout{border-left:4px solid var(--teal);background:var(--teal-soft);padding:12px 14px;border-radius:0 10px 10px 0;font-size:.94rem}
+.callout.warn{border-color:var(--amber);background:var(--amber-soft)}
+.callout.risk{border-color:var(--red);background:var(--red-soft)}
+.callout.plum{border-color:var(--plum);background:var(--plum-soft)}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;padding:1px 8px;border-radius:999px;border:1px solid currentColor;vertical-align:middle}
+.tag.th{color:var(--rose)} .tag.us{color:var(--teal)} .tag.who{color:var(--plum)} .tag.crit{color:var(--red)}
+ul.clean{margin:0;padding-left:1.1em} ul.clean li{margin:3px 0}
+ol.steps{margin:0;padding-left:1.3em} ol.steps li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;background:var(--surface-2)}
+td.mono{white-space:nowrap}
+.dose{font-family:var(--font-mono);font-size:.84rem;background:var(--surface-2);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.svg-t{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
+.svg-b{font-family:var(--font-body);font-size:12px;fill:var(--ink);font-weight:600}
+.fig{width:100%;display:block;margin-inline:auto}
+.ut{fill:var(--rose-soft);stroke:var(--rose);stroke-width:2}
+.fet{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.head{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.plac{fill:var(--rose-mid);stroke:var(--rose);stroke-width:1.5}
+.mat{fill:var(--skin);stroke:var(--fetus-line);stroke-width:1.3}
+.bone{fill:var(--bone);stroke:var(--bone-line);stroke-width:1.5}
+.bone-l{fill:none;stroke:var(--bone-line);stroke-width:7;stroke-linecap:round}
+.hand-f{fill:var(--hand);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.hand-l{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-linecap:round;opacity:.7}
+.arw{fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.arw-r{fill:none;stroke:var(--red);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.blood{fill:var(--blood)}
+.tool-line{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tool-f{fill:var(--surface-2);stroke:var(--muted);stroke-width:1.6;stroke-linejoin:round}
+.ico{width:40px;height:40px;stroke:var(--rose);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico .f{fill:var(--rose-soft)}
+.step{padding:12px;display:flex;flex-direction:column;gap:6px}
+.step svg{width:100%;max-width:230px;align-self:center}
+.step h3{font-size:.98rem;display:flex;gap:8px;align-items:baseline}
+.step h3 b,.num-b{font-family:var(--font-mono);color:var(--bg);background:var(--plum);border-radius:6px;padding:0 7px;font-size:.8rem}
+.step p{font-size:.86rem;line-height:1.55;color:var(--muted)}
+.sim{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:18px;align-items:center}
+.sim svg{width:100%;max-width:260px;justify-self:center}
+.sim input[type=range]{width:100%;accent-color:var(--rose)}
+.read{font-family:var(--font-display);font-size:1.9rem;color:var(--rose);line-height:1.1}
+.read small{font-size:.95rem;color:var(--muted)}
+.desc{background:var(--surface-2);border-radius:12px;padding:10px 14px;min-height:76px;font-size:.92rem}
+.ticks{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:6px}
+.btn{font:600 .86rem var(--font-body);padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--bg)}
+.pill{display:inline-block;font:600 .74rem var(--font-mono);padding:1px 9px;border-radius:999px}
+.p-ok{background:var(--teal-soft);color:var(--teal)} .p-mid{background:var(--amber-soft);color:var(--amber)} .p-hi{background:var(--red-soft);color:var(--red)}
+.pimp{background:var(--plum-soft);border:1.5px solid var(--plum);border-radius:var(--r);padding:20px}
+.pimp h2{color:var(--plum)}
+details{margin-top:14px;background:var(--surface);border-radius:12px;border:1px solid var(--line);padding:10px 14px}
+summary{cursor:pointer;font-weight:600;color:var(--plum)}
+details[open] summary{margin-bottom:8px}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+footer ol{padding-left:1.2em}
+/* OSCE checklist */
+.osce-bar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 46px);z-index:4;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);margin-bottom:14px}
+.osce-bar .meter{flex:1 1 160px;height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.osce-bar .meter i{display:block;height:100%;width:0;background:var(--teal);transition:width .2s ease}
+.osce-bar .score{font-family:var(--font-mono);font-weight:600}
+.osce-sec{margin-bottom:16px}
+.osce-sec h3{font-size:1.02rem;margin-bottom:6px;display:flex;gap:8px;align-items:baseline}
+.osce-item{display:grid;grid-template-columns:auto auto 1fr;gap:10px;align-items:start;padding:8px 10px;border-radius:10px;border:1px solid transparent;cursor:pointer}
+.osce-item:hover{background:var(--surface-2)}
+.osce-item input{margin-top:5px;width:18px;height:18px;accent-color:var(--teal)}
+.osce-item .k{font:600 .68rem var(--font-mono);padding:2px 7px;border-radius:6px;margin-top:3px;white-space:nowrap}
+.k.do{background:var(--teal-soft);color:var(--teal)} .k.say{background:var(--plum-soft);color:var(--plum)}
+.osce-item.crit{border-color:var(--red-soft)}
+.osce-item.crit .t::after{content:" ⚠ critical";font:600 .68rem var(--font-mono);color:var(--red)}
+.osce-item.done .t{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--teal)}
+.osce-item .t{font-size:.94rem;line-height:1.55}
+.osce-item .why{display:block;font-size:.82rem;color:var(--muted);text-decoration:none}
+@media (max-width:860px){ .g4{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:620px){ .hero{grid-template-columns:1fr} .hero-art{max-width:240px;order:-1} .g2,.g3,.sim{grid-template-columns:1fr} }
+@media (max-width:440px){ .g4{grid-template-columns:1fr} }
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+
+.cyc{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px;align-items:center}
+.cyc svg{width:100%}
+@media (max-width:700px){.cyc{grid-template-columns:1fr}}
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="hand" viewBox="-30 -20 60 36" overflow="visible"><path class="hand-f" d="M-27 -1 C-27 -10 -19 -13 -9 -12 L19 -10 C27 -9 28 -3 27 0 C28 4 26 10 19 10 L-9 12 C-19 13 -27 8 -27 -1Z"/><path class="hand-f" d="M-8 -11 C-6 -19 6 -21 11 -15 C12 -13 9 -11 4 -11Z"/><path class="hand-l" d="M7 -5 L24 -4 M7 0 L25 0.5 M7 5 L23 5.5"/></symbol>
+<marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--teal)"/></marker>
+<marker id="ahr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--red)"/></marker>
+</defs></svg>
+
+<nav class="toc" aria-label="สารบัญ"><div class="toc-inner"><a class="hub" href="index.html">← คลังเรียน</a><a href="#why">กลไก</a><a href="#cycle">กราฟฮอร์โมน</a><a href="#causes">สาเหตุ AUB-O</a><a href="#pcos">PCOS</a><a href="#hyper">Hyperplasia</a><a href="#tx">การรักษา</a><a href="#aube">AUB-E</a><a href="#pimp">Pimp Q</a></div></nav>
+<div class="wrap">
+
+
+<header class="hero">
+  <div>
+    <span class="eyebrow">Lecture 10 · AUB-O and AUB-E</span>
+    <h1>ไม่ตกไข่<br>และ<span>เยื่อบุผิดปกติ</span></h1>
+    <p class="lede">สองสาเหตุของ AUB ที่ไม่ใช่โครงสร้าง ซึ่งพบบ่อยในชีวิตจริง อ้างอิง <b>FIGO 2018</b>, <b>International PCOS Guideline 2023</b>, <b>ACOG</b> และ <b>Williams Gynecology</b></p>
+    <div class="pitch"><span class="eyebrow">Elevator pitch</span><b>ไม่ตกไข่ = ไม่มี corpus luteum = ไม่มี progesterone</b> เยื่อบุจึงถูก estrogen กระตุ้นให้หนาขึ้นเรื่อยๆ โดยไม่มีอะไรมาทำให้คงตัว สุดท้ายหลุดลอกไม่เป็นรอบ เลือดออกไม่แน่นอน และเสี่ยง <b>hyperplasia</b> ในระยะยาว</div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 300 240" role="img" aria-label="เยื่อบุที่หนาขึ้นเรื่อยๆ เมื่อไม่มี progesterone">
+    <rect x="30" y="170" width="240" height="40" rx="8" style="fill:var(--skin);stroke:var(--fetus-line)"/>
+    <path d="M30 170 C60 160 80 150 110 140 C140 124 170 104 200 86 C230 70 250 56 270 46 L270 170Z" style="fill:var(--rose-mid);stroke:var(--rose)" stroke-width="2"/>
+    <path d="M220 66 l6 18 M244 54 l4 20" style="stroke:var(--red)" stroke-width="3" stroke-linecap="round"/>
+    <text x="40" y="228" class="svg-t">Myometrium</text>
+    <text x="150" y="30" text-anchor="middle" class="svg-b" style="fill:var(--rose)">Estrogen ไม่หยุด → เยื่อบุหนา เปราะ หลุดไม่เป็นรอบ</text>
+  </svg>
+</header>
+
+<section id="why">
+  <div class="sec-head"><span class="eyebrow">The "Why"</span><h2>Progesterone คือ "ปูนซีเมนต์" ของเยื่อบุ</h2><p class="muted">ลองนึกถึงการก่ออิฐ: estrogen คือการก่ออิฐให้สูงขึ้น progesterone คือปูนที่ทำให้กำแพงแข็งแรงและพร้อมรื้อพร้อมกันทั้งแผ่นเมื่อ progesterone ลดลง ถ้าไม่มีปูน กำแพงสูงขึ้นเรื่อยๆ แล้วพังเป็นจุดๆ ไม่เป็นเวลา</p></div>
+  <div class="grid g2">
+    <div class="card"><h3 style="color:var(--teal)">ตกไข่ปกติ</h3><p class="small muted">Follicular: estrogen ทำให้เยื่อบุหนา → LH surge → ตกไข่ → corpus luteum สร้าง <b>progesterone</b> → secretory change → corpus luteum สลาย progesterone ลดลง → <b>เยื่อบุหลุดพร้อมกันทั้งหมด</b> เป็นรอบ</p></div>
+    <div class="card"><h3 style="color:var(--red)">ไม่ตกไข่ (AUB-O)</h3><p class="small muted">Estrogen ขึ้นลงไม่เป็นรอบ ไม่มี progesterone → เยื่อบุ proliferative หนาเกินกว่าหลอดเลือดและโครงสร้างจะรองรับ → <b>หลุดลอกเป็นบางจุด ไม่พร้อมกัน</b> → เลือดออกไม่แน่นอน บางครั้งนานและมาก</p></div>
+  </div>
+</section>
+
+<section id="cycle">
+  <div class="sec-head"><span class="eyebrow">Interactive</span><h2>เปรียบเทียบฮอร์โมนและความหนาของเยื่อบุ</h2><p class="muted">กดปุ่มเพื่อสลับระหว่างรอบที่ตกไข่และไม่ตกไข่ (แผนภาพเชิงแนวคิด)</p></div>
+  <div class="card cyc">
+    <svg viewBox="0 0 440 260" role="img" aria-label="กราฟฮอร์โมนและเยื่อบุ">
+      <line x1="30" y1="150" x2="420" y2="150" style="stroke:var(--line)"/>
+      <path id="e2" fill="none" style="stroke:var(--rose)" stroke-width="3"/>
+      <path id="p4" fill="none" style="stroke:var(--teal)" stroke-width="3"/>
+      <text x="34" y="20" class="svg-b" style="fill:var(--rose)">Estrogen</text><text x="104" y="20" class="svg-b" style="fill:var(--teal)">Progesterone</text>
+      <path id="endo" style="fill:var(--rose-mid);stroke:var(--rose)" stroke-width="1.5"/>
+      <rect x="30" y="230" width="390" height="16" style="fill:var(--skin)"/>
+      <text x="30" y="170" class="svg-t">เยื่อบุโพรงมดลูก</text>
+      <g id="bleed"></g>
+    </svg>
+    <div>
+      <div class="btns" id="cyc-b"><button class="btn" type="button" data-v="ov" aria-pressed="true">ตกไข่ (ovulatory)</button><button class="btn" type="button" data-v="an" aria-pressed="false">ไม่ตกไข่ (anovulatory)</button></div>
+      <div class="desc mt" id="cyc-d" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section id="causes">
+  <div class="sec-head"><span class="eyebrow">Causes of AUB-O</span><h2>อะไรทำให้ไม่ตกไข่</h2></div>
+  <div class="grid g3">
+    <div class="card"><h3>ช่วงวัย</h3><p class="small muted"><b>วัยรุ่น</b> (HPO axis ยังไม่สมบูรณ์ 1–2 ปีแรกหลังมีประจำเดือน) · <b>วัยใกล้หมดประจำเดือน</b> (follicle เหลือน้อย)</p></div>
+    <div class="card"><h3>ต่อมไร้ท่อ</h3><p class="small muted"><b>PCOS</b> (พบบ่อยที่สุดในวัยเจริญพันธุ์) · hypo/hyperthyroidism · <b>hyperprolactinemia</b> · Cushing · CAH</p></div>
+    <div class="card"><h3>อื่นๆ</h3><p class="small muted">อ้วน · น้ำหนักลดมาก ออกกำลังกายหนัก ความเครียด (hypothalamic) · ยา เช่น antipsychotics (prolactin ↑)</p></div>
+  </div>
+  <p class="small muted mt">Lab พื้นฐาน: <b>β-hCG</b> · TSH · prolactin · ถ้าสงสัย PCOS: total testosterone · พิจารณา FSH/estradiol เมื่อสงสัยรังไข่ทำงานน้อย</p>
+</section>
+
+<section id="pcos">
+  <div class="sec-head"><span class="eyebrow">PCOS · Rotterdam / 2023 guideline</span><h2>Polycystic ovary syndrome</h2><p class="muted">วินิจฉัยเมื่อมี <b>2 ใน 3</b> ข้อ หลังตัดโรคอื่นที่คล้ายกัน (thyroid, prolactin, CAH)</p></div>
+  <div class="grid g3">
+    <div class="card"><span class="num-b">1</span><h3 class="mt">Ovulatory dysfunction</h3><p class="small muted">ประจำเดือนห่าง (oligomenorrhea) หรือไม่มา</p></div>
+    <div class="card"><span class="num-b">2</span><h3 class="mt">Hyperandrogenism</h3><p class="small muted">ทางคลินิก (hirsutism, สิว, ผมบาง) หรือ biochemical (testosterone สูง)</p></div>
+    <div class="card"><span class="num-b">3</span><h3 class="mt">Polycystic ovarian morphology</h3>
+      <svg viewBox="0 0 160 90" style="width:100%;max-width:180px;display:block;margin:6px auto" aria-hidden="true"><ellipse cx="80" cy="45" rx="66" ry="38" style="fill:var(--amber-soft);stroke:var(--amber)" stroke-width="2"/><g style="fill:var(--surface);stroke:var(--amber)">
+        <circle cx="30" cy="40" r="6"/><circle cx="40" cy="22" r="6"/><circle cx="58" cy="14" r="6"/><circle cx="78" cy="12" r="6"/><circle cx="98" cy="14" r="6"/><circle cx="116" cy="22" r="6"/><circle cx="128" cy="40" r="6"/><circle cx="122" cy="60" r="6"/><circle cx="106" cy="74" r="6"/><circle cx="86" cy="78" r="6"/><circle cx="64" cy="76" r="6"/><circle cx="46" cy="68" r="6"/><circle cx="34" cy="56" r="5"/></g></svg>
+      <p class="small muted">US: follicle ≥20 ต่อรังไข่ (2–9 mm) หรือปริมาตร ≥10 mL · ผู้ใหญ่ใช้ AMH แทนได้ · <b>ไม่ใช้ US วินิจฉัยในวัยรุ่น</b> (&lt;8 ปีหลังมีประจำเดือน)</p></div>
+  </div>
+  <div class="callout warn mt"><b>ผลระยะยาวที่ต้องคัดกรอง</b>: endometrial hyperplasia/cancer · insulin resistance และเบาหวาน (OGTT) · dyslipidemia · ภาวะซึมเศร้า · OSA · มีบุตรยาก (ใช้ <b>letrozole</b> กระตุ้นไข่เป็นอันดับแรก)</div>
+</section>
+
+<section id="hyper">
+  <div class="sec-head"><span class="eyebrow">WHO 2020</span><h2>Endometrial hyperplasia: ผลของ estrogen ที่ไม่มีอะไรต้าน</h2></div>
+  <div class="grid g2">
+    <div class="card"><h3>Hyperplasia <b>without atypia</b></h3><p class="small muted mt">ความเสี่ยงกลายเป็นมะเร็งต่ำ · รักษาด้วย <b>progestin</b>: <b>LNG-IUS</b> เป็นตัวเลือกแรก หรือ oral progestins · แก้ไขสาเหตุ (ลดน้ำหนัก) · ตรวจชิ้นเนื้อซ้ำประมาณทุก 6 เดือน</p></div>
+    <div class="card" style="border-color:var(--red)"><h3 style="color:var(--red)">Atypical hyperplasia / EIN</h3><p class="small muted mt">พบมะเร็งร่วมได้สูงถึงประมาณ <b>40%</b> ในชิ้นเนื้อจากการผ่าตัด (GOG study) · รักษาด้วย <b>total hysterectomy</b> · ถ้าต้องการมีบุตร: progestin ขนาดสูง/LNG-IUS + ตรวจชิ้นเนื้อทุก 3–6 เดือน · ห้ามทำ endometrial ablation</p></div>
+  </div>
+</section>
+
+<section id="tx">
+  <div class="sec-head"><span class="eyebrow">Management of AUB-O</span><h2>รักษา: ใส่ progesterone ที่ขาดไปกลับคืน</h2></div>
+  <div class="grid g3">
+    <div class="card"><h3>Cyclic progestin</h3><p class="small"><span class="dose">MPA 10 mg/วัน × 10–14 วัน ทุกเดือน</span></p><p class="small muted mt">ทำให้เยื่อบุหลุดเป็นรอบ (withdrawal bleeding) และป้องกัน hyperplasia</p></div>
+    <div class="card"><h3>COC</h3><p class="small muted">คุมรอบเดือน ลดเลือด · ใน PCOS ช่วยลด androgen (สิว ขน) · ตรวจข้อห้ามตาม US MEC</p></div>
+    <div class="card"><h3>LNG-IUS</h3><p class="small muted">ป้องกันเยื่อบุได้ดีที่สุด ไม่ต้องจำกินยา · คุมกำเนิดด้วย</p></div>
+  </div>
+  <div class="grid g2 mt">
+    <div class="callout">ต้องการมีบุตร → <b>กระตุ้นการตกไข่</b> (letrozole, clomiphene) แทนยาคุม</div>
+    <div class="callout plum">เลือดออกมากเฉียบพลัน → ใช้แนวทาง acute AUB (estrogen IV, COC TID, MPA TID, TXA) ดูหน้า AUB</div>
+  </div>
+</section>
+
+<section id="aube">
+  <div class="sec-head"><span class="eyebrow">AUB-E</span><h2>AUB-E: ตกไข่ปกติ แต่เยื่อบุหยุดเลือดไม่ดี</h2><p class="muted">ลักษณะเด่นคือ<b>รอบเดือนสม่ำเสมอแต่มามาก</b> (HMB) ไม่มีโครงสร้างผิดปกติและไม่มี coagulopathy · <b>วินิจฉัยโดยแยกโรคอื่นออก</b></p></div>
+  <div class="grid g2">
+    <div class="card"><h3>กลไก</h3><ul class="clean small"><li>ความไม่สมดุลของ prostaglandins (vasodilator มากกว่า vasoconstrictor)</li><li>Fibrinolysis เฉพาะที่เพิ่มขึ้น (plasminogen activator ↑)</li><li>Chronic endometritis</li></ul></div>
+    <div class="card"><h3>รักษา</h3><ul class="clean small"><li><b>LNG-IUS</b> · <b>tranexamic acid</b> (ตรงกลไก fibrinolysis) · <b>NSAIDs</b> (ตรงกลไก prostaglandin)</li><li>COC · progestins</li><li>Endometrial ablation เมื่อมีบุตรครบ</li></ul></div>
+  </div>
+</section>
+
+<section id="pimp">
+  <div class="pimp"><span class="eyebrow" style="color:var(--plum)">The pimp question</span><h2 style="margin:6px 0 10px">ลองตอบก่อนเปิดเฉลย</h2>
+  <p>เด็กหญิงอายุ <b>15 ปี</b> มีประจำเดือนครั้งแรกเมื่อ 1 ปีก่อน มามากทุกครั้งตั้งแต่ครั้งแรก ครั้งนี้มามาก 10 วัน Hb <b>7.8 g/dL</b> มีเลือดกำเดาไหลบ่อย</p>
+  <p style="margin-top:8px"><b>ถึงแม้ AUB-O จะพบบ่อยที่สุดในวัยนี้ คุณต้องคิดถึงอะไรเพิ่ม และส่งตรวจอะไร?</b></p>
+  <details><summary>เปิดเฉลย</summary><ul class="clean small">
+    <li>HMB ตั้งแต่ประจำเดือนครั้งแรก + เลือดกำเดาบ่อย = คัดกรอง <b>bleeding disorder บวก</b> → คิดถึง <b>AUB-C</b> โดยเฉพาะ <b>von Willebrand disease</b></li>
+    <li>ส่งตรวจ: β-hCG · CBC · PT/aPTT · fibrinogen · <b>vWF antigen, vWF activity, factor VIII</b> (ควรเจาะก่อนเริ่ม estrogen เพราะ estrogen ทำให้ค่าสูงขึ้น) · TSH</li>
+    <li>รักษาเลือดออกเฉียบพลัน + ปรึกษาโลหิตวิทยา · tranexamic acid/desmopressin ตามชนิด</li>
+  </ul></details></div>
+</section>
+
+<footer>
+  <p><b>หมายเหตุ</b>: สื่อการเรียนสำหรับนักศึกษาแพทย์ ไม่ใช่คำแนะนำทางการแพทย์สำหรับบุคคล</p>
+  <p style="margin-top:10px"><b>แหล่งอ้างอิง</b></p>
+  <ol>
+    <li>Munro MG, et al. FIGO systems for AUB: 2018 revisions. <i>Int J Gynaecol Obstet</i> 2018.</li>
+    <li>Teede HJ, et al. Recommendations from the 2023 International Evidence-based Guideline for the Assessment and Management of PCOS.</li>
+    <li>ACOG Committee Opinion 631: Endometrial Intraepithelial Neoplasia · Trimble CL, et al. GOG study. <i>Cancer</i> 2006.</li>
+    <li>ACOG Committee Opinion 785: Screening and Management of Bleeding Disorders in Adolescents With Heavy Menstrual Bleeding.</li>
+    <li>Hoffman BL, et al. <i>Williams Gynecology</i>, 4th ed. Ch. Abnormal Uterine Bleeding; PCOS.</li>
+  </ol>
+</footer>
+
+
+</div>
+<script>
+
+(function(){
+  var e2=document.getElementById('e2'), p4=document.getElementById('p4'), endo=document.getElementById('endo'), bl=document.getElementById('bleed'), d=document.getElementById('cyc-d');
+  // x: day 0..56 (2 cycles) → 30..420 (6.96 px/day). hormones y: 150 baseline, up to 30.
+  function X(t){return 30+t*390/56;}
+  var S={
+    ov:{e:[[0,130],[10,70],[13,40],[15,110],[21,80],[27,135],[28,130],[38,70],[41,40],[43,110],[49,80],[55,135],[56,130]],
+        p:[[0,148],[14,146],[21,60],[27,145],[28,148],[42,146],[49,60],[55,145],[56,148]],
+        th:[[0,226],[5,224],[14,206],[21,196],[27,196],[28,226],[33,224],[42,206],[49,196],[55,196],[56,226]], b:[0,28],
+        t:'Progesterone หลังตกไข่ทำให้เยื่อบุคงตัว เมื่อ corpus luteum สลาย เยื่อบุ<b>หลุดพร้อมกัน</b> ทุก ~28 วัน (จุดแดง)'},
+    an:{e:[[0,120],[8,90],[16,80],[24,95],[30,70],[36,85],[44,60],[50,75],[56,70]],
+        p:[[0,148],[56,148]],
+        th:[[0,224],[10,212],[20,198],[30,184],[38,174],[44,168],[46,190],[48,170],[54,160],[56,158]], b:[45],
+        t:'ไม่มี progesterone เยื่อบุ<b>หนาขึ้นเรื่อยๆ</b> แล้วหลุดเป็นบางจุดในเวลาที่คาดเดาไม่ได้ (จุดแดง) · ระยะยาวเสี่ยง hyperplasia'}};
+  function line(pts){return 'M'+pts.map(function(p){return X(p[0]).toFixed(1)+' '+p[1];}).join(' L');}
+  function draw(k){
+    var s=S[k]; e2.setAttribute('d',line(s.e)); p4.setAttribute('d',line(s.p));
+    endo.setAttribute('d',line(s.th)+' L420 230 L30 230Z');
+    bl.innerHTML=s.b.map(function(t){return '<circle cx="'+X(t).toFixed(1)+'" cy="240" r="7" class="blood"/>';}).join('');
+    d.innerHTML=s.t;
+    Array.prototype.forEach.call(document.getElementById('cyc-b').children,function(b){b.setAttribute('aria-pressed',b.dataset.v===k?'true':'false');});
+  }
+  document.getElementById('cyc-b').addEventListener('click',function(e){var b=e.target.closest('button'); if(b) draw(b.dataset.v);});
+  draw('ov');
+})();
+
+
+</script>
+
+</body>
+</html>

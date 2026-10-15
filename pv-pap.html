@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>ตรวจภายในและ Pap smear OSCE</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: "สมุดชมพู" OB/GYN series notebook. */
+:root{
+  --bg:#fbf5f8; --surface:#ffffff; --surface-2:#f6ecf2;
+  --ink:#2a1530; --muted:#6c5873; --line:#ead8e3;
+  --rose:#c0185a; --rose-soft:#fbe1ec; --rose-mid:#f2a9c6;
+  --teal:#0d7471; --teal-soft:#dcf1ee;
+  --amber:#a86400; --amber-soft:#fcefd8;
+  --plum:#6a3d8a; --plum-soft:#efe4f6;
+  --red:#c42626; --red-soft:#fde4e2;
+  --skin:#f4d6c6; --hand:#e9b79c; --fetus:#f8c9ab; --fetus-line:#b9775a; --bone:#e8dccf; --bone-line:#9d8573; --blood:#c42626;
+  --font-display:"Mitr","IBM Plex Sans Thai",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.3;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.45rem,3.2vw,1.9rem)} h3{font-size:1.08rem}
+p{margin:0} b,strong{font-weight:600}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+a{color:var(--rose)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:2px;border-radius:6px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:8px max(16px,env(safe-area-inset-left,0px))}
+.toc-inner{max-width:1040px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.toc a{flex:none;text-decoration:none;color:var(--muted);font-size:.84rem;padding:4px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.toc a:hover{color:var(--rose);border-color:var(--rose-mid)}
+.toc a.hub{color:var(--plum);border-color:var(--plum)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;padding-block:36px 20px}
+.hero h1{font-size:clamp(2rem,5.2vw,3.2rem);font-weight:600}
+.hero h1 span{color:var(--rose)}
+.hero .lede{margin-top:14px;font-size:1.04rem;max-width:58ch}
+.pitch{margin-top:18px;padding:14px 16px;border-radius:var(--r);background:var(--rose-soft);border:1px solid var(--rose-mid)}
+.pitch .eyebrow{display:block;margin-bottom:4px}
+.hero-art{max-width:340px;justify-self:center;width:100%}
+section{padding-block:40px 8px;scroll-margin-top:64px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;max-width:72ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2>*,.g3>*,.g4>*{min-width:0}
+.mt{margin-top:14px}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.callout{border-left:4px solid var(--teal);background:var(--teal-soft);padding:12px 14px;border-radius:0 10px 10px 0;font-size:.94rem}
+.callout.warn{border-color:var(--amber);background:var(--amber-soft)}
+.callout.risk{border-color:var(--red);background:var(--red-soft)}
+.callout.plum{border-color:var(--plum);background:var(--plum-soft)}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;padding:1px 8px;border-radius:999px;border:1px solid currentColor;vertical-align:middle}
+.tag.th{color:var(--rose)} .tag.us{color:var(--teal)} .tag.who{color:var(--plum)} .tag.crit{color:var(--red)}
+ul.clean{margin:0;padding-left:1.1em} ul.clean li{margin:3px 0}
+ol.steps{margin:0;padding-left:1.3em} ol.steps li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;background:var(--surface-2)}
+td.mono{white-space:nowrap}
+.dose{font-family:var(--font-mono);font-size:.84rem;background:var(--surface-2);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.svg-t{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
+.svg-b{font-family:var(--font-body);font-size:12px;fill:var(--ink);font-weight:600}
+.fig{width:100%;display:block;margin-inline:auto}
+.ut{fill:var(--rose-soft);stroke:var(--rose);stroke-width:2}
+.fet{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.head{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.plac{fill:var(--rose-mid);stroke:var(--rose);stroke-width:1.5}
+.mat{fill:var(--skin);stroke:var(--fetus-line);stroke-width:1.3}
+.bone{fill:var(--bone);stroke:var(--bone-line);stroke-width:1.5}
+.bone-l{fill:none;stroke:var(--bone-line);stroke-width:7;stroke-linecap:round}
+.hand-f{fill:var(--hand);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.hand-l{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-linecap:round;opacity:.7}
+.arw{fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.arw-r{fill:none;stroke:var(--red);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.blood{fill:var(--blood)}
+.tool-line{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tool-f{fill:var(--surface-2);stroke:var(--muted);stroke-width:1.6;stroke-linejoin:round}
+.ico{width:40px;height:40px;stroke:var(--rose);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico .f{fill:var(--rose-soft)}
+.step{padding:12px;display:flex;flex-direction:column;gap:6px}
+.step svg{width:100%;max-width:230px;align-self:center}
+.step h3{font-size:.98rem;display:flex;gap:8px;align-items:baseline}
+.step h3 b,.num-b{font-family:var(--font-mono);color:var(--bg);background:var(--plum);border-radius:6px;padding:0 7px;font-size:.8rem}
+.step p{font-size:.86rem;line-height:1.55;color:var(--muted)}
+.sim{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:18px;align-items:center}
+.sim svg{width:100%;max-width:260px;justify-self:center}
+.sim input[type=range]{width:100%;accent-color:var(--rose)}
+.read{font-family:var(--font-display);font-size:1.9rem;color:var(--rose);line-height:1.1}
+.read small{font-size:.95rem;color:var(--muted)}
+.desc{background:var(--surface-2);border-radius:12px;padding:10px 14px;min-height:76px;font-size:.92rem}
+.ticks{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:6px}
+.btn{font:600 .86rem var(--font-body);padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--bg)}
+.pill{display:inline-block;font:600 .74rem var(--font-mono);padding:1px 9px;border-radius:999px}
+.p-ok{background:var(--teal-soft);color:var(--teal)} .p-mid{background:var(--amber-soft);color:var(--amber)} .p-hi{background:var(--red-soft);color:var(--red)}
+.pimp{background:var(--plum-soft);border:1.5px solid var(--plum);border-radius:var(--r);padding:20px}
+.pimp h2{color:var(--plum)}
+details{margin-top:14px;background:var(--surface);border-radius:12px;border:1px solid var(--line);padding:10px 14px}
+summary{cursor:pointer;font-weight:600;color:var(--plum)}
+details[open] summary{margin-bottom:8px}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+footer ol{padding-left:1.2em}
+/* OSCE checklist */
+.osce-bar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 46px);z-index:4;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);margin-bottom:14px}
+.osce-bar .meter{flex:1 1 160px;height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.osce-bar .meter i{display:block;height:100%;width:0;background:var(--teal);transition:width .2s ease}
+.osce-bar .score{font-family:var(--font-mono);font-weight:600}
+.osce-sec{margin-bottom:16px}
+.osce-sec h3{font-size:1.02rem;margin-bottom:6px;display:flex;gap:8px;align-items:baseline}
+.osce-item{display:grid;grid-template-columns:auto auto 1fr;gap:10px;align-items:start;padding:8px 10px;border-radius:10px;border:1px solid transparent;cursor:pointer}
+.osce-item:hover{background:var(--surface-2)}
+.osce-item input{margin-top:5px;width:18px;height:18px;accent-color:var(--teal)}
+.osce-item .k{font:600 .68rem var(--font-mono);padding:2px 7px;border-radius:6px;margin-top:3px;white-space:nowrap}
+.k.do{background:var(--teal-soft);color:var(--teal)} .k.say{background:var(--plum-soft);color:var(--plum)}
+.osce-item.crit{border-color:var(--red-soft)}
+.osce-item.crit .t::after{content:" ⚠ critical";font:600 .68rem var(--font-mono);color:var(--red)}
+.osce-item.done .t{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--teal)}
+.osce-item .t{font-size:.94rem;line-height:1.55}
+.osce-item .why{display:block;font-size:.82rem;color:var(--muted);text-decoration:none}
+@media (max-width:860px){ .g4{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:620px){ .hero{grid-template-columns:1fr} .hero-art{max-width:240px;order:-1} .g2,.g3,.sim{grid-template-columns:1fr} }
+@media (max-width:440px){ .g4{grid-template-columns:1fr} }
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="hand" viewBox="-30 -20 60 36" overflow="visible"><path class="hand-f" d="M-27 -1 C-27 -10 -19 -13 -9 -12 L19 -10 C27 -9 28 -3 27 0 C28 4 26 10 19 10 L-9 12 C-19 13 -27 8 -27 -1Z"/><path class="hand-f" d="M-8 -11 C-6 -19 6 -21 11 -15 C12 -13 9 -11 4 -11Z"/><path class="hand-l" d="M7 -5 L24 -4 M7 0 L25 0.5 M7 5 L23 5.5"/></symbol>
+<marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--teal)"/></marker>
+<marker id="ahr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--red)"/></marker>
+</defs></svg>
+
+<nav class="toc" aria-label="สารบัญ"><div class="toc-inner"><a class="hub" href="index.html">← คลังเรียน</a><a href="#prep">เตรียม</a><a href="#speculum">Speculum</a><a href="#pap">เก็บ Pap</a><a href="#bimanual">Bimanual</a><a href="#osce">OSCE checklist</a><a href="#pimp">คำถามผู้คุมสอบ</a></div></nav>
+<div class="wrap">
+<header class="hero">
+  <div>
+    <span class="eyebrow">OPOB 8 · Pelvic examination &amp; cervical cytology</span>
+    <h1>ตรวจภายใน<br>และ <span>Pap smear</span></h1>
+    <p class="lede">หัตถการพื้นฐานที่ผู้คุมสอบดู<b>การสื่อสารและการเคารพผู้ป่วย</b>พอๆ กับเทคนิค อ้างอิง <b>ACOG CO 754 (pelvic exam)</b>, <b>Williams Gynecology</b> และแนวทางคัดกรองมะเร็งปากมดลูก</p>
+    <div class="pitch"><span class="eyebrow">ใจความสำคัญ</span>ขอความยินยอม มี <b>chaperone</b> · บอกผู้ป่วยก่อนสัมผัสทุกครั้ง · ลำดับ: <b>ดูภายนอก → speculum → เก็บ Pap/HPV → bimanual</b> (เก็บ Pap ก่อน bimanual และก่อนใช้เจลหล่อลื่นปริมาณมาก)</div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 300 240" role="img" aria-label="ปากมดลูกและ transformation zone">
+    <circle cx="150" cy="120" r="96" style="fill:var(--rose-soft);stroke:var(--rose)" stroke-width="2"/>
+    <circle cx="150" cy="120" r="54" fill="none" style="stroke:var(--amber)" stroke-width="10" opacity=".55"/>
+    <ellipse cx="150" cy="120" rx="16" ry="9" style="fill:var(--rose)"/>
+    <text x="150" y="26" text-anchor="middle" class="svg-t">Ectocervix</text>
+    <text x="214" y="188" class="svg-b" style="fill:var(--amber)">Transformation zone</text>
+    <text x="150" y="146" text-anchor="middle" class="svg-t">External os</text>
+  </svg>
+</header>
+
+<section id="prep">
+  <div class="sec-head"><span class="eyebrow">Preparation</span><h2>เตรียมผู้ป่วยและอุปกรณ์</h2></div>
+  <div class="grid g3">
+    <div class="card"><h3>ผู้ป่วย</h3><ul class="clean small"><li>อธิบายเหตุผลและขั้นตอน ขอความยินยอม · มี chaperone</li><li>ให้<b>ปัสสาวะก่อน</b></li><li>สำหรับ Pap: หลีกเลี่ยงช่วงประจำเดือนมาก งดสวนล้างช่องคลอด ยาสอด เพศสัมพันธ์ประมาณ 48 ชม. ก่อน</li></ul></div>
+    <div class="card"><h3>อุปกรณ์</h3><ul class="clean small"><li>Speculum (Graves/Pederson) ขนาดเหมาะสม อุ่น</li><li>Spatula (Ayre) + cytobrush หรือ broom · สไลด์ + สารตรึง หรือขวด liquid-based · ชุดเก็บ HPV</li><li>ถุงมือ ไฟส่อง ฟอร์มส่งตรวจ</li></ul></div>
+    <div class="card"><h3>ท่า</h3><ul class="clean small"><li><b>Dorsal lithotomy</b> ก้นชิดขอบเตียง</li><li>คลุมผ้า เปิดเฉพาะส่วนที่ตรวจ</li><li>ผู้ตรวจนั่งระดับเดียวกับฝีเย็บ แสงพอ</li></ul></div>
+  </div>
+</section>
+
+<section id="speculum">
+  <div class="sec-head"><span class="eyebrow">Speculum insertion</span><h2>ใส่ speculum ให้ผู้ป่วยไม่เจ็บ</h2></div>
+  <div class="grid g4">
+    <div class="card step"><svg viewBox="0 0 200 130" aria-hidden="true"><ellipse cx="100" cy="66" rx="40" ry="56" class="mat"/><ellipse cx="100" cy="70" rx="12" ry="30" style="fill:var(--rose-soft);stroke:var(--rose)"/><g transform="translate(70 70) rotate(0)"><circle r="7" class="hand-f"/></g><g transform="translate(130 70)"><circle r="7" class="hand-f"/></g><path class="arw" d="M66 60 L54 50 M134 60 L146 50"/></svg><h3><b>1</b>ดูภายนอก</h3><p>ตรวจ vulva, Bartholin, urethra · แยก labia ด้วยนิ้ว บอกผู้ป่วยก่อนสัมผัส</p></div>
+    <div class="card step"><svg viewBox="0 0 200 130" aria-hidden="true"><ellipse cx="100" cy="66" rx="40" ry="56" class="mat"/><ellipse cx="100" cy="70" rx="12" ry="30" style="fill:var(--rose-soft);stroke:var(--rose)"/><rect x="60" y="62" width="80" height="12" rx="6" class="tool-f" transform="rotate(-45 100 68)"/><text x="20" y="124" class="svg-t">ใส่เอียง 45° กดลงทาง posterior</text></svg><h3><b>2</b>ใส่เอียง</h3><p>ใส่ใบปิด เอียง 45° กดลงด้านหลัง (หลีกเลี่ยง urethra ที่ไวต่อความเจ็บ) ไปตามแนวช่องคลอด (ชี้ลงล่างเล็กน้อย)</p></div>
+    <div class="card step"><svg viewBox="0 0 200 130" aria-hidden="true"><ellipse cx="100" cy="66" rx="40" ry="56" class="mat"/><ellipse cx="100" cy="70" rx="12" ry="30" style="fill:var(--rose-soft);stroke:var(--rose)"/><rect x="60" y="62" width="80" height="12" rx="6" class="tool-f"/><path class="arw" d="M150 40 C164 56 164 80 150 96" marker-end="url(#ah)"/><text x="10" y="124" class="svg-t">หมุนเป็นแนวนอนเมื่อใส่สุด</text></svg><h3><b>3</b>หมุนแนวนอน</h3><p>เมื่อใส่สุดแล้ว หมุนให้ด้ามอยู่แนวนอน (หรือชี้ลง) ก่อนเปิดใบ</p></div>
+    <div class="card step"><svg viewBox="0 0 200 130" aria-hidden="true"><circle cx="100" cy="64" r="44" style="fill:var(--rose-soft);stroke:var(--rose)"/><ellipse cx="100" cy="64" rx="10" ry="6" style="fill:var(--rose)"/><path d="M40 20 C70 34 130 34 160 20 M40 110 C70 96 130 96 160 110" fill="none" style="stroke:var(--muted)" stroke-width="5" stroke-linecap="round"/><text x="10" y="128" class="svg-t">เปิดใบ ให้ปากมดลูกอยู่กลาง ล็อกสกรู</text></svg><h3><b>4</b>เปิดเห็นปากมดลูก</h3><p>เปิดใบช้าๆ ให้ปากมดลูกอยู่ระหว่างใบ ล็อก · ดูลักษณะ ตกขาว แผล ติ่งเนื้อ</p></div>
+  </div>
+</section>
+
+<section id="pap">
+  <div class="sec-head"><span class="eyebrow">Cervical sampling</span><h2>เก็บ Pap ให้ครอบคลุม transformation zone</h2><p class="muted">มะเร็งปากมดลูกเกิดที่ <b>transformation zone</b> ตัวอย่างต้องมีทั้งเซลล์จาก ectocervix และ endocervix</p></div>
+  <div class="grid g2">
+    <div class="card scroll-x">
+      <svg viewBox="0 0 340 170" style="min-width:300px;width:100%" role="img" aria-label="การใช้ spatula และ cytobrush">
+        <circle cx="90" cy="90" r="66" style="fill:var(--rose-soft);stroke:var(--rose)" stroke-width="2"/><ellipse cx="90" cy="90" rx="12" ry="7" style="fill:var(--rose)"/>
+        <path d="M90 90 L90 30" style="stroke:var(--teal)" stroke-width="6"/><path d="M86 26 h8 l6 -10 h-20z" style="fill:var(--teal)"/>
+        <path d="M150 90 A60 60 0 1 1 149 80" fill="none" style="stroke:var(--teal)" stroke-width="2" marker-end="url(#ah)"/>
+        <text x="20" y="166" class="svg-b" style="fill:var(--teal)">① Spatula หมุน 360°</text>
+        <circle cx="260" cy="90" r="66" style="fill:var(--rose-soft);stroke:var(--rose)" stroke-width="2"/><ellipse cx="260" cy="90" rx="12" ry="7" style="fill:var(--rose)"/>
+        <line x1="260" y1="90" x2="320" y2="150" style="stroke:var(--plum)" stroke-width="3"/><g style="stroke:var(--plum)" stroke-width="2"><line x1="254" y1="84" x2="266" y2="96"/><line x1="250" y1="90" x2="262" y2="78"/><line x1="258" y1="98" x2="270" y2="86"/></g>
+        <path d="M282 70 A26 26 0 0 1 286 96" fill="none" style="stroke:var(--plum)" stroke-width="2" marker-end="url(#ah)"/>
+        <text x="196" y="166" class="svg-b" style="fill:var(--plum)">② Cytobrush ¼–½ รอบ</text>
+      </svg>
+    </div>
+    <div class="card"><ol class="steps small">
+      <li><b>Spatula</b> (ปลายยาวเข้า os) หมุน <b>360°</b> รอบ ectocervix</li>
+      <li><b>Cytobrush</b> สอดเข้า endocervical canal ให้เห็นขนแปรงล่างสุด หมุน <b>¼–½ รอบ</b> (เลือดออกง่าย ไม่หมุนมาก) · หรือใช้ broom หมุน 5 รอบ</li>
+      <li><b>Conventional</b>: ป้ายบางๆ บนสไลด์ แล้ว<b>ตรึงทันที</b>ด้วย 95% alcohol/spray (ไม่ให้แห้งก่อน) · <b>Liquid-based</b>: จุ่มและหมุนอุปกรณ์ในขวด</li>
+      <li>ติดชื่อ วันที่ ข้อมูลทางคลินิก (LMP, ตั้งครรภ์, ฮอร์โมน, ประวัติผิดปกติ)</li>
+    </ol><p class="small muted mt">ถ้ามีรอยโรคเห็นด้วยตา (ก้อน แผล) <b>ไม่ใช้ Pap รอผล</b> → ตัดชิ้นเนื้อหรือส่งต่อ colposcopy · การคัดกรองในไทยดูหน้ามะเร็งนรีเวช</p></div>
+  </div>
+</section>
+
+<section id="bimanual">
+  <div class="sec-head"><span class="eyebrow">Bimanual examination</span><h2>Bimanual: คลำมดลูกและ adnexa</h2></div>
+  <div class="grid g2">
+    <div class="card">
+      <svg viewBox="0 0 280 200" class="fig" style="max-width:300px" role="img" aria-label="การตรวจ bimanual">
+        <path d="M30 40 C120 20 220 40 250 90 L250 180 L30 180Z" class="mat" opacity=".5"/>
+        <ellipse cx="160" cy="96" rx="40" ry="30" class="ut" transform="rotate(-30 160 96)"/>
+        <g transform="translate(196 44) rotate(150)"><use href="#hand" x="-30" y="-20" width="60" height="36"/></g>
+        <g transform="translate(110 150) rotate(-40)"><use href="#hand" x="-30" y="-20" width="60" height="36"/></g>
+        <path class="arw" d="M208 30 L190 54" marker-end="url(#ah)"/><path class="arw" d="M100 140 L130 120" marker-end="url(#ah)"/>
+        <text x="190" y="20" class="svg-t">มือบนหน้าท้องกดลง</text><text x="10" y="196" class="svg-t">2 นิ้วใน posterior fornix ดันขึ้น</text>
+      </svg>
+    </div>
+    <div class="card"><ul class="clean small">
+      <li>ใส่ 2 นิ้ว (ชี้ กลาง) ที่หล่อลื่นเข้าช่องคลอด · คลำปากมดลูก: ความแข็ง <b>cervical motion tenderness</b> (CMT → PID, ectopic)</li>
+      <li>นิ้วใน posterior fornix ดันมดลูกขึ้น มือนอกกดลงหาจากหน้าท้อง: <b>ขนาด</b> (เทียบสัปดาห์), <b>ท่า</b> (anteverted/retroverted), ผิว, การเคลื่อนไหว, กดเจ็บ</li>
+      <li>ย้ายนิ้วไป lateral fornix ทีละข้าง คลำ <b>adnexa</b>: ก้อน กดเจ็บ (รังไข่ปกติมักคลำไม่ได้หลังหมดประจำเดือน)</li>
+      <li>Rectovaginal exam ตามข้อบ่งชี้ (ประเมิน cul-de-sac, uterosacral, parametrium ในมะเร็งปากมดลูก)</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="osce">
+  <div class="sec-head"><span class="eyebrow">OSCE checklist · ฝึกบนหุ่น</span><h2>ซ้อมทีละข้อ</h2></div>
+  <div id="osce-root"></div>
+</section>
+
+<section id="pimp">
+  <div class="pimp"><span class="eyebrow" style="color:var(--plum)">คำถามที่ผู้คุมสอบชอบถาม</span><h2 style="margin:6px 0 10px">ลองตอบก่อนเปิดเฉลย</h2>
+  <p><b>ทำไมต้องเก็บ Pap ก่อนทำ bimanual และทำไมต้องตรึงสไลด์ทันที?</b></p>
+  <details><summary>เปิดเฉลย</summary><ul class="clean small"><li>Bimanual และเจลหล่อลื่นปริมาณมากอาจ<b>ขูดเซลล์ผิวออกหรือปนเปื้อน</b>ตัวอย่าง ทำให้ผลไม่เพียงพอ (unsatisfactory) และทำให้มีเลือดปน</li><li>เซลล์ที่ปล่อยให้แห้งในอากาศ (air-drying artifact) จะเสียรูป อ่านผลไม่ได้ จึงต้อง<b>ตรึงภายในไม่กี่วินาที</b></li></ul></details></div>
+</section>
+
+<footer>
+  <p><b>หมายเหตุ</b>: checklist รวบรวมจากหลักการมาตรฐานเพื่อการซ้อม ให้ใช้ร่วมกับแบบประเมินของภาควิชา</p>
+  <p style="margin-top:10px"><b>แหล่งอ้างอิง</b></p>
+  <ol><li>ACOG Committee Opinion 754: The Utility of and Indications for Routine Pelvic Examination.</li><li>Hoffman BL, et al. <i>Williams Gynecology</i>, 4th ed. Ch. Well Woman Care; Preinvasive Lesions of the Lower Genital Tract.</li><li>ACOG Practice Advisory: Updated Cervical Cancer Screening Guidelines (2021).</li></ol>
+</footer>
+
+
+</div>
+<script>
+
+window.OSCE={id:'pv-pap',sections:[
+ {name:'สื่อสารและเตรียม',items:[
+  {t:'แนะนำตัว ยืนยันตัวผู้ป่วย อธิบายเหตุผลและขั้นตอน ขอ<b>ความยินยอม</b>',say:1,crit:1},
+  {t:'มี <b>chaperone</b> อยู่ด้วย',say:1,crit:1},
+  {t:'ถาม LMP, ประวัติ Pap/HPV, ตั้งครรภ์ · ให้ปัสสาวะก่อน',say:1},
+  {t:'จัดท่า lithotomy คลุมผ้า · ล้างมือ ใส่ถุงมือ · ปรับไฟ'}]},
+ {name:'ตรวจภายนอกและ speculum',items:[
+  {t:'บอกก่อนสัมผัส · ตรวจ vulva, urethral meatus, Bartholin',say:1},
+  {t:'เลือก speculum ขนาดเหมาะสม อุ่น หล่อลื่นด้วยน้ำ/เจลปริมาณน้อย'},
+  {t:'ใส่เอียง 45° กดลงด้านหลัง แล้วหมุนแนวนอน · เปิดใบให้เห็นปากมดลูก ล็อก'},
+  {t:'บรรยายสิ่งที่เห็น: ปากมดลูก ตกขาว รอยโรค',say:1}]},
+ {name:'เก็บ Pap / HPV',items:[
+  {t:'Spatula หมุน 360° รอบ ectocervix',crit:1},
+  {t:'Cytobrush ใน endocervix หมุน ¼–½ รอบ',crit:1},
+  {t:'ป้ายสไลด์บางๆ และ<b>ตรึงทันที</b> (หรือใส่ขวด liquid-based)',crit:1},
+  {t:'ติดฉลากและกรอกข้อมูลทางคลินิก'},
+  {t:'คลายสกรู ถอด speculum โดยหมุนกลับเฉียง ดูผนังช่องคลอดขณะถอด'}]},
+ {name:'Bimanual และจบการตรวจ',items:[
+  {t:'คลำปากมดลูก ตรวจ <b>CMT</b>'},
+  {t:'คลำมดลูก: ขนาด ท่า ผิว การเคลื่อนไหว กดเจ็บ',crit:1},
+  {t:'คลำ adnexa ทั้งสองข้าง'},
+  {t:'ช่วยผู้ป่วยลุก ให้ทำความสะอาดและแต่งตัว · สรุปผลที่พบ',say:1},
+  {t:'อธิบายเวลารับผลและการนัดติดตาม · บันทึก',say:1}]}
+]};
+
+(function(){
+  var root=document.getElementById('osce-root'); if(!root||!window.OSCE) return;
+  var KEY='osce-'+window.OSCE.id, st={};
+  try{ st=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ st={}; }
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(st)); }catch(e){} }
+  var total=0, html='<div class="osce-bar"><span class="score" id="osce-score"></span><div class="meter"><i id="osce-m"></i></div><span class="small muted" id="osce-crit"></span><button class="btn" type="button" id="osce-reset">เริ่มใหม่</button></div>';
+  window.OSCE.sections.forEach(function(s,si){
+    html+='<div class="osce-sec card"><h3><span class="num-b">'+(si+1)+'</span>'+s.name+'</h3>';
+    s.items.forEach(function(it,ii){
+      var id='o'+si+'-'+ii; total++;
+      html+='<label class="osce-item'+(it.crit?' crit':'')+(st[id]?' done':'')+'" data-crit="'+(it.crit?1:0)+'"><input type="checkbox" data-id="'+id+'"'+(st[id]?' checked':'')+'><span class="k '+(it.say?'say':'do')+'">'+(it.say?'พูด':'ทำ')+'</span><span class="t">'+it.t+(it.why?'<span class="why">'+it.why+'</span>':'')+'</span></label>';
+    });
+    html+='</div>';
+  });
+  root.innerHTML=html;
+  function upd(){
+    var n=0, cm=0, ct=0;
+    root.querySelectorAll('.osce-item').forEach(function(l){ var c=l.querySelector('input').checked; if(c) n++; if(l.dataset.crit==='1'){ ct++; if(!c) cm++; } l.classList.toggle('done',c); });
+    document.getElementById('osce-score').textContent=n+'/'+total;
+    document.getElementById('osce-m').style.width=(total?n/total*100:0)+'%';
+    document.getElementById('osce-crit').textContent= ct ? (cm? 'critical ที่ยังไม่ทำ '+cm+' ข้อ' : 'critical ครบแล้ว ✓') : '';
+  }
+  root.addEventListener('change',function(e){ var i=e.target; if(!i.dataset.id) return; if(i.checked) st[i.dataset.id]=1; else delete st[i.dataset.id]; save(); upd(); });
+  document.getElementById('osce-reset').addEventListener('click',function(){ st={}; save(); root.querySelectorAll('input[data-id]').forEach(function(i){i.checked=false;}); upd(); });
+  upd();
+})();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>คลอดปกติ ฉบับภาพ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: same "สมุดชมพู" notebook as the ANC page (series look). Spine = the 4 stages bar; sections follow one labor from admission to the 4th stage. */
+:root{
+  --bg:#fbf5f8; --surface:#ffffff; --surface-2:#f6ecf2;
+  --ink:#2a1530; --muted:#6c5873; --line:#ead8e3;
+  --rose:#c0185a; --rose-soft:#fbe1ec; --rose-mid:#f2a9c6;
+  --teal:#0d7471; --teal-soft:#dcf1ee;
+  --amber:#a86400; --amber-soft:#fcefd8;
+  --plum:#6a3d8a; --plum-soft:#efe4f6;
+  --red:#c42626; --red-soft:#fde4e2;
+  --skin:#f4d6c6; --hand:#e9b79c; --fetus:#f8c9ab; --fetus-line:#b9775a; --bone:#e8dccf; --bone-line:#9d8573;
+  --font-display:"Mitr","IBM Plex Sans Thai",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033;
+  --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456;
+  --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f;
+  --plum:#c39be0; --plum-soft:#2f2140;
+  --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033;
+  --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456;
+  --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f;
+  --plum:#c39be0; --plum-soft:#2f2140;
+  --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.3;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.45rem,3.2vw,1.9rem)}
+h3{font-size:1.08rem}
+p{margin:0}
+b,strong{font-weight:600}
+.en{font-weight:600}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+a{color:var(--rose)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:2px;border-radius:6px}
+
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));
+  padding:8px max(16px,env(safe-area-inset-left,0px))}
+.toc-inner{max-width:1040px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.toc a{flex:none;text-decoration:none;color:var(--muted);font-size:.84rem;padding:4px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.toc a:hover{color:var(--rose);border-color:var(--rose-mid)}
+
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;padding-block:36px 20px}
+.hero h1{font-size:clamp(2.1rem,5.4vw,3.3rem);font-weight:600}
+.hero h1 span{color:var(--rose)}
+.hero .lede{margin-top:14px;font-size:1.06rem;max-width:58ch}
+.pitch{margin-top:18px;padding:14px 16px;border-radius:var(--r);background:var(--rose-soft);border:1px solid var(--rose-mid)}
+.pitch .eyebrow{display:block;margin-bottom:4px}
+.hero-art{max-width:340px;justify-self:center;width:100%}
+
+section{padding-block:40px 8px;scroll-margin-top:64px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;max-width:72ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2>*,.g3>*,.g4>*{min-width:0}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.callout{border-left:4px solid var(--teal);background:var(--teal-soft);padding:12px 14px;border-radius:0 10px 10px 0;font-size:.94rem}
+.callout.warn{border-color:var(--amber);background:var(--amber-soft)}
+.callout.risk{border-color:var(--red);background:var(--red-soft)}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;padding:1px 8px;border-radius:999px;border:1px solid currentColor;vertical-align:middle}
+.tag.acog{color:var(--teal)} .tag.who{color:var(--plum)} .tag.wm{color:var(--rose)}
+ul.clean{margin:0;padding-left:1.1em}
+ul.clean li{margin:3px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;background:var(--surface-2)}
+td.mono{white-space:nowrap}
+.svg-t{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
+.svg-b{font-family:var(--font-body);font-size:12px;fill:var(--ink);font-weight:600}
+
+/* 3P */
+.ps .card{display:flex;flex-direction:column;gap:6px}
+.ps svg{width:52px;height:52px}
+.ico{stroke:var(--rose);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico .f{fill:var(--rose-soft)}
+.ps p{font-size:.88rem;color:var(--muted);line-height:1.55}
+
+/* stages bar */
+.stages{min-width:820px}
+.stages text{font-family:var(--font-body);font-size:12px;fill:var(--ink)}
+.stages .h{font-family:var(--font-display);font-size:14px}
+.stages .s{font-size:11px;fill:var(--muted)}
+.stages .m{font-family:var(--font-mono);font-size:11px;fill:var(--muted)}
+
+/* cervix figs */
+.fig-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.fig-row figure{margin:0;text-align:center;min-width:0}
+.fig-row svg{width:100%;max-width:150px}
+figcaption{font-size:.84rem;color:var(--muted)}
+figcaption b{color:var(--ink);font-family:var(--font-mono)}
+.wall{fill:var(--rose-mid);stroke:var(--rose);stroke-width:1.5}
+.head{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.sim{display:grid;grid-template-columns:minmax(0,220px) 1fr;gap:18px;align-items:center}
+.sim svg{width:100%;max-width:220px;justify-self:center}
+.sim input[type=range]{width:100%;accent-color:var(--rose)}
+.read{font-family:var(--font-display);font-size:1.9rem;color:var(--rose);line-height:1.1}
+.desc{background:var(--surface-2);border-radius:12px;padding:10px 14px;min-height:76px;font-size:.92rem}
+.ticks{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.cx-ring{fill:none;stroke:var(--rose);stroke-width:14;stroke-opacity:.55;transition:r .2s ease}
+.cx-open{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.2;transition:r .2s ease}
+.bone{fill:var(--bone);stroke:var(--bone-line);stroke-width:1.5}
+.bone-l{fill:none;stroke:var(--bone-line);stroke-width:7;stroke-linecap:round}
+.spine-l{stroke:var(--teal);stroke-width:1.5;stroke-dasharray:5 4}
+#st-head{transition:transform .2s ease}
+@media (prefers-reduced-motion: reduce){.cx-ring,.cx-open,#st-head,#pos-head{transition:none}}
+
+/* partograph */
+.pg{min-width:560px}
+.pg text{font-family:var(--font-body);font-size:11.5px;fill:var(--ink)}
+.pg .ax{font-family:var(--font-mono);font-size:11px;fill:var(--muted)}
+.pg .gl{stroke:var(--line);stroke-width:1}
+.pg .alert{stroke:var(--amber);stroke-width:2.5}
+.pg .action{stroke:var(--red);stroke-width:2.5}
+.pg .pt{fill:var(--rose);stroke:var(--surface);stroke-width:2}
+.pg .ln{fill:none;stroke:var(--rose);stroke-width:2}
+
+/* cardinal movements */
+.cm{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.cm .card{padding:12px;display:flex;flex-direction:column;gap:6px}
+.cm svg{width:100%;max-width:200px;align-self:center}
+.cm h3{font-size:.98rem;display:flex;gap:8px;align-items:baseline}
+.cm h3 b,.step h3 b{font-family:var(--font-mono);color:var(--bg);background:var(--plum);border-radius:6px;padding:0 7px;font-size:.8rem}
+.cm p{font-size:.84rem;line-height:1.5;color:var(--muted)}
+.cm .key{grid-column:span 1;background:var(--plum-soft);border-color:var(--plum)}
+.fet{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.occ{fill:var(--plum)}
+.face{fill:none;stroke:var(--fetus-line);stroke-width:1.6;stroke-linecap:round}
+.axis{fill:none;stroke:var(--muted);stroke-width:1;stroke-dasharray:2 4}
+.inset-c{fill:var(--surface);stroke:var(--muted);stroke-width:1}
+.inset-head{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1}
+.sut{stroke:var(--ink);stroke-width:1.4}
+.pf{fill:var(--plum)}
+.af{fill:var(--surface);stroke:var(--ink);stroke-width:1}
+.arw{fill:none;stroke:var(--teal);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* positions */
+.pos{display:grid;grid-template-columns:minmax(0,280px) 1fr;gap:20px;align-items:center}
+.pos svg{width:100%;max-width:280px;justify-self:center}
+.pos-btns{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.pos-btns button{font:600 .86rem var(--font-mono);padding:5px 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.pos-btns button[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--bg)}
+#pos-head{transition:transform .3s ease}
+.rim-dot{fill:var(--line)}
+.rim-dot.on{fill:var(--plum)}
+
+/* monitoring + steps */
+.step{padding:12px;display:flex;flex-direction:column;gap:6px}
+.step svg{width:100%;max-width:220px;align-self:center}
+.step h3{font-size:.98rem;display:flex;gap:8px;align-items:baseline}
+.step p{font-size:.84rem;line-height:1.5;color:var(--muted)}
+.mat{fill:var(--skin);stroke:var(--fetus-line);stroke-width:1.2}
+.hand-f{fill:var(--hand);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.hand-l{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-linecap:round;opacity:.7}
+.cord{fill:none;stroke:var(--amber);stroke-width:3;stroke-linecap:round}
+.blood{fill:var(--red)}
+
+.lac{min-width:520px}
+.lac text{font-family:var(--font-body);font-size:12px;fill:var(--ink)}
+.lac .s{font-size:11px;fill:var(--muted)}
+
+.pimp{background:var(--plum-soft);border:1.5px solid var(--plum);border-radius:var(--r);padding:20px}
+.pimp h2{color:var(--plum)}
+details{margin-top:14px;background:var(--surface);border-radius:12px;border:1px solid var(--line);padding:10px 14px}
+summary{cursor:pointer;font-weight:600;color:var(--plum)}
+details[open] summary{margin-bottom:8px}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+footer ol{padding-left:1.2em}
+
+@media (max-width:860px){
+  .g4,.cm{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:620px){
+  .hero{grid-template-columns:1fr}
+  .hero-art{max-width:240px;order:-1}
+  .g2,.g3,.sim,.pos{grid-template-columns:1fr}
+}
+@media (max-width:440px){ .g4,.cm{grid-template-columns:1fr} .fig-row{gap:4px} }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="hand" viewBox="-30 -20 60 36" overflow="visible">
+      <path class="hand-f" d="M-27 -1 C-27 -10 -19 -13 -9 -12 L19 -10 C27 -9 28 -3 27 0 C28 4 26 10 19 10 L-9 12 C-19 13 -27 8 -27 -1Z"/>
+      <path class="hand-f" d="M-8 -11 C-6 -19 6 -21 11 -15 C12 -13 9 -11 4 -11Z"/>
+      <path class="hand-l" d="M7 -5 L24 -4 M7 0 L25 0.5 M7 5 L23 5.5"/>
+    </symbol>
+    <!-- sagittal pelvis: maternal anterior (symphysis) on the LEFT, sacrum on the RIGHT, maternal head UP -->
+    <symbol id="pelvis" viewBox="0 0 160 230" overflow="visible">
+      <rect class="bone" x="32" y="104" width="13" height="40" rx="6" transform="rotate(-22 38 124)"/>
+      <path class="bone-l" d="M126 58 C146 92 146 136 128 168 C120 180 110 186 100 188"/>
+      <line x1="44" y1="104" x2="124" y2="60" style="stroke:var(--muted);stroke-dasharray:3 3"/>
+      <line class="spine-l" x1="50" y1="142" x2="130" y2="142"/>
+      <text class="svg-t" x="132" y="139" style="font-size:9px;fill:var(--teal)">0</text>
+      <path d="M100 188 C86 196 72 200 58 198" style="fill:none;stroke:var(--fetus-line);stroke-width:2;stroke-dasharray:1 3"/>
+    </symbol>
+    <!-- fetus: head at origin, body above; occiput dot lower-left; face mark right -->
+    <symbol id="fetus" viewBox="-40 -90 80 120" overflow="visible">
+      <ellipse class="fet" cx="6" cy="-50" rx="21" ry="30"/>
+      <ellipse class="fet" cx="0" cy="0" rx="18" ry="21"/>
+      <circle class="occ" cx="-10" cy="12" r="4"/>
+      <path class="face" d="M14 -8 q5 4 2 9"/>
+    </symbol>
+    <!-- head from below: occiput (posterior fontanelle, triangle) at top when rotate(0) -->
+    <symbol id="inset" viewBox="-20 -20 40 40" overflow="visible">
+      <circle class="inset-head" r="13"/>
+      <line class="sut" x1="0" y1="-9" x2="0" y2="9"/>
+      <path class="pf" d="M0 -12 L-4 -6 L4 -6Z"/>
+      <path class="af" d="M0 6 L4 10 L0 14 L-4 10Z"/>
+    </symbol>
+    <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10z" style="fill:var(--teal)"/>
+    </marker>
+  </defs>
+</svg>
+
+<nav class="toc" aria-label="สารบัญ"><div class="toc-inner"><a href="index.html" style="color:var(--plum);border-color:var(--plum)">← คลังเรียน</a>
+  <a href="#ps">3P</a><a href="#dx">True vs false labor</a><a href="#stages">4 ระยะ</a><a href="#pv">PV exam</a>
+  <a href="#partograph">Partograph</a><a href="#movements">Cardinal movements</a><a href="#position">Position</a>
+  <a href="#stage1">ระยะที่ 1</a><a href="#stage2">ระยะที่ 2</a><a href="#stage3">ระยะที่ 3</a><a href="#stage4">ระยะที่ 4</a><a href="#pimp">Pimp Q</a>
+</div></nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <div>
+    <span class="eyebrow">OB/GYN rotation · Labor &amp; delivery</span>
+    <h1>คลอดปกติ<br><span>Normal labor</span> ฉบับภาพ</h1>
+    <p class="lede">การดูแลการคลอดปกติตั้งแต่รับเข้าห้องคลอดจนครบ 2 ชั่วโมงหลังคลอด ใช้ภาษาไทยและคงศัพท์เทคนิคเป็นภาษาอังกฤษ อ้างอิง <span class="en">Williams Obstetrics</span>, <span class="en">Beckmann &amp; Ling</span>, <span class="en">ACOG CPG No. 8 (2024)</span> และ <span class="en">WHO intrapartum care</span></p>
+    <div class="pitch">
+      <span class="eyebrow">Elevator pitch</span>
+      <b>Labor คือการหดรัดตัวของมดลูกอย่างสม่ำเสมอจนปากมดลูกเปิดและบางลงเรื่อยๆ</b> จนทารกและรกคลอดออกมา หน้าที่ของเราคือเฝ้าดูให้ "ความก้าวหน้า" เป็นไปตามเกณฑ์ ทั้งแม่และทารกปลอดภัย และไม่แทรกแซงเกินจำเป็น
+    </div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 300 300" role="img" aria-label="วงกลมแสดงการเปิดของปากมดลูก 1 ถึง 10 เซนติเมตร">
+    <g fill="none" stroke-width="1.4">
+      <circle cx="150" cy="150" r="14" style="stroke:var(--rose-mid)"/><circle cx="150" cy="150" r="28" style="stroke:var(--rose-mid)"/>
+      <circle cx="150" cy="150" r="42" style="stroke:var(--rose-mid)"/><circle cx="150" cy="150" r="56" style="stroke:var(--rose-mid)"/>
+      <circle cx="150" cy="150" r="70" style="stroke:var(--rose-mid)"/><circle cx="150" cy="150" r="84" style="stroke:var(--rose)" stroke-width="2.4"/>
+      <circle cx="150" cy="150" r="98" style="stroke:var(--rose-mid)"/><circle cx="150" cy="150" r="112" style="stroke:var(--rose-mid)"/>
+      <circle cx="150" cy="150" r="126" style="stroke:var(--rose-mid)"/><circle cx="150" cy="150" r="140" style="stroke:var(--plum)" stroke-width="3"/>
+    </g>
+    <circle cx="150" cy="150" r="84" style="fill:var(--rose-soft)" opacity=".6"/>
+    <g class="mono" style="font:600 11px var(--font-mono)">
+      <text x="150" y="140" text-anchor="middle" style="fill:var(--rose)">1</text>
+      <text x="150" y="84" text-anchor="middle" style="fill:var(--rose)">6 cm</text>
+      <text x="150" y="28" text-anchor="middle" style="fill:var(--plum)">10 cm</text>
+    </g>
+    <text x="150" y="176" text-anchor="middle" class="svg-b" style="font-size:13px;fill:var(--rose)">Active phase</text>
+    <text x="150" y="194" text-anchor="middle" class="svg-t">เริ่มที่ 6 cm (ACOG)</text>
+    <text x="150" y="268" text-anchor="middle" class="svg-t" style="fill:var(--plum)">Fully dilated → ระยะที่ 2</text>
+  </svg>
+</header>
+
+<!-- 3P -->
+<section id="ps">
+  <div class="sec-head">
+    <span class="eyebrow">The "Why" · 3P</span>
+    <h2>คลอดได้หรือไม่ ขึ้นกับ 3P</h2>
+    <p class="muted">เมื่อการคลอดไม่ก้าวหน้า ให้ไล่ถามทีละ P ว่าตัวไหนเป็นปัญหา: แรงไม่พอ ทารกใหญ่หรือท่าไม่ดี หรือช่องเชิงกรานแคบ</p>
+  </div>
+  <div class="grid g3 ps">
+    <div class="card">
+      <svg viewBox="0 0 52 52" class="ico"><path d="M4 34 q6 -24 12 0 t12 0 t12 0 t10 0"/><path d="M4 42h44"/></svg>
+      <h3>Power · แรงเบ่ง</h3>
+      <p>การหดรัดตัวของมดลูก (ความถี่ ระยะเวลา ความแรง) ร่วมกับแรงเบ่งของแม่ในระยะที่ 2 · adequate = <b>&gt;200 Montevideo units</b> (วัดด้วย IUPC)</p>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 52 52" class="ico"><ellipse cx="28" cy="18" rx="12" ry="14" class="f"/><circle cx="24" cy="38" r="11" class="f"/><circle cx="18" cy="44" r="2.4" style="fill:var(--plum);stroke:none"/></svg>
+      <h3>Passenger · ทารก</h3>
+      <p>ขนาด ส่วนนำ (presentation) ท่า (position) การก้มศีรษะ (attitude/flexion) และจำนวนทารก</p>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 52 52" class="ico"><path d="M8 14 C8 34 18 44 26 44 C34 44 44 34 44 14" class="f"/><path d="M14 30h24" style="stroke:var(--teal);stroke-dasharray:3 3"/></svg>
+      <h3>Passage · ช่องคลอด</h3>
+      <p>อุ้งเชิงกรานกระดูก (inlet, midpelvis ที่ ischial spines, outlet) และเนื้อเยื่ออ่อน (ปากมดลูก ฝีเย็บ)</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUE vs FALSE -->
+<section id="dx">
+  <div class="sec-head">
+    <span class="eyebrow">Diagnosis of labor</span>
+    <h2>เจ็บครรภ์จริง หรือเจ็บครรภ์เตือน</h2>
+    <p class="muted">ตัวตัดสินคือ <b>ปากมดลูกเปลี่ยนแปลงหรือไม่</b> ถ้าไม่แน่ใจ ให้สังเกตอาการแล้วตรวจภายในซ้ำ 1–2 ชั่วโมงต่อมา</p>
+  </div>
+  <div class="card scroll-x" style="padding:6px">
+    <table>
+      <thead><tr><th>ลักษณะ</th><th style="color:var(--rose)">True labor</th><th>False labor (Braxton Hicks)</th></tr></thead>
+      <tbody>
+        <tr><td>จังหวะ</td><td>สม่ำเสมอ ถี่ขึ้นเรื่อยๆ</td><td>ไม่สม่ำเสมอ</td></tr>
+        <tr><td>ความแรงและระยะเวลา</td><td>แรงขึ้น นานขึ้น</td><td>เท่าเดิม</td></tr>
+        <tr><td>ตำแหน่งที่เจ็บ</td><td>หลังและหน้าท้อง</td><td>ท้องน้อยเป็นหลัก</td></tr>
+        <tr><td>เมื่อพักหรือได้ยาระงับปวด</td><td>ไม่หาย</td><td>มักหายไป</td></tr>
+        <tr><td><b>ปากมดลูก</b></td><td><b>เปิดและบางลง (cervical change)</b></td><td><b>ไม่เปลี่ยนแปลง</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted" style="margin-top:8px">อาการร่วมที่พบบ่อย: <b>bloody show</b> (มูกปนเลือดจาก mucus plug หลุด) และ <b>ถุงน้ำแตก (ROM)</b> · ถ้าถุงน้ำแตกโดยยังไม่เจ็บครรภ์ เรียก PROM</p>
+</section>
+
+<!-- STAGES -->
+<section id="stages">
+  <div class="sec-head">
+    <span class="eyebrow">Stages of labor</span>
+    <h2>4 ระยะของการคลอด</h2>
+    <p class="muted">แผนภาพไม่ได้วาดตามสเกลเวลา ตัวเลขเกณฑ์ผิดปกติอยู่ใต้แต่ละช่วง</p>
+  </div>
+  <div class="card scroll-x" style="padding:12px">
+    <svg class="stages" viewBox="0 0 860 230" role="img" aria-label="ระยะของการคลอด 4 ระยะ">
+      <rect x="10" y="40" width="250" height="44" rx="10" style="fill:var(--rose-soft);stroke:var(--rose)"/>
+      <rect x="264" y="40" width="200" height="44" rx="10" style="fill:var(--rose-mid);stroke:var(--rose)"/>
+      <rect x="468" y="40" width="150" height="44" rx="10" style="fill:var(--plum-soft);stroke:var(--plum)"/>
+      <rect x="622" y="40" width="104" height="44" rx="10" style="fill:var(--teal-soft);stroke:var(--teal)"/>
+      <rect x="730" y="40" width="120" height="44" rx="10" style="fill:var(--amber-soft);stroke:var(--amber)"/>
+      <text class="h" x="12" y="28" style="fill:var(--rose)">ระยะที่ 1 · First stage</text>
+      <text class="h" x="470" y="28" style="fill:var(--plum)">ระยะที่ 2</text>
+      <text class="h" x="624" y="28" style="fill:var(--teal)">ระยะที่ 3</text>
+      <text class="h" x="732" y="28" style="fill:var(--amber)">ระยะที่ 4</text>
+      <text x="135" y="67" text-anchor="middle" style="font-weight:600">Latent phase</text>
+      <text x="364" y="67" text-anchor="middle" style="font-weight:600">Active phase</text>
+      <text x="543" y="67" text-anchor="middle" style="font-weight:600">เบ่งคลอด</text>
+      <text x="674" y="67" text-anchor="middle" style="font-weight:600">รกคลอด</text>
+      <text x="790" y="67" text-anchor="middle" style="font-weight:600">เฝ้าระวัง</text>
+      <!-- endpoints -->
+      <g class="m" text-anchor="middle">
+        <text x="12" y="104" text-anchor="start">เจ็บครรภ์จริง</text><text x="262" y="104">6 cm</text><text x="466" y="104">10 cm</text>
+        <text x="620" y="104">ทารกคลอด</text><text x="728" y="104">รกคลอด</text><text x="848" y="104" text-anchor="end">1–2 ชม.</text>
+      </g>
+      <!-- thresholds -->
+      <text class="s" x="12" y="134">ยาวนานผิดปกติ (prolonged):</text>
+      <text x="12" y="152">ครรภ์แรก &gt;20 ชม. · ครรภ์หลัง &gt;14 ชม.</text>
+      <text class="s" x="12" y="172">ไม่ทำผ่าคลอดด้วยเหตุ latent phase ยาว</text>
+      <text class="s" x="266" y="134">Arrest (ACOG):</text>
+      <text x="266" y="152">≥6 cm + ROM ไม่เปิดเพิ่ม</text>
+      <text x="266" y="170">≥4 ชม. (หดรัดตัวพอ) หรือ</text>
+      <text x="266" y="188">≥6 ชม. (ได้ oxytocin)</text>
+      <text class="s" x="470" y="134">Prolonged (ACOG):</text>
+      <text x="470" y="152">ครรภ์แรก &gt;3 ชม.</text>
+      <text x="470" y="170">ครรภ์หลัง &gt;2 ชม.</text>
+      <text class="s" x="470" y="188">นับตั้งแต่เริ่มเบ่ง</text>
+      <text class="s" x="624" y="134">ปกติ &lt;30 นาที</text>
+      <text x="624" y="152">&gt;30 นาที =</text>
+      <text x="624" y="170">retained placenta</text>
+      <text class="s" x="732" y="134">ช่วงเสี่ยง PPH</text>
+      <text x="732" y="152">V/S + tone + เลือด</text>
+      <text x="732" y="170">ทุก 15 นาที</text>
+      <text x="732" y="188">ใน ชม. แรก</text>
+      <text class="s" x="12" y="218">Protraction ของ active phase: เปิดช้ากว่า 1 cm ใน 2 ชม. · WHO นับ active phase ตั้งแต่ 5 cm (Labour Care Guide)</text>
+    </svg>
+  </div>
+</section>
+
+<!-- PV -->
+<section id="pv">
+  <div class="sec-head">
+    <span class="eyebrow">Per vaginal exam</span>
+    <h2>ตรวจภายใน: อ่านค่าให้ครบ</h2>
+    <p class="muted">บันทึกทุกครั้ง: <b>dilatation</b> (cm) · <b>effacement</b> (%) · <b>station</b> · ถุงน้ำ (membranes) และสีน้ำคร่ำ · ส่วนนำและ position · molding/caput</p>
+  </div>
+
+  <div class="card">
+    <h3>Effacement: ปากมดลูกบางลง</h3>
+    <p class="small muted" style="margin:2px 0 10px">มองภาพตัดตามยาว ศีรษะทารกกดจากด้านบน ปากมดลูกถูกดึงขึ้นไปเป็นส่วนหนึ่งของ lower uterine segment · <b>ครรภ์แรก</b>มักบางก่อนแล้วจึงเปิด ส่วน<b>ครรภ์หลัง</b>บางและเปิดไปพร้อมกัน</p>
+    <div class="fig-row">
+      <figure>
+        <svg viewBox="0 0 120 150" aria-hidden="true">
+          <circle class="head" cx="60" cy="38" r="30"/>
+          <path class="wall" d="M14 10 C14 60 40 70 48 74 L48 124 L40 124 L40 80 C26 72 6 58 6 10Z"/>
+          <path class="wall" d="M106 10 C106 60 80 70 72 74 L72 124 L80 124 L80 80 C94 72 114 58 114 10Z"/>
+          <text class="svg-t" x="60" y="142" text-anchor="middle">ยาว ~3–4 cm</text>
+        </svg>
+        <figcaption><b>0%</b> ยังไม่บาง</figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 120 150" aria-hidden="true">
+          <circle class="head" cx="60" cy="52" r="30"/>
+          <path class="wall" d="M14 10 C14 70 36 84 44 88 L44 110 L36 110 L36 92 C22 84 6 70 6 10Z"/>
+          <path class="wall" d="M106 10 C106 70 84 84 76 88 L76 110 L84 110 L84 92 C98 84 114 70 114 10Z"/>
+          <text class="svg-t" x="60" y="142" text-anchor="middle">ยาวลดลงครึ่งหนึ่ง</text>
+        </svg>
+        <figcaption><b>50%</b></figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 120 150" aria-hidden="true">
+          <circle class="head" cx="60" cy="72" r="30"/>
+          <path class="wall" d="M14 10 C14 80 30 100 36 104 L34 108 C20 100 6 80 6 10Z"/>
+          <path class="wall" d="M106 10 C106 80 90 100 84 104 L86 108 C100 100 114 80 114 10Z"/>
+          <text class="svg-t" x="60" y="142" text-anchor="middle">บางเท่ากระดาษ</text>
+        </svg>
+        <figcaption><b>100%</b> fully effaced</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card sim">
+      <svg viewBox="0 0 200 200" role="img" aria-label="จำลองการเปิดของปากมดลูก">
+        <circle cx="100" cy="100" r="96" style="fill:var(--surface-2)"/>
+        <circle id="cx-open" class="cx-open" cx="100" cy="100" r="16"/>
+        <circle id="cx-ring" class="cx-ring" cx="100" cy="100" r="23"/>
+        <text id="cx-lab" x="100" y="104" text-anchor="middle" class="svg-b">2 cm</text>
+      </svg>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <span class="eyebrow">Interactive · Dilatation</span>
+        <label for="dil" class="read"><span id="dil-v">2</span> <span style="font-size:1rem">cm</span></label>
+        <input type="range" id="dil" min="0" max="10" step="1" value="2" aria-describedby="dil-d">
+        <div class="ticks"><span>0</span><span>6</span><span>10</span></div>
+        <div class="desc" id="dil-d"></div>
+      </div>
+    </div>
+    <div class="card sim">
+      <svg viewBox="0 0 160 230" role="img" aria-label="จำลอง station ของศีรษะทารก">
+        <use href="#pelvis" x="0" y="0" width="160" height="230"/>
+        <g id="st-head"><circle class="head" cx="88" cy="112" r="24"/><circle cx="80" cy="128" r="3.5" class="occ"/></g>
+        <line id="st-mark" x1="60" y1="136" x2="118" y2="136" style="stroke:var(--rose);stroke-width:2"/>
+        <text class="svg-t" x="4" y="14">← หน้าท้องแม่ · หลัง →</text>
+      </svg>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <span class="eyebrow">Interactive · Station</span>
+        <label for="sta" class="read"><span id="sta-v">−2</span></label>
+        <input type="range" id="sta" min="-5" max="5" step="1" value="-2" aria-describedby="sta-d">
+        <div class="ticks"><span>−5</span><span>0</span><span>+5</span></div>
+        <div class="desc" id="sta-d"></div>
+      </div>
+    </div>
+  </div>
+  <p class="small muted" style="margin-top:8px">Station คือระยะ (cm) ของส่วนต่ำสุดของศีรษะ เทียบกับระดับ <b style="color:var(--teal)">ischial spines</b> (station 0) ภาพจำลองเป็นภาพตัดด้านข้าง ด้านซ้ายคือหน้าท้องแม่ ระยะในภาพเป็นค่าประมาณ</p>
+</section>
+
+<!-- PARTOGRAPH -->
+<section id="partograph">
+  <div class="sec-head">
+    <span class="eyebrow">Monitoring progress</span>
+    <h2>Partograph: กราฟความก้าวหน้า</h2>
+    <p class="muted">หลายโรงพยาบาลในไทยยังใช้ WHO modified partograph ที่เริ่มพล็อตใน active phase เมื่อเส้นการเปิดของปากมดลูกข้าม <span style="color:var(--amber);font-weight:600">alert line</span> (1 cm/ชม.) ให้ประเมิน 3P ใหม่ ถ้าถึง <span style="color:var(--red);font-weight:600">action line</span> (อยู่ทางขวา 4 ชม.) ต้องตัดสินใจจัดการ</p>
+  </div>
+  <div class="card scroll-x">
+    <svg class="pg" viewBox="0 0 600 300" role="img" aria-label="ตัวอย่าง partograph พร้อม alert line และ action line">
+      <!-- plot area x: 60..570 (0..12 h → 42.5 px/h), y: 260..20 (0..10 cm → 24 px/cm) -->
+      <g class="gl">
+        <line x1="60" y1="20" x2="570" y2="20"/><line x1="60" y1="68" x2="570" y2="68"/><line x1="60" y1="116" x2="570" y2="116"/>
+        <line x1="60" y1="164" x2="570" y2="164"/><line x1="60" y1="212" x2="570" y2="212"/><line x1="60" y1="260" x2="570" y2="260"/>
+        <line x1="60" y1="20" x2="60" y2="260"/><line x1="145" y1="20" x2="145" y2="260"/><line x1="230" y1="20" x2="230" y2="260"/>
+        <line x1="315" y1="20" x2="315" y2="260"/><line x1="400" y1="20" x2="400" y2="260"/><line x1="485" y1="20" x2="485" y2="260"/><line x1="570" y1="20" x2="570" y2="260"/>
+      </g>
+      <g class="ax" text-anchor="end"><text x="52" y="24">10</text><text x="52" y="72">8</text><text x="52" y="120">6</text><text x="52" y="168">4</text><text x="52" y="216">2</text><text x="52" y="264">0</text></g>
+      <g class="ax" text-anchor="middle"><text x="60" y="278">0</text><text x="145" y="278">2</text><text x="230" y="278">4</text><text x="315" y="278">6</text><text x="400" y="278">8</text><text x="485" y="278">10</text><text x="570" y="278">12 ชม.</text></g>
+      <text x="14" y="140" transform="rotate(-90 14 140)" text-anchor="middle" class="ax">ปากมดลูกเปิด (cm)</text>
+      <!-- alert: (0h,4cm)->(6h,10cm); action: (4h,4cm)->(10h,10cm) -->
+      <line class="alert" x1="60" y1="164" x2="315" y2="20"/>
+      <line class="action" x1="230" y1="164" x2="485" y2="20"/>
+      <text x="168" y="70" style="fill:var(--amber);font-weight:600" transform="rotate(-29.5 168 70)">Alert line</text>
+      <text x="392" y="70" style="fill:var(--red);font-weight:600" transform="rotate(-29.5 392 70)">Action line</text>
+      <!-- sample normal labor: 0h 4, 2h 5.5, 4h 7, 6h 9, 7h 10 -->
+      <polyline class="ln" points="60,164 145,128 230,92 315,44 357.5,20"/>
+      <circle class="pt" cx="60" cy="164" r="5"/><circle class="pt" cx="145" cy="128" r="5"/><circle class="pt" cx="230" cy="92" r="5"/><circle class="pt" cx="315" cy="44" r="5"/><circle class="pt" cx="357.5" cy="20" r="5"/>
+      <text x="250" y="212" style="fill:var(--rose)">● ผู้ป่วยตัวอย่าง: อยู่ซ้ายของ alert line = ก้าวหน้าดี</text>
+      <text x="250" y="240" style="fill:var(--red)">ข้าม action line → ประเมินเพื่อ augment หรือผ่าคลอด</text>
+    </svg>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="callout"><b>ACOG CPG No. 8 (2024)</b> <span class="tag acog">ACOG</span> active phase เริ่มที่ <b>6 cm</b> · <b>Active phase arrest</b> = ≥6 cm + ถุงน้ำแตกแล้ว และปากมดลูกไม่เปิดเพิ่มนาน ≥4 ชม. ทั้งที่หดรัดตัวพอ (&gt;200 MVU) หรือ ≥6 ชม. ขณะได้ oxytocin ถ้าหดรัดตัวไม่พอ → <b>ผ่าคลอด</b></div>
+    <div class="callout" style="border-color:var(--plum);background:var(--plum-soft)"><b>WHO Labour Care Guide</b> <span class="tag who">WHO</span> แทน partograph แบบเดิม ใช้ "lag time" ต่อ cm: 5 cm ≥6 ชม. · 6 cm ≥5 ชม. · 7 cm ≥3 ชม. · 8 cm ≥2.5 ชม. · 9 cm ≥2 ชม. ถ้าเกินโดยไม่ก้าวหน้า = alert ให้ทบทวน</div>
+  </div>
+</section>
+
+<!-- CARDINAL MOVEMENTS -->
+<section id="movements">
+  <div class="sec-head">
+    <span class="eyebrow">Mechanism of labor</span>
+    <h2>Cardinal movements 7 ขั้น (ท่า vertex, OA)</h2>
+    <p class="muted">ภาพตัดด้านข้าง: ซ้าย = หน้าท้องแม่ (symphysis) ขวา = กระดูก sacrum เส้นประสีเขียว = ischial spines · จุดสีม่วง = ท้ายทอย (occiput) · วงกลมเล็กมุมขวาบนคือ <b>ศีรษะเมื่อมองจากด้านล่าง</b> (▲ = posterior fontanelle) ใช้ดูการหมุน · ในความจริงหลายขั้นเกิดซ้อนกัน</p>
+  </div>
+  <div class="cm" id="cm"></div>
+</section>
+
+<!-- POSITION -->
+<section id="position">
+  <div class="sec-head">
+    <span class="eyebrow">Fetal position</span>
+    <h2>อ่าน position จากรอยต่อกะโหลก</h2>
+    <p class="muted">ตรวจภายในแล้วคลำ <b>sagittal suture</b> และ <b>posterior fontanelle</b> (รูปสามเหลี่ยม เล็ก รอยต่อ 3 เส้น) ซึ่งอยู่ด้านท้ายทอย บอกได้ว่าท้ายทอยหันไปทางไหนของเชิงกรานแม่</p>
+  </div>
+  <div class="card pos">
+    <svg viewBox="0 0 280 280" role="img" aria-label="แผนภาพ position ของศีรษะทารกมองจากด้านล่าง">
+      <circle cx="140" cy="140" r="104" style="fill:var(--surface-2);stroke:var(--bone-line)" stroke-width="2"/>
+      <text x="140" y="20" text-anchor="middle" class="svg-b">Symphysis (หน้า)</text>
+      <text x="140" y="270" text-anchor="middle" class="svg-b">Sacrum (หลัง)</text>
+      <text x="8" y="144" class="svg-t">ขวาแม่</text>
+      <text x="272" y="144" text-anchor="end" class="svg-t">ซ้ายแม่</text>
+      <g id="rim"></g>
+      <g id="pos-head" style="transform-origin:140px 140px">
+        <ellipse cx="140" cy="140" rx="46" ry="54" class="inset-head" style="stroke-width:1.5"/>
+        <line x1="140" y1="104" x2="140" y2="170" class="sut" style="stroke-width:2"/>
+        <path d="M140 92 L130 106 L150 106Z" class="pf"/>
+        <path d="M140 166 L150 178 L140 190 L130 178Z" class="af" style="stroke-width:1.5"/>
+      </g>
+    </svg>
+    <div style="min-width:0">
+      <span class="eyebrow">Interactive · เลือก position</span>
+      <div class="pos-btns" id="pos-btns" role="group" aria-label="เลือก position"></div>
+      <div class="desc" id="pos-d"></div>
+      <p class="small muted" style="margin-top:8px">มุมมองจากปลายเท้าผู้ป่วยในท่า lithotomy: ซ้ายของแม่อยู่ทางขวามือเรา ▲ = posterior fontanelle (ท้ายทอย) ◇ = anterior fontanelle</p>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 1 -->
+<section id="stage1">
+  <div class="sec-head">
+    <span class="eyebrow">Conduct · First stage</span>
+    <h2>ระยะที่ 1: รับเข้าห้องคลอดและเฝ้าระวัง</h2>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <h3>เมื่อแรกรับ (Admission)</h3>
+      <ul class="clean small">
+        <li><b>ทบทวนสมุดฝากครรภ์</b>: GA, ผล lab (HIV, VDRL, HBsAg, Hb, blood group, GBS ถ้ามี), ความเสี่ยงต่างๆ</li>
+        <li><b>ซักประวัติ</b>: เริ่มเจ็บเมื่อไร ถุงน้ำแตกหรือยัง (เวลา สี กลิ่น) เลือดออก ลูกดิ้น</li>
+        <li><b>V/S</b>: BP, pulse, temperature · ตรวจ Leopold · FHR</li>
+        <li><b>PV</b> (ถ้าไม่มีข้อห้าม เช่น placenta previa): dilatation, effacement, station, membranes, position</li>
+        <li>ตรวจ CBC ถ้าจำเป็น · เปิดเส้นตามความเสี่ยงของโรงพยาบาล</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>ดูแลทั่วไป</h3>
+      <ul class="clean small">
+        <li><b>Continuous labor support</b> (มีคนอยู่ด้วยตลอด) ลดการผ่าตัดและการใช้ยาระงับปวด</li>
+        <li>เดิน เปลี่ยนท่าได้อิสระ · ดื่ม <b>clear liquids</b> ได้ในครรภ์ความเสี่ยงต่ำ</li>
+        <li>ให้ปัสสาวะบ่อย กระเพาะปัสสาวะเต็มขัดขวางการเคลื่อนต่ำของศีรษะ</li>
+        <li>ไม่แนะนำทำเป็น routine: สวนอุจจาระ โกนขน amniotomy เพื่อเร่งคลอด</li>
+        <li><b>ระงับปวด</b>: วิธีไม่ใช้ยา · opioid (เช่น pethidine) · <b>epidural</b> เสนอได้ทุกระยะ ไม่เพิ่มอัตราผ่าคลอด</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card scroll-x" style="margin-top:14px;padding:6px">
+    <table>
+      <thead><tr><th>เฝ้าระวังอะไร</th><th>Active first stage</th><th>Second stage</th><th>หมายเหตุ</th></tr></thead>
+      <tbody>
+        <tr><td><b>FHR</b> (intermittent auscultation, low risk)</td><td class="mono">ทุก 15–30 นาที</td><td class="mono">ทุก 5–15 นาที</td><td class="small">ฟังหลังมดลูกคลายตัว นาน ≥1 นาที · ปกติ <b>110–160 bpm</b></td></tr>
+        <tr><td><b>Contractions</b></td><td class="mono">ทุก 30 นาที</td><td class="mono">ต่อเนื่อง</td><td class="small">นับจำนวนใน 10 นาที ระยะเวลา และความแรง · WHO alert: ≤2 หรือ &gt;5 ครั้ง/10 นาที</td></tr>
+        <tr><td><b>PV exam</b></td><td class="mono">~ทุก 4 ชม.</td><td class="mono">ตามข้อบ่งชี้</td><td class="small">ตรวจเท่าที่จำเป็น ตรวจบ่อยเพิ่มความเสี่ยงติดเชื้อเมื่อถุงน้ำแตก</td></tr>
+        <tr><td><b>Maternal V/S</b></td><td class="mono">BP, P, T ทุก 4 ชม.</td><td class="mono">BP, P บ่อยขึ้น</td><td class="small">ถุงน้ำแตกนานหรือสงสัยไข้ วัดอุณหภูมิทุก 1–2 ชม. (Williams)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted" style="margin-top:8px">ความถี่ของแต่ละโรงพยาบาลอาจต่างกัน ให้ยึด protocol ของห้องคลอดที่ฝึกงาน</p>
+</section>
+
+<!-- STAGE 2 -->
+<section id="stage2">
+  <div class="sec-head">
+    <span class="eyebrow">Conduct · Second stage</span>
+    <h2>ระยะที่ 2: ทำคลอดทีละขั้น</h2>
+    <p class="muted">ภาพด้านข้าง ผู้ป่วยนอนท่า lithotomy: ด้านบน = symphysis ด้านล่าง = ฝีเย็บ ทารกคลอดออกมาทางขวา · ACOG แนะนำให้<b>เริ่มเบ่งได้เมื่อปากมดลูกเปิดหมด</b></p>
+  </div>
+  <div class="grid g3" id="steps"></div>
+  <div class="callout warn" style="margin-top:14px">
+    <b>สิ่งที่ไม่ทำเป็น routine</b>: ตัดฝีเย็บ (episiotomy ให้ใช้แบบ restrictive, ACOG PB 198) · ดันยอดมดลูก (fundal pressure/Kristeller) · ดูดเสมหะทารกทุกราย · <b>ช่วยลดฝีเย็บฉีกขาดรุนแรง</b>: warm compress และประคองฝีเย็บ (hands-on) ขณะศีรษะคลอด
+  </div>
+  <div class="callout risk" style="margin-top:10px">
+    <b>Shoulder dystocia</b>: ศีรษะคลอดแล้วหดกลับชิดฝีเย็บ (<b>turtle sign</b>) ไหล่ไม่คลอดด้วยแรงดึงปกติ → ขอความช่วยเหลือทันที ห้ามดึงแรงหรือดันยอดมดลูก เริ่มด้วย <b>McRoberts</b> + suprapubic pressure (หัวข้อแยกที่ควรเรียนต่อ)
+  </div>
+</section>
+
+<!-- STAGE 3 -->
+<section id="stage3">
+  <div class="sec-head">
+    <span class="eyebrow">Conduct · Third stage</span>
+    <h2>ระยะที่ 3: คลอดรกแบบ Active management</h2>
+    <p class="muted"><b>AMTSL</b> (active management of the third stage) ลดการตกเลือดหลังคลอด (PPH) ซึ่งเป็นสาเหตุการเสียชีวิตของมารดาที่สำคัญ</p>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <ol class="small" style="margin:0;padding-left:1.2em">
+        <li><b>ให้ uterotonic</b>: <b>oxytocin 10 IU IM/IV</b> ภายใน 1 นาทีหลังทารกคลอด (WHO) หลังยืนยันว่าไม่มีทารกอีกคน</li>
+        <li><b>รอตัดสายสะดือ</b> ≥30–60 วินาทีในทารกที่แข็งแรง (ACOG CO 814)</li>
+        <li><b>Controlled cord traction</b> (CCT) ดึงสายสะดือเบาๆ ลงล่าง พร้อมอีกมือดันมดลูกเหนือหัวหน่าวขึ้นไปทางศีรษะแม่ (counter-traction, <b>Brandt–Andrews</b>) ทำขณะมดลูกหดรัดตัว เพื่อป้องกันมดลูกปลิ้น</li>
+        <li>รกคลอดแล้ว คลึงมดลูกให้แข็ง และ<b>ตรวจ tone ทุก 15 นาที</b></li>
+        <li><b>ตรวจรก</b> ว่าครบ (cotyledon ฝั่งแม่ และ membranes) และตรวจช่องคลอด ฝีเย็บ</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>สัญญาณรกลอกตัว (signs of placental separation)</h3>
+      <svg viewBox="0 0 280 150" style="width:100%;max-width:340px;display:block;margin:8px auto" role="img" aria-label="มดลูกก่อนและหลังรกลอกตัว">
+        <line x1="10" y1="40" x2="270" y2="40" style="stroke:var(--muted);stroke-dasharray:4 4"/>
+        <text class="svg-t" x="270" y="34" text-anchor="end">ระดับสะดือ</text>
+        <!-- before -->
+        <path class="wall" d="M30 44 C30 30 110 30 110 44 C110 80 92 104 70 104 C48 104 30 80 30 44Z" style="fill-opacity:.7"/>
+        <rect x="62" y="104" width="16" height="14" style="fill:var(--surface-2);stroke:var(--muted)"/>
+        <path class="cord" d="M70 104 L70 128"/><rect x="64" y="126" width="12" height="5" rx="1" style="fill:var(--ink)"/>
+        <text class="svg-t" x="70" y="146" text-anchor="middle">ก่อน: แบน กว้าง (discoid)</text>
+        <!-- after -->
+        <path class="wall" d="M180 34 C180 14 240 14 240 34 C240 66 226 82 210 82 C194 82 180 66 180 34Z"/>
+        <path class="cord" d="M210 82 L210 136"/><rect x="204" y="134" width="12" height="5" rx="1" style="fill:var(--ink)"/>
+        <path class="blood" d="M226 104 c0 0 -6 8 -6 11 a6 6 0 0 0 12 0 c0 -3 -6 -11 -6 -11z"/>
+        <path class="arw" d="M248 50 L248 26" marker-end="url(#ah)"/>
+        <text class="svg-t" x="210" y="146" text-anchor="middle">หลัง: กลม แข็ง ยกสูงขึ้น</text>
+      </svg>
+      <ul class="clean small">
+        <li>มดลูก<b>กลมแข็ง (globular) และลอยสูงขึ้น</b></li>
+        <li><b>สายสะดือยาวออกมา</b> (clamp เลื่อนต่ำลง)</li>
+        <li><b>เลือดไหลพุ่ง</b> ออกมาทางช่องคลอด (gush of blood)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card" style="display:flex;gap:14px;align-items:center">
+      <svg viewBox="0 0 100 100" style="width:96px;flex:none" role="img" aria-label="ภาพตัดขวางสายสะดือ หลอดเลือดแดง 2 เส้น หลอดเลือดดำ 1 เส้น">
+        <circle cx="50" cy="50" r="44" style="fill:var(--amber-soft);stroke:var(--amber)" stroke-width="2"/>
+        <circle cx="50" cy="36" r="15" style="fill:#7a2340;stroke:#4f1529" stroke-width="2"/>
+        <circle cx="34" cy="66" r="8" style="fill:#c4364c;stroke:#7a1e2e" stroke-width="4"/>
+        <circle cx="66" cy="66" r="8" style="fill:#c4364c;stroke:#7a1e2e" stroke-width="4"/>
+      </svg>
+      <div><h3>ตรวจสายสะดือ: 3 vessels</h3><p class="small muted"><b>หลอดเลือดดำ 1 เส้น</b> (ใหญ่ ผนังบาง นำเลือดที่มี O₂ ไปทารก) + <b>หลอดเลือดแดง 2 เส้น</b> (เล็ก ผนังหนา) · ถ้าพบ single umbilical artery ให้แจ้งกุมารแพทย์เพราะสัมพันธ์กับความผิดปกติแต่กำเนิด</p></div>
+    </div>
+    <div class="callout risk" style="align-self:stretch"><b>Retained placenta</b>: รกไม่คลอดภายใน <b>30 นาที</b> → เตรียม manual removal of placenta ภายใต้ยาระงับปวดที่เหมาะสม และระวัง PPH</div>
+  </div>
+</section>
+
+<!-- STAGE 4 -->
+<section id="stage4">
+  <div class="sec-head">
+    <span class="eyebrow">Conduct · Fourth stage</span>
+    <h2>ระยะที่ 4: 2 ชั่วโมงหลังคลอด และการเย็บฝีเย็บ</h2>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <h3>เฝ้าระวัง PPH</h3>
+      <ul class="clean small">
+        <li>BP, pulse, <b>uterine tone</b>, ปริมาณเลือด <b>ทุก 15 นาทีในชั่วโมงแรก</b> แล้วห่างขึ้น</li>
+        <li>ปัสสาวะ: กระเพาะปัสสาวะเต็มทำให้มดลูกหดตัวไม่ดี</li>
+        <li><b>PPH</b>: ACOG = เสียเลือดสะสม <b>≥1,000 mL</b> หรือเสียเลือดร่วมกับอาการ hypovolemia ภายใน 24 ชม. · WHO = <b>≥500 mL</b> หลังคลอดทางช่องคลอด</li>
+        <li>สาเหตุ <b>4T</b>: Tone (พบบ่อยสุด) · Trauma · Tissue · Thrombin</li>
+        <li>Skin-to-skin และเริ่มให้นมแม่ภายในชั่วโมงแรก</li>
+      </ul>
+    </div>
+    <div class="card scroll-x">
+      <h3>ระดับการฉีกขาดของฝีเย็บ</h3>
+      <svg class="lac" viewBox="0 0 520 210" role="img" aria-label="ชั้นเนื้อเยื่อและระดับการฉีกขาดของฝีเย็บ">
+        <rect x="10" y="14" width="300" height="30" style="fill:var(--skin);stroke:var(--fetus-line)"/>
+        <rect x="10" y="44" width="300" height="44" style="fill:var(--rose-mid);fill-opacity:.6;stroke:var(--rose)"/>
+        <rect x="10" y="88" width="300" height="40" style="fill:var(--plum-soft);stroke:var(--plum)"/>
+        <line x1="160" y1="88" x2="160" y2="128" style="stroke:var(--plum);stroke-dasharray:3 3"/>
+        <rect x="10" y="128" width="300" height="30" style="fill:var(--teal-soft);stroke:var(--teal)"/>
+        <rect x="10" y="158" width="300" height="30" style="fill:var(--red-soft);stroke:var(--red)"/>
+        <text x="18" y="34">ผิวหนังฝีเย็บ / เยื่อบุช่องคลอด</text>
+        <text x="18" y="70">กล้ามเนื้อฝีเย็บ (perineal body)</text>
+        <text x="18" y="112">EAS &lt;50%</text><text x="168" y="112">EAS &gt;50%</text>
+        <text x="18" y="148">Internal anal sphincter (IAS)</text>
+        <text x="18" y="178">Anorectal mucosa</text>
+        <g style="fill:none;stroke:var(--ink);stroke-width:1.2">
+          <path d="M320 16 h6 v26 h-6"/><path d="M320 16 h6 v70"/><path d="M334 90 h6 v18 h-6"/>
+        </g>
+        <text x="332" y="32" style="font-weight:600">1°</text>
+        <text x="332" y="70" style="font-weight:600">2°</text><text x="356" y="70" class="s">ไม่ถึง sphincter</text>
+        <text x="346" y="104" style="font-weight:600">3a</text><text x="370" y="104" class="s">EAS &lt;50%</text>
+        <text x="346" y="122" style="font-weight:600">3b</text><text x="370" y="122" class="s">EAS &gt;50%</text>
+        <text x="346" y="148" style="font-weight:600">3c</text><text x="370" y="148" class="s">ถึง IAS ด้วย</text>
+        <text x="346" y="178" style="font-weight:600;fill:var(--red)">4°</text><text x="370" y="178" class="s">ถึงเยื่อบุทวารหนัก</text>
+        <text x="10" y="204" class="s">↓ ลึกขึ้นเรื่อยๆ · 3° และ 4° = OASIS ต้องซ่อมโดยผู้มีประสบการณ์</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- PIMP -->
+<section id="pimp">
+  <div class="pimp">
+    <span class="eyebrow" style="color:var(--plum)">The pimp question</span>
+    <h2 style="margin:6px 0 10px">ลองตอบก่อนเปิดเฉลย</h2>
+    <p>G1P0 GA 39 wk ตรวจภายในเวลา 08:00 ได้ <b>6 cm, 100% effaced, station 0, ถุงน้ำแตกแล้ว</b> · ใส่ IUPC พบหดรัดตัว <b>240 MVU</b> · ตรวจซ้ำเวลา 12:30 ยังคง <b>6 cm, station 0</b> FHR category I</p>
+    <p style="margin-top:8px"><b>วินิจฉัยว่าอะไร และจัดการอย่างไร? ถ้าผู้ป่วยรายนี้ปากมดลูกค้างอยู่ที่ 4 cm แทน คำตอบเปลี่ยนไปอย่างไร?</b></p>
+    <details>
+      <summary>เปิดเฉลย</summary>
+      <ul class="clean small">
+        <li>ครบทุกเกณฑ์ <b>Active phase arrest</b> (ACOG): ≥6 cm + ROM + ปากมดลูกไม่เปิดเพิ่ม <b>≥4 ชม.</b> ทั้งที่หดรัดตัวพอ (&gt;200 MVU)</li>
+        <li>การจัดการ: <b>Cesarean delivery</b> เพราะการเร่งคลอดต่อไม่ช่วย และไม่ควรรอนานกว่านี้</li>
+        <li>ถ้าค้างที่ <b>4 cm</b>: ยังอยู่ใน <b>latent phase</b> ตามเกณฑ์ ACOG ซึ่ง<b>ไม่มีนิยาม arrest</b> และไม่ควรผ่าคลอดด้วยเหตุนี้ ให้รอต่อ หรือพิจารณา oxytocin/amniotomy ตามข้อบ่งชี้</li>
+      </ul>
+      <p class="small muted" style="margin-top:6px">คำถามต่อไปที่อาจารย์จะถาม: ถ้าเป็นระยะที่ 2 แทน ครรภ์แรกที่ได้ epidural เบ่งไปแล้ว 3 ชั่วโมง ศีรษะยังไม่เคลื่อนต่ำ มีทางเลือกอะไรบ้างนอกจากผ่าคลอด?</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <p><b>หมายเหตุ</b>: หน้านี้เป็นสื่อการเรียนสำหรับนักศึกษาแพทย์ ไม่ใช่คำแนะนำทางการแพทย์สำหรับบุคคล ภาพเป็นแผนภาพเพื่อการสอน ไม่ใช่สัดส่วนทางกายวิภาคจริง ให้ตรวจสอบ ACOG bulletin และ protocol ห้องคลอดของโรงพยาบาลฉบับปัจจุบันอีกครั้งเมื่อขึ้นวอร์ด</p>
+  <p style="margin-top:10px"><b>แหล่งอ้างอิง</b></p>
+  <ol>
+    <li>Cunningham FG, et al. <i>Williams Obstetrics</i>, 26th ed. Ch. Physiology of Labor, Normal Labor, Vaginal Delivery.</li>
+    <li>Beckmann CRB, et al. <i>Beckmann and Ling's Obstetrics and Gynecology</i>, 9th ed. Ch. Normal Labor and Delivery.</li>
+    <li>ACOG Clinical Practice Guideline No. 8: First and Second Stage Labor Management (2024) · สรุปใน <a href="https://www.aafp.org/afp/2025/0400/practice-guidelines-labor-management" target="_blank" rel="noopener">AAFP 2025</a></li>
+    <li>ACOG Practice Bulletin 198: Prevention and Management of Obstetric Lacerations at Vaginal Delivery · CO 814: Delayed Umbilical Cord Clamping After Birth.</li>
+    <li>WHO. <i>Recommendations: Intrapartum care for a positive childbirth experience</i> (2018) · <a href="https://www.fogsi.org/wp-content/uploads/brochure/who-labour-care-guide.pdf" target="_blank" rel="noopener">WHO Labour Care Guide</a></li>
+    <li>WHO. <i>Recommendations on uterotonics for the prevention of postpartum haemorrhage</i>.</li>
+  </ol>
+</footer>
+</div>
+
+<script>
+(function(){
+  // ---------- Dilatation ----------
+  var dil=document.getElementById('dil'), dv=document.getElementById('dil-v'), dd=document.getElementById('dil-d');
+  var open=document.getElementById('cx-open'), ring=document.getElementById('cx-ring'), lab=document.getElementById('cx-lab');
+  function dilDraw(){
+    var c=+dil.value, r=Math.max(2,c*8);
+    open.setAttribute('r',r); ring.setAttribute('r',r+7); lab.textContent=c+' cm';
+    lab.setAttribute('y', c<2 ? 132 : 104);
+    dv.textContent=c;
+    dd.innerHTML = c===0 ? '<b>ปิด (closed)</b> · ยังไม่เปิด'
+      : c<6 ? '<b>Latent phase</b> (ACOG: &lt;6 cm) · ปากมดลูกเปลี่ยนช้า อาจกินเวลานาน ไม่ใช่เหตุผลในการผ่าคลอด'
+      : c<10 ? '<b>Active phase</b> · ปากมดลูกควรเปิดต่อเนื่อง ถ้าไม่เปิดเพิ่ม ≥4 ชม. (ROM + หดรัดตัวพอ) = active phase arrest'
+      : '<b>Fully dilated 10 cm</b> → เข้าสู่ <b>ระยะที่ 2</b> คลำไม่พบขอบปากมดลูกแล้ว';
+  }
+  dil.addEventListener('input',dilDraw); dilDraw();
+
+  // ---------- Station ----------
+  var sta=document.getElementById('sta'), sv=document.getElementById('sta-v'), sd=document.getElementById('sta-d');
+  var sh=document.getElementById('st-head'), mark=document.getElementById('st-mark');
+  // head leading point at y=136 when station -2 (base drawing); spines y=142; 1 cm = 10 px
+  function staDraw(){
+    var s=+sta.value, lead=142+s*10, dy=lead-136;
+    sh.setAttribute('transform','translate('+(-s*1.6)+' '+dy+')');
+    mark.setAttribute('y1',lead); mark.setAttribute('y2',lead);
+    sv.textContent=(s>0?'+':s<0?'−':'')+Math.abs(s);
+    sd.innerHTML = s<=-3 ? 'ศีรษะยังอยู่สูง <b>floating</b> เหนือ ischial spines ' + Math.abs(s) + ' cm · ระวังสายสะดือย้อยถ้าถุงน้ำแตก'
+      : s<0 ? 'อยู่เหนือ spines ' + Math.abs(s) + ' cm · กำลังเคลื่อนต่ำลง'
+      : s===0 ? '<b>Station 0</b>: ส่วนต่ำสุดอยู่ระดับ ischial spines · ทางคลินิกถือว่า <b>engaged</b> (BPD ผ่าน pelvic inlet แล้ว)'
+      : s<5 ? 'ต่ำกว่า spines ' + s + ' cm · ศีรษะลงมาใน midpelvis–outlet แล้ว'
+      : '<b>+5</b>: ศีรษะมาถึงปากช่องคลอด (<b>crowning</b>) เตรียมทำคลอด';
+  }
+  sta.addEventListener('input',staDraw); staDraw();
+
+  // ---------- Cardinal movements ----------
+  var pel='<use href="#pelvis" x="0" y="0" width="160" height="230"/><path class="axis" d="M86 66 C86 120 84 156 58 196"/>';
+  function inset(a, from){
+    var arc = from===undefined ? '' :
+      '<path class="arw" d="M'+(138+20*Math.sin(from*Math.PI/180))+' '+(24-20*Math.cos(from*Math.PI/180))+' A20 20 0 0 '+(a<from?0:1)+' '+(138+20*Math.sin(a*Math.PI/180))+' '+(24-20*Math.cos(a*Math.PI/180))+'" marker-end="url(#ah)"/>';
+    return '<circle class="inset-c" cx="138" cy="24" r="17"/>'+arc+'<g transform="translate(138 24) rotate('+a+')"><use href="#inset" x="-20" y="-20" width="40" height="40"/></g>';
+  }
+  function fet(x,y,rot){ return '<g transform="translate('+x+' '+y+') rotate('+rot+')"><use href="#fetus" x="-40" y="-90" width="80" height="120"/></g>'; }
+  var M=[
+    {n:1,t:'Engagement',d:'<b>BPD</b> ผ่าน pelvic inlet ศีรษะเข้าเชิงกรานในแนว<b>ขวาง</b> (sagittal suture ตามแนว transverse, เช่น LOT) · ครรภ์แรกอาจ engage ก่อนเจ็บครรภ์',svg:pel+fet(86,92,0)+inset(90)},
+    {n:2,t:'Descent',d:'ศีรษะเคลื่อนต่ำลงตลอดการคลอด จากแรงหดรัดตัว แรงเบ่ง และการยืดตัวของทารก · วัดเป็น <b>station</b>',svg:pel+fet(86,112,0)+inset(90)},
+    {n:3,t:'Flexion',d:'คางชิดอก เมื่อศีรษะเจอแรงต้าน ทำให้ใช้ <b>suboccipitobregmatic diameter</b> (~9.5 cm) ซึ่งเล็กที่สุดผ่านช่องเชิงกราน',svg:pel+fet(86,118,-14)+'<path class="arw" d="M112 108 q10 10 2 22" marker-end="url(#ah)"/>'+inset(90)},
+    {n:4,t:'Internal rotation',d:'ท้ายทอยหมุนจากด้านข้างมาด้าน<b>หน้า</b> (LOT → LOA → <b>OA</b>) ที่ระดับ ischial spines ให้แนวยาวของศีรษะตรงกับแนวยาวของ outlet',svg:pel+fet(84,136,0)+inset(0,90)},
+    {n:5,t:'Extension',d:'ท้ายทอยลอดใต้ symphysis (เป็นจุดหมุน) แล้วศีรษะ<b>เงยหน้า</b> หน้าผาก หน้า คาง กวาดผ่านฝีเย็บ ศีรษะคลอด',svg:pel+fet(56,178,40)+'<path class="arw" d="M26 150 q-8 18 6 30" marker-end="url(#ah)"/>'+inset(0)},
+    {n:6,t:'External rotation',d:'<b>Restitution</b>: ศีรษะหมุนกลับให้ตรงกับไหล่ (OA → LOA) แล้วหมุนต่อเป็น LOT ขณะไหล่หมุนเข้าแนวหน้า–หลัง (anteroposterior)',svg:pel+fet(42,198,55)+inset(90,0)},
+    {n:7,t:'Expulsion',d:'<b>ไหล่หน้า</b>คลอดใต้ symphysis ตามด้วย<b>ไหล่หลัง</b>ผ่านฝีเย็บ แล้วลำตัวคลอดตามออกมา',svg:pel+fet(34,206,78)+'<path class="arw" d="M12 196 q-4 20 14 26" marker-end="url(#ah)"/>'+inset(90)}
+  ];
+  var cm=document.getElementById('cm'), html='';
+  M.forEach(function(m){
+    html+='<div class="card"><svg viewBox="0 0 160 230" role="img" aria-label="'+m.t+'">'+m.svg+'</svg><h3><b>'+m.n+'</b>'+m.t+'</h3><p>'+m.d+'</p></div>';
+  });
+  html+='<div class="card key"><h3 style="color:var(--plum)">จำให้ขึ้นใจ</h3><p style="color:var(--ink);font-size:.95rem;line-height:1.6"><b>"Every Damn Fool In Egypt Eats Eggs"</b><br>Engagement · Descent · Flexion · Internal rotation · Extension · External rotation · Expulsion</p><p>ศีรษะ<b>เข้า</b>เชิงกรานในแนวขวาง แต่<b>ออก</b>จากเชิงกรานในแนวหน้า–หลัง เพราะ inlet กว้างแนวขวาง ส่วน outlet กว้างแนวหน้า–หลัง</p></div>';
+  cm.innerHTML=html;
+
+  // ---------- Positions ----------
+  var P=[['OA',0,'ท้ายทอยหันตรงไปด้านหน้า (ใต้ symphysis) · ท่าที่ดีที่สุดสำหรับการคลอด'],
+    ['LOA',45,'<b>พบบ่อยที่สุด</b> · ท้ายทอยอยู่ด้านหน้าซ้ายของเชิงกรานแม่ หมุนเพียง 45° ก็เป็น OA'],
+    ['LOT',90,'ท้ายทอยอยู่ด้านซ้ายแม่ แนว sagittal suture ขวาง · พบบ่อยตอน engagement'],
+    ['LOP',135,'ท้ายทอยอยู่ด้านหลังซ้าย · ต้องหมุน 135° มาเป็น OA หรือหมุนไปเป็น OP'],
+    ['OP',180,'<b>Occiput posterior</b> · ปวดหลังมาก (back labor) ระยะที่ 2 ยาวขึ้น ฝีเย็บฉีกขาดมากขึ้น · ส่วนใหญ่หมุนเป็น OA ได้เอง'],
+    ['ROP',225,'ท้ายทอยอยู่ด้านหลังขวา · พบได้บ่อยรองลงมา'],
+    ['ROT',270,'ท้ายทอยอยู่ด้านขวาแม่ แนว sagittal suture ขวาง'],
+    ['ROA',315,'ท้ายทอยอยู่ด้านหน้าขวา หมุน 45° เป็น OA']];
+  var rim=document.getElementById('rim'), btns=document.getElementById('pos-btns'), ph=document.getElementById('pos-head'), pd=document.getElementById('pos-d');
+  var rh='';
+  P.forEach(function(p,i){
+    var a=p[1]*Math.PI/180, x=140+104*Math.sin(a), y=140-104*Math.cos(a);
+    var lx=140+86*Math.sin(a), ly=140-86*Math.cos(a)+4;
+    rh+='<circle class="rim-dot" id="rd'+i+'" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="7"/><text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" text-anchor="middle" style="font:600 10px var(--font-mono);fill:var(--muted)">'+p[0]+'</text>';
+    var b=document.createElement('button'); b.type='button'; b.id='pb-'+p[0]; b.textContent=p[0]; b.setAttribute('aria-pressed','false');
+    b.addEventListener('click',function(){ sel(i); }); btns.appendChild(b);
+  });
+  rim.innerHTML=rh;
+  function sel(i){
+    P.forEach(function(p,j){ document.getElementById('rd'+j).setAttribute('class','rim-dot'+(j===i?' on':'')); document.getElementById('pb-'+p[0]).setAttribute('aria-pressed', j===i?'true':'false'); });
+    ph.style.transform='rotate('+P[i][1]+'deg)';
+    pd.innerHTML='<b class="mono" style="color:var(--plum)">'+P[i][0]+'</b> · '+P[i][2];
+  }
+  sel(1);
+
+  // ---------- Delivery steps ----------
+  var base='<path class="mat" d="M0 0 H52 C56 30 58 40 58 46 L58 96 C50 108 38 118 0 124Z"/><rect x="44" y="18" width="16" height="26" rx="7" class="bone"/><text class="svg-t" x="4" y="11">Symphysis</text><text class="svg-t" x="4" y="138">ฝีเย็บ</text>';
+  function hand(x,y,r,flip){ return '<g transform="translate('+x+' '+y+')'+(flip?' scale(-1 1)':'')+' rotate('+r+')"><use href="#hand" x="-30" y="-20" width="60" height="36"/></g>'; }
+  function hd(x,y,r){ return '<circle class="head" cx="'+x+'" cy="'+y+'" r="'+(r||22)+'"/>'; }
+  var S=[
+    {n:1,t:'Crowning + ประคองฝีเย็บ',d:'มือหนึ่งกดท้ายทอยเบาๆ ให้ศีรษะก้มและเคลื่อนช้าๆ อีกมือประคองฝีเย็บ (modified <b>Ritgen</b>) ให้แม่หยุดเบ่งแรง หายใจสั้นๆ ขณะศีรษะผ่าน',
+      svg:base+hd(70,70,24)+hand(78,112,-30)+hand(92,30,25,true)},
+    {n:2,t:'ศีรษะคลอด → คลำ nuchal cord',d:'เช็ดหน้า คลำรอบคอ ถ้ามีสายสะดือพันหลวมๆ ให้คล้องข้ามศีรษะ ถ้าแน่นมาก clamp 2 ตำแหน่งแล้วตัด (หรือใช้ somersault maneuver)',
+      svg:base+'<rect x="58" y="56" width="20" height="26" rx="8" class="head"/>'+hd(98,66)+'<ellipse cx="72" cy="69" rx="5" ry="15" class="cord"/>'},
+    {n:3,t:'Restitution / external rotation',d:'ปล่อยให้ศีรษะหมุนเองไปทางด้านหลังของทารก ไม่ต้องบิด · บอกได้ว่าหลังทารกอยู่ด้านไหน',
+      svg:base+'<rect x="58" y="56" width="20" height="26" rx="8" class="head"/>'+hd(98,66)+'<path class="arw" d="M96 34 A32 32 0 0 1 128 72" marker-end="url(#ah)"/>'},
+    {n:4,t:'ไหล่หน้า: ดึงลงล่าง',d:'จับศีรษะด้านข้าง 2 มือ (biparietal) ดึง<b>ลงล่างเบาๆ</b> ตามแนวแกน จนไหล่หน้าคลอดใต้ symphysis · ห้ามดึงแรงหรือบิดคอ',
+      svg:base+'<rect x="56" y="52" width="24" height="32" rx="10" class="head"/>'+hd(100,72)+hand(106,44,-160)+hand(108,104,160,true)+'<path class="arw" d="M140 50 L140 96" marker-end="url(#ah)"/>'},
+    {n:5,t:'ไหล่หลัง: ยกขึ้นบน',d:'ยกศีรษะ<b>ขึ้นบน</b>ช้าๆ ให้ไหล่หลังคลอดผ่านฝีเย็บ ระวังฝีเย็บฉีก แล้วประคองลำตัวคลอดตามออกมา',
+      svg:base+'<rect x="56" y="48" width="30" height="36" rx="12" class="head"/>'+hd(100,60)+hand(106,32,-160)+hand(108,92,160,true)+'<path class="arw" d="M140 96 L140 50" marker-end="url(#ah)"/>'},
+    {n:6,t:'Skin-to-skin + delayed cord clamping',d:'ทารกแข็งแรง: วางบนอกแม่ เช็ดตัวให้แห้ง รอ <b>≥30–60 วินาที</b> ก่อน clamp สายสะดือ แล้วให้ oxytocin เข้าสู่ระยะที่ 3',
+      svg:'<path class="mat" d="M4 96 C30 70 80 66 120 74 C140 78 156 88 164 100 L164 130 L4 130Z"/><ellipse class="head" cx="78" cy="62" rx="26" ry="15"/><circle class="head" cx="110" cy="56" r="13"/><path class="cord" d="M66 74 C60 96 82 104 96 112"/><rect x="74" y="98" width="10" height="5" rx="1" transform="rotate(30 79 100)" style="fill:var(--ink)"/><circle cx="30" cy="26" r="16" style="fill:var(--surface);stroke:var(--teal)" stroke-width="2"/><path d="M30 16 V26 L38 30" class="arw"/><text class="svg-t" x="30" y="56" text-anchor="middle" style="fill:var(--teal)">≥30–60 s</text>'}
+  ];
+  var st=document.getElementById('steps'), sh2='';
+  S.forEach(function(s){ sh2+='<div class="card step"><svg viewBox="0 0 170 145" role="img" aria-label="'+s.t+'">'+s.svg+'</svg><h3><b>'+s.n+'</b>'+s.t+'</h3><p>'+s.d+'</p></div>'; });
+  st.innerHTML=sh2;
+})();
+</script>
+
+</body>
+</html>

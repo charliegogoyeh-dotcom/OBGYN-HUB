@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>ทำหมันหญิงและฝังยาคุม OSCE</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: "สมุดชมพู" OB/GYN series notebook. */
+:root{
+  --bg:#fbf5f8; --surface:#ffffff; --surface-2:#f6ecf2;
+  --ink:#2a1530; --muted:#6c5873; --line:#ead8e3;
+  --rose:#c0185a; --rose-soft:#fbe1ec; --rose-mid:#f2a9c6;
+  --teal:#0d7471; --teal-soft:#dcf1ee;
+  --amber:#a86400; --amber-soft:#fcefd8;
+  --plum:#6a3d8a; --plum-soft:#efe4f6;
+  --red:#c42626; --red-soft:#fde4e2;
+  --skin:#f4d6c6; --hand:#e9b79c; --fetus:#f8c9ab; --fetus-line:#b9775a; --bone:#e8dccf; --bone-line:#9d8573; --blood:#c42626;
+  --font-display:"Mitr","IBM Plex Sans Thai",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.3;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.45rem,3.2vw,1.9rem)} h3{font-size:1.08rem}
+p{margin:0} b,strong{font-weight:600}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+a{color:var(--rose)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:2px;border-radius:6px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:8px max(16px,env(safe-area-inset-left,0px))}
+.toc-inner{max-width:1040px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.toc a{flex:none;text-decoration:none;color:var(--muted);font-size:.84rem;padding:4px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.toc a:hover{color:var(--rose);border-color:var(--rose-mid)}
+.toc a.hub{color:var(--plum);border-color:var(--plum)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;padding-block:36px 20px}
+.hero h1{font-size:clamp(2rem,5.2vw,3.2rem);font-weight:600}
+.hero h1 span{color:var(--rose)}
+.hero .lede{margin-top:14px;font-size:1.04rem;max-width:58ch}
+.pitch{margin-top:18px;padding:14px 16px;border-radius:var(--r);background:var(--rose-soft);border:1px solid var(--rose-mid)}
+.pitch .eyebrow{display:block;margin-bottom:4px}
+.hero-art{max-width:340px;justify-self:center;width:100%}
+section{padding-block:40px 8px;scroll-margin-top:64px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;max-width:72ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2>*,.g3>*,.g4>*{min-width:0}
+.mt{margin-top:14px}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.callout{border-left:4px solid var(--teal);background:var(--teal-soft);padding:12px 14px;border-radius:0 10px 10px 0;font-size:.94rem}
+.callout.warn{border-color:var(--amber);background:var(--amber-soft)}
+.callout.risk{border-color:var(--red);background:var(--red-soft)}
+.callout.plum{border-color:var(--plum);background:var(--plum-soft)}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;padding:1px 8px;border-radius:999px;border:1px solid currentColor;vertical-align:middle}
+.tag.th{color:var(--rose)} .tag.us{color:var(--teal)} .tag.who{color:var(--plum)} .tag.crit{color:var(--red)}
+ul.clean{margin:0;padding-left:1.1em} ul.clean li{margin:3px 0}
+ol.steps{margin:0;padding-left:1.3em} ol.steps li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;background:var(--surface-2)}
+td.mono{white-space:nowrap}
+.dose{font-family:var(--font-mono);font-size:.84rem;background:var(--surface-2);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.svg-t{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
+.svg-b{font-family:var(--font-body);font-size:12px;fill:var(--ink);font-weight:600}
+.fig{width:100%;display:block;margin-inline:auto}
+.ut{fill:var(--rose-soft);stroke:var(--rose);stroke-width:2}
+.fet{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.head{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.plac{fill:var(--rose-mid);stroke:var(--rose);stroke-width:1.5}
+.mat{fill:var(--skin);stroke:var(--fetus-line);stroke-width:1.3}
+.bone{fill:var(--bone);stroke:var(--bone-line);stroke-width:1.5}
+.bone-l{fill:none;stroke:var(--bone-line);stroke-width:7;stroke-linecap:round}
+.hand-f{fill:var(--hand);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.hand-l{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-linecap:round;opacity:.7}
+.arw{fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.arw-r{fill:none;stroke:var(--red);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.blood{fill:var(--blood)}
+.tool-line{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tool-f{fill:var(--surface-2);stroke:var(--muted);stroke-width:1.6;stroke-linejoin:round}
+.ico{width:40px;height:40px;stroke:var(--rose);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico .f{fill:var(--rose-soft)}
+.step{padding:12px;display:flex;flex-direction:column;gap:6px}
+.step svg{width:100%;max-width:230px;align-self:center}
+.step h3{font-size:.98rem;display:flex;gap:8px;align-items:baseline}
+.step h3 b,.num-b{font-family:var(--font-mono);color:var(--bg);background:var(--plum);border-radius:6px;padding:0 7px;font-size:.8rem}
+.step p{font-size:.86rem;line-height:1.55;color:var(--muted)}
+.sim{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:18px;align-items:center}
+.sim svg{width:100%;max-width:260px;justify-self:center}
+.sim input[type=range]{width:100%;accent-color:var(--rose)}
+.read{font-family:var(--font-display);font-size:1.9rem;color:var(--rose);line-height:1.1}
+.read small{font-size:.95rem;color:var(--muted)}
+.desc{background:var(--surface-2);border-radius:12px;padding:10px 14px;min-height:76px;font-size:.92rem}
+.ticks{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:6px}
+.btn{font:600 .86rem var(--font-body);padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--bg)}
+.pill{display:inline-block;font:600 .74rem var(--font-mono);padding:1px 9px;border-radius:999px}
+.p-ok{background:var(--teal-soft);color:var(--teal)} .p-mid{background:var(--amber-soft);color:var(--amber)} .p-hi{background:var(--red-soft);color:var(--red)}
+.pimp{background:var(--plum-soft);border:1.5px solid var(--plum);border-radius:var(--r);padding:20px}
+.pimp h2{color:var(--plum)}
+details{margin-top:14px;background:var(--surface);border-radius:12px;border:1px solid var(--line);padding:10px 14px}
+summary{cursor:pointer;font-weight:600;color:var(--plum)}
+details[open] summary{margin-bottom:8px}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+footer ol{padding-left:1.2em}
+/* OSCE checklist */
+.osce-bar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 46px);z-index:4;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);margin-bottom:14px}
+.osce-bar .meter{flex:1 1 160px;height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.osce-bar .meter i{display:block;height:100%;width:0;background:var(--teal);transition:width .2s ease}
+.osce-bar .score{font-family:var(--font-mono);font-weight:600}
+.osce-sec{margin-bottom:16px}
+.osce-sec h3{font-size:1.02rem;margin-bottom:6px;display:flex;gap:8px;align-items:baseline}
+.osce-item{display:grid;grid-template-columns:auto auto 1fr;gap:10px;align-items:start;padding:8px 10px;border-radius:10px;border:1px solid transparent;cursor:pointer}
+.osce-item:hover{background:var(--surface-2)}
+.osce-item input{margin-top:5px;width:18px;height:18px;accent-color:var(--teal)}
+.osce-item .k{font:600 .68rem var(--font-mono);padding:2px 7px;border-radius:6px;margin-top:3px;white-space:nowrap}
+.k.do{background:var(--teal-soft);color:var(--teal)} .k.say{background:var(--plum-soft);color:var(--plum)}
+.osce-item.crit{border-color:var(--red-soft)}
+.osce-item.crit .t::after{content:" ⚠ critical";font:600 .68rem var(--font-mono);color:var(--red)}
+.osce-item.done .t{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--teal)}
+.osce-item .t{font-size:.94rem;line-height:1.55}
+.osce-item .why{display:block;font-size:.82rem;color:var(--muted);text-decoration:none}
+@media (max-width:860px){ .g4{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:620px){ .hero{grid-template-columns:1fr} .hero-art{max-width:240px;order:-1} .g2,.g3,.sim{grid-template-columns:1fr} }
+@media (max-width:440px){ .g4{grid-template-columns:1fr} }
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="hand" viewBox="-30 -20 60 36" overflow="visible"><path class="hand-f" d="M-27 -1 C-27 -10 -19 -13 -9 -12 L19 -10 C27 -9 28 -3 27 0 C28 4 26 10 19 10 L-9 12 C-19 13 -27 8 -27 -1Z"/><path class="hand-f" d="M-8 -11 C-6 -19 6 -21 11 -15 C12 -13 9 -11 4 -11Z"/><path class="hand-l" d="M7 -5 L24 -4 M7 0 L25 0.5 M7 5 L23 5.5"/></symbol>
+<marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--teal)"/></marker>
+<marker id="ahr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--red)"/></marker>
+</defs></svg>
+
+<nav class="toc" aria-label="สารบัญ"><div class="toc-inner"><a class="hub" href="index.html">← คลังเรียน</a><a href="#tr">Tubal resection</a><a href="#pomeroy">Pomeroy</a><a href="#implant">ยาฝังคุม</a><a href="#site">ตำแหน่งฝัง</a><a href="#osce">OSCE checklist</a><a href="#pimp">คำถามผู้คุมสอบ</a></div></nav>
+<div class="wrap">
+<header class="hero">
+  <div>
+    <span class="eyebrow">OPOB 2 · Female sterilization &amp; contraceptive implant</span>
+    <h1>ทำหมันหญิง<br>และ<span>ฝังยาคุม</span></h1>
+    <p class="lede">สองหัตถการคุมกำเนิดที่ได้ผลสูงที่สุด (&lt;1%) หัวใจของการสอบคือ <b>consent ที่ครบถ้วน</b> และ<b>ยืนยันว่าตัดถูกโครงสร้าง/ฝังถูกชั้น</b> อ้างอิง <b>ACOG</b>, <b>MHRA 2020 (Nexplanon)</b>, <b>Williams Gynecology</b></p>
+    <div class="pitch"><span class="eyebrow">ใจความสำคัญ</span>TR: <b>ไล่ท่อนำไข่ไปจนเห็น fimbria</b> ก่อนผูก เพื่อไม่ให้ผูกผิดเป็น round ligament · Implant: ฝัง<b>ใต้ผิวหนัง (subdermal)</b> ด้านในต้นแขนข้างที่ไม่ถนัด และ<b>คลำให้เจอทันที</b>หลังฝัง</div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 300 240" role="img" aria-label="ท่อนำไข่ที่ผูกแบบ Pomeroy และยาฝังใต้ผิวหนัง">
+    <path d="M30 120 C80 120 90 120 120 116" fill="none" style="stroke:var(--rose)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M120 116 C130 60 160 60 170 116" fill="none" style="stroke:var(--rose)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M170 116 C200 120 220 120 250 110 C262 104 272 100 280 92" fill="none" style="stroke:var(--rose)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M278 88 l12 -10 M280 94 l14 -2 M278 100 l12 8" style="stroke:var(--rose)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="120" y1="108" x2="170" y2="108" style="stroke:var(--amber)" stroke-width="5"/>
+    <path d="M128 96 L162 96" style="stroke:var(--red)" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="96" y="52" class="svg-b" style="fill:var(--red)">ตัดเหนือปมผูก</text>
+    <text x="250" y="78" class="svg-t">Fimbria</text>
+    <rect x="70" y="190" width="160" height="12" rx="6" style="fill:var(--plum)"/>
+    <path d="M40 180 H260" style="stroke:var(--fetus-line)" stroke-width="2"/>
+    <text x="70" y="226" class="svg-t">Implant ใต้ผิวหนัง</text>
+  </svg>
+</header>
+
+<section id="tr">
+  <div class="sec-head"><span class="eyebrow">Postpartum tubal sterilization</span><h2>Tubal resection (TR) หลังคลอด</h2></div>
+  <div class="grid g3">
+    <div class="card"><h3>Counseling &amp; consent</h3><ul class="clean small"><li><b>ถาวร</b> ต้องพิจารณาวิธีชั่วคราวที่ได้ผลเท่ากัน (LARC)</li><li>ล้มเหลวได้ประมาณ 0.5% ต่อปีแรก (ขึ้นกับวิธี) · ถ้าตั้งครรภ์เสี่ยง <b>ectopic</b></li><li>เสียใจภายหลังสูงในผู้ที่อายุน้อย (&lt;30 ปี)</li><li>ไม่ป้องกัน STI</li></ul></div>
+    <div class="card"><h3>เวลาและวิธี</h3><ul class="clean small"><li>หลังคลอดทางช่องคลอด: <b>infraumbilical minilaparotomy</b> ภายใน 24–48 ชม. ก่อนมดลูกยุบ</li><li>ขณะผ่าคลอด: ทำได้ทันที</li><li>วิธี: <b>modified Pomeroy</b>, Parkland หรือ <b>salpingectomy</b> (ลดมะเร็งรังไข่ชนิด serous ด้วย)</li></ul></div>
+    <div class="card"><h3>ข้อควรระวัง</h3><ul class="clean small"><li>ทารกต้องแข็งแรงก่อน (บางรายรอดูอาการทารก)</li><li>แม่ไม่มีไข้ ไม่ตกเลือด ไม่มี preeclampsia รุนแรงที่ยังไม่คงที่</li><li>ส่ง<b>ชิ้นเนื้อตรวจทางพยาธิ</b>เพื่อยืนยันว่าเป็นท่อนำไข่</li></ul></div>
+  </div>
+</section>
+
+<section id="pomeroy">
+  <div class="sec-head"><span class="eyebrow">Technique</span><h2>Modified Pomeroy ทีละขั้น</h2></div>
+  <div class="grid g4">
+    <div class="card step"><svg viewBox="0 0 200 120" aria-hidden="true"><path d="M10 70 C60 70 120 70 160 60 C172 56 182 50 190 42" fill="none" style="stroke:var(--rose)" stroke-width="8" stroke-linecap="round"/><path d="M188 38 l8 -8 M190 44 l10 0 M188 50 l8 6" style="stroke:var(--rose)" stroke-width="2.5"/><path d="M20 96 C60 96 100 96 140 92" fill="none" style="stroke:var(--teal)" stroke-width="6" stroke-linecap="round" opacity=".6"/><text x="120" y="112" class="svg-t" style="fill:var(--teal)">Round ligament</text><text x="150" y="30" class="svg-b" style="fill:var(--rose)">Fimbria ✓</text></svg>
+      <h3><b>1</b>ระบุท่อนำไข่</h3><p>จับด้วย Babcock แล้ว<b>ไล่ไปจนเห็น fimbria</b> · round ligament อยู่ด้านหน้าและไม่มี fimbria</p></div>
+    <div class="card step"><svg viewBox="0 0 200 120" aria-hidden="true"><path d="M10 90 C60 90 80 90 90 86 C96 30 124 30 130 86 C150 90 180 90 194 88" fill="none" style="stroke:var(--rose)" stroke-width="8" stroke-linecap="round"/><text x="70" y="22" class="svg-t">ยก knuckle ช่วง isthmus</text></svg>
+      <h3><b>2</b>ยก knuckle</h3><p>ยกส่วน <b>mid-isthmus</b> ขึ้นเป็นห่วง (บริเวณที่ไม่มีหลอดเลือดมาก)</p></div>
+    <div class="card step"><svg viewBox="0 0 200 120" aria-hidden="true"><path d="M10 90 C60 90 80 90 90 86 C96 30 124 30 130 86 C150 90 180 90 194 88" fill="none" style="stroke:var(--rose)" stroke-width="8" stroke-linecap="round"/><line x1="84" y1="80" x2="136" y2="80" style="stroke:var(--amber)" stroke-width="5"/><text x="60" y="112" class="svg-t" style="fill:var(--amber)">Plain catgut (ละลายเร็ว)</text></svg>
+      <h3><b>3</b>ผูกโคน</h3><p>ผูกโคนห่วงด้วย <b>plain catgut</b> ซึ่งละลายเร็ว ทำให้ปลายท่อแยกห่างกัน</p></div>
+    <div class="card step"><svg viewBox="0 0 200 120" aria-hidden="true"><path d="M10 90 C60 90 80 90 92 86 M128 86 C150 90 180 90 194 88" fill="none" style="stroke:var(--rose)" stroke-width="8" stroke-linecap="round"/><line x1="86" y1="80" x2="134" y2="80" style="stroke:var(--amber)" stroke-width="5"/><path d="M94 64 C100 44 120 44 126 64" fill="none" style="stroke:var(--muted)" stroke-width="6" stroke-dasharray="4 3"/><text x="70" y="30" class="svg-t">ตัดส่วนบน → ส่งพยาธิ</text></svg>
+      <h3><b>4</b>ตัดและตรวจเลือด</h3><p>ตัดห่วงเหนือปมผูก ดูว่าไม่มีเลือดออก ทำอีกข้าง · ส่งชิ้นเนื้อทั้งสองข้าง</p></div>
+  </div>
+</section>
+
+<section id="implant">
+  <div class="sec-head"><span class="eyebrow">Contraceptive implant</span><h2>ยาฝังคุมกำเนิด</h2></div>
+  <div class="grid g2">
+    <div class="card"><h3>ชนิดที่ใช้ในไทย</h3><table class="mt" style="font-size:.88rem"><tbody>
+      <tr><td><b>Implanon NXT / Nexplanon</b></td><td>1 แท่ง · etonogestrel 68 mg · <b>3 ปี</b> · มี applicator ในตัว</td></tr>
+      <tr><td><b>Jadelle</b></td><td>2 แท่ง · levonorgestrel 75 mg/แท่ง · <b>5 ปี</b> · ใช้ trocar ฝังเป็นรูปตัว V</td></tr></tbody></table>
+      <p class="small muted mt">ฝังได้ทุกเวลาถ้ามั่นใจว่าไม่ตั้งครรภ์ · ภายใน 5 วันแรกของรอบไม่ต้อง backup นอกนั้นใช้ backup 7 วัน · ผลข้างเคียงหลักคือ<b>เลือดออกไม่สม่ำเสมอ</b> ต้องบอกก่อนฝัง</p></div>
+    <div class="card"><h3>ข้อห้ามที่ต้องถาม (US MEC category 3–4)</h3><ul class="clean small mt"><li>มะเร็งเต้านมปัจจุบัน (4) · เคยเป็นมาเกิน 5 ปี (3)</li><li>เลือดออกทางช่องคลอดที่ยังไม่ทราบสาเหตุ (3)</li><li>Severe decompensated cirrhosis, liver tumor บางชนิด (3)</li><li>ตั้งครรภ์ (ไม่ใช่ข้อห้ามทางการแพทย์แต่ไม่จำเป็น)</li></ul></div>
+  </div>
+</section>
+
+<section id="site">
+  <div class="sec-head"><span class="eyebrow">Insertion site · MHRA 2020</span><h2>ตำแหน่งฝังที่ถูกต้อง</h2><p class="muted">ปรับตำแหน่งใหม่ให้อยู่เหนือกล้ามเนื้อ triceps เพื่อลดการบาดเจ็บของเส้นประสาทและหลอดเลือด และลดการเคลื่อนที่ของแท่งยา</p></div>
+  <div class="card scroll-x">
+    <svg viewBox="0 0 640 220" style="min-width:560px;width:100%" role="img" aria-label="ตำแหน่งฝังยาที่ต้นแขนด้านใน">
+      <path d="M20 70 C200 54 420 56 600 80 L600 160 C420 178 200 176 20 164Z" class="mat"/>
+      <circle cx="580" cy="120" r="10" class="bone"/><text x="540" y="200" class="svg-t">Medial epicondyle</text>
+      <path d="M40 118 C220 110 420 110 600 118" fill="none" style="stroke:var(--fetus-line)" stroke-width="2" stroke-dasharray="6 4"/>
+      <text x="40" y="106" class="svg-t">ร่องระหว่าง biceps และ triceps (sulcus)</text>
+      <text x="40" y="60" class="svg-b" style="fill:var(--teal)">Biceps (ด้านหน้า)</text><text x="40" y="186" class="svg-b" style="fill:var(--plum)">Triceps (ด้านหลัง)</text>
+      <rect x="340" y="146" width="120" height="8" rx="4" style="fill:var(--plum)"/>
+      <line x1="460" y1="196" x2="580" y2="196" style="stroke:var(--rose)" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)"/><text x="470" y="212" class="svg-b" style="fill:var(--rose)">8–10 cm</text>
+      <line x1="400" y1="118" x2="400" y2="146" style="stroke:var(--rose)" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)"/><text x="406" y="136" class="svg-b" style="fill:var(--rose)">3–5 cm</text>
+      <text x="300" y="20" text-anchor="middle" class="svg-t">ต้นแขนข้างที่ไม่ถนัด ด้านใน · งอศอก มือวางใต้ศีรษะ</text>
+    </svg>
+  </div>
+</section>
+
+<section id="osce">
+  <div class="sec-head"><span class="eyebrow">OSCE checklist</span><h2>ซ้อมทีละข้อ</h2><p class="muted">แบ่งเป็น 2 สถานี · ความคืบหน้าเก็บไว้ในเบราว์เซอร์นี้</p></div>
+  <div id="osce-root"></div>
+</section>
+
+<section id="pimp">
+  <div class="pimp"><span class="eyebrow" style="color:var(--plum)">คำถามที่ผู้คุมสอบชอบถาม</span><h2 style="margin:6px 0 10px">ลองตอบก่อนเปิดเฉลย</h2>
+  <p><b>ทำไมการผูกแบบ Pomeroy จึงใช้ plain catgut แทนไหมที่ละลายช้า?</b> และหลังฝังยา คลำแท่งยาไม่ได้ ต้องทำอย่างไร?</p>
+  <details><summary>เปิดเฉลย</summary><ul class="clean small">
+    <li>Plain catgut ละลายเร็ว ปลายท่อทั้งสองที่ถูกตัดจะ<b>แยกห่างกันและเกิด fibrosis</b> ลดโอกาสต่อกันใหม่ (recanalization) · ไหมละลายช้าจะยึดปลายท่อไว้ใกล้กัน</li>
+    <li>คลำแท่งยาไม่ได้: ถือว่า<b>ยังไม่ได้คุมกำเนิด</b> ให้ใช้ backup · ยืนยันตำแหน่งด้วย U/S (หรือ X-ray) · ถ้าไม่พบในแขน ตรวจภาพทรวงอก · ถอดออกเมื่อหาเจอ</li>
+  </ul></details></div>
+</section>
+
+<footer>
+  <p><b>หมายเหตุ</b>: checklist รวบรวมจากหลักการมาตรฐานเพื่อการซ้อม ให้ใช้ร่วมกับแบบประเมินของภาควิชาและคู่มือผลิตภัณฑ์</p>
+  <p style="margin-top:10px"><b>แหล่งอ้างอิง</b></p>
+  <ol><li>ACOG Practice Bulletin 208: Benefits and Risks of Sterilization.</li><li><a href="https://www.gov.uk/drug-safety-update/nexplanon-etonogestrel-contraceptive-implants-new-insertion-site-to-reduce-rare-risk-of-neurovascular-injury-and-implant-migration" target="_blank" rel="noopener">MHRA Drug Safety Update: Nexplanon new insertion site (2020)</a></li><li>CDC US MEC / US SPR 2024.</li><li>Hoffman BL, et al. <i>Williams Gynecology</i>, 4th ed. Ch. Contraception and Sterilization.</li></ol>
+</footer>
+
+
+</div>
+<script>
+
+window.OSCE={id:'tr-implant',sections:[
+ {name:'สถานี A · Postpartum TR: ก่อนผ่าตัด',items:[
+  {t:'แนะนำตัว ยืนยันตัวผู้ป่วย อธิบายหัตถการ',say:1},
+  {t:'Counseling: เป็นวิธี<b>ถาวร</b> · มีทางเลือก LARC ที่ได้ผลเท่ากัน · โอกาสล้มเหลวและ ectopic · ไม่ป้องกัน STI',say:1,crit:1},
+  {t:'ลงนาม<b>ใบยินยอม</b> (และตามระเบียบโรงพยาบาล)',crit:1},
+  {t:'ตรวจความพร้อม: แม่ไม่มีไข้/ตกเลือด · ทารกแข็งแรง · งดน้ำงดอาหาร · ให้ปัสสาวะก่อน'},
+  {t:'Time-out ก่อนผ่าตัด',say:1}]},
+ {name:'สถานี A · ระหว่างผ่าตัด',items:[
+  {t:'ลงแผล infraumbilical เล็กๆ เข้าช่องท้อง'},
+  {t:'จับท่อด้วย Babcock แล้ว<b>ไล่จนเห็น fimbria</b> เพื่อยืนยันว่าเป็นท่อนำไข่',crit:1,why:'ป้องกันผูกผิดเป็น round ligament'},
+  {t:'ยก knuckle ส่วน mid-isthmus ผูกโคนด้วย plain catgut'},
+  {t:'ตัดห่วงเหนือปมผูก ตรวจว่าไม่มีเลือดออก'},
+  {t:'ทำอีกข้างแบบเดียวกัน',crit:1},
+  {t:'นับผ้าซับเลือดและเครื่องมือก่อนปิดแผล',crit:1},
+  {t:'ส่งชิ้นเนื้อทั้งสองข้าง<b>ตรวจทางพยาธิ</b>และบันทึก'}]},
+ {name:'สถานี B · Implant insertion',items:[
+  {t:'ซักประวัติข้อห้าม · ยืนยันว่าไม่ตั้งครรภ์ · อธิบายผลข้างเคียง (เลือดออกไม่สม่ำเสมอ) · ระยะเวลาใช้',say:1,crit:1},
+  {t:'ผู้ป่วยนอนหงาย แขนข้างที่ไม่ถนัด งอศอก มือวางใต้ศีรษะ'},
+  {t:'หาตำแหน่ง: 8–10 cm จาก medial epicondyle และ 3–5 cm ด้านหลังของร่อง biceps–triceps · ทำเครื่องหมาย',crit:1},
+  {t:'ทำความสะอาดด้วยน้ำยาฆ่าเชื้อ ใส่ถุงมือ sterile'},
+  {t:'ฉีดยาชาเฉพาะที่ (lidocaine 1–2 mL) ตามแนวที่จะฝัง'},
+  {t:'แทงเข็มทำมุมประมาณ 30° แล้วลดเข็มให้ขนานผิว ยกผิวหนังให้เป็นกระโจม (tenting) สอดเข็มใต้ผิวหนังจนสุด',crit:1,why:'ต้องอยู่ชั้น subdermal ไม่ลึกเข้ากล้ามเนื้อ'},
+  {t:'ปลดแท่งยาตามวิธีของอุปกรณ์แล้วถอนเข็ม'},
+  {t:'<b>คลำยืนยันแท่งยา</b>ทันที และให้ผู้ป่วยคลำด้วย',crit:1},
+  {t:'ปิดแผลด้วย pressure bandage 24 ชม. · บอกวันครบกำหนดถอด · ใช้ backup ถ้าจำเป็น',say:1}]}
+]};
+
+(function(){
+  var root=document.getElementById('osce-root'); if(!root||!window.OSCE) return;
+  var KEY='osce-'+window.OSCE.id, st={};
+  try{ st=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ st={}; }
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(st)); }catch(e){} }
+  var total=0, html='<div class="osce-bar"><span class="score" id="osce-score"></span><div class="meter"><i id="osce-m"></i></div><span class="small muted" id="osce-crit"></span><button class="btn" type="button" id="osce-reset">เริ่มใหม่</button></div>';
+  window.OSCE.sections.forEach(function(s,si){
+    html+='<div class="osce-sec card"><h3><span class="num-b">'+(si+1)+'</span>'+s.name+'</h3>';
+    s.items.forEach(function(it,ii){
+      var id='o'+si+'-'+ii; total++;
+      html+='<label class="osce-item'+(it.crit?' crit':'')+(st[id]?' done':'')+'" data-crit="'+(it.crit?1:0)+'"><input type="checkbox" data-id="'+id+'"'+(st[id]?' checked':'')+'><span class="k '+(it.say?'say':'do')+'">'+(it.say?'พูด':'ทำ')+'</span><span class="t">'+it.t+(it.why?'<span class="why">'+it.why+'</span>':'')+'</span></label>';
+    });
+    html+='</div>';
+  });
+  root.innerHTML=html;
+  function upd(){
+    var n=0, cm=0, ct=0;
+    root.querySelectorAll('.osce-item').forEach(function(l){ var c=l.querySelector('input').checked; if(c) n++; if(l.dataset.crit==='1'){ ct++; if(!c) cm++; } l.classList.toggle('done',c); });
+    document.getElementById('osce-score').textContent=n+'/'+total;
+    document.getElementById('osce-m').style.width=(total?n/total*100:0)+'%';
+    document.getElementById('osce-crit').textContent= ct ? (cm? 'critical ที่ยังไม่ทำ '+cm+' ข้อ' : 'critical ครบแล้ว ✓') : '';
+  }
+  root.addEventListener('change',function(e){ var i=e.target; if(!i.dataset.id) return; if(i.checked) st[i.dataset.id]=1; else delete st[i.dataset.id]; save(); upd(); });
+  document.getElementById('osce-reset').addEventListener('click',function(){ st={}; save(); root.querySelectorAll('input[data-id]').forEach(function(i){i.checked=false;}); upd(); });
+  upd();
+})();
+
+</script>
+
+</body>
+</html>

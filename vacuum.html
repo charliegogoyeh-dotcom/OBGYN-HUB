@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Vacuum extraction OSCE</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: "สมุดชมพู" OB/GYN series notebook. */
+:root{
+  --bg:#fbf5f8; --surface:#ffffff; --surface-2:#f6ecf2;
+  --ink:#2a1530; --muted:#6c5873; --line:#ead8e3;
+  --rose:#c0185a; --rose-soft:#fbe1ec; --rose-mid:#f2a9c6;
+  --teal:#0d7471; --teal-soft:#dcf1ee;
+  --amber:#a86400; --amber-soft:#fcefd8;
+  --plum:#6a3d8a; --plum-soft:#efe4f6;
+  --red:#c42626; --red-soft:#fde4e2;
+  --skin:#f4d6c6; --hand:#e9b79c; --fetus:#f8c9ab; --fetus-line:#b9775a; --bone:#e8dccf; --bone-line:#9d8573; --blood:#c42626;
+  --font-display:"Mitr","IBM Plex Sans Thai",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.3;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.45rem,3.2vw,1.9rem)} h3{font-size:1.08rem}
+p{margin:0} b,strong{font-weight:600}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+a{color:var(--rose)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:2px;border-radius:6px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:8px max(16px,env(safe-area-inset-left,0px))}
+.toc-inner{max-width:1040px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.toc a{flex:none;text-decoration:none;color:var(--muted);font-size:.84rem;padding:4px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.toc a:hover{color:var(--rose);border-color:var(--rose-mid)}
+.toc a.hub{color:var(--plum);border-color:var(--plum)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;padding-block:36px 20px}
+.hero h1{font-size:clamp(2rem,5.2vw,3.2rem);font-weight:600}
+.hero h1 span{color:var(--rose)}
+.hero .lede{margin-top:14px;font-size:1.04rem;max-width:58ch}
+.pitch{margin-top:18px;padding:14px 16px;border-radius:var(--r);background:var(--rose-soft);border:1px solid var(--rose-mid)}
+.pitch .eyebrow{display:block;margin-bottom:4px}
+.hero-art{max-width:340px;justify-self:center;width:100%}
+section{padding-block:40px 8px;scroll-margin-top:64px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;max-width:72ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2>*,.g3>*,.g4>*{min-width:0}
+.mt{margin-top:14px}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.callout{border-left:4px solid var(--teal);background:var(--teal-soft);padding:12px 14px;border-radius:0 10px 10px 0;font-size:.94rem}
+.callout.warn{border-color:var(--amber);background:var(--amber-soft)}
+.callout.risk{border-color:var(--red);background:var(--red-soft)}
+.callout.plum{border-color:var(--plum);background:var(--plum-soft)}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;padding:1px 8px;border-radius:999px;border:1px solid currentColor;vertical-align:middle}
+.tag.th{color:var(--rose)} .tag.us{color:var(--teal)} .tag.who{color:var(--plum)} .tag.crit{color:var(--red)}
+ul.clean{margin:0;padding-left:1.1em} ul.clean li{margin:3px 0}
+ol.steps{margin:0;padding-left:1.3em} ol.steps li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;background:var(--surface-2)}
+td.mono{white-space:nowrap}
+.dose{font-family:var(--font-mono);font-size:.84rem;background:var(--surface-2);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.svg-t{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
+.svg-b{font-family:var(--font-body);font-size:12px;fill:var(--ink);font-weight:600}
+.fig{width:100%;display:block;margin-inline:auto}
+.ut{fill:var(--rose-soft);stroke:var(--rose);stroke-width:2}
+.fet{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.head{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.plac{fill:var(--rose-mid);stroke:var(--rose);stroke-width:1.5}
+.mat{fill:var(--skin);stroke:var(--fetus-line);stroke-width:1.3}
+.bone{fill:var(--bone);stroke:var(--bone-line);stroke-width:1.5}
+.bone-l{fill:none;stroke:var(--bone-line);stroke-width:7;stroke-linecap:round}
+.hand-f{fill:var(--hand);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.hand-l{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-linecap:round;opacity:.7}
+.arw{fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.arw-r{fill:none;stroke:var(--red);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.blood{fill:var(--blood)}
+.tool-line{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tool-f{fill:var(--surface-2);stroke:var(--muted);stroke-width:1.6;stroke-linejoin:round}
+.ico{width:40px;height:40px;stroke:var(--rose);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico .f{fill:var(--rose-soft)}
+.step{padding:12px;display:flex;flex-direction:column;gap:6px}
+.step svg{width:100%;max-width:230px;align-self:center}
+.step h3{font-size:.98rem;display:flex;gap:8px;align-items:baseline}
+.step h3 b,.num-b{font-family:var(--font-mono);color:var(--bg);background:var(--plum);border-radius:6px;padding:0 7px;font-size:.8rem}
+.step p{font-size:.86rem;line-height:1.55;color:var(--muted)}
+.sim{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:18px;align-items:center}
+.sim svg{width:100%;max-width:260px;justify-self:center}
+.sim input[type=range]{width:100%;accent-color:var(--rose)}
+.read{font-family:var(--font-display);font-size:1.9rem;color:var(--rose);line-height:1.1}
+.read small{font-size:.95rem;color:var(--muted)}
+.desc{background:var(--surface-2);border-radius:12px;padding:10px 14px;min-height:76px;font-size:.92rem}
+.ticks{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:6px}
+.btn{font:600 .86rem var(--font-body);padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--bg)}
+.pill{display:inline-block;font:600 .74rem var(--font-mono);padding:1px 9px;border-radius:999px}
+.p-ok{background:var(--teal-soft);color:var(--teal)} .p-mid{background:var(--amber-soft);color:var(--amber)} .p-hi{background:var(--red-soft);color:var(--red)}
+.pimp{background:var(--plum-soft);border:1.5px solid var(--plum);border-radius:var(--r);padding:20px}
+.pimp h2{color:var(--plum)}
+details{margin-top:14px;background:var(--surface);border-radius:12px;border:1px solid var(--line);padding:10px 14px}
+summary{cursor:pointer;font-weight:600;color:var(--plum)}
+details[open] summary{margin-bottom:8px}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+footer ol{padding-left:1.2em}
+/* OSCE checklist */
+.osce-bar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 46px);z-index:4;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);margin-bottom:14px}
+.osce-bar .meter{flex:1 1 160px;height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.osce-bar .meter i{display:block;height:100%;width:0;background:var(--teal);transition:width .2s ease}
+.osce-bar .score{font-family:var(--font-mono);font-weight:600}
+.osce-sec{margin-bottom:16px}
+.osce-sec h3{font-size:1.02rem;margin-bottom:6px;display:flex;gap:8px;align-items:baseline}
+.osce-item{display:grid;grid-template-columns:auto auto 1fr;gap:10px;align-items:start;padding:8px 10px;border-radius:10px;border:1px solid transparent;cursor:pointer}
+.osce-item:hover{background:var(--surface-2)}
+.osce-item input{margin-top:5px;width:18px;height:18px;accent-color:var(--teal)}
+.osce-item .k{font:600 .68rem var(--font-mono);padding:2px 7px;border-radius:6px;margin-top:3px;white-space:nowrap}
+.k.do{background:var(--teal-soft);color:var(--teal)} .k.say{background:var(--plum-soft);color:var(--plum)}
+.osce-item.crit{border-color:var(--red-soft)}
+.osce-item.crit .t::after{content:" ⚠ critical";font:600 .68rem var(--font-mono);color:var(--red)}
+.osce-item.done .t{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--teal)}
+.osce-item .t{font-size:.94rem;line-height:1.55}
+.osce-item .why{display:block;font-size:.82rem;color:var(--muted);text-decoration:none}
+@media (max-width:860px){ .g4{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:620px){ .hero{grid-template-columns:1fr} .hero-art{max-width:240px;order:-1} .g2,.g3,.sim{grid-template-columns:1fr} }
+@media (max-width:440px){ .g4{grid-template-columns:1fr} }
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="hand" viewBox="-30 -20 60 36" overflow="visible"><path class="hand-f" d="M-27 -1 C-27 -10 -19 -13 -9 -12 L19 -10 C27 -9 28 -3 27 0 C28 4 26 10 19 10 L-9 12 C-19 13 -27 8 -27 -1Z"/><path class="hand-f" d="M-8 -11 C-6 -19 6 -21 11 -15 C12 -13 9 -11 4 -11Z"/><path class="hand-l" d="M7 -5 L24 -4 M7 0 L25 0.5 M7 5 L23 5.5"/></symbol>
+<marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--teal)"/></marker>
+<marker id="ahr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--red)"/></marker>
+</defs></svg>
+
+<nav class="toc" aria-label="สารบัญ"><div class="toc-inner"><a class="hub" href="index.html">← คลังเรียน</a><a href="#pre">เงื่อนไขก่อนทำ</a><a href="#abc">ABCDEFGHIJ</a><a href="#flex">Flexion point</a><a href="#traction">ทิศทางดึง</a><a href="#stop">เมื่อไรต้องหยุด</a><a href="#injury">ภาวะแทรกซ้อน</a><a href="#osce">OSCE checklist</a><a href="#pimp">คำถามผู้คุมสอบ</a></div></nav>
+<div class="wrap">
+<header class="hero">
+  <div>
+    <span class="eyebrow">OPOB 10 · Operative vaginal delivery</span>
+    <h1>เครื่องดูดสุญญากาศ<br><span>Vacuum extraction</span></h1>
+    <p class="lede">หนึ่งใน signal functions ของ Basic EmONC ความปลอดภัยขึ้นกับการเลือกผู้ป่วยให้ถูกและ<b>วางถ้วยตรง flexion point</b> อ้างอิง <b>ACOG PB 219</b>, <b>RCOG Green-top 26</b>, <b>ALSO</b> และ <b>Williams Obstetrics</b></p>
+    <div class="pitch"><span class="eyebrow">ใจความสำคัญ</span>ครบเงื่อนไขก่อนทุกครั้ง (ปากมดลูกเปิดหมด ถุงน้ำแตก ศีรษะ engaged รู้ position) · ถ้วยวางบน <b>flexion point</b> · ดึงพร้อมการหดรัดตัว<b>ตามแนวโค้งของเชิงกราน</b> · <b>รู้จักหยุด</b></div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 300 240" role="img" aria-label="ถ้วยสุญญากาศบนศีรษะทารก">
+    <circle cx="150" cy="130" r="80" class="head"/>
+    <path d="M150 54 L150 206" style="stroke:var(--ink)" stroke-width="1.5"/>
+    <path d="M150 62 L142 76 L158 76Z" style="fill:var(--plum)"/>
+    <path d="M150 182 L160 192 L150 202 L140 192Z" style="fill:var(--surface);stroke:var(--ink)"/>
+    <circle cx="150" cy="104" r="28" style="fill:var(--teal-soft);stroke:var(--teal)" stroke-width="3" opacity=".9"/>
+    <circle cx="150" cy="104" r="4" style="fill:var(--red)"/>
+    <line x1="150" y1="104" x2="150" y2="14" style="stroke:var(--teal)" stroke-width="4"/>
+    <text x="160" y="110" class="svg-b" style="fill:var(--red)">Flexion point</text>
+    <text x="166" y="72" class="svg-t">Posterior fontanelle</text><text x="166" y="200" class="svg-t">Anterior fontanelle</text>
+  </svg>
+</header>
+
+<section id="pre">
+  <div class="sec-head"><span class="eyebrow">Prerequisites · ACOG PB 219</span><h2>เงื่อนไขที่ต้องครบ</h2></div>
+  <div class="grid g2">
+    <div class="card"><h3 style="color:var(--teal)">ต้องมีทุกข้อ</h3><ul class="clean small">
+      <li><b>ปากมดลูกเปิดหมด</b> และ<b>ถุงน้ำแตก</b>แล้ว</li><li>ศีรษะ <b>engaged</b> (ส่วนใหญ่ทำเมื่อ station ≥+2 คือ low/outlet)</li><li>รู้ <b>position</b> ของศีรษะแน่นอน</li><li>ประเมินเชิงกรานว่าเพียงพอ · ไม่มี CPD</li><li>ระงับปวดเพียงพอ · <b>กระเพาะปัสสาวะว่าง</b></li><li>ความยินยอม · ผู้ทำมีประสบการณ์ · <b>ผ่าคลอดได้ทันที</b>ถ้าล้มเหลว</li></ul></div>
+    <div class="card" style="border-color:var(--red)"><h3 style="color:var(--red)">ห้ามใช้ vacuum</h3><ul class="clean small">
+      <li>อายุครรภ์ <b>&lt;34 สัปดาห์</b> (เสี่ยงเลือดออกในสมอง)</li><li>Face, brow, breech presentation</li><li>ศีรษะยังไม่ engaged · ไม่รู้ position</li><li>ทารกมีโรคเลือดออกง่ายหรือกระดูกเปราะ (เช่น osteogenesis imperfecta)</li><li>หลังเจาะเลือดจากหนังศีรษะทารกเมื่อเร็วๆ นี้ (ข้อระวัง)</li></ul></div>
+  </div>
+</section>
+
+<section id="abc">
+  <div class="sec-head"><span class="eyebrow">Mnemonic · ALSO</span><h2>A–J ช่วยจำทุกขั้น</h2></div>
+  <div class="card scroll-x" style="padding:6px"><table><tbody>
+    <tr><td class="mono"><b>A</b></td><td><b>Ask for help · Address the patient · Anesthesia</b> ที่เพียงพอ</td></tr>
+    <tr><td class="mono"><b>B</b></td><td><b>Bladder</b> empty</td></tr>
+    <tr><td class="mono"><b>C</b></td><td><b>Cervix</b> fully dilated</td></tr>
+    <tr><td class="mono"><b>D</b></td><td><b>Determine position</b> · ประเมิน CPD · Desire to abandon if needed</td></tr>
+    <tr><td class="mono"><b>E</b></td><td><b>Equipment</b> พร้อม ตรวจสุญญากาศ</td></tr>
+    <tr><td class="mono"><b>F</b></td><td><b>Flexion point</b>: วางถ้วยให้ถูก</td></tr>
+    <tr><td class="mono"><b>G</b></td><td><b>Gentle traction</b> พร้อมการหดรัดตัว ตามแนวโค้งเชิงกราน</td></tr>
+    <tr><td class="mono"><b>H</b></td><td><b>Halt</b>: หยุดเมื่อเข้าเกณฑ์</td></tr>
+    <tr><td class="mono"><b>I</b></td><td><b>Incision</b>: พิจารณา episiotomy เมื่อจำเป็น (ไม่ทำ routine)</td></tr>
+    <tr><td class="mono"><b>J</b></td><td><b>Jaw</b>: ถอดถ้วยเมื่อคลำถึงขากรรไกรทารก</td></tr>
+  </tbody></table></div>
+</section>
+
+<section id="flex">
+  <div class="sec-head"><span class="eyebrow">The "Why"</span><h2>ทำไมต้องวางที่ flexion point</h2><p class="muted"><b>Flexion point</b> อยู่บน sagittal suture ห่างจาก posterior fontanelle ไปด้านหน้าประมาณ <b>3 cm</b> (ห่าง anterior fontanelle ~6 cm) · ดึงตรงจุดนี้ศีรษะจะ<b>ก้มลง</b>ใช้เส้นผ่านศูนย์กลางเล็กที่สุด ถ้าวางค่อนไปหน้า (deflexing) หรือข้าง (asynclitic) ศีรษะจะเงยหรือเอียง ทำให้ล้มเหลวและบาดเจ็บ</p></div>
+  <div class="grid g2">
+    <div class="card">
+      <svg viewBox="0 0 280 200" class="fig" style="max-width:300px" role="img" aria-label="ตำแหน่ง flexion point ถูกและผิด">
+        <ellipse cx="80" cy="100" rx="60" ry="74" class="head"/><line x1="80" y1="30" x2="80" y2="170" style="stroke:var(--ink)"/>
+        <path d="M80 40 L74 50 L86 50Z" style="fill:var(--plum)"/><circle cx="80" cy="72" r="20" style="fill:none;stroke:var(--teal)" stroke-width="3"/>
+        <text x="40" y="196" class="svg-b" style="fill:var(--teal)">✓ Flexing median</text>
+        <ellipse cx="210" cy="100" rx="60" ry="74" class="head"/><line x1="210" y1="30" x2="210" y2="170" style="stroke:var(--ink)"/>
+        <path d="M210 40 L204 50 L216 50Z" style="fill:var(--plum)"/><circle cx="226" cy="122" r="20" style="fill:none;stroke:var(--red)" stroke-width="3"/>
+        <text x="160" y="196" class="svg-b" style="fill:var(--red)">✗ Deflexing paramedian</text>
+        <text x="96" y="44" class="svg-t">PF</text>
+      </svg>
+    </div>
+    <div class="card"><ul class="clean small"><li>ใส่ถ้วยโดยกด perineum ลงแล้วเอียงถ้วยเข้า หมุนให้แนบหนังศีรษะ</li><li>ขอบถ้วยห่าง posterior fontanelle ประมาณ 1 cm (ตามขนาดถ้วย ~5–6 cm)</li><li><b>คลำรอบขอบถ้วย 360°</b> ว่าไม่มีเนื้อเยื่อปากมดลูก/ช่องคลอดติดอยู่ ก่อนเพิ่มแรงดูดทุกครั้ง</li><li>เพิ่มแรงดูดถึงระดับทำงานตามคำแนะนำของอุปกรณ์ (มักอยู่ในช่วง 500–600 mmHg)</li></ul></div>
+  </div>
+</section>
+
+<section id="traction">
+  <div class="sec-head"><span class="eyebrow">Traction</span><h2>ดึงตามแนวโค้งของเชิงกราน (curve of Carus)</h2></div>
+  <div class="card scroll-x">
+    <svg viewBox="0 0 600 220" style="min-width:520px;width:100%" role="img" aria-label="ทิศทางการดึงตามระดับศีรษะ">
+      <path d="M80 20 C80 120 140 180 260 196" fill="none" style="stroke:var(--muted)" stroke-width="2" stroke-dasharray="4 4"/>
+      <rect x="160" y="30" width="16" height="50" rx="8" class="bone" transform="rotate(-30 168 55)"/>
+      <circle cx="96" cy="110" r="26" class="head"/>
+      <path d="M96 110 L96 168" class="arw" marker-end="url(#ah)"/><text x="104" y="164" class="svg-t">① ศีรษะสูง: ดึงลงล่าง</text>
+      <circle cx="180" cy="168" r="26" class="head"/>
+      <path d="M180 168 L250 180" class="arw" marker-end="url(#ah)"/><text x="190" y="206" class="svg-t">② ใกล้ outlet: ดึงในแนวราบ</text>
+      <circle cx="300" cy="150" r="26" class="head"/>
+      <path d="M300 150 L340 90" class="arw" marker-end="url(#ah)"/><text x="350" y="96" class="svg-t">③ Crowning: ยกขึ้นตามการเงยของศีรษะ</text>
+      <text x="380" y="160" class="svg-t">ดึงตั้งฉากกับถ้วย · พร้อมการหดรัดตัวและแม่เบ่ง</text>
+      <text x="380" y="178" class="svg-t">มืออีกข้างวางบนถ้วย/ศีรษะ คอยรู้สึกว่าศีรษะลงมาตาม</text>
+    </svg>
+  </div>
+</section>
+
+<section id="stop">
+  <div class="sec-head"><span class="eyebrow">Halt criteria</span><h2>เมื่อไรต้องหยุด</h2></div>
+  <div class="grid g4">
+    <div class="card"><h3 style="color:var(--red)">ดึงครั้งแรกไม่ลง</h3><p class="small muted">ศีรษะไม่เคลื่อนต่ำเลยในการดึงครั้งแรก → ประเมินใหม่</p></div>
+    <div class="card"><h3 style="color:var(--red)">ถ้วยหลุด 3 ครั้ง</h3><p class="small muted">Pop-off ซ้ำบ่งว่าวางผิดหรือมี disproportion</p></div>
+    <div class="card"><h3 style="color:var(--red)">ดึงหลายครั้งไม่คลอด</h3><p class="small muted">ดึงประมาณ 3–4 ครั้งแล้วยังไม่ใกล้คลอด</p></div>
+    <div class="card"><h3 style="color:var(--red)">เวลานาน</h3><p class="small muted">ไม่แนะนำเกินประมาณ 15–20 นาที ตามแนวทางของสถาบัน</p></div>
+  </div>
+  <div class="callout warn mt">ล้มเหลว → <b>ผ่าคลอด</b> · ไม่ควรเปลี่ยนไปใช้ forceps ต่อเป็น routine (sequential instruments เพิ่มการบาดเจ็บของทารก)</div>
+</section>
+
+<section id="injury">
+  <div class="sec-head"><span class="eyebrow">Complications</span><h2>Cephalohematoma vs Subgaleal hemorrhage</h2><p class="muted">ต้องตรวจทารกทุกรายหลังใช้ vacuum · subgaleal hemorrhage อันตรายถึงชีวิต</p></div>
+  <div class="card scroll-x">
+    <svg viewBox="0 0 640 200" style="min-width:560px;width:100%" role="img" aria-label="ชั้นของหนังศีรษะและตำแหน่งเลือดออก">
+      <g>
+        <rect x="20" y="30" width="600" height="20" style="fill:var(--skin);stroke:var(--fetus-line)"/><text x="24" y="44" class="svg-t" style="fill:var(--ink)">Skin + subcutaneous</text>
+        <rect x="20" y="50" width="600" height="14" style="fill:var(--surface-2);stroke:var(--muted)"/><text x="24" y="61" class="svg-t" style="fill:var(--ink)">Galea aponeurotica</text>
+        <rect x="20" y="64" width="600" height="40" style="fill:var(--surface)"/><text x="24" y="88" class="svg-t">Subgaleal space (กว้าง ไม่มีขอบเขต)</text>
+        <rect x="20" y="104" width="600" height="10" style="fill:var(--plum-soft);stroke:var(--plum)"/><text x="24" y="112" class="svg-t" style="font-size:9px">Periosteum</text>
+        <rect x="20" y="114" width="280" height="30" class="bone"/><rect x="304" y="114" width="316" height="30" class="bone"/><text x="290" y="160" class="svg-t">Suture line</text>
+      </g>
+      <path d="M340 104 C360 84 440 84 460 104Z" class="blood" opacity=".8"/>
+      <text x="370" y="180" class="svg-b" style="fill:var(--red)">Cephalohematoma</text><text x="340" y="196" class="svg-t">ใต้ periosteum · ไม่ข้าม suture</text>
+      <path d="M60 64 C120 60 260 60 300 64 L300 104 L60 104Z" class="blood" opacity=".55"/><path d="M300 64 C330 62 340 64 340 64 L340 104 L300 104Z" class="blood" opacity=".55"/>
+      <text x="80" y="180" class="svg-b" style="fill:var(--red)">Subgaleal hemorrhage</text><text x="60" y="196" class="svg-t">ใต้ galea · ข้าม suture · เสียเลือดมากจน shock ได้</text>
+    </svg>
+  </div>
+  <p class="small muted mt">อื่นๆ: caput/chignon (บวมจากถ้วย หายใน 1–2 วัน) · หนังศีรษะถลอก · retinal hemorrhage · intracranial hemorrhage · ฝีเย็บฉีกขาดของแม่</p>
+</section>
+
+<section id="osce">
+  <div class="sec-head"><span class="eyebrow">OSCE checklist · ฝึกบนหุ่น</span><h2>ซ้อมทีละข้อ</h2></div>
+  <div id="osce-root"></div>
+</section>
+
+<section id="pimp">
+  <div class="pimp"><span class="eyebrow" style="color:var(--plum)">คำถามที่ผู้คุมสอบชอบถาม</span><h2 style="margin:6px 0 10px">ลองตอบก่อนเปิดเฉลย</h2>
+  <p>ทารกที่คลอดด้วย vacuum เมื่อ 6 ชม.ก่อน มีหนังศีรษะบวมนุ่ม <b>ข้าม suture line</b> ขยายถึงท้ายทอยและหลังหู หัวใจเต้นเร็ว ซีด</p>
+  <p style="margin-top:8px"><b>นึกถึงอะไร และต้องทำอะไร?</b></p>
+  <details><summary>เปิดเฉลย</summary><ul class="clean small"><li><b>Subgaleal hemorrhage</b>: เลือดใน subgaleal space ซึ่งรองรับเลือดได้มาก จนเกิด <b>hypovolemic shock</b> และ DIC</li><li>แจ้งกุมาร/NICU ทันที · วัดเส้นรอบศีรษะซ้ำ · Hct/Hb, coagulation · ให้สารน้ำและเลือด · รักษา coagulopathy</li><li>ต่างจาก cephalohematoma ที่อยู่ใต้ periosteum ไม่ข้าม suture และมักไม่อันตราย</li></ul></details></div>
+</section>
+
+<footer>
+  <p><b>หมายเหตุ</b>: checklist รวบรวมจากหลักการมาตรฐานเพื่อการซ้อม แรงดูดและเกณฑ์หยุดให้ทำตามคู่มืออุปกรณ์และแนวทางของโรงพยาบาล</p>
+  <p style="margin-top:10px"><b>แหล่งอ้างอิง</b></p>
+  <ol><li>ACOG Practice Bulletin 219: Operative Vaginal Birth (2020).</li><li><a href="https://www.rmf.harvard.edu/Risk-Prevention-and-Education/Guidelines-and-Algorithms-Catalog-Page/Guidelines-Algorithms/2026/OB-Guideline-Files/Guideline18-Operative-Vaginal-Birth" target="_blank" rel="noopener">Harvard CRICO Obstetric Guideline 18: Operative Vaginal Birth (2026)</a></li><li>RCOG Green-top Guideline No. 26: Assisted Vaginal Birth (2020).</li><li>AAFP. ALSO provider manual · Cunningham FG, et al. <i>Williams Obstetrics</i>, 26th ed.</li></ol>
+</footer>
+
+
+</div>
+<script>
+
+window.OSCE={id:'vacuum',sections:[
+ {name:'ประเมินและเตรียม (A–E)',items:[
+  {t:'บอกข้อบ่งชี้ (เช่น ระยะที่ 2 ยาว แม่เหนื่อย fetal compromise) · ขอความยินยอม',say:1,crit:1},
+  {t:'เรียกทีม: กุมาร ผู้ช่วย · แจ้งให้ห้องผ่าตัดพร้อม',say:1},
+  {t:'ยืนยัน <b>ปากมดลูกเปิดหมด ถุงน้ำแตก</b> · GA ≥34 wk',crit:1},
+  {t:'ตรวจภายในบอก <b>station และ position</b> (หา posterior fontanelle) · ประเมิน caput/molding',say:1,crit:1},
+  {t:'ระงับปวดเพียงพอ · <b>สวนปัสสาวะ</b>',crit:1},
+  {t:'ตรวจอุปกรณ์และระบบสุญญากาศ'}]},
+ {name:'วางถ้วย (F)',items:[
+  {t:'วางศูนย์กลางถ้วยบน <b>flexion point</b> (บน sagittal suture ห่าง posterior fontanelle ~3 cm)',crit:1},
+  {t:'<b>คลำรอบขอบถ้วย 360°</b> ไม่มีเนื้อเยื่อแม่ติด',crit:1},
+  {t:'เพิ่มแรงดูดถึงระดับทำงาน · ตรวจขอบถ้วยอีกครั้ง'}]},
+ {name:'ดึง (G–J)',items:[
+  {t:'ดึง<b>พร้อมการหดรัดตัว</b>และแม่เบ่ง · ตั้งฉากกับถ้วย ตามแนวโค้งเชิงกราน'},
+  {t:'มืออีกข้างวางบนถ้วย/ศีรษะ ตรวจว่าศีรษะลงมาตาม'},
+  {t:'ลดแรงดูดระหว่างการหดรัดตัว (ตามอุปกรณ์) · นับจำนวนการดึงและ pop-off · ขานเวลา',say:1},
+  {t:'บอกเกณฑ์การหยุดและแผนผ่าคลอดถ้าไม่สำเร็จ',say:1,crit:1},
+  {t:'ประคองฝีเย็บ · episiotomy เฉพาะเมื่อจำเป็น'},
+  {t:'ปลดสุญญากาศและถอดถ้วยเมื่อศีรษะคลอด/คลำถึงขากรรไกร'}]},
+ {name:'หลังคลอด',items:[
+  {t:'ตรวจทารก: บาดแผลหนังศีรษะ cephalohematoma <b>subgaleal hemorrhage</b> · แจ้งกุมาร',crit:1},
+  {t:'AMTSL · ตรวจการฉีกขาดของแม่'},
+  {t:'บันทึก: ข้อบ่งชี้ station/position ชนิดถ้วย จำนวนดึง pop-off เวลา ผล',say:1}]}
+]};
+
+(function(){
+  var root=document.getElementById('osce-root'); if(!root||!window.OSCE) return;
+  var KEY='osce-'+window.OSCE.id, st={};
+  try{ st=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ st={}; }
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(st)); }catch(e){} }
+  var total=0, html='<div class="osce-bar"><span class="score" id="osce-score"></span><div class="meter"><i id="osce-m"></i></div><span class="small muted" id="osce-crit"></span><button class="btn" type="button" id="osce-reset">เริ่มใหม่</button></div>';
+  window.OSCE.sections.forEach(function(s,si){
+    html+='<div class="osce-sec card"><h3><span class="num-b">'+(si+1)+'</span>'+s.name+'</h3>';
+    s.items.forEach(function(it,ii){
+      var id='o'+si+'-'+ii; total++;
+      html+='<label class="osce-item'+(it.crit?' crit':'')+(st[id]?' done':'')+'" data-crit="'+(it.crit?1:0)+'"><input type="checkbox" data-id="'+id+'"'+(st[id]?' checked':'')+'><span class="k '+(it.say?'say':'do')+'">'+(it.say?'พูด':'ทำ')+'</span><span class="t">'+it.t+(it.why?'<span class="why">'+it.why+'</span>':'')+'</span></label>';
+    });
+    html+='</div>';
+  });
+  root.innerHTML=html;
+  function upd(){
+    var n=0, cm=0, ct=0;
+    root.querySelectorAll('.osce-item').forEach(function(l){ var c=l.querySelector('input').checked; if(c) n++; if(l.dataset.crit==='1'){ ct++; if(!c) cm++; } l.classList.toggle('done',c); });
+    document.getElementById('osce-score').textContent=n+'/'+total;
+    document.getElementById('osce-m').style.width=(total?n/total*100:0)+'%';
+    document.getElementById('osce-crit').textContent= ct ? (cm? 'critical ที่ยังไม่ทำ '+cm+' ข้อ' : 'critical ครบแล้ว ✓') : '';
+  }
+  root.addEventListener('change',function(e){ var i=e.target; if(!i.dataset.id) return; if(i.checked) st[i.dataset.id]=1; else delete st[i.dataset.id]; save(); upd(); });
+  document.getElementById('osce-reset').addEventListener('click',function(){ st={}; save(); root.querySelectorAll('input[data-id]').forEach(function(i){i.checked=false;}); upd(); });
+  upd();
+})();
+
+</script>
+
+</body>
+</html>

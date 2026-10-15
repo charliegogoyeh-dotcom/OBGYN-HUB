@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>ความดันสูงในครรภ์ ฉบับภาพ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: "สมุดชมพู" OB/GYN series notebook. */
+:root{
+  --bg:#fbf5f8; --surface:#ffffff; --surface-2:#f6ecf2;
+  --ink:#2a1530; --muted:#6c5873; --line:#ead8e3;
+  --rose:#c0185a; --rose-soft:#fbe1ec; --rose-mid:#f2a9c6;
+  --teal:#0d7471; --teal-soft:#dcf1ee;
+  --amber:#a86400; --amber-soft:#fcefd8;
+  --plum:#6a3d8a; --plum-soft:#efe4f6;
+  --red:#c42626; --red-soft:#fde4e2;
+  --skin:#f4d6c6; --hand:#e9b79c; --fetus:#f8c9ab; --fetus-line:#b9775a; --bone:#e8dccf; --bone-line:#9d8573; --blood:#c42626;
+  --font-display:"Mitr","IBM Plex Sans Thai",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.3;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.45rem,3.2vw,1.9rem)} h3{font-size:1.08rem}
+p{margin:0} b,strong{font-weight:600}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+a{color:var(--rose)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:2px;border-radius:6px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:8px max(16px,env(safe-area-inset-left,0px))}
+.toc-inner{max-width:1040px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.toc a{flex:none;text-decoration:none;color:var(--muted);font-size:.84rem;padding:4px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.toc a:hover{color:var(--rose);border-color:var(--rose-mid)}
+.toc a.hub{color:var(--plum);border-color:var(--plum)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;padding-block:36px 20px}
+.hero h1{font-size:clamp(2rem,5.2vw,3.2rem);font-weight:600}
+.hero h1 span{color:var(--rose)}
+.hero .lede{margin-top:14px;font-size:1.04rem;max-width:58ch}
+.pitch{margin-top:18px;padding:14px 16px;border-radius:var(--r);background:var(--rose-soft);border:1px solid var(--rose-mid)}
+.pitch .eyebrow{display:block;margin-bottom:4px}
+.hero-art{max-width:340px;justify-self:center;width:100%}
+section{padding-block:40px 8px;scroll-margin-top:64px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;max-width:72ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2>*,.g3>*,.g4>*{min-width:0}
+.mt{margin-top:14px}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.callout{border-left:4px solid var(--teal);background:var(--teal-soft);padding:12px 14px;border-radius:0 10px 10px 0;font-size:.94rem}
+.callout.warn{border-color:var(--amber);background:var(--amber-soft)}
+.callout.risk{border-color:var(--red);background:var(--red-soft)}
+.callout.plum{border-color:var(--plum);background:var(--plum-soft)}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;padding:1px 8px;border-radius:999px;border:1px solid currentColor;vertical-align:middle}
+.tag.th{color:var(--rose)} .tag.us{color:var(--teal)} .tag.who{color:var(--plum)} .tag.crit{color:var(--red)}
+ul.clean{margin:0;padding-left:1.1em} ul.clean li{margin:3px 0}
+ol.steps{margin:0;padding-left:1.3em} ol.steps li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;background:var(--surface-2)}
+td.mono{white-space:nowrap}
+.dose{font-family:var(--font-mono);font-size:.84rem;background:var(--surface-2);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.svg-t{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
+.svg-b{font-family:var(--font-body);font-size:12px;fill:var(--ink);font-weight:600}
+.fig{width:100%;display:block;margin-inline:auto}
+.ut{fill:var(--rose-soft);stroke:var(--rose);stroke-width:2}
+.fet{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.head{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.plac{fill:var(--rose-mid);stroke:var(--rose);stroke-width:1.5}
+.mat{fill:var(--skin);stroke:var(--fetus-line);stroke-width:1.3}
+.bone{fill:var(--bone);stroke:var(--bone-line);stroke-width:1.5}
+.bone-l{fill:none;stroke:var(--bone-line);stroke-width:7;stroke-linecap:round}
+.hand-f{fill:var(--hand);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.hand-l{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-linecap:round;opacity:.7}
+.arw{fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.arw-r{fill:none;stroke:var(--red);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.blood{fill:var(--blood)}
+.tool-line{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tool-f{fill:var(--surface-2);stroke:var(--muted);stroke-width:1.6;stroke-linejoin:round}
+.ico{width:40px;height:40px;stroke:var(--rose);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico .f{fill:var(--rose-soft)}
+.step{padding:12px;display:flex;flex-direction:column;gap:6px}
+.step svg{width:100%;max-width:230px;align-self:center}
+.step h3{font-size:.98rem;display:flex;gap:8px;align-items:baseline}
+.step h3 b,.num-b{font-family:var(--font-mono);color:var(--bg);background:var(--plum);border-radius:6px;padding:0 7px;font-size:.8rem}
+.step p{font-size:.86rem;line-height:1.55;color:var(--muted)}
+.sim{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:18px;align-items:center}
+.sim svg{width:100%;max-width:260px;justify-self:center}
+.sim input[type=range]{width:100%;accent-color:var(--rose)}
+.read{font-family:var(--font-display);font-size:1.9rem;color:var(--rose);line-height:1.1}
+.read small{font-size:.95rem;color:var(--muted)}
+.desc{background:var(--surface-2);border-radius:12px;padding:10px 14px;min-height:76px;font-size:.92rem}
+.ticks{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:6px}
+.btn{font:600 .86rem var(--font-body);padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--bg)}
+.pill{display:inline-block;font:600 .74rem var(--font-mono);padding:1px 9px;border-radius:999px}
+.p-ok{background:var(--teal-soft);color:var(--teal)} .p-mid{background:var(--amber-soft);color:var(--amber)} .p-hi{background:var(--red-soft);color:var(--red)}
+.pimp{background:var(--plum-soft);border:1.5px solid var(--plum);border-radius:var(--r);padding:20px}
+.pimp h2{color:var(--plum)}
+details{margin-top:14px;background:var(--surface);border-radius:12px;border:1px solid var(--line);padding:10px 14px}
+summary{cursor:pointer;font-weight:600;color:var(--plum)}
+details[open] summary{margin-bottom:8px}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+footer ol{padding-left:1.2em}
+/* OSCE checklist */
+.osce-bar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 46px);z-index:4;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);margin-bottom:14px}
+.osce-bar .meter{flex:1 1 160px;height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.osce-bar .meter i{display:block;height:100%;width:0;background:var(--teal);transition:width .2s ease}
+.osce-bar .score{font-family:var(--font-mono);font-weight:600}
+.osce-sec{margin-bottom:16px}
+.osce-sec h3{font-size:1.02rem;margin-bottom:6px;display:flex;gap:8px;align-items:baseline}
+.osce-item{display:grid;grid-template-columns:auto auto 1fr;gap:10px;align-items:start;padding:8px 10px;border-radius:10px;border:1px solid transparent;cursor:pointer}
+.osce-item:hover{background:var(--surface-2)}
+.osce-item input{margin-top:5px;width:18px;height:18px;accent-color:var(--teal)}
+.osce-item .k{font:600 .68rem var(--font-mono);padding:2px 7px;border-radius:6px;margin-top:3px;white-space:nowrap}
+.k.do{background:var(--teal-soft);color:var(--teal)} .k.say{background:var(--plum-soft);color:var(--plum)}
+.osce-item.crit{border-color:var(--red-soft)}
+.osce-item.crit .t::after{content:" ⚠ critical";font:600 .68rem var(--font-mono);color:var(--red)}
+.osce-item.done .t{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--teal)}
+.osce-item .t{font-size:.94rem;line-height:1.55}
+.osce-item .why{display:block;font-size:.82rem;color:var(--muted);text-decoration:none}
+@media (max-width:860px){ .g4{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:620px){ .hero{grid-template-columns:1fr} .hero-art{max-width:240px;order:-1} .g2,.g3,.sim{grid-template-columns:1fr} }
+@media (max-width:440px){ .g4{grid-template-columns:1fr} }
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+
+.organ text{font-family:var(--font-body)}
+.mgl{display:grid;grid-template-columns:minmax(0,220px) 1fr;gap:18px;align-items:center}
+.mgl svg{width:100%;max-width:220px;justify-self:center}
+.tool-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:18px}
+.q{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.q>span{font-size:.88rem;font-weight:600}
+@media (max-width:620px){.mgl,.tool-g{grid-template-columns:1fr}}
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="hand" viewBox="-30 -20 60 36" overflow="visible"><path class="hand-f" d="M-27 -1 C-27 -10 -19 -13 -9 -12 L19 -10 C27 -9 28 -3 27 0 C28 4 26 10 19 10 L-9 12 C-19 13 -27 8 -27 -1Z"/><path class="hand-f" d="M-8 -11 C-6 -19 6 -21 11 -15 C12 -13 9 -11 4 -11Z"/><path class="hand-l" d="M7 -5 L24 -4 M7 0 L25 0.5 M7 5 L23 5.5"/></symbol>
+<marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--teal)"/></marker>
+<marker id="ahr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--red)"/></marker>
+</defs></svg>
+
+<nav class="toc" aria-label="สารบัญ"><div class="toc-inner"><a class="hub" href="index.html">← คลังเรียน</a><a href="#why">กลไกเกิดโรค</a><a href="#class">การแบ่งชนิด</a><a href="#tool">ลองจัดประเภท</a><a href="#severe">Severe features</a><a href="#bp">ยาลดความดัน</a><a href="#mg">MgSO₄</a><a href="#deliver">เวลาคลอด</a><a href="#ecl">Eclampsia/HELLP</a><a href="#pimp">Pimp Q</a></div></nav>
+<div class="wrap">
+
+
+<header class="hero">
+  <div>
+    <span class="eyebrow">Lecture 4 · Hypertensive disorders in pregnancy</span>
+    <h1>ความดันสูงในครรภ์<br><span>Preeclampsia</span> ฉบับภาพ</h1>
+    <p class="lede">ตั้งแต่กลไกการเกิดโรคที่รก ไปจนถึงยาลดความดัน MgSO₄ และจังหวะเวลาคลอด อ้างอิง <b>ACOG PB 222</b>, <b>ACOG CO 767</b>, <b>Williams Obstetrics</b></p>
+    <div class="pitch"><span class="eyebrow">Elevator pitch</span><b>Preeclampsia คือโรคของ endothelium ทั่วร่างกายที่เริ่มจากรกฝังตัวผิดปกติ</b> การรักษาที่หายขาดมีทางเดียวคือ<b>คลอดรก</b> ระหว่างนั้นเราป้องกันอันตรายสองอย่าง: <b>stroke</b> (คุมความดัน) และ <b>ชัก</b> (MgSO₄)</div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 300 260" role="img" aria-label="มาตรวัดความดัน 160/110">
+    <circle cx="150" cy="140" r="104" style="fill:var(--surface);stroke:var(--line)" stroke-width="12"/>
+    <path d="M70 200 A104 104 0 0 1 150 36" fill="none" style="stroke:var(--teal)" stroke-width="12"/>
+    <path d="M150 36 A104 104 0 0 1 222 66" fill="none" style="stroke:var(--amber)" stroke-width="12"/>
+    <path d="M222 66 A104 104 0 0 1 238 196" fill="none" style="stroke:var(--red)" stroke-width="12"/>
+    <line x1="150" y1="140" x2="226" y2="96" style="stroke:var(--ink)" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="150" cy="140" r="8" style="fill:var(--ink)"/>
+    <text x="150" y="190" text-anchor="middle" style="font:600 26px var(--font-display);fill:var(--red)">160/110</text>
+    <text x="150" y="212" text-anchor="middle" class="svg-t">severe range → รักษาใน 30–60 นาที</text>
+    <text x="232" y="56" class="svg-t" style="fill:var(--amber)">140/90</text>
+  </svg>
+</header>
+
+<section id="why">
+  <div class="sec-head"><span class="eyebrow">The "Why" · Pathophysiology</span><h2>เริ่มที่ spiral arteries ที่ไม่ขยาย</h2>
+  <p class="muted">ปกติ trophoblast จะรุกเข้าไปเปลี่ยนผนัง spiral artery ให้เป็นท่อใหญ่ ความต้านทานต่ำ ในพรีอีแคลมป์เซีย การเปลี่ยนแปลงนี้ไม่สมบูรณ์ รกจึงขาดเลือด แล้วปล่อยสารที่ทำลาย endothelium ไปทั่วร่างกาย</p></div>
+  <div class="card scroll-x">
+    <svg viewBox="0 0 680 250" style="min-width:600px;width:100%" role="img" aria-label="spiral artery ปกติเทียบกับพรีอีแคลมป์เซีย">
+      <text x="160" y="22" text-anchor="middle" class="svg-b" style="fill:var(--teal);font-size:14px">ปกติ: ท่อกว้าง เลือดไหลสะดวก</text>
+      <text x="510" y="22" text-anchor="middle" class="svg-b" style="fill:var(--red);font-size:14px">Preeclampsia: ท่อแคบ รกขาดเลือด</text>
+      <rect x="20" y="40" width="290" height="60" rx="10" class="plac"/><text x="30" y="62" class="svg-t" style="fill:var(--ink)">Placenta / intervillous space</text>
+      <rect x="370" y="40" width="290" height="60" rx="10" class="plac"/><text x="380" y="62" class="svg-t" style="fill:var(--ink)">Placenta</text>
+      <rect x="20" y="100" width="290" height="120" style="fill:var(--skin)" opacity=".6"/><text x="30" y="212" class="svg-t">Myometrium</text>
+      <rect x="370" y="100" width="290" height="120" style="fill:var(--skin)" opacity=".6"/><text x="380" y="212" class="svg-t">Myometrium</text>
+      <!-- normal funnel -->
+      <path d="M120 100 C130 140 140 170 150 220 L170 220 C180 170 190 140 200 100Z" style="fill:var(--red-soft);stroke:var(--red)" stroke-width="2"/>
+      <path class="arw" d="M160 210 L160 112" marker-end="url(#ah)"/>
+      <!-- narrow -->
+      <path d="M502 100 C504 140 506 170 506 220 L514 220 C514 170 516 140 518 100Z" style="fill:var(--red-soft);stroke:var(--red)" stroke-width="2"/>
+      <path d="M496 120 l28 0 M496 150 l28 0 M496 180 l28 0" style="stroke:var(--red)" stroke-width="1.5"/>
+      <text x="530" y="140" class="svg-t">ผนังกล้ามเนื้อยังอยู่ หดตัวได้</text>
+      <text x="530" y="160" class="svg-t">→ ischemia → sFlt-1 ↑, PlGF ↓</text>
+      <text x="530" y="180" class="svg-t">→ endothelial dysfunction</text>
+      <text x="530" y="200" class="svg-t">ทั่วร่างกาย</text>
+    </svg>
+  </div>
+</section>
+
+<section id="class">
+  <div class="sec-head"><span class="eyebrow">Classification · ACOG</span><h2>4 กลุ่มของ HDP</h2></div>
+  <div class="card scroll-x" style="padding:6px"><table>
+    <thead><tr><th>ชนิด</th><th>เริ่มเมื่อไร</th><th>ลักษณะ</th></tr></thead>
+    <tbody>
+      <tr><td><b>Chronic hypertension</b></td><td>ก่อนตั้งครรภ์ หรือ <b>&lt;20 wk</b></td><td>BP ≥140/90 · หรือยังสูงเกิน 12 wk หลังคลอด</td></tr>
+      <tr><td><b>Gestational hypertension</b></td><td><b>≥20 wk</b></td><td>BP ≥140/90 สองครั้งห่างกัน ≥4 ชม. <b>ไม่มี</b> proteinuria และไม่มี severe features</td></tr>
+      <tr><td><b>Preeclampsia</b></td><td><b>≥20 wk</b></td><td>HT + <b>proteinuria</b> (≥300 mg/24 ชม. หรือ UPCR ≥0.3 หรือ dipstick 2+) <b>หรือ</b> HT + severe feature แม้ไม่มี proteinuria</td></tr>
+      <tr><td><b>Chronic HT with superimposed PE</b></td><td>มี chronic HT มาก่อน</td><td>เกิด proteinuria ใหม่ ความดันคุมไม่ได้เพิ่มขึ้น หรือมี severe features</td></tr>
+    </tbody></table></div>
+  <div class="callout warn mt"><b>Proteinuria ไม่จำเป็น</b>สำหรับวินิจฉัย preeclampsia ถ้ามี severe feature · และระดับ proteinuria <b>ไม่ใช่</b> severe feature (ACOG ตัดออกตั้งแต่ปี 2013)</div>
+</section>
+
+<section id="tool">
+  <div class="sec-head"><span class="eyebrow">Interactive</span><h2>ลองจัดประเภทผู้ป่วย</h2><p class="muted">เลือกข้อมูลผู้ป่วย แล้วดูการวินิจฉัยและจังหวะเวลาคลอดตาม ACOG</p></div>
+  <div class="card tool-g">
+    <div>
+      <div class="q"><span>ความดันสูงตั้งแต่เมื่อไร</span><div class="btns" data-q="onset"><button class="btn" type="button" data-v="pre" aria-pressed="false">ก่อน 20 wk / ก่อนตั้งครรภ์</button><button class="btn" type="button" data-v="post" aria-pressed="true">≥20 wk</button></div></div>
+      <div class="q"><span>Proteinuria</span><div class="btns" data-q="prot"><button class="btn" type="button" data-v="no" aria-pressed="true">ไม่มี</button><button class="btn" type="button" data-v="yes" aria-pressed="false">มี</button></div></div>
+      <div class="q"><span>Severe features (ดูหัวข้อถัดไป)</span><div class="btns" data-q="sev"><button class="btn" type="button" data-v="no" aria-pressed="true">ไม่มี</button><button class="btn" type="button" data-v="yes" aria-pressed="false">มี</button></div></div>
+      <div class="q"><span>อาการชัก</span><div class="btns" data-q="sz"><button class="btn" type="button" data-v="no" aria-pressed="true">ไม่มี</button><button class="btn" type="button" data-v="yes" aria-pressed="false">มี</button></div></div>
+    </div>
+    <div class="desc" id="tool-out" aria-live="polite" style="min-height:200px"></div>
+  </div>
+</section>
+
+<section id="severe">
+  <div class="sec-head"><span class="eyebrow">Severe features</span><h2>Severe features ไล่ตามอวัยวะ</h2><p class="muted">มีข้อใดข้อหนึ่ง = preeclampsia with severe features</p></div>
+  <div class="grid g2">
+    <div class="card">
+      <svg viewBox="0 0 260 330" class="fig organ" style="max-width:260px" role="img" aria-label="แผนภาพอวัยวะที่ได้รับผลกระทบ">
+        <circle cx="130" cy="40" r="28" class="mat"/>
+        <path d="M84 80 C96 70 164 70 176 80 C190 120 194 170 186 220 C180 260 166 300 150 320 L110 320 C94 300 80 260 74 220 C66 170 70 120 84 80Z" class="mat"/>
+        <ellipse cx="130" cy="236" rx="40" ry="52" class="ut"/>
+        <g style="font-size:11px">
+          <circle cx="130" cy="38" r="9" style="fill:var(--plum)"/><text x="164" y="30" class="svg-b" style="fill:var(--plum)">สมอง/ตา</text>
+          <circle cx="108" cy="116" r="9" style="fill:var(--teal)"/><text x="14" y="104" class="svg-b" style="fill:var(--teal)">ปอด</text>
+          <circle cx="152" cy="150" r="9" style="fill:var(--amber)"/><text x="190" y="150" class="svg-b" style="fill:var(--amber)">ตับ</text>
+          <circle cx="104" cy="172" r="9" style="fill:var(--rose)"/><text x="14" y="176" class="svg-b" style="fill:var(--rose)">ไต</text>
+          <circle cx="166" cy="200" r="9" style="fill:var(--red)"/><text x="196" y="204" class="svg-b" style="fill:var(--red)">เลือด</text>
+        </g>
+      </svg>
+    </div>
+    <div class="card scroll-x" style="padding:6px"><table>
+      <tbody>
+        <tr><td><b style="color:var(--red)">BP</b></td><td><b>SBP ≥160</b> หรือ <b>DBP ≥110</b> สองครั้งห่างกัน ≥4 ชม. (ยืนยันภายในไม่กี่นาทีเพื่อเริ่มยาได้เร็ว)</td></tr>
+        <tr><td><b style="color:var(--plum)">สมอง/ตา</b></td><td>ปวดศีรษะใหม่ที่ไม่หายด้วยยา · ตามัว เห็นแสงวาบ</td></tr>
+        <tr><td><b style="color:var(--teal)">ปอด</b></td><td>Pulmonary edema</td></tr>
+        <tr><td><b style="color:var(--amber)">ตับ</b></td><td>AST/ALT ≥2 เท่าของค่าปกติ · ปวด RUQ/epigastrium รุนแรง</td></tr>
+        <tr><td><b style="color:var(--rose)">ไต</b></td><td>Cr <b>&gt;1.1 mg/dL</b> หรือเพิ่มเป็น 2 เท่า</td></tr>
+        <tr><td><b style="color:var(--red)">เลือด</b></td><td>Platelet <b>&lt;100,000/µL</b></td></tr>
+      </tbody></table></div>
+  </div>
+</section>
+
+<section id="bp">
+  <div class="sec-head"><span class="eyebrow">Acute severe hypertension · ACOG CO 767</span><h2>ยาลดความดันเมื่อ ≥160/110 นาน ≥15 นาที</h2>
+  <p class="muted">เป้าหมายคือให้ยา<b>ภายใน 30–60 นาที</b> เพื่อป้องกัน stroke · เป้าความดันประมาณ 140–150/90–100 ไม่ลดเร็วเกินไปเพราะเลือดไปรกจะลดลง</p></div>
+  <div class="grid g3">
+    <div class="card"><h3>Labetalol IV</h3><p class="small mt"><span class="dose">20 mg</span> → <span class="dose">40 mg</span> → <span class="dose">80 mg</span> ทุก 10 นาที</p><p class="small muted mt">ห้ามใน asthma, heart block, หัวใจวาย · ให้ได้สะสมไม่เกิน 300 mg</p></div>
+    <div class="card"><h3>Hydralazine IV</h3><p class="small mt"><span class="dose">5–10 mg</span> ทุก 20 นาที</p><p class="small muted mt">อาจทำให้ความดันตกและหัวใจเต้นเร็ว</p></div>
+    <div class="card"><h3>Nifedipine IR (PO)</h3><p class="small mt"><span class="dose">10 mg</span> → <span class="dose">20 mg</span> → <span class="dose">20 mg</span> ทุก 20 นาที</p><p class="small muted mt">ใช้ได้เมื่อยังไม่มีเส้นเลือด · ห้ามอมใต้ลิ้น</p></div>
+  </div>
+  <p class="small muted mt">ถ้าไม่ตอบสนองหลังได้ยาครบชุด ให้เปลี่ยนไปใช้ยาอีกตัว และปรึกษา MFM/วิสัญญี · Chronic HT ในครรภ์ ACOG แนะนำเริ่มยาเมื่อ <b>≥140/90</b> (หลังการศึกษา CHAP)</p>
+</section>
+
+<section id="mg">
+  <div class="sec-head"><span class="eyebrow">Seizure prophylaxis</span><h2>MgSO₄: ให้ ตรวจ และรู้จุดอันตราย</h2>
+  <p class="muted">ให้ใน preeclampsia with severe features และ eclampsia ช่วงคลอดถึง <b>24 ชม. หลังคลอด</b> · MgSO₄ <b>ไม่ใช่</b>ยาลดความดัน</p></div>
+  <div class="grid g2">
+    <div class="card"><h3>ขนาดยา</h3>
+      <ul class="clean small">
+        <li><b>IV (Zuspan)</b>: loading <span class="dose">4–6 g IV ใน 15–20 นาที</span> แล้ว <span class="dose">1–2 g/ชม.</span></li>
+        <li><b>IM (Pritchard)</b>: <span class="dose">4 g IV</span> + <span class="dose">10 g IM</span> (สะโพกละ 5 g) แล้ว <span class="dose">5 g IM ทุก 4 ชม.</span></li>
+      </ul>
+      <h3 class="mt">ตรวจก่อนให้ dose ต่อไปทุกครั้ง</h3>
+      <ul class="clean small"><li><b>Patellar reflex</b> ยังมีอยู่</li><li><b>RR ≥12–16</b> /นาที</li><li><b>ปัสสาวะ ≥25–30 mL/ชม.</b> (Mg ขับทางไต)</li></ul>
+    </div>
+    <div class="card mgl">
+      <svg viewBox="0 0 200 300" role="img" aria-label="ระดับแมกนีเซียมและอาการเป็นพิษ">
+        <rect x="70" y="20" width="36" height="260" rx="18" style="fill:var(--surface-2);stroke:var(--line)" stroke-width="2"/>
+        <rect x="74" y="170" width="28" height="70" style="fill:var(--teal)"/>
+        <rect x="74" y="120" width="28" height="50" style="fill:var(--amber)"/>
+        <rect x="74" y="90" width="28" height="30" style="fill:var(--red)" opacity=".7"/>
+        <rect x="74" y="30" width="28" height="60" style="fill:var(--red)"/>
+        <g class="mono" style="font-size:10.5px;fill:var(--muted)" text-anchor="end"><text x="64" y="244">4</text><text x="64" y="174">7</text><text x="64" y="124">10</text><text x="64" y="94">12</text><text x="64" y="34">25+</text></g>
+        <text x="60" y="290" class="svg-t" style="font-size:10px">mEq/L</text>
+        <text x="112" y="208" class="svg-b" style="fill:var(--teal);font-size:11px">Therapeutic</text>
+        <text x="112" y="148" class="svg-b" style="fill:var(--amber);font-size:11px">Reflex หาย</text>
+        <text x="112" y="108" class="svg-b" style="fill:var(--red);font-size:11px">หายใจกดลง</text>
+        <text x="112" y="62" class="svg-b" style="fill:var(--red);font-size:11px">หัวใจหยุดเต้น</text>
+      </svg>
+      <div><p class="small">สัญญาณแรกของพิษคือ <b>reflex หายไป</b> ตรวจ reflex จึงเป็นสิ่งที่สำคัญที่สุด</p>
+      <div class="callout risk mt small"><b>Antidote</b>: <b>Calcium gluconate 1 g IV</b> (10% 10 mL) ฉีดช้าๆ ใน 3 นาที + หยุด MgSO₄ + ช่วยหายใจ</div>
+      <p class="small muted mt">ค่าโดยประมาณตาม Williams</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="deliver">
+  <div class="sec-head"><span class="eyebrow">Timing of delivery · ACOG</span><h2>คลอดเมื่อไร</h2></div>
+  <div class="card scroll-x">
+    <svg viewBox="0 0 680 150" style="min-width:600px;width:100%" role="img" aria-label="เวลาคลอดตามชนิดของโรค">
+      <!-- x: 24wk at 40, 40wk at 640 → 37.5 px/wk -->
+      <line x1="40" y1="40" x2="640" y2="40" style="stroke:var(--line)" stroke-width="4"/>
+      <g class="mono" style="font-size:11px;fill:var(--muted)" text-anchor="middle"><text x="40" y="26">24</text><text x="190" y="26">28</text><text x="340" y="26">32</text><text x="415" y="26">34</text><text x="527.5" y="26">37</text><text x="640" y="26">40 wk</text></g>
+      <rect x="40" y="62" width="375" height="24" rx="8" style="fill:var(--amber-soft);stroke:var(--amber)"/>
+      <text x="48" y="79" class="svg-b" style="font-size:11.5px">PE + severe features: expectant ถ้าคงที่</text>
+      <circle cx="415" cy="74" r="10" style="fill:var(--red)"/><text x="430" y="79" class="svg-b" style="fill:var(--red)">≥34 wk → คลอดหลังให้แม่คงที่</text>
+      <rect x="40" y="100" width="487.5" height="24" rx="8" style="fill:var(--teal-soft);stroke:var(--teal)"/>
+      <text x="48" y="117" class="svg-b" style="font-size:11.5px">GHTN / PE without severe features: เฝ้าระวังใกล้ชิด</text>
+      <circle cx="527.5" cy="112" r="10" style="fill:var(--teal)"/><text x="543" y="117" class="svg-b" style="fill:var(--teal)">37⁰ wk → คลอด</text>
+    </svg>
+  </div>
+  <div class="callout risk mt"><b>คลอดทันทีไม่ว่า GA เท่าไร</b> (หลังทำให้แม่คงที่) เมื่อ: ความดันคุมไม่ได้ · eclampsia · pulmonary edema · placental abruption · DIC · fetal status ไม่ดี · ทารกเสียชีวิต · HELLP ส่วนใหญ่</div>
+  <p class="small muted mt">Expectant management ก่อน 34 wk ทำในโรงพยาบาลที่มี NICU พร้อมให้ steroids · การคลอดทางช่องคลอดทำได้ ไม่จำเป็นต้องผ่าคลอดเพราะเป็นพรีอีแคลมป์เซียอย่างเดียว</p>
+</section>
+
+<section id="ecl">
+  <div class="sec-head"><span class="eyebrow">Emergencies</span><h2>Eclampsia และ HELLP</h2></div>
+  <div class="grid g2">
+    <div class="card"><h3 style="color:var(--red)">Eclampsia: ชักแล้วทำอะไร</h3>
+      <ol class="steps small">
+        <li><b>เรียกคนช่วย</b> ป้องกันการบาดเจ็บ ไม่ต้องพยายามหยุดชักครั้งแรก</li>
+        <li><b>ABC</b>: ตะแคงซ้าย ดูดเสมหะ ให้ O₂</li>
+        <li><b>MgSO₄</b> loading (ถ้าได้อยู่แล้ว ชักซ้ำให้ 2 g IV)</li>
+        <li><b>คุมความดัน</b> ถ้า ≥160/110</li>
+        <li>FHR มักช้าลงระหว่างชักแล้วกลับมาเอง → <b>ให้แม่คงที่ก่อน แล้วค่อยวางแผนคลอด</b> ไม่รีบผ่าระหว่างชัก</li>
+      </ol>
+    </div>
+    <div class="card"><h3>HELLP syndrome</h3>
+      <table class="mt" style="font-size:.88rem"><tbody>
+        <tr><td><b>H</b>emolysis</td><td>LDH ≥600 IU/L · schistocytes · bilirubin ↑</td></tr>
+        <tr><td><b>EL</b>evated liver enzymes</td><td>AST/ALT ≥2 เท่าของค่าปกติ</td></tr>
+        <tr><td><b>L</b>ow <b>P</b>latelets</td><td>&lt;100,000/µL</td></tr>
+      </tbody></table>
+      <p class="small muted mt">อาจไม่มีความดันสูงหรือ proteinuria ในบางราย · อาการเด่นคือปวด RUQ/epigastrium คลื่นไส้ · ระวัง subcapsular liver hematoma</p>
+    </div>
+  </div>
+  <div class="grid g2 mt">
+    <div class="callout"><b>ป้องกัน</b>: <b>Low-dose aspirin 81 mg/วัน</b> ในกลุ่มเสี่ยงสูง เริ่ม 12–28 wk (ดีที่สุดก่อน 16 wk) จนคลอด · calcium ในกลุ่มที่บริโภคน้อย (ดูหน้า ANC)</div>
+    <div class="callout plum"><b>หลังคลอด</b>: preeclampsia เกิดได้ถึง 6 สัปดาห์หลังคลอด · นัดวัดความดันภายใน 3–10 วัน (รายรุนแรงภายใน 72 ชม.) · ระยะยาวเสี่ยงโรคหัวใจและหลอดเลือดสูงขึ้น</div>
+  </div>
+</section>
+
+<section id="pimp">
+  <div class="pimp"><span class="eyebrow" style="color:var(--plum)">The pimp question</span><h2 style="margin:6px 0 10px">ลองตอบก่อนเปิดเฉลย</h2>
+  <p>G1 GA <b>32 wk</b> BP <b>168/112</b> วัดซ้ำ 15 นาทีได้ <b>166/110</b> ปวดศีรษะ · platelet 140,000 · AST ปกติ · FHR ปกติ</p>
+  <p style="margin-top:8px"><b>ภายใน 1 ชั่วโมงแรกต้องทำอะไรบ้าง และจะวางแผนคลอดเมื่อไร?</b></p>
+  <details><summary>เปิดเฉลย</summary><ul class="clean small">
+    <li>วินิจฉัย <b>preeclampsia with severe features</b> (BP severe range + ปวดศีรษะ)</li>
+    <li>ภายใน 30–60 นาที: <b>labetalol IV</b> หรือ hydralazine IV หรือ <b>nifedipine IR PO</b></li>
+    <li><b>MgSO₄</b> loading + maintenance · <b>betamethasone</b> (GA &lt;34 wk) · lab: CBC, LFT, Cr, LDH, UPCR</li>
+    <li>ถ้าคงที่: expectant ในโรงพยาบาลที่มี NICU จนถึง <b>34 wk</b> · ถ้าความดันคุมไม่ได้ อาการปวดศีรษะไม่หาย หรือเกิด HELLP/eclampsia → คลอดหลังทำให้คงที่</li>
+  </ul><p class="small muted mt">คำถามต่อไป: ระหว่างให้ MgSO₄ คลำ patellar reflex ไม่ได้ RR 10 ครั้ง/นาที คุณจะทำอะไร?</p></details></div>
+</section>
+
+<footer>
+  <p><b>หมายเหตุ</b>: สื่อการเรียนสำหรับนักศึกษาแพทย์ ไม่ใช่คำแนะนำทางการแพทย์สำหรับบุคคล ขนาดยาให้ตรวจสอบ protocol ของโรงพยาบาลอีกครั้ง</p>
+  <p style="margin-top:10px"><b>แหล่งอ้างอิง</b></p>
+  <ol>
+    <li>ACOG Practice Bulletin 222: Gestational Hypertension and Preeclampsia (2020).</li>
+    <li>ACOG Committee Opinion 767: Emergent Therapy for Acute-Onset, Severe Hypertension During Pregnancy and the Postpartum Period.</li>
+    <li>ACOG Clinical Practice Update: Antihypertensive Therapy for Mild Chronic Hypertension in Pregnancy (2022, CHAP).</li>
+    <li>Cunningham FG, et al. <i>Williams Obstetrics</i>, 26th ed. Ch. Hypertensive Disorders.</li>
+  </ol>
+</footer>
+
+
+</div>
+<script>
+
+(function(){
+  var S={onset:'post',prot:'no',sev:'no',sz:'no'}, out=document.getElementById('tool-out');
+  function draw(){
+    var dx, plan, pill;
+    if(S.onset==='pre'){
+      if(S.prot==='yes'||S.sev==='yes'){ dx='Chronic HT with superimposed preeclampsia'+(S.sev==='yes'?' (with severe features)':''); pill='p-hi'; plan=S.sev==='yes'?'คลอดที่ <b>≥34 wk</b> · MgSO₄ · คุมความดัน':'คลอดที่ <b>37 wk</b> ถ้าไม่มี severe features'; }
+      else { dx='Chronic hypertension'; pill='p-mid'; plan='ACOG: เริ่มยาเมื่อ ≥140/90 · มักคลอด 38⁰–39⁶ wk ถ้าไม่ต้องใช้ยา หรือ 37⁰–39⁶ wk ถ้าคุมได้ด้วยยา · ให้ aspirin ป้องกัน'; }
+    } else {
+      if(S.sev==='yes'){ dx='Preeclampsia with severe features'; pill='p-hi'; plan='คุมความดัน · <b>MgSO₄</b> · steroids ถ้า &lt;34 wk · คลอดที่ <b>≥34 wk</b> หรือเร็วกว่าถ้าไม่คงที่'; }
+      else if(S.prot==='yes'){ dx='Preeclampsia (without severe features)'; pill='p-mid'; plan='ตรวจติดตามแม่และทารกใกล้ชิด · คลอดที่ <b>37⁰ wk</b>'; }
+      else { dx='Gestational hypertension'; pill='p-mid'; plan='ติดตามว่าจะเปลี่ยนเป็น preeclampsia หรือไม่ · คลอดที่ <b>37⁰ wk</b>'; }
+    }
+    if(S.sz==='yes'){ dx='Eclampsia'; pill='p-hi'; plan='ABC → <b>MgSO₄</b> → คุมความดัน → ให้แม่คงที่แล้ว<b>คลอด</b>ไม่ว่า GA เท่าไร'; }
+    out.innerHTML='<span class="pill '+pill+'">วินิจฉัย</span><p style="font:500 1.15rem var(--font-display);margin:6px 0 10px">'+dx+'</p><p class="small"><b>แผน</b>: '+plan+'</p><p class="small muted" style="margin-top:8px">สมมติว่าความดันสูงตามเกณฑ์ (≥140/90) แล้ว · เป็นเครื่องมือเพื่อการเรียน</p>';
+  }
+  document.querySelectorAll('[data-q]').forEach(function(g){
+    g.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; S[g.dataset.q]=b.dataset.v;
+      Array.prototype.forEach.call(g.children,function(x){x.setAttribute('aria-pressed',x===b?'true':'false');}); draw(); });
+  });
+  draw();
+})();
+
+
+</script>
+
+</body>
+</html>

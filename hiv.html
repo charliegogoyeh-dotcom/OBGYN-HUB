@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>HIV ในหญิงตั้งครรภ์ ฉบับภาพ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: "สมุดชมพู" notebook (series look). Spine = the PMTCT pathway: test → treat → suppress → deliver → protect the baby. */
+:root{
+  --bg:#fbf5f8; --surface:#ffffff; --surface-2:#f6ecf2;
+  --ink:#2a1530; --muted:#6c5873; --line:#ead8e3;
+  --rose:#c0185a; --rose-soft:#fbe1ec; --rose-mid:#f2a9c6;
+  --teal:#0d7471; --teal-soft:#dcf1ee;
+  --amber:#a86400; --amber-soft:#fcefd8;
+  --plum:#6a3d8a; --plum-soft:#efe4f6;
+  --red:#c42626; --red-soft:#fde4e2;
+  --skin:#f4d6c6; --fetus:#f8c9ab; --fetus-line:#b9775a; --virus:#c42626;
+  --font-display:"Mitr","IBM Plex Sans Thai",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033;
+  --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456;
+  --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f;
+  --plum:#c39be0; --plum-soft:#2f2140;
+  --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --fetus:#c08a6c; --fetus-line:#f2c4a8; --virus:#ff6b62;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033;
+  --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456;
+  --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f;
+  --plum:#c39be0; --plum-soft:#2f2140;
+  --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --fetus:#c08a6c; --fetus-line:#f2c4a8; --virus:#ff6b62;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.3;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.45rem,3.2vw,1.9rem)}
+h3{font-size:1.08rem}
+p{margin:0}
+b,strong{font-weight:600}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+a{color:var(--rose)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:2px;border-radius:6px}
+
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));
+  padding:8px max(16px,env(safe-area-inset-left,0px))}
+.toc-inner{max-width:1040px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.toc a{flex:none;text-decoration:none;color:var(--muted);font-size:.84rem;padding:4px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.toc a:hover{color:var(--rose);border-color:var(--rose-mid)}
+
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;padding-block:36px 20px}
+.hero h1{font-size:clamp(2.1rem,5.4vw,3.2rem);font-weight:600}
+.hero h1 span{color:var(--rose)}
+.hero .lede{margin-top:14px;font-size:1.06rem;max-width:58ch}
+.pitch{margin-top:18px;padding:14px 16px;border-radius:var(--r);background:var(--rose-soft);border:1px solid var(--rose-mid)}
+.pitch .eyebrow{display:block;margin-bottom:4px}
+.hero-art{max-width:340px;justify-self:center;width:100%}
+
+section{padding-block:40px 8px;scroll-margin-top:64px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;max-width:72ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g2>*,.g3>*{min-width:0}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.callout{border-left:4px solid var(--teal);background:var(--teal-soft);padding:12px 14px;border-radius:0 10px 10px 0;font-size:.94rem}
+.callout.warn{border-color:var(--amber);background:var(--amber-soft)}
+.callout.risk{border-color:var(--red);background:var(--red-soft)}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;padding:1px 8px;border-radius:999px;border:1px solid currentColor;vertical-align:middle}
+.tag.th{color:var(--rose)} .tag.us{color:var(--teal)} .tag.who{color:var(--plum)}
+ul.clean{margin:0;padding-left:1.1em}
+ul.clean li{margin:3px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;background:var(--surface-2)}
+td.mono{white-space:nowrap}
+.svg-t{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
+.svg-b{font-family:var(--font-body);font-size:12px;fill:var(--ink);font-weight:600}
+
+/* illustration classes */
+.cell{fill:var(--teal-soft);stroke:var(--teal);stroke-width:2}
+.nuc{fill:var(--plum-soft);stroke:var(--plum);stroke-width:1.6}
+.vir{fill:var(--virus);fill-opacity:.18;stroke:var(--virus);stroke-width:1.6}
+.vir-s{stroke:var(--virus);stroke-width:1.6;stroke-linecap:round}
+.vir-dot{fill:var(--virus)}
+.ut{fill:var(--rose-soft);stroke:var(--rose);stroke-width:2}
+.fet{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.plac{fill:var(--rose-mid);stroke:var(--rose);stroke-width:1.5}
+.mat{fill:var(--skin);stroke:var(--fetus-line);stroke-width:1.3}
+.arw{fill:none;stroke:var(--teal);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.block{stroke:var(--red);stroke-width:3;stroke-linecap:round}
+.dna{fill:none;stroke:var(--plum);stroke-width:2}
+.rna{fill:none;stroke:var(--virus);stroke-width:2;stroke-dasharray:3 2}
+.drug{fill:var(--amber-soft);stroke:var(--amber);stroke-width:1.4}
+.drug-t{font-family:var(--font-mono);font-size:10.5px;font-weight:600;fill:var(--amber)}
+
+/* routes */
+.route{display:flex;flex-direction:column;gap:8px}
+.route svg{width:100%;max-width:230px;align-self:center}
+.route p{font-size:.88rem;color:var(--muted);line-height:1.55}
+.route .when{font-family:var(--font-mono);font-size:.8rem;color:var(--rose);font-weight:600}
+
+/* path */
+.path{min-width:880px}
+.path text{font-family:var(--font-body);font-size:12px;fill:var(--ink)}
+.path .s{font-size:11px;fill:var(--muted)}
+.path .h{font-family:var(--font-display);font-size:14px}
+
+/* VL tool */
+.tool{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px}
+.tool input[type=range]{width:100%;accent-color:var(--rose)}
+.read{font-family:var(--font-display);font-size:2rem;line-height:1.1;color:var(--rose)}
+.read small{font-size:.95rem;color:var(--muted)}
+.ticks{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.76rem;color:var(--muted)}
+.chk{display:flex;gap:8px;align-items:flex-start;font-size:.9rem;margin-top:8px}
+.chk input{margin-top:5px;accent-color:var(--rose)}
+.btn{font:600 .86rem var(--font-body);padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--bg)}
+.meter{height:14px;border-radius:999px;background:linear-gradient(90deg,var(--teal) 0 25%,var(--amber) 25% 50%,var(--red) 50% 100%);position:relative;margin:10px 0 2px}
+.meter i{position:absolute;top:-5px;width:4px;height:24px;border-radius:2px;background:var(--ink);transform:translateX(-2px);transition:left .2s ease}
+.out{display:grid;gap:10px}
+.out .row{display:grid;grid-template-columns:118px 1fr;gap:10px;padding:10px 12px;border-radius:12px;background:var(--surface-2);align-items:start}
+.out .k{font-size:.8rem;color:var(--muted);font-weight:600}
+.out .v{font-size:.92rem;line-height:1.55;min-width:0}
+.pill{display:inline-block;font:600 .74rem var(--font-mono);padding:1px 9px;border-radius:999px;margin-right:4px}
+.p-ok{background:var(--teal-soft);color:var(--teal)} .p-mid{background:var(--amber-soft);color:var(--amber)} .p-hi{background:var(--red-soft);color:var(--red)}
+@media (prefers-reduced-motion: reduce){.meter i{transition:none}}
+
+/* labor do/don't */
+.dd{display:flex;gap:12px;align-items:flex-start}
+.dd svg{flex:none;width:44px;height:44px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.dd.no svg{stroke:var(--red)} .dd.yes svg{stroke:var(--teal)}
+.dd h3{font-size:1rem}
+.dd.no h3{color:var(--red)} .dd.yes h3{color:var(--teal)}
+.dd p{font-size:.86rem;line-height:1.55;color:var(--muted)}
+
+.inf{min-width:760px}
+.inf text{font-family:var(--font-body);font-size:12px;fill:var(--ink)}
+.inf .s{font-size:11px;fill:var(--muted)}
+.inf .m{font-family:var(--font-mono);font-size:11px;fill:var(--muted)}
+
+.pimp{background:var(--plum-soft);border:1.5px solid var(--plum);border-radius:var(--r);padding:20px}
+.pimp h2{color:var(--plum)}
+details{margin-top:14px;background:var(--surface);border-radius:12px;border:1px solid var(--line);padding:10px 14px}
+summary{cursor:pointer;font-weight:600;color:var(--plum)}
+details[open] summary{margin-bottom:8px}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+footer ol{padding-left:1.2em}
+
+@media (max-width:860px){ .g3{grid-template-columns:repeat(2,minmax(0,1fr))} .tool{grid-template-columns:1fr} }
+@media (max-width:620px){
+  .hero{grid-template-columns:1fr} .hero-art{max-width:240px;order:-1}
+  .g2,.g3{grid-template-columns:1fr}
+  .out .row{grid-template-columns:1fr;gap:2px}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="virus" viewBox="-14 -14 28 28" overflow="visible">
+      <path class="vir-s" d="M0 -9 V-13 M0 9 V13 M-9 0 H-13 M9 0 H13 M-6.4 -6.4 L-9.2 -9.2 M6.4 6.4 L9.2 9.2 M6.4 -6.4 L9.2 -9.2 M-6.4 6.4 L-9.2 9.2"/>
+      <circle class="vir" r="8"/>
+      <circle class="vir-dot" cx="-2" cy="-1" r="1.6"/><circle class="vir-dot" cx="2.5" cy="2" r="1.6"/>
+    </symbol>
+    <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10z" style="fill:var(--teal)"/>
+    </marker>
+  </defs>
+</svg>
+
+<nav class="toc" aria-label="สารบัญ"><div class="toc-inner"><a href="index.html" style="color:var(--plum);border-color:var(--plum)">← คลังเรียน</a>
+  <a href="#why">ติดต่อทางไหน</a><a href="#art">ยาทำงานอย่างไร</a><a href="#path">เส้นทาง PMTCT</a><a href="#test">การตรวจ</a>
+  <a href="#antepartum">ระหว่างตั้งครรภ์</a><a href="#tool">VL → แผนคลอด</a><a href="#labor">ห้องคลอด</a><a href="#infant">ทารก</a><a href="#postpartum">หลังคลอด</a><a href="#pimp">Pimp Q</a>
+</div></nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <div>
+    <span class="eyebrow">OB/GYN rotation · Infection in pregnancy</span>
+    <h1>HIV ในหญิงตั้งครรภ์<br><span>PMTCT</span> ฉบับภาพ</h1>
+    <p class="lede">การป้องกันการติดเชื้อเอชไอวีจากแม่สู่ลูก (prevention of mother-to-child transmission) ตั้งแต่ฝากครรภ์จนถึงทารกอายุ 18 เดือน อ้างอิง <b>DHHS Perinatal HIV Guidelines</b> (ปรับปรุง มิ.ย. 2026), <b>Williams Obstetrics</b> และแนวทาง PMTCT ของประเทศไทย</p>
+    <div class="pitch">
+      <span class="eyebrow">Elevator pitch</span>
+      <b>ถ้าแม่ได้ ART ตั้งแต่เนิ่นๆ จน viral load ตรวจไม่พบ โอกาสลูกติดเชื้อจะต่ำกว่า 1%</b> ทุกขั้นตอนของ PMTCT จึงทำเพื่อกด viral load ให้ต่ำที่สุดก่อนคลอด และปกป้องทารกในจุดที่ยังเสี่ยงอยู่
+    </div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 300 318" role="img" aria-label="ทารกในครรภ์ได้รับการปกป้องจากไวรัสด้วยยาต้านไวรัส">
+    <circle cx="150" cy="150" r="132" fill="none" style="stroke:var(--teal)" stroke-width="10" stroke-dasharray="14 8" opacity=".55"/>
+    <path class="ut" d="M150 50 C206 50 232 102 228 156 C224 212 190 244 150 244 C110 244 76 212 72 156 C68 102 94 50 150 50Z"/>
+    <path class="plac" d="M104 70 C120 56 180 56 196 70 C186 82 114 82 104 70Z"/>
+    <path d="M150 78 C142 100 160 112 150 128" fill="none" style="stroke:var(--amber)" stroke-width="3"/>
+    <circle class="fet" cx="150" cy="152" r="24"/>
+    <ellipse class="fet" cx="156" cy="198" rx="30" ry="34"/>
+    <g transform="translate(30 60)"><use href="#virus" x="-14" y="-14" width="28" height="28"/></g>
+    <g transform="translate(272 110)"><use href="#virus" x="-14" y="-14" width="28" height="28"/></g>
+    <g transform="translate(40 236)"><use href="#virus" x="-14" y="-14" width="28" height="28"/></g>
+    <g transform="translate(262 246)"><use href="#virus" x="-14" y="-14" width="28" height="28"/></g>
+    <text x="150" y="312" text-anchor="middle" class="svg-t" style="fill:var(--teal);font-size:12px">ART = เกราะกันไวรัส</text>
+  </svg>
+</header>
+
+<!-- WHY: routes -->
+<section id="why">
+  <div class="sec-head">
+    <span class="eyebrow">The "Why" · Transmission</span>
+    <h2>ลูกติดเชื้อได้ 3 ช่วงเวลา</h2>
+    <p class="muted">ถ้าไม่มีการป้องกัน ลูกติดเชื้อได้ราว <b>15–45%</b> (WHO รวมการให้นมแม่) ปัจจัยเสี่ยงที่สำคัญที่สุดคือ <b>maternal viral load</b> ในกลุ่มที่ไม่ได้ให้นมแม่ การติดเชื้อส่วนใหญ่เกิด<b>ช่วงคลอด</b></p>
+  </div>
+  <div class="grid g3">
+    <div class="card route">
+      <svg viewBox="0 0 220 150" aria-hidden="true">
+        <path class="ut" d="M110 12 C160 12 186 50 184 86 C182 124 150 142 110 142 C70 142 38 124 36 86 C34 50 60 12 110 12Z"/>
+        <path class="plac" d="M66 32 C86 16 134 16 154 32 C140 44 80 44 66 32Z"/>
+        <circle class="fet" cx="110" cy="84" r="18"/><ellipse class="fet" cx="114" cy="118" rx="22" ry="20"/>
+        <g transform="translate(96 30) scale(.55)"><use href="#virus" x="-14" y="-14" width="28" height="28"/></g>
+        <path class="arw" d="M104 42 L106 62" marker-end="url(#ah)" style="stroke:var(--red)"/>
+      </svg>
+      <span class="when">1 · In utero (ในครรภ์)</span>
+      <p>ไวรัสผ่านรกโดยเฉพาะช่วงท้ายของการตั้งครรภ์ เสี่ยงขึ้นเมื่อ viral load สูง หรือมีการอักเสบของรก</p>
+    </div>
+    <div class="card route">
+      <svg viewBox="0 0 220 150" aria-hidden="true">
+        <path class="mat" d="M0 0 H80 C86 40 88 56 88 64 L88 112 C78 126 60 138 0 146Z"/>
+        <circle class="fet" cx="112" cy="88" r="28"/>
+        <g transform="translate(150 54) scale(.6)"><use href="#virus" x="-14" y="-14" width="28" height="28"/></g>
+        <g transform="translate(160 118) scale(.6)"><use href="#virus" x="-14" y="-14" width="28" height="28"/></g>
+        <path d="M92 118 c0 0 -5 7 -5 10 a5 5 0 0 0 10 0 c0 -3 -5 -10 -5 -10z" style="fill:var(--red)"/>
+        <path d="M70 70 c0 0 -5 7 -5 10 a5 5 0 0 0 10 0 c0 -3 -5 -10 -5 -10z" style="fill:var(--red)"/>
+      </svg>
+      <span class="when">2 · Intrapartum (ช่วงคลอด)</span>
+      <p>ทารกสัมผัสเลือดและสารคัดหลั่งในช่องคลอด <b>ช่วงที่เสี่ยงที่สุด</b> ยิ่งถุงน้ำแตกนาน ยิ่งมีหัตถการที่ทำให้ผิวทารกเป็นแผล ยิ่งเสี่ยง</p>
+    </div>
+    <div class="card route">
+      <svg viewBox="0 0 220 150" aria-hidden="true">
+        <path class="mat" d="M10 150 C10 70 60 40 110 40 C160 40 210 70 210 150Z"/>
+        <circle cx="130" cy="96" r="26" style="fill:var(--skin);stroke:var(--fetus-line)" stroke-width="1.3"/>
+        <circle cx="130" cy="96" r="4" style="fill:var(--fetus-line)"/>
+        <circle class="fet" cx="82" cy="94" r="20"/>
+        <path d="M150 26 h22 v8 h-4 v30 a6 6 0 0 1-6 6 h-4 a6 6 0 0 1-6 -6 v-30 h-2z" style="fill:var(--surface);stroke:var(--teal)" stroke-width="1.6"/>
+        <path d="M156 44 h12" style="stroke:var(--teal)"/>
+        <g transform="translate(116 70) scale(.5)"><use href="#virus" x="-14" y="-14" width="28" height="28"/></g>
+      </svg>
+      <span class="when">3 · Breastfeeding (หลังคลอด)</span>
+      <p>ไวรัสผ่านน้ำนม เสี่ยงต่อเนื่องตลอดช่วงที่ให้นม <b>ไทยแนะนำให้ใช้นมผสม</b> ซึ่งรัฐจัดหาให้ (ตะวันตกเปลี่ยนเป็น shared decision ดูหัวข้อทารก)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ART mechanism -->
+<section id="art">
+  <div class="sec-head">
+    <span class="eyebrow">Mechanism · ART</span>
+    <h2>ยาต้านไวรัสหยุดไวรัสตรงไหน</h2>
+    <p class="muted">HIV เป็น retrovirus ที่ต้องแปลง RNA ของตัวเองเป็น DNA แล้วแทรกเข้าไปใน DNA ของ CD4 cell สูตรยาจึงใช้ <b>2 NRTIs (backbone) + 1 ยาตัวหลัก</b> ซึ่งปัจจุบันนิยม <b>INSTI</b> เพื่อตัดวงจรหลายจุดพร้อมกัน</p>
+  </div>
+  <div class="card scroll-x">
+    <svg viewBox="0 0 640 300" style="min-width:600px;width:100%" role="img" aria-label="วงจรชีวิต HIV และตำแหน่งที่ยาต้านไวรัสออกฤทธิ์">
+      <circle class="cell" cx="360" cy="152" r="134"/>
+      <text x="470" y="40" class="svg-b" style="fill:var(--teal)">CD4 T cell</text>
+      <circle class="nuc" cx="400" cy="160" r="58"/>
+      <text x="400" y="122" text-anchor="middle" class="svg-t" style="fill:var(--plum)">Nucleus</text>
+      <path class="dna" d="M352 170 C368 156 384 184 400 170 C416 156 432 184 448 170"/>
+      <path class="dna" d="M352 180 C368 166 384 194 400 180 C416 166 432 194 448 180"/>
+      <!-- 1 entry -->
+      <g transform="translate(60 150)"><use href="#virus" x="-14" y="-14" width="28" height="28" transform="scale(1.6)"/></g>
+      <path class="arw" d="M96 150 L222 150" marker-end="url(#ah)"/>
+      <text x="100" y="140" class="svg-b">① เข้าเซลล์</text>
+      <!-- 2 RT -->
+      <path class="rna" d="M240 120 C252 110 264 130 276 120"/>
+      <path class="arw" d="M284 122 L300 122" marker-end="url(#ah)"/>
+      <path class="dna" d="M306 122 C316 112 326 132 336 122"/>
+      <text x="246" y="104" class="svg-b">② RNA → DNA</text>
+      <text x="262" y="88" class="svg-t">Reverse transcriptase</text>
+      <line class="block" x1="286" y1="112" x2="298" y2="132"/><line class="block" x1="298" y1="112" x2="286" y2="132"/>
+      <rect class="drug" x="14" y="14" width="200" height="40" rx="10"/>
+      <text class="drug-t" x="24" y="30">NRTI: TDF · 3TC · FTC</text>
+      <text class="drug-t" x="24" y="46">AZT (ZDV) · NNRTI: EFV, NVP</text>
+      <path d="M200 54 L284 112" style="stroke:var(--amber);stroke-dasharray:3 3"/>
+      <!-- 3 integration -->
+      <text x="358" y="214" class="svg-b">③ Integration</text>
+      <text x="350" y="228" class="svg-t">แทรกเข้า DNA ของเซลล์</text>
+      <line class="block" x1="392" y1="168" x2="408" y2="184"/><line class="block" x1="408" y1="168" x2="392" y2="184"/>
+      <rect class="drug" x="470" y="250" width="160" height="40" rx="10"/>
+      <text class="drug-t" x="480" y="266">INSTI: DTG · BIC · RAL</text>
+      <text class="drug-t" x="480" y="282">ยาตัวหลักในปัจจุบัน</text>
+      <path d="M520 250 L420 186" style="stroke:var(--amber);stroke-dasharray:3 3"/>
+      <!-- 4 assembly -->
+      <text x="96" y="236" class="svg-b">④ ประกอบ/maturation</text>
+      <g transform="translate(270 256)"><use href="#virus" x="-14" y="-14" width="28" height="28"/></g>
+      <line class="block" x1="252" y1="246" x2="264" y2="266" style="stroke-width:2.4"/>
+      <rect class="drug" x="96" y="254" width="130" height="30" rx="10"/>
+      <text class="drug-t" x="106" y="273">PI: DRV/r · ATV/r</text>
+      <path d="M226 268 L252 260" style="stroke:var(--amber);stroke-dasharray:3 3"/>
+    </svg>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card">
+      <h3>สูตรยาในหญิงตั้งครรภ์</h3>
+      <ul class="clean small">
+        <li><span class="tag us">DHHS</span> <b>Preferred</b>: INSTI-based เช่น <b>DTG</b> หรือ <b>BIC/TAF/FTC</b> (เพิ่มเป็น preferred มิ.ย. 2025) ร่วมกับ backbone TDF หรือ TAF + FTC หรือ 3TC</li>
+        <li><span class="tag th">TH</span> แนวทางไทยปี 2564/65 ใช้สูตรที่มี <b>DTG</b> เป็นหลัก (เช่น TDF/3TC/DTG) ให้ตรวจสอบตารางยาฉบับปัจจุบันของโรงพยาบาล</li>
+        <li>ถ้ากำลังกินยาอยู่และ VL ตรวจไม่พบ <b>ให้ใช้สูตรเดิมต่อ</b> ไม่ต้องเปลี่ยนเพราะตั้งครรภ์</li>
+        <li>เริ่มยา<b>ทันที</b> ไม่ต้องรอผล CD4, resistance หรือรอให้พ้นไตรมาสแรก</li>
+      </ul>
+    </div>
+    <div class="callout warn" style="align-self:stretch">
+      <b>DTG กับ neural tube defect</b>: ข้อมูลจากการศึกษา Tsepamo (บอตสวานา) เคยพบสัญญาณความเสี่ยงสูงขึ้นเมื่อได้ยาช่วงปฏิสนธิ เมื่อติดตามข้อมูลเพิ่ม ความเสี่ยงลดลงจนใกล้เคียงสูตรอื่น ปัจจุบัน WHO และ DHHS จึงแนะนำ DTG ได้ตลอดการตั้งครรภ์ รวมถึงช่วงวางแผนมีบุตร · ให้ <b>folic acid</b> ตามปกติ
+    </div>
+  </div>
+</section>
+
+<!-- PATH timeline -->
+<section id="path">
+  <div class="sec-head">
+    <span class="eyebrow">ภาพรวม</span>
+    <h2>เส้นทาง PMTCT: ตรวจ → รักษา → กดไวรัส → คลอด → ปกป้องทารก</h2>
+  </div>
+  <div class="card scroll-x" style="padding:12px">
+    <svg class="path" viewBox="0 0 900 220" role="img" aria-label="ขั้นตอน PMTCT ตั้งแต่ฝากครรภ์ถึงทารก 18 เดือน">
+      <line x1="40" y1="70" x2="870" y2="70" style="stroke:var(--line)" stroke-width="6" stroke-linecap="round"/>
+      <g>
+        <circle cx="60" cy="70" r="16" style="fill:var(--rose)"/><text x="60" y="75" text-anchor="middle" style="fill:var(--bg);font-weight:600" class="mono">1</text>
+        <circle cx="230" cy="70" r="16" style="fill:var(--rose)"/><text x="230" y="75" text-anchor="middle" style="fill:var(--bg);font-weight:600" class="mono">2</text>
+        <circle cx="400" cy="70" r="16" style="fill:var(--teal)"/><text x="400" y="75" text-anchor="middle" style="fill:var(--bg);font-weight:600" class="mono">3</text>
+        <circle cx="570" cy="70" r="16" style="fill:var(--amber)"/><text x="570" y="75" text-anchor="middle" style="fill:var(--bg);font-weight:600" class="mono">4</text>
+        <circle cx="740" cy="70" r="16" style="fill:var(--plum)"/><text x="740" y="75" text-anchor="middle" style="fill:var(--bg);font-weight:600" class="mono">5</text>
+      </g>
+      <text class="h" x="60" y="34" text-anchor="middle" style="fill:var(--rose)">ตรวจ</text>
+      <text class="h" x="230" y="34" text-anchor="middle" style="fill:var(--rose)">เริ่ม ART</text>
+      <text class="h" x="400" y="34" text-anchor="middle" style="fill:var(--teal)">ติดตาม VL</text>
+      <text class="h" x="570" y="34" text-anchor="middle" style="fill:var(--amber)">วางแผนคลอด</text>
+      <text class="h" x="740" y="34" text-anchor="middle" style="fill:var(--plum)">ทารก</text>
+      <g text-anchor="middle">
+        <text x="60" y="106">Anti-HIV ครั้งแรก</text><text class="s" x="60" y="124">opt-out ทุกคน</text><text class="s" x="60" y="140">ซ้ำไตรมาส 3</text><text class="s" x="60" y="156">ตรวจสามีด้วย</text>
+        <text x="230" y="106">เริ่มทันทีวันที่รู้ผล</text><text class="s" x="230" y="124">CD4, VL, genotype</text><text class="s" x="230" y="140">HBV, HCV, CBC, Cr</text><text class="s" x="230" y="156">ไม่ต้องรอผล</text>
+        <text x="400" y="106">VL 2–4 wk หลังเริ่ม</text><text class="s" x="400" y="124">ทุกเดือนจนตรวจไม่พบ</text><text class="s" x="400" y="140">แล้วอย่างน้อยทุก 3 เดือน</text><text class="s" x="400" y="156">+ ใกล้คลอด 34–36 wk</text>
+        <text x="570" y="106">ตาม VL ใกล้คลอด</text><text class="s" x="570" y="124">≤1,000 → คลอดทางช่องคลอดได้</text><text class="s" x="570" y="140">&gt;1,000/ไม่ทราบ → C/S 38 wk</text><text class="s" x="570" y="156">+ IV zidovudine</text>
+        <text x="740" y="106">ยาป้องกัน + นมผสม</text><text class="s" x="740" y="124">ตามระดับความเสี่ยง</text><text class="s" x="740" y="140">PCR หลายครั้ง</text><text class="s" x="740" y="156">Antibody 18 เดือน</text>
+      </g>
+      <text class="s" x="40" y="200">VL = HIV RNA (copies/mL) · แม่ต้องกิน ART ต่อเนื่องตลอดชีวิต ไม่หยุดหลังคลอด</text>
+    </svg>
+  </div>
+</section>
+
+<!-- TESTING -->
+<section id="test">
+  <div class="sec-head">
+    <span class="eyebrow">Screening</span>
+    <h2>การตรวจคัดกรอง</h2>
+  </div>
+  <div class="grid g3">
+    <div class="card"><h3>ฝากครรภ์ครั้งแรก</h3><p class="small muted" style="margin-top:4px">ตรวจ anti-HIV ทุกคนแบบ <b>opt-out</b> (แจ้งว่าจะตรวจ ปฏิเสธได้) อยู่ใน Lab I · <span class="tag th">TH</span> ตรวจสามีด้วย</p></div>
+    <div class="card"><h3>ไตรมาส 3</h3><p class="small muted" style="margin-top:4px"><span class="tag th">TH</span> Lab II ตรวจซ้ำทุกคน · <span class="tag us">DHHS</span> ตรวจซ้ำในกลุ่มเสี่ยง ประมาณ 28 wk (บางที่ตรวจซ้ำอีกครั้งตอนรับเข้าห้องคลอด) เพื่อจับการติดเชื้อใหม่ช่วง acute infection ซึ่ง VL สูงมาก</p></div>
+    <div class="card"><h3>มาคลอดโดยไม่ทราบผล</h3><p class="small muted" style="margin-top:4px">ทำ <b>rapid test</b> ทันที ถ้าผลบวก <b>เริ่มป้องกันเลยโดยไม่รอผลยืนยัน</b> (IV zidovudine ให้แม่ + ยาป้องกันแบบเสี่ยงสูงให้ทารก + งดนมแม่) แล้วค่อยส่งตรวจยืนยัน</p></div>
+  </div>
+</section>
+
+<!-- ANTEPARTUM -->
+<section id="antepartum">
+  <div class="sec-head">
+    <span class="eyebrow">Antepartum care</span>
+    <h2>ดูแลระหว่างตั้งครรภ์</h2>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Lab เมื่อแรกวินิจฉัย</h3>
+      <ul class="clean small">
+        <li><b>CD4 count</b> และ <b>HIV RNA (VL)</b></li>
+        <li><b>Genotypic resistance testing</b> แต่<b>ไม่รอผล</b>ก่อนเริ่มยา</li>
+        <li><b>HBsAg</b>, anti-HCV: ถ้ามี HBV ร่วม สูตรยาต้องมี <b>TDF/TAF + 3TC/FTC</b> และห้ามหยุดยาเองเพราะตับอักเสบกำเริบได้</li>
+        <li>CBC, Cr, LFT, urinalysis · คัดกรอง syphilis, TB และ STI อื่น</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>ดูแลต่อเนื่อง</h3>
+      <ul class="clean small">
+        <li>ประเมิน <b>adherence</b> ทุกครั้ง เป็นตัวทำนาย VL ที่ดีที่สุด และคัดกรองภาวะซึมเศร้า</li>
+        <li>CD4 &lt;200 cells/mm³: ให้ <b>TMP-SMX</b> ป้องกัน PCP</li>
+        <li>เลี่ยงหัตถการที่ผ่านรก (amniocentesis) ถ้า VL ยังไม่ถูกกด ถ้าจำเป็นให้ทำหลัง VL ตรวจไม่พบ</li>
+        <li>สูติกรรมทั่วไปเหมือนคนปกติ: GDM screening, U/S, วัคซีน</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout warn" style="margin-top:14px"><b>เชื่อมกับ ANC</b>: DTG และ BIC จับกับ<b>ธาตุเหล็กและแคลเซียม</b> ทำให้ดูดซึมยาได้น้อยลง ให้กินยาต้านไวรัส <b>พร้อมอาหาร</b>ร่วมกับเม็ดเหล็ก/แคลเซียม หรือกินยาต้านไวรัส<b>ก่อน 2 ชม. / หลัง 6 ชม.</b> · สอนแม่เรื่องนี้ทุกครั้งที่จ่าย Triferdine</div>
+</section>
+
+<!-- VL TOOL -->
+<section id="tool">
+  <div class="sec-head">
+    <span class="eyebrow">Interactive · Decision tool</span>
+    <h2>Viral load ใกล้คลอด → วางแผนคลอดและทารก</h2>
+    <p class="muted">เลื่อนแถบเพื่อเปลี่ยน VL ช่วง 34–36 สัปดาห์ แล้วดูว่าแผนเปลี่ยนไปอย่างไร (เกณฑ์มาจาก DHHS และ protocol ทารกของไทยตาม CDC MMWR)</p>
+  </div>
+  <div class="card tool">
+    <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+      <label for="vl" class="read"><span id="vl-v">40</span> <small>copies/mL</small></label>
+      <input type="range" id="vl" min="0" max="100" step="1" value="5" aria-describedby="vl-out">
+      <div class="meter" aria-hidden="true"><i id="vl-mark"></i></div>
+      <div class="ticks"><span>20</span><span>50</span><span>1,000</span><span>100,000</span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+        <button class="btn" id="unk" type="button" aria-pressed="false">ไม่ทราบ VL</button>
+      </div>
+      <label class="chk"><input type="checkbox" id="short"> แม่ได้ ART <b>น้อยกว่า 4 สัปดาห์</b>ก่อนคลอด</label>
+      <p class="small muted">แถบใช้สเกล log ตามธรรมชาติของ viral load</p>
+    </div>
+    <div class="out" id="vl-out" aria-live="polite">
+      <div class="row"><div class="k">สถานะ</div><div class="v" id="o-status"></div></div>
+      <div class="row"><div class="k">วิธีคลอด</div><div class="v" id="o-mode"></div></div>
+      <div class="row"><div class="k">IV zidovudine</div><div class="v" id="o-zdv"></div></div>
+      <div class="row"><div class="k">ทารก (ไทย)</div><div class="v" id="o-th"></div></div>
+      <div class="row"><div class="k">ทารก (DHHS)</div><div class="v" id="o-us"></div></div>
+    </div>
+  </div>
+  <p class="small muted" style="margin-top:8px"><b>IV zidovudine</b>: loading <b>2 mg/kg IV ใน 1 ชม.</b> แล้ว <b>1 mg/kg/ชม.</b> จนคลอด · ถ้าผ่าตัดตามนัด ให้เริ่ม<b>ก่อนผ่าตัด 3 ชม.</b> · เครื่องมือนี้ใช้เพื่อการเรียน ไม่ใช่สำหรับตัดสินใจรักษาจริง</p>
+</section>
+
+<!-- LABOR -->
+<section id="labor">
+  <div class="sec-head">
+    <span class="eyebrow">Intrapartum</span>
+    <h2>ในห้องคลอด: ลดการสัมผัสเลือดของทารก</h2>
+    <p class="muted">หลักคิด: อะไรที่ทำให้ <b>ผิวทารกเป็นแผล</b> หรือทำให้ทารก <b>สัมผัสเลือดแม่นานขึ้น</b> ให้หลีกเลี่ยง โดยเฉพาะเมื่อ VL ยังไม่ถูกกด</p>
+  </div>
+  <div class="grid g3">
+    <div class="card dd no"><svg viewBox="0 0 44 44"><circle cx="22" cy="24" r="12"/><path d="M22 2 V14 M18 6 L22 2 L26 6"/><path d="M6 6 L38 38"/></svg>
+      <div><h3>Fetal scalp electrode</h3><p>DHHS 2025: <b>ห้ามใช้</b>ถ้า VL ≥50 · ควรเลี่ยงแม้ VL ถูกกดแล้ว</p></div></div>
+    <div class="card dd no"><svg viewBox="0 0 44 44"><path d="M10 6 C4 18 10 30 20 34 M34 6 C40 18 34 30 24 34"/><circle cx="22" cy="30" r="6"/><path d="M6 6 L38 38"/></svg>
+      <div><h3>Forceps / Vacuum</h3><p>เลี่ยงหัตถการช่วยคลอดที่ทำให้หนังศีรษะทารกเป็นแผล ทำเฉพาะเมื่อมีข้อบ่งชี้ชัดเจน</p></div></div>
+    <div class="card dd no"><svg viewBox="0 0 44 44"><path d="M8 34 L28 14 M24 10 L34 20"/><circle cx="31" cy="13" r="4"/><path d="M6 6 L38 38"/></svg>
+      <div><h3>Episiotomy · ARM ตั้งแต่เนิ่นๆ</h3><p>ไม่ตัดฝีเย็บเป็น routine · ถ้า VL ยังไม่ถูกกด เลี่ยงการเจาะถุงน้ำและการปล่อยถุงน้ำแตกนาน ถ้า VL ตรวจไม่พบ ทำ ARM ได้ตามข้อบ่งชี้ทางสูติกรรม</p></div></div>
+    <div class="card dd yes"><svg viewBox="0 0 44 44"><rect x="16" y="4" width="12" height="20" rx="3"/><path d="M22 24 V32 M22 32 C22 38 30 38 30 32"/><path d="M19 12 h6"/></svg>
+      <div><h3>IV zidovudine ตาม VL</h3><p>เริ่มเมื่อเข้าสู่การคลอดหรือ 3 ชม. ก่อนผ่าตัด ในรายที่ VL &gt;1,000 หรือไม่ทราบ · ให้ ART ทางปากต่อตามเวลาด้วย</p></div></div>
+    <div class="card dd yes"><svg viewBox="0 0 44 44"><circle cx="22" cy="16" r="9"/><path d="M8 40 C8 30 14 26 22 26 C30 26 36 30 36 40"/><path d="M30 6 l4 -2 M33 11 l4 0"/></svg>
+      <div><h3>เช็ดตัวทารกก่อนฉีดยา</h3><p>เช็ดเลือดและสารคัดหลั่งออกจากผิวทารกก่อนฉีด vitamin K หรือวัคซีน HBV</p></div></div>
+    <div class="card dd yes"><svg viewBox="0 0 44 44"><circle cx="16" cy="22" r="10"/><circle cx="16" cy="22" r="4"/><path d="M26 22 H40 M34 16 L40 22 L34 28"/></svg>
+      <div><h3>ระวังยา PPH</h3><p><b>Methylergonovine</b> + PI ที่ boosted ด้วย ritonavir หรือ cobicistat → หลอดเลือดหดตัวรุนแรง (CYP3A4) · ใช้ uterotonic ตัวอื่นก่อน</p></div></div>
+  </div>
+  <div class="callout" style="margin-top:14px"><b>ผ่าตัดคลอดหลังเริ่มเจ็บครรภ์หรือหลังถุงน้ำแตก</b>: ประโยชน์ในการลดการติดเชื้อไม่ชัดเจน ให้พิจารณาเป็นรายๆ ไป ส่วน scheduled C/S ที่ 38 wk ทำเพื่อ<b>ผ่าตัดก่อนเจ็บครรภ์</b> (ต่างจาก C/S ข้อบ่งชี้อื่นที่ทำที่ 39 wk)</div>
+</section>
+
+<!-- INFANT -->
+<section id="infant">
+  <div class="sec-head">
+    <span class="eyebrow">HIV-exposed infant</span>
+    <h2>ทารก: ยาป้องกัน ตรวจ PCR และการให้นม</h2>
+  </div>
+  <div class="card scroll-x" style="padding:6px">
+    <table>
+      <thead><tr><th></th><th>เสี่ยงต่ำ (standard risk)</th><th>เสี่ยงสูง (high risk)</th></tr></thead>
+      <tbody>
+        <tr><td><b>นิยาม</b> <span class="tag th">TH</span></td><td>แม่ได้ ART ≥4 wk และ VL ใกล้คลอด ≤50</td><td>แม่ VL &gt;50 ใกล้คลอด หรือได้ ART &lt;4 wk ก่อนคลอด (รวมแม่ที่ไม่ได้ยา/เพิ่งทราบผล)</td></tr>
+        <tr><td><b>ยา</b> <span class="tag th">TH</span></td><td class="mono">AZT 4 wk</td><td class="mono">AZT + 3TC + NVP 6 wk</td></tr>
+        <tr><td><b>ยา</b> <span class="tag us">DHHS</span></td><td class="mono">ZDV 2 wk</td><td>Presumptive HIV therapy: <span class="mono">ZDV/3TC + NVP</span> หรือ <span class="mono">+ DTG</span> (ปรับปรุง มิ.ย. 2026)</td></tr>
+        <tr><td><b>เริ่มยา</b></td><td colspan="2">ให้เร็วที่สุดหลังคลอด <b>ภายใน 6–12 ชม.</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card scroll-x" style="margin-top:14px">
+    <h3 style="margin-bottom:6px">กำหนดการตรวจทารก</h3>
+    <svg class="inf" viewBox="0 0 780 170" role="img" aria-label="ตารางตรวจ PCR ของทารก">
+      <!-- x: 0 mo at 80, 18 mo at 750 → 37.2 px/mo -->
+      <line x1="80" y1="40" x2="750" y2="40" style="stroke:var(--line)" stroke-width="4"/>
+      <g class="m" text-anchor="middle"><text x="80" y="24">แรกเกิด</text><text x="117" y="24">1 ด.</text><text x="154" y="24">2</text><text x="229" y="24">4</text><text x="303" y="24">6</text><text x="527" y="24">12</text><text x="750" y="24">18 เดือน</text></g>
+      <text x="8" y="84" class="s">TH เสี่ยงต่ำ</text>
+      <circle cx="117" cy="80" r="8" style="fill:var(--rose)"/><rect x="154" y="72" width="75" height="16" rx="8" style="fill:var(--rose-soft);stroke:var(--rose)"/>
+      <text x="236" y="85" class="s">PCR 1 ด. และ 2–4 ด.</text>
+      <text x="8" y="120" class="s">TH เสี่ยงสูง</text>
+      <circle cx="117" cy="116" r="8" style="fill:var(--red)"/><circle cx="154" cy="116" r="8" style="fill:var(--red)"/><circle cx="229" cy="116" r="8" style="fill:var(--red)"/>
+      <text x="246" y="121" class="s">PCR 1, 2, 4 ด. (หลายแห่งตรวจตั้งแต่แรกเกิดด้วย)</text>
+      <text x="8" y="156" class="s">ทุกคน</text>
+      <rect x="738" y="142" width="24" height="20" rx="5" style="fill:var(--plum-soft);stroke:var(--plum)"/>
+      <text x="726" y="157" text-anchor="end" class="s">Anti-HIV antibody ยืนยันผลลบ ที่ 18 เดือน →</text>
+      <line x1="117" y1="44" x2="117" y2="150" style="stroke:var(--line);stroke-dasharray:2 3"/>
+      <line x1="229" y1="44" x2="229" y2="150" style="stroke:var(--line);stroke-dasharray:2 3"/>
+    </svg>
+    <p class="small muted">ใช้ <b>PCR (HIV DNA/RNA)</b> ไม่ใช่ antibody ในทารก เพราะ <b>IgG ของแม่ผ่านรก</b> ทำให้ผล antibody ของทารกเป็นบวกได้นานถึง 18 เดือน · DHHS ตรวจ NAT ที่ 14–21 วัน, 1–2 เดือน และ 4–6 เดือน (เพิ่มที่แรกเกิดในทารกเสี่ยงสูง)</p>
+  </div>
+
+  <div class="grid g2" style="margin-top:14px">
+    <div class="callout" style="border-color:var(--rose);background:var(--rose-soft)"><b>การให้นม ประเทศไทย</b> <span class="tag th">TH</span>: แนะนำ <b>นมผสม</b> และรัฐจัดหานมผสมให้ ทำให้ไทยได้รับการรับรองจาก WHO ว่า <b>ยุติการถ่ายทอดเชื้อจากแม่สู่ลูก</b> เป็นประเทศแรกในเอเชีย (ปี 2016, อัตราติดเชื้อ 1.9%)</div>
+    <div class="callout"><b>DHHS 2026</b> <span class="tag us">US</span>: ถ้าแม่กิน ART สม่ำเสมอและ VL &lt;50 อย่างน้อย 3 เดือนก่อนคลอด ให้คุยเรื่องทางเลือก (นมผสม นมจากธนาคารนม หรือนมแม่) แบบ shared decision · ถ้า VL ≥200 ระหว่างให้นม ให้หยุดนมแม่และให้ยาป้องกันแก่ทารก</div>
+  </div>
+</section>
+
+<!-- POSTPARTUM -->
+<section id="postpartum">
+  <div class="sec-head">
+    <span class="eyebrow">Postpartum</span>
+    <h2>หลังคลอด</h2>
+  </div>
+  <div class="grid g3">
+    <div class="card"><h3>ART ตลอดชีวิต</h3><p class="small muted" style="margin-top:4px">หลังคลอดเป็นช่วงที่ adherence ลดลงบ่อย ส่งต่อคลินิก HIV ให้ไม่ขาดยา · ป้องกันคู่ด้วยหลัก <b>U=U</b> (undetectable = untransmittable)</p></div>
+    <div class="card"><h3>คุมกำเนิด</h3><p class="small muted" style="margin-top:4px">ระวัง drug interaction: <b>EFV</b> ลดประสิทธิภาพ<b>ยาฝังคุมกำเนิด</b> (etonogestrel) และ levonorgestrel · INSTI อย่าง DTG แทบไม่มีปัญหา · แนะนำใช้ถุงยางร่วมด้วยตามความเหมาะสม</p></div>
+    <div class="card"><h3>ให้นมผสม (TH)</h3><p class="small muted" style="margin-top:4px">สอนการดูแลเต้านมคัด บางโรงพยาบาลให้ยาหยุดน้ำนมร่วมด้วย · ติดตามการตรวจทารกจนครบ 18 เดือน</p></div>
+  </div>
+</section>
+
+<!-- PIMP -->
+<section id="pimp">
+  <div class="pimp">
+    <span class="eyebrow" style="color:var(--plum)">The pimp question</span>
+    <h2 style="margin:6px 0 10px">ลองตอบก่อนเปิดเฉลย</h2>
+    <p>G2P1 GA 38 wk ไม่เคยฝากครรภ์ มาห้องคลอดด้วย <b>ปากมดลูกเปิด 7 cm ถุงน้ำแตกมา 2 ชม.</b> ผล <b>rapid anti-HIV เป็นบวก</b></p>
+    <p style="margin-top:8px"><b>คุณจะทำอะไรบ้างสำหรับแม่และทารก? ควรผ่าตัดคลอดฉุกเฉินหรือไม่?</b></p>
+    <details>
+      <summary>เปิดเฉลย</summary>
+      <ul class="clean small">
+        <li><b>ไม่ต้องรอผลยืนยัน</b> เริ่ม <b>IV zidovudine</b> ทันที (2 mg/kg ใน 1 ชม. แล้ว 1 mg/kg/ชม. จนคลอด) ส่งตรวจยืนยัน, VL, CD4</li>
+        <li>วิธีคลอด: เปิด 7 cm และถุงน้ำแตกแล้ว ประโยชน์ของ C/S <b>ไม่ชัดเจน</b> ส่วนใหญ่ให้คลอดทางช่องคลอดต่อ ตัดสินใจเป็นรายๆ ไป และเลี่ยง FSE, forceps/vacuum, episiotomy</li>
+        <li>ทารก = <b>เสี่ยงสูง</b>: ไทยให้ <b>AZT + 3TC + NVP 6 สัปดาห์</b> เริ่มให้เร็วที่สุด (ภายใน 6–12 ชม.) · <b>นมผสม</b> · ตรวจ PCR ตามตารางเสี่ยงสูง</li>
+        <li>แม่: เริ่ม <b>ART ตลอดชีวิต</b> ก่อนกลับบ้าน · ตรวจ HBV/HCV/syphilis · ส่งต่อคลินิก HIV และให้คำปรึกษาเรื่องการตรวจคู่</li>
+      </ul>
+      <p class="small muted" style="margin-top:6px">คำถามต่อไปที่อาจารย์จะถาม: ถ้าเป็นรายนี้แต่ยังไม่เจ็บครรภ์ ถุงน้ำยังไม่แตก ที่ GA 38 wk และ VL 25,000 copies/mL คุณจะวางแผนคลอดอย่างไร และเริ่ม IV ZDV เมื่อไร?</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <p><b>หมายเหตุ</b>: หน้านี้เป็นสื่อการเรียนสำหรับนักศึกษาแพทย์ ไม่ใช่คำแนะนำทางการแพทย์สำหรับบุคคล รายละเอียดสูตรยาไทยอิงจากสรุปของ CDC MMWR และแนวทางไทยฉบับ 2564/65 ให้ตรวจสอบ <b>แนวทางการตรวจรักษาและป้องกันการติดเชื้อเอชไอวี ประเทศไทย ฉบับล่าสุด</b> และ protocol ของโรงพยาบาลอีกครั้งเมื่อขึ้นวอร์ด</p>
+  <p style="margin-top:10px"><b>แหล่งอ้างอิง</b></p>
+  <ol>
+    <li><a href="https://clinicalinfo.hiv.gov/en/guidelines/perinatal/whats-new" target="_blank" rel="noopener">DHHS Panel. Recommendations for the Use of Antiretroviral Drugs During Pregnancy and Interventions to Reduce Perinatal HIV Transmission — What's New (updated June 2026)</a></li>
+    <li><a href="https://www.cdc.gov/mmwr/volumes/65/wr/mm6522a2.htm" target="_blank" rel="noopener">CDC MMWR 2016. Elimination of Mother-to-Child Transmission of HIV — Thailand</a></li>
+    <li><a href="https://www.prepwatch.org/resources/thailand-national-guidelines-on-hiv-aids-treatment-prevention-2021-22/" target="_blank" rel="noopener">Thailand National Guidelines on HIV/AIDS Treatment and Prevention 2021/2022</a></li>
+    <li><a href="https://clinicalinfo.hiv.gov/en/guidelines/pediatric-arv/management-infants-utero-intrapartum-breastfeeding-hiv-exposure" target="_blank" rel="noopener">DHHS Pediatric Guidelines. Antiretroviral Management of Infants with Perinatal or Breastfeeding Exposure to HIV</a></li>
+    <li>Cunningham FG, et al. <i>Williams Obstetrics</i>, 26th ed. Ch. Sexually Transmitted Infections (HIV).</li>
+  </ol>
+</footer>
+</div>
+
+<script>
+(function(){
+  var vl=document.getElementById('vl'), vv=document.getElementById('vl-v'), mark=document.getElementById('vl-mark');
+  var unk=document.getElementById('unk'), shortArt=document.getElementById('short');
+  var o={status:document.getElementById('o-status'),mode:document.getElementById('o-mode'),zdv:document.getElementById('o-zdv'),th:document.getElementById('o-th'),us:document.getElementById('o-us')};
+  var unknown=false;
+  // slider 0..100 → log10 1.3 (20) .. 5 (100,000)
+  function val(){ var l=1.30103+(+vl.value/100)*(5-1.30103); var n=Math.pow(10,l); return n<100?Math.round(n):n<1000?Math.round(n/10)*10:Math.round(n/100)*100; }
+  function pos(n){ return (Math.log10(n)-1.30103)/(5-1.30103)*100; }
+  // ticks positioned: 20 at 0%, 50 at ~10.8%, 1000 at ~45.9%, 100000 at 100% → meter gradient bands approximate
+  function draw(){
+    var n=val(), sh=shortArt.checked;
+    vv.textContent = unknown ? 'ไม่ทราบ' : n.toLocaleString('en-US');
+    mark.style.left = (unknown?100:pos(n))+'%';
+    var tier = unknown ? 'unk' : n<50 ? 'sup' : n<=1000 ? 'mid' : 'hi';
+    if(tier==='sup'){
+      o.status.innerHTML='<span class="pill p-ok">Suppressed</span> VL &lt;50 · โอกาสลูกติดเชื้อ <b>&lt;1%</b>';
+      o.mode.innerHTML='<b>คลอดทางช่องคลอดได้</b> · ผ่าตัดเฉพาะข้อบ่งชี้ทางสูติกรรม';
+      o.zdv.innerHTML='<b>ไม่จำเป็น</b> (ให้ ART ทางปากต่อตามเวลา)';
+    } else if(tier==='mid'){
+      o.status.innerHTML='<span class="pill p-mid">Low-level viremia</span> 50–1,000 · ทบทวน adherence และ resistance';
+      o.mode.innerHTML='<b>คลอดทางช่องคลอดได้</b> · ไม่มีหลักฐานว่า C/S ช่วยเพิ่ม';
+      o.zdv.innerHTML='<b>พิจารณาให้</b> (ผู้เชี่ยวชาญบางส่วนแนะนำ)';
+    } else {
+      o.status.innerHTML='<span class="pill p-hi">'+(tier==='unk'?'Unknown':'High')+'</span> '+(tier==='unk'?'ไม่ทราบ VL ใกล้คลอด':'VL &gt;1,000')+' · เสี่ยงสูง';
+      o.mode.innerHTML='<b>Scheduled cesarean ที่ 38 wk</b> ก่อนเจ็บครรภ์/ถุงน้ำแตก · ถ้าเจ็บครรภ์หรือถุงน้ำแตกแล้ว ตัดสินใจเป็นรายๆ';
+      o.zdv.innerHTML='<b>ให้</b> · เริ่ม 3 ชม. ก่อนผ่าตัด หรือเมื่อเข้าสู่การคลอด';
+    }
+    var thHigh = tier!=='sup' || sh;
+    o.th.innerHTML = thHigh
+      ? '<span class="pill p-hi">High risk</span> AZT + 3TC + NVP <b>6 สัปดาห์</b> · PCR 1, 2, 4 เดือน'+(sh&&tier==='sup'?' <span class="muted">(เพราะได้ ART &lt;4 wk)</span>':'')
+      : '<span class="pill p-ok">Standard risk</span> AZT <b>4 สัปดาห์</b> · PCR 1 และ 2–4 เดือน';
+    o.us.innerHTML = thHigh
+      ? '<span class="pill p-hi">Higher risk</span> Presumptive HIV therapy: ZDV/3TC + NVP หรือ DTG'
+      : '<span class="pill p-ok">Low risk</span> ZDV <b>2 สัปดาห์</b> (เมื่อกินยาสม่ำเสมอและ VL ถูกกดต่อเนื่อง)';
+  }
+  vl.addEventListener('input',function(){ unknown=false; unk.setAttribute('aria-pressed','false'); draw(); });
+  shortArt.addEventListener('change',draw);
+  unk.addEventListener('click',function(){ unknown=!unknown; unk.setAttribute('aria-pressed',unknown?'true':'false'); draw(); });
+  // align meter colors with real thresholds
+  var m=document.querySelector('.meter'); var p50=pos(50), p1k=pos(1000);
+  m.style.background='linear-gradient(90deg,var(--teal) 0 '+p50+'%,var(--amber) '+p50+'% '+p1k+'%,var(--red) '+p1k+'% 100%)';
+  var t=document.querySelector('#tool .ticks'); t.style.position='relative'; t.style.height='1.2em';
+  [[20,0],[50,p50],[1000,p1k],[100000,100]].forEach(function(a,i){ var s=t.children[i]; s.style.position='absolute'; s.style.left=a[1]+'%'; s.style.transform= i===0?'none': i===3?'translateX(-100%)':'translateX(-50%)'; });
+  draw();
+})();
+</script>
+
+</body>
+</html>

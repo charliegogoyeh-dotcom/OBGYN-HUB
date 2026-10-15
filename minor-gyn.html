@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>หัตถการนรีเวชเล็ก OSCE</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: "สมุดชมพู" OB/GYN series notebook. */
+:root{
+  --bg:#fbf5f8; --surface:#ffffff; --surface-2:#f6ecf2;
+  --ink:#2a1530; --muted:#6c5873; --line:#ead8e3;
+  --rose:#c0185a; --rose-soft:#fbe1ec; --rose-mid:#f2a9c6;
+  --teal:#0d7471; --teal-soft:#dcf1ee;
+  --amber:#a86400; --amber-soft:#fcefd8;
+  --plum:#6a3d8a; --plum-soft:#efe4f6;
+  --red:#c42626; --red-soft:#fde4e2;
+  --skin:#f4d6c6; --hand:#e9b79c; --fetus:#f8c9ab; --fetus-line:#b9775a; --bone:#e8dccf; --bone-line:#9d8573; --blood:#c42626;
+  --font-display:"Mitr","IBM Plex Sans Thai",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033; --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456; --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f; --plum:#c39be0; --plum-soft:#2f2140; --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8; --bone:#4a3d45; --bone-line:#b9a594; --blood:#ff6b62;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.3;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.45rem,3.2vw,1.9rem)} h3{font-size:1.08rem}
+p{margin:0} b,strong{font-weight:600}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+a{color:var(--rose)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:2px;border-radius:6px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:8px max(16px,env(safe-area-inset-left,0px))}
+.toc-inner{max-width:1040px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.toc a{flex:none;text-decoration:none;color:var(--muted);font-size:.84rem;padding:4px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.toc a:hover{color:var(--rose);border-color:var(--rose-mid)}
+.toc a.hub{color:var(--plum);border-color:var(--plum)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;padding-block:36px 20px}
+.hero h1{font-size:clamp(2rem,5.2vw,3.2rem);font-weight:600}
+.hero h1 span{color:var(--rose)}
+.hero .lede{margin-top:14px;font-size:1.04rem;max-width:58ch}
+.pitch{margin-top:18px;padding:14px 16px;border-radius:var(--r);background:var(--rose-soft);border:1px solid var(--rose-mid)}
+.pitch .eyebrow{display:block;margin-bottom:4px}
+.hero-art{max-width:340px;justify-self:center;width:100%}
+section{padding-block:40px 8px;scroll-margin-top:64px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;max-width:72ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2>*,.g3>*,.g4>*{min-width:0}
+.mt{margin-top:14px}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.callout{border-left:4px solid var(--teal);background:var(--teal-soft);padding:12px 14px;border-radius:0 10px 10px 0;font-size:.94rem}
+.callout.warn{border-color:var(--amber);background:var(--amber-soft)}
+.callout.risk{border-color:var(--red);background:var(--red-soft)}
+.callout.plum{border-color:var(--plum);background:var(--plum-soft)}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;padding:1px 8px;border-radius:999px;border:1px solid currentColor;vertical-align:middle}
+.tag.th{color:var(--rose)} .tag.us{color:var(--teal)} .tag.who{color:var(--plum)} .tag.crit{color:var(--red)}
+ul.clean{margin:0;padding-left:1.1em} ul.clean li{margin:3px 0}
+ol.steps{margin:0;padding-left:1.3em} ol.steps li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;background:var(--surface-2)}
+td.mono{white-space:nowrap}
+.dose{font-family:var(--font-mono);font-size:.84rem;background:var(--surface-2);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.svg-t{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
+.svg-b{font-family:var(--font-body);font-size:12px;fill:var(--ink);font-weight:600}
+.fig{width:100%;display:block;margin-inline:auto}
+.ut{fill:var(--rose-soft);stroke:var(--rose);stroke-width:2}
+.fet{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.head{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.plac{fill:var(--rose-mid);stroke:var(--rose);stroke-width:1.5}
+.mat{fill:var(--skin);stroke:var(--fetus-line);stroke-width:1.3}
+.bone{fill:var(--bone);stroke:var(--bone-line);stroke-width:1.5}
+.bone-l{fill:none;stroke:var(--bone-line);stroke-width:7;stroke-linecap:round}
+.hand-f{fill:var(--hand);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.hand-l{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-linecap:round;opacity:.7}
+.arw{fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.arw-r{fill:none;stroke:var(--red);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.blood{fill:var(--blood)}
+.tool-line{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tool-f{fill:var(--surface-2);stroke:var(--muted);stroke-width:1.6;stroke-linejoin:round}
+.ico{width:40px;height:40px;stroke:var(--rose);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico .f{fill:var(--rose-soft)}
+.step{padding:12px;display:flex;flex-direction:column;gap:6px}
+.step svg{width:100%;max-width:230px;align-self:center}
+.step h3{font-size:.98rem;display:flex;gap:8px;align-items:baseline}
+.step h3 b,.num-b{font-family:var(--font-mono);color:var(--bg);background:var(--plum);border-radius:6px;padding:0 7px;font-size:.8rem}
+.step p{font-size:.86rem;line-height:1.55;color:var(--muted)}
+.sim{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:18px;align-items:center}
+.sim svg{width:100%;max-width:260px;justify-self:center}
+.sim input[type=range]{width:100%;accent-color:var(--rose)}
+.read{font-family:var(--font-display);font-size:1.9rem;color:var(--rose);line-height:1.1}
+.read small{font-size:.95rem;color:var(--muted)}
+.desc{background:var(--surface-2);border-radius:12px;padding:10px 14px;min-height:76px;font-size:.92rem}
+.ticks{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:6px}
+.btn{font:600 .86rem var(--font-body);padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--bg)}
+.pill{display:inline-block;font:600 .74rem var(--font-mono);padding:1px 9px;border-radius:999px}
+.p-ok{background:var(--teal-soft);color:var(--teal)} .p-mid{background:var(--amber-soft);color:var(--amber)} .p-hi{background:var(--red-soft);color:var(--red)}
+.pimp{background:var(--plum-soft);border:1.5px solid var(--plum);border-radius:var(--r);padding:20px}
+.pimp h2{color:var(--plum)}
+details{margin-top:14px;background:var(--surface);border-radius:12px;border:1px solid var(--line);padding:10px 14px}
+summary{cursor:pointer;font-weight:600;color:var(--plum)}
+details[open] summary{margin-bottom:8px}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+footer ol{padding-left:1.2em}
+/* OSCE checklist */
+.osce-bar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 46px);z-index:4;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);margin-bottom:14px}
+.osce-bar .meter{flex:1 1 160px;height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.osce-bar .meter i{display:block;height:100%;width:0;background:var(--teal);transition:width .2s ease}
+.osce-bar .score{font-family:var(--font-mono);font-weight:600}
+.osce-sec{margin-bottom:16px}
+.osce-sec h3{font-size:1.02rem;margin-bottom:6px;display:flex;gap:8px;align-items:baseline}
+.osce-item{display:grid;grid-template-columns:auto auto 1fr;gap:10px;align-items:start;padding:8px 10px;border-radius:10px;border:1px solid transparent;cursor:pointer}
+.osce-item:hover{background:var(--surface-2)}
+.osce-item input{margin-top:5px;width:18px;height:18px;accent-color:var(--teal)}
+.osce-item .k{font:600 .68rem var(--font-mono);padding:2px 7px;border-radius:6px;margin-top:3px;white-space:nowrap}
+.k.do{background:var(--teal-soft);color:var(--teal)} .k.say{background:var(--plum-soft);color:var(--plum)}
+.osce-item.crit{border-color:var(--red-soft)}
+.osce-item.crit .t::after{content:" ⚠ critical";font:600 .68rem var(--font-mono);color:var(--red)}
+.osce-item.done .t{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--teal)}
+.osce-item .t{font-size:.94rem;line-height:1.55}
+.osce-item .why{display:block;font-size:.82rem;color:var(--muted);text-decoration:none}
+@media (max-width:860px){ .g4{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:620px){ .hero{grid-template-columns:1fr} .hero-art{max-width:240px;order:-1} .g2,.g3,.sim{grid-template-columns:1fr} }
+@media (max-width:440px){ .g4{grid-template-columns:1fr} }
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="hand" viewBox="-30 -20 60 36" overflow="visible"><path class="hand-f" d="M-27 -1 C-27 -10 -19 -13 -9 -12 L19 -10 C27 -9 28 -3 27 0 C28 4 26 10 19 10 L-9 12 C-19 13 -27 8 -27 -1Z"/><path class="hand-f" d="M-8 -11 C-6 -19 6 -21 11 -15 C12 -13 9 -11 4 -11Z"/><path class="hand-l" d="M7 -5 L24 -4 M7 0 L25 0.5 M7 5 L23 5.5"/></symbol>
+<marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--teal)"/></marker>
+<marker id="ahr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--red)"/></marker>
+</defs></svg>
+
+<nav class="toc" aria-label="สารบัญ"><div class="toc-inner"><a class="hub" href="index.html">← คลังเรียน</a><a href="#bx">Cervical biopsy</a><a href="#polyp">Polypectomy</a><a href="#marsup">Marsupialization</a><a href="#pack">Vaginal packing</a><a href="#fb">Remove FB</a><a href="#osce">OSCE checklist</a><a href="#pimp">คำถามผู้คุมสอบ</a></div></nav>
+<div class="wrap">
+<header class="hero">
+  <div>
+    <span class="eyebrow">OPOB 11 · Minor gynecologic procedures</span>
+    <h1>หัตถการ<br><span>นรีเวชเล็ก</span></h1>
+    <p class="lede">5 หัตถการที่ OPD และห้องฉุกเฉินนรีเวช: cervical biopsy, polypectomy, Bartholin marsupialization, vaginal packing และการเอาสิ่งแปลกปลอมออกจากช่องคลอด อ้างอิง <b>Williams Gynecology</b>, <b>Berek &amp; Novak</b> และ <b>ACOG</b></p>
+    <div class="pitch"><span class="eyebrow">หลักร่วมทุกหัตถการ</span>ความยินยอม · chaperone · aseptic · ยาชาเฉพาะที่ · <b>ส่งชิ้นเนื้อตรวจทางพยาธิทุกครั้ง</b> · ห้ามเลือด · <b>นับผ้าก๊อซที่ใส่และเอาออก</b></div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 300 220" role="img" aria-label="ชุดเครื่องมือหัตถการนรีเวช">
+    <path d="M30 60 L130 60 M30 80 L130 80" style="stroke:var(--muted)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M130 60 C150 60 150 80 130 80" fill="none" style="stroke:var(--muted)" stroke-width="5"/>
+    <text x="40" y="44" class="svg-t">Speculum</text>
+    <path d="M170 40 L260 120" style="stroke:var(--teal)" stroke-width="5" stroke-linecap="round"/><path d="M180 40 L262 112" style="stroke:var(--teal)" stroke-width="5" stroke-linecap="round"/><circle cx="168" cy="38" r="9" fill="none" style="stroke:var(--teal)" stroke-width="3"/>
+    <text x="200" y="140" class="svg-t">Ring forceps</text>
+    <path d="M40 150 L160 150" style="stroke:var(--plum)" stroke-width="5" stroke-linecap="round"/><path d="M160 144 h10 v12 h-10 M164 150 h8" fill="none" style="stroke:var(--plum)" stroke-width="3"/>
+    <text x="40" y="176" class="svg-t">Punch biopsy</text>
+    <rect x="200" y="164" width="70" height="30" rx="6" style="fill:var(--surface);stroke:var(--muted)" stroke-width="2" stroke-dasharray="4 3"/><text x="206" y="212" class="svg-t">Gauze roll</text>
+  </svg>
+</header>
+
+<section id="bx">
+  <div class="sec-head"><span class="eyebrow">1 · Cervical biopsy</span><h2>ตัดชิ้นเนื้อปากมดลูก</h2></div>
+  <div class="grid g2">
+    <div class="card"><ul class="clean small"><li><b>ข้อบ่งชี้</b>: รอยโรคที่เห็นด้วยตา · ผลคัดกรองผิดปกติ (ทำภายใต้ <b>colposcopy</b>: ทา acetic acid 3–5% เห็น acetowhite, mosaic, punctation)</li><li>ใช้ <b>punch biopsy</b> ตัดบริเวณที่ผิดปกติที่สุด ตัด<b>จากด้านล่างขึ้นบน</b> (posterior lip ก่อน) เพื่อไม่ให้เลือดไหลบังจุดอื่น</li><li>ห้ามเลือดด้วย <b>Monsel's solution</b> (ferric subsulfate) หรือ silver nitrate · ถ้าไม่หยุดจึงใช้ vaginal pack</li><li>ใส่ formalin ติดฉลากตำแหน่ง (ตามหน้าปัดนาฬิกา)</li></ul></div>
+    <div class="card"><svg viewBox="0 0 260 180" class="fig" style="max-width:280px" aria-hidden="true"><circle cx="130" cy="90" r="76" style="fill:var(--rose-soft);stroke:var(--rose)" stroke-width="2"/><ellipse cx="130" cy="90" rx="14" ry="8" style="fill:var(--rose)"/><path d="M84 110 C96 126 118 136 140 132 C150 128 140 112 120 108Z" style="fill:var(--surface);stroke:var(--muted)" stroke-width="1.5"/><text x="60" y="160" class="svg-t">Acetowhite lesion ที่ 6–7 นาฬิกา</text><circle cx="118" cy="120" r="7" fill="none" style="stroke:var(--plum)" stroke-width="2.5"/><text x="150" y="40" class="svg-t">12</text><text x="150" y="176" class="svg-t">6</text></svg></div>
+  </div>
+</section>
+
+<section id="polyp">
+  <div class="sec-head"><span class="eyebrow">2 · Cervical polypectomy</span><h2>ตัดติ่งเนื้อปากมดลูก</h2></div>
+  <div class="grid g2">
+    <div class="card"><svg viewBox="0 0 260 170" class="fig" style="max-width:280px" aria-hidden="true"><circle cx="110" cy="80" r="64" style="fill:var(--rose-soft);stroke:var(--rose)" stroke-width="2"/><ellipse cx="110" cy="80" rx="12" ry="7" style="fill:var(--rose)"/><path d="M110 82 C116 100 132 116 150 118" fill="none" style="stroke:var(--rose)" stroke-width="5"/><ellipse cx="164" cy="122" rx="16" ry="12" style="fill:var(--red-soft);stroke:var(--red)" stroke-width="2"/><path d="M200 100 C220 110 220 140 196 150" class="arw" marker-end="url(#ah)"/><text x="150" y="164" class="svg-t">จับฐานแล้วบิดหมุน</text></svg></div>
+    <div class="card"><ul class="clean small"><li>ส่วนใหญ่ไม่ร้ายแรง · อาการ: เลือดออกหลังมีเพศสัมพันธ์หรือระหว่างรอบ</li><li>จับฐานติ่งด้วย <b>ring forceps</b> แล้ว<b>บิดหมุน</b> (torsion) จนหลุด · ฐานใหญ่อาจต้องผูกหรือตัดในห้องผ่าตัด</li><li>จี้ฐานด้วย silver nitrate/Monsel's</li><li><b>ส่งพยาธิทุกชิ้น</b> · ถ้ามีเลือดออกผิดปกติร่วม หรืออายุมาก พิจารณาประเมิน endometrium ด้วย (อาจมี endometrial polyp ร่วม)</li></ul></div>
+  </div>
+</section>
+
+<section id="marsup">
+  <div class="sec-head"><span class="eyebrow">3 · Bartholin marsupialization</span><h2>Marsupialization: ทำปากถุงให้เป็นท่อถาวร</h2><p class="muted">ใช้กับ Bartholin cyst/abscess ที่กลับเป็นซ้ำ · ทางเลือกคือ <b>Word catheter</b> คาไว้ 4–6 สัปดาห์ · การกรีดระบายอย่างเดียวกลับเป็นซ้ำบ่อย</p></div>
+  <div class="grid g4">
+    <div class="card step"><svg viewBox="0 0 200 130" aria-hidden="true"><ellipse cx="100" cy="66" rx="70" ry="56" class="mat"/><ellipse cx="80" cy="56" rx="16" ry="36" style="fill:var(--rose-soft);stroke:var(--rose)"/><circle cx="126" cy="90" r="22" style="fill:var(--amber-soft);stroke:var(--amber)" stroke-width="2"/><line x1="118" y1="74" x2="118" y2="106" style="stroke:var(--red)" stroke-width="3"/></svg><h3><b>1</b>กรีดแนวตั้ง</h3><p>กรีดยาว 2–3 cm บนผิว<b>ด้าน vestibule ด้านในของ hymenal ring</b> (ตรงตำแหน่งท่อเปิดปกติ)</p></div>
+    <div class="card step"><svg viewBox="0 0 200 130" aria-hidden="true"><circle cx="100" cy="66" r="40" style="fill:var(--amber-soft);stroke:var(--amber)" stroke-width="2"/><path d="M100 70 c0 10 -6 20 -6 30 M100 70 c0 10 6 20 6 30" style="stroke:var(--amber)" stroke-width="2" fill="none"/><text x="40" y="124" class="svg-t">ระบาย เก็บ culture</text></svg><h3><b>2</b>ระบาย</h3><p>กรีดผนัง cyst ระบายหนอง/น้ำ · เก็บ<b>เพาะเชื้อ</b> (รวม gonorrhea/chlamydia) · ทำลาย loculations</p></div>
+    <div class="card step"><svg viewBox="0 0 200 130" aria-hidden="true"><ellipse cx="100" cy="66" rx="34" ry="24" style="fill:var(--surface);stroke:var(--amber)" stroke-width="3"/><g style="stroke:var(--plum)" stroke-width="2"><line x1="70" y1="50" x2="60" y2="42"/><line x1="70" y1="82" x2="60" y2="90"/><line x1="130" y1="50" x2="140" y2="42"/><line x1="130" y1="82" x2="140" y2="90"/><line x1="100" y1="42" x2="100" y2="30"/><line x1="100" y1="90" x2="100" y2="102"/></g><text x="30" y="124" class="svg-t">เย็บขอบ cyst กับผิว vestibule</text></svg><h3><b>3</b>เย็บพลิกขอบ</h3><p>เย็บแยกด้วยไหมละลาย (2-0/3-0) ระหว่าง<b>ผนัง cyst กับผิว vestibule</b> รอบวง ให้ปากเปิดค้างไว้</p></div>
+    <div class="card step"><svg viewBox="0 0 200 130" aria-hidden="true"><path d="M40 90 C60 60 140 60 160 90" fill="none" style="stroke:var(--teal)" stroke-width="3"/><path d="M60 100 h80" style="stroke:var(--teal)" stroke-width="10" stroke-linecap="round" opacity=".3"/><text x="40" y="124" class="svg-t">Sitz bath · นัดตรวจ</text></svg><h3><b>4</b>หลังทำ</h3><p>แช่ก้นน้ำอุ่น (sitz bath) · ยาแก้ปวด · antibiotic ถ้ามี cellulitis/STI · อายุ &gt;40 ปีหรือก้อนแข็ง → biopsy ผนัง</p></div>
+  </div>
+</section>
+
+<section id="pack">
+  <div class="sec-head"><span class="eyebrow">4 · Vaginal packing</span><h2>การใส่ผ้าก๊อซอัดช่องคลอด</h2></div>
+  <div class="grid g2">
+    <div class="card"><ul class="clean small"><li><b>ข้อบ่งชี้</b>: เลือดออกจากแผลช่องคลอด/ปากมดลูกหลังตัดชิ้นเนื้อหรือฉีกขาดที่ยังกดห้ามเลือดไม่ได้ · หลังผ่าตัดทางช่องคลอดบางชนิด</li><li>ใช้ผ้าก๊อซม้วนยาว (ชุบน้ำเกลือ/ยาฆ่าเชื้อ หรือหล่อลื่น) อัด<b>เป็นชั้นจากด้านในออกมา</b> เริ่มจาก fornices ให้แน่นพอ</li><li><b>นับและบันทึกจำนวนผ้าก๊อซ</b> · ปลายผ้าโผล่ออกมาให้เห็น</li><li>ใส่ <b>Foley catheter</b> เพราะ pack กด urethra ทำให้ปัสสาวะไม่ออก</li><li>เอาออกภายใน <b>12–24 ชม.</b> และนับให้ครบ (ค้างนานเสี่ยงติดเชื้อ/TSS)</li></ul></div>
+    <div class="card"><svg viewBox="0 0 260 180" class="fig" style="max-width:280px" aria-hidden="true"><path d="M80 20 C80 100 90 140 110 170 L150 170 C170 140 180 100 180 20" fill="none" style="stroke:var(--rose)" stroke-width="4"/><g fill="none" style="stroke:var(--muted)" stroke-width="5" stroke-linecap="round"><path d="M92 40 C120 30 150 40 168 36"/><path d="M90 60 C120 50 150 62 170 56"/><path d="M92 82 C120 72 150 84 170 78"/><path d="M94 104 C120 94 150 106 166 100"/><path d="M100 126 C120 118 146 128 160 122"/><path d="M130 130 L130 178"/></g><text x="188" y="36" class="svg-t">เริ่มจาก fornix</text><text x="140" y="178" class="svg-t">ปลายโผล่ให้เห็น</text></svg></div>
+  </div>
+</section>
+
+<section id="fb">
+  <div class="sec-head"><span class="eyebrow">5 · Foreign body removal</span><h2>เอาสิ่งแปลกปลอมออกจากช่องคลอด</h2></div>
+  <div class="grid g2">
+    <div class="card"><h3>ผู้ใหญ่</h3><ul class="clean small"><li>พบบ่อย: tampon ค้าง, ถุงยาง, pessary · อาการ: <b>ตกขาวมีกลิ่นเหม็นมาก</b> เลือดออก</li><li>ใส่ speculum มองให้เห็น จับด้วย ring forceps · ระวังกลิ่น (ใส่ไว้ในถุงปิด)</li><li>ตรวจผนังช่องคลอดหาแผล · คัดกรอง <b>toxic shock syndrome</b>: ไข้สูง ผื่นแดงทั่วตัว ความดันต่ำ</li><li>ถามเรื่องความยินยอมและความรุนแรงทางเพศเมื่อสถานการณ์ไม่ชัดเจน</li></ul></div>
+    <div class="card"><h3>เด็ก</h3><ul class="clean small"><li>มักเป็น<b>กระดาษทิชชู</b> · ตกขาวมีกลิ่นและเลือดออก</li><li>ท่า <b>knee-chest</b> หรือ frog-leg · ส่องดูโดยไม่ใช้ speculum ผู้ใหญ่</li><li>ล้างด้วย<b>น้ำเกลืออุ่น</b>ผ่านสายให้อาหาร (feeding tube) · ถ้าไม่ร่วมมือหรือของติดแน่น → ทำภายใต้ยาสลบ (EUA/vaginoscopy)</li><li>ประเมินความเป็นไปได้ของการล่วงละเมิดทางเพศอย่างระมัดระวังทุกราย</li></ul></div>
+  </div>
+</section>
+
+<section id="osce">
+  <div class="sec-head"><span class="eyebrow">OSCE checklist · ฝึกบนหุ่น</span><h2>ซ้อมทีละข้อ</h2><p class="muted">ส่วนแรกใช้ร่วมกับทุกหัตถการ แล้วเลือกส่วนของหัตถการที่สอบ</p></div>
+  <div id="osce-root"></div>
+</section>
+
+<section id="pimp">
+  <div class="pimp"><span class="eyebrow" style="color:var(--plum)">คำถามที่ผู้คุมสอบชอบถาม</span><h2 style="margin:6px 0 10px">ลองตอบก่อนเปิดเฉลย</h2>
+  <p>หญิงอายุ 58 ปี มีก้อนที่ปากช่องคลอดด้านซ้ายล่าง ไม่เจ็บ แข็ง ไม่เคยเป็นมาก่อน</p>
+  <p style="margin-top:8px"><b>ควรทำ marsupialization เลยหรือไม่?</b></p>
+  <details><summary>เปิดเฉลย</summary><p class="small">ไม่ควรทำทันที · ก้อนที่ตำแหน่ง Bartholin ใน<b>หญิงอายุมาก</b> โดยเฉพาะหลังหมดประจำเดือน และ<b>ก้อนแข็งไม่เจ็บ</b> ต้องคิดถึง <b>Bartholin gland carcinoma</b> → ทำ <b>biopsy</b> (หรือ excision) เพื่อวินิจฉัยก่อน</p></details></div>
+</section>
+
+<footer>
+  <p><b>หมายเหตุ</b>: checklist รวบรวมจากหลักการมาตรฐานเพื่อการซ้อม ให้ใช้ร่วมกับแบบประเมินของภาควิชา</p>
+  <p style="margin-top:10px"><b>แหล่งอ้างอิง</b></p>
+  <ol><li>Hoffman BL, et al. <i>Williams Gynecology</i>, 4th ed. Ch. Benign Disorders of the Lower Reproductive Tract; Preinvasive Lesions; Minor procedures atlas.</li><li>Berek JS. <i>Berek &amp; Novak's Gynecology</i>, 16th ed.</li><li>ACOG Committee Opinion on Pediatric and Adolescent Gynecology (vaginal foreign body).</li></ol>
+</footer>
+
+
+</div>
+<script>
+
+window.OSCE={id:'minor-gyn',sections:[
+ {name:'ทุกหัตถการ',items:[
+  {t:'แนะนำตัว ยืนยันตัวผู้ป่วย อธิบายข้อบ่งชี้ ขั้นตอน ความเสี่ยง ขอ<b>ความยินยอม</b>',say:1,crit:1},
+  {t:'มี chaperone · ให้ปัสสาวะก่อน · ท่า lithotomy',say:1},
+  {t:'ล้างมือ ใส่ถุงมือ sterile · ทำความสะอาด · เตรียมเครื่องมือครบ'},
+  {t:'ยาชาเฉพาะที่ (aspirate ก่อนฉีด) เมื่อจำเป็น'}]},
+ {name:'Cervical biopsy / polypectomy',items:[
+  {t:'ใส่ speculum เห็นรอยโรคชัด · colposcopy + acetic acid เมื่อมีข้อบ่งชี้'},
+  {t:'Biopsy จากจุดผิดปกติที่สุด ตัดจากล่างขึ้นบน · หรือจับฐาน polyp แล้วบิดหมุน'},
+  {t:'ห้ามเลือดด้วย Monsel’s/silver nitrate'},
+  {t:'ใส่ formalin ติดฉลากตำแหน่ง <b>ส่งพยาธิ</b>',crit:1}]},
+ {name:'Marsupialization',items:[
+  {t:'ยืนยันว่าเป็น Bartholin cyst/abscess · อายุมากหรือก้อนแข็ง → biopsy',say:1,crit:1},
+  {t:'กรีดแนวตั้ง 2–3 cm ด้าน vestibule ภายใน hymenal ring'},
+  {t:'ระบายและเก็บเพาะเชื้อ · ทำลาย loculations'},
+  {t:'เย็บแยกผนัง cyst กับผิว vestibule รอบวง'},
+  {t:'สอน sitz bath · นัดติดตาม',say:1}]},
+ {name:'Vaginal packing / FB removal',items:[
+  {t:'Packing: อัดผ้าก๊อซเป็นชั้นจาก fornix ออกมา · <b>นับและบันทึก</b>จำนวน',crit:1},
+  {t:'ใส่ Foley catheter · บอกเวลาที่จะเอา pack ออก (12–24 ชม.)',say:1},
+  {t:'FB: มองเห็นแล้วจับด้วย ring forceps · ตรวจผนังช่องคลอด · ประเมินอาการ TSS',say:1},
+  {t:'บันทึกหัตถการ สิ่งที่พบ และแผนติดตาม',say:1}]}
+]};
+
+(function(){
+  var root=document.getElementById('osce-root'); if(!root||!window.OSCE) return;
+  var KEY='osce-'+window.OSCE.id, st={};
+  try{ st=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ st={}; }
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(st)); }catch(e){} }
+  var total=0, html='<div class="osce-bar"><span class="score" id="osce-score"></span><div class="meter"><i id="osce-m"></i></div><span class="small muted" id="osce-crit"></span><button class="btn" type="button" id="osce-reset">เริ่มใหม่</button></div>';
+  window.OSCE.sections.forEach(function(s,si){
+    html+='<div class="osce-sec card"><h3><span class="num-b">'+(si+1)+'</span>'+s.name+'</h3>';
+    s.items.forEach(function(it,ii){
+      var id='o'+si+'-'+ii; total++;
+      html+='<label class="osce-item'+(it.crit?' crit':'')+(st[id]?' done':'')+'" data-crit="'+(it.crit?1:0)+'"><input type="checkbox" data-id="'+id+'"'+(st[id]?' checked':'')+'><span class="k '+(it.say?'say':'do')+'">'+(it.say?'พูด':'ทำ')+'</span><span class="t">'+it.t+(it.why?'<span class="why">'+it.why+'</span>':'')+'</span></label>';
+    });
+    html+='</div>';
+  });
+  root.innerHTML=html;
+  function upd(){
+    var n=0, cm=0, ct=0;
+    root.querySelectorAll('.osce-item').forEach(function(l){ var c=l.querySelector('input').checked; if(c) n++; if(l.dataset.crit==='1'){ ct++; if(!c) cm++; } l.classList.toggle('done',c); });
+    document.getElementById('osce-score').textContent=n+'/'+total;
+    document.getElementById('osce-m').style.width=(total?n/total*100:0)+'%';
+    document.getElementById('osce-crit').textContent= ct ? (cm? 'critical ที่ยังไม่ทำ '+cm+' ข้อ' : 'critical ครบแล้ว ✓') : '';
+  }
+  root.addEventListener('change',function(e){ var i=e.target; if(!i.dataset.id) return; if(i.checked) st[i.dataset.id]=1; else delete st[i.dataset.id]; save(); upd(); });
+  document.getElementById('osce-reset').addEventListener('click',function(){ st={}; save(); root.querySelectorAll('input[data-id]').forEach(function(i){i.checked=false;}); upd(); });
+  upd();
+})();
+
+</script>
+
+</body>
+</html>

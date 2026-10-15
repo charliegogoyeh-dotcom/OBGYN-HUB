@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>ฝากครรภ์ ANC ฉบับภาพ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: "สมุดชมพู" (Thai MCH handbook) — a pink clinical notebook. A 40-week spine (timeline) up top, then sections that follow one ANC visit from first contact to red flags. */
+:root{
+  --bg:#fbf5f8; --surface:#ffffff; --surface-2:#f6ecf2;
+  --ink:#2a1530; --muted:#6c5873; --line:#ead8e3;
+  --rose:#c0185a; --rose-soft:#fbe1ec; --rose-mid:#f2a9c6;
+  --teal:#0d7471; --teal-soft:#dcf1ee;
+  --amber:#a86400; --amber-soft:#fcefd8;
+  --plum:#6a3d8a; --plum-soft:#efe4f6;
+  --red:#c42626; --red-soft:#fde4e2;
+  --skin:#f4d6c6; --hand:#e9b79c; --fetus:#f8c9ab; --fetus-line:#b9775a;
+  --font-display:"Mitr","IBM Plex Sans Thai",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033;
+  --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456;
+  --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f;
+  --plum:#c39be0; --plum-soft:#2f2140;
+  --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1a1120; --surface:#241929; --surface-2:#2d2033;
+  --ink:#f4e9f1; --muted:#bca8c2; --line:#3c2c44;
+  --rose:#f2689b; --rose-soft:#3b1a2c; --rose-mid:#7d3456;
+  --teal:#56c7bc; --teal-soft:#14302e;
+  --amber:#f0aa48; --amber-soft:#35260f;
+  --plum:#c39be0; --plum-soft:#2f2140;
+  --red:#ff6b62; --red-soft:#3a1716;
+  --skin:#6e5249; --hand:#a37a64; --fetus:#c08a6c; --fetus-line:#f2c4a8;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.3;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.45rem,3.2vw,1.9rem)}
+h3{font-size:1.12rem}
+p{margin:0}
+b,strong{font-weight:600}
+.en{font-family:var(--font-body);font-weight:600}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+a{color:var(--rose)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:2px;border-radius:6px}
+
+/* nav */
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px))) 0;
+  padding:8px max(16px,env(safe-area-inset-left,0px))}
+.toc-inner{max-width:1040px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.toc a{flex:none;text-decoration:none;color:var(--muted);font-size:.84rem;padding:4px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.toc a:hover{color:var(--rose);border-color:var(--rose-mid)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;padding-block:36px 20px}
+.hero h1{font-size:clamp(2.1rem,5.4vw,3.3rem);font-weight:600;color:var(--ink)}
+.hero h1 span{color:var(--rose)}
+.hero .lede{margin-top:14px;font-size:1.06rem;max-width:58ch}
+.pitch{margin-top:18px;padding:14px 16px;border-radius:var(--r);background:var(--rose-soft);border:1px solid var(--rose-mid)}
+.pitch .eyebrow{display:block;margin-bottom:4px}
+.hero-art{max-width:360px;justify-self:center;width:100%}
+
+section{padding-block:40px 8px;scroll-margin-top:64px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;max-width:70ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2>*,.g3>*,.g4>*{min-width:0}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.callout{border-left:4px solid var(--teal);background:var(--teal-soft);padding:12px 14px;border-radius:0 10px 10px 0;font-size:.94rem}
+.callout.warn{border-color:var(--amber);background:var(--amber-soft)}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;padding:1px 8px;border-radius:999px;border:1px solid currentColor;vertical-align:middle}
+.tag.th{color:var(--rose)} .tag.acog{color:var(--teal)}
+ul.clean{margin:0;padding-left:1.1em}
+ul.clean li{margin:3px 0}
+
+/* why: analogy strip */
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.why .card{display:flex;flex-direction:column;gap:8px}
+.why svg{width:46px;height:46px}
+
+/* timeline */
+.tl{min-width:860px}
+.tl text{font-family:var(--font-body);font-size:12px;fill:var(--ink)}
+.tl .lab{font-size:12.5px;font-weight:600;fill:var(--muted)}
+.tl .wk{font-family:var(--font-mono);font-size:11px;fill:var(--muted)}
+.tl .grid-l{stroke:var(--line);stroke-width:1}
+.tl .tri{fill:var(--surface-2)}
+.tl .tri-t{font-family:var(--font-display);font-size:13px;fill:var(--plum)}
+.b-rose{fill:var(--rose-soft);stroke:var(--rose)} .b-teal{fill:var(--teal-soft);stroke:var(--teal)}
+.b-plum{fill:var(--plum-soft);stroke:var(--plum)} .b-amber{fill:var(--amber-soft);stroke:var(--amber)}
+.tl rect.bar{stroke-width:1.2}
+.tl .dot{fill:var(--rose);stroke:var(--surface);stroke-width:2}
+.tl .dot-t{fill:var(--bg);font-family:var(--font-mono);font-size:11px;font-weight:600}
+.legend-scroll{font-size:.84rem;color:var(--muted);margin-top:6px}
+.visits{margin-top:16px}
+.visit{padding:14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.visit .num{display:flex;align-items:baseline;gap:8px}
+.visit .num b{font-family:var(--font-mono);display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--rose);color:var(--bg);font-size:.8rem}
+.visit .num span{font-family:var(--font-mono);font-size:.86rem;color:var(--rose);font-weight:600}
+.visit p{font-size:.88rem;line-height:1.55}
+
+/* Naegele */
+.naegele{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cal{width:112px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--surface);text-align:center;flex:none}
+.cal .top{background:var(--rose);color:var(--bg);font-size:.74rem;padding:2px 0;font-family:var(--font-mono);letter-spacing:.08em}
+.cal .d{font-family:var(--font-display);font-size:1.9rem;line-height:1.2;padding-top:4px}
+.cal .m{font-size:.8rem;color:var(--muted);padding-bottom:6px}
+.cal.edd .top{background:var(--teal)}
+.op{font-family:var(--font-mono);font-size:.82rem;color:var(--ink);background:var(--surface-2);border-radius:999px;padding:4px 10px;flex:none}
+.arrow{color:var(--muted);flex:none}
+.calc{display:grid;grid-template-columns:auto 1fr;gap:10px 16px;align-items:center;margin-top:14px}
+.calc label{font-weight:600;font-size:.92rem}
+.calc input{font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);max-width:220px}
+.out{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.out div{background:var(--surface-2);border-radius:10px;padding:10px 12px;min-width:0}
+.out .k{font-size:.76rem;color:var(--muted)}
+.out .v{font-family:var(--font-display);font-size:1.15rem;line-height:1.35;word-break:break-word}
+
+/* GPAL */
+.gpal{display:flex;gap:8px;flex-wrap:wrap;align-items:stretch;margin-top:10px}
+.gpal .box{flex:1 1 64px;border:2px solid var(--plum);border-radius:10px;text-align:center;padding:6px 4px;background:var(--plum-soft)}
+.gpal .box b{display:block;font-family:var(--font-display);font-size:1.6rem;line-height:1.1;color:var(--plum)}
+.gpal .box span{font-size:.74rem}
+.gpal .box.g{border-color:var(--rose);background:var(--rose-soft)} .gpal .box.g b{color:var(--rose)}
+
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;letter-spacing:.02em;background:var(--surface-2)}
+td.mono,th.mono{white-space:nowrap}
+
+/* labs */
+.lab-card{display:flex;gap:12px;align-items:flex-start}
+.lab-card svg{flex:none;width:34px;height:56px}
+.lab-card h3{font-size:1rem}
+.lab-card p{font-size:.86rem;line-height:1.55;color:var(--muted)}
+.tube-body{fill:var(--surface-2);stroke:var(--muted);stroke-width:1.4}
+.tube-blood{fill:#b3202f}
+.cup{fill:var(--amber-soft);stroke:var(--amber);stroke-width:1.4}
+
+/* flowchart */
+.flow{display:grid;gap:10px;justify-items:center}
+.node{padding:10px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);text-align:center;max-width:520px;width:100%}
+.node.start{border-color:var(--rose);background:var(--rose-soft)}
+.node.end-ok{border-color:var(--teal);background:var(--teal-soft)}
+.node.end-risk{border-color:var(--red);background:var(--red-soft)}
+.branch{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;max-width:760px}
+.branch>div{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.down{width:2px;height:18px;background:var(--muted);position:relative}
+.down::after{content:"";position:absolute;left:-5px;bottom:-2px;border:6px solid transparent;border-top-color:var(--muted);border-bottom:0}
+.br-lab{font-size:.78rem;font-family:var(--font-mono);color:var(--muted)}
+.diseases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.diseases div{background:var(--red-soft);border:1px solid var(--red);border-radius:10px;padding:10px;font-size:.86rem;min-width:0}
+.diseases b{color:var(--red);display:block}
+
+/* every visit icons */
+.ico-card{display:flex;flex-direction:column;gap:6px}
+.ico{width:40px;height:40px;stroke:var(--rose);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico .f{fill:var(--rose-soft)}
+.ico-card h3{font-size:1rem}
+.ico-card p{font-size:.86rem;line-height:1.55;color:var(--muted)}
+
+/* fundal height */
+.fh{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:24px;align-items:center}
+.fh svg{width:100%;max-width:300px}
+.torso{fill:var(--skin);stroke:var(--fetus-line);stroke-width:1.2}
+.uterus{fill:var(--rose-mid);fill-opacity:.55;stroke:var(--rose);stroke-width:2;transition:all .25s ease}
+.lm{stroke:var(--muted);stroke-dasharray:4 4;stroke-width:1}
+.lm-t{font-size:11px;fill:var(--muted);font-family:var(--font-body)}
+.fund-line{stroke:var(--rose);stroke-width:2;transition:all .25s ease}
+.tape{stroke:var(--amber);stroke-width:3;stroke-linecap:round;transition:all .25s ease}
+.slider{display:flex;flex-direction:column;gap:8px}
+.slider input{width:100%;accent-color:var(--rose)}
+.ga-read{font-family:var(--font-display);font-size:2rem;color:var(--rose);line-height:1.1}
+.fh-desc{background:var(--surface-2);border-radius:12px;padding:12px 14px;min-height:88px}
+@media (prefers-reduced-motion: reduce){.uterus,.fund-line,.tape{transition:none}}
+
+/* leopold */
+.leo{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.leo .card{padding:12px;display:flex;flex-direction:column;gap:6px}
+.leo svg{width:100%;height:auto;max-width:220px;align-self:center}
+.leo h3{font-size:.98rem;display:flex;gap:8px;align-items:baseline}
+.leo h3 b{font-family:var(--font-mono);color:var(--bg);background:var(--plum);border-radius:6px;padding:0 7px;font-size:.8rem}
+.leo p{font-size:.84rem;line-height:1.5;color:var(--muted)}
+.ut{fill:var(--rose-soft);stroke:var(--rose);stroke-width:2}
+.fet{fill:var(--fetus);stroke:var(--fetus-line);stroke-width:1.5}
+.fet-l{fill:none;stroke:var(--fetus-line);stroke-width:2.5;stroke-linecap:round}
+.back{fill:none;stroke:var(--plum);stroke-width:4;stroke-linecap:round;stroke-dasharray:2 6}
+.hand-f{fill:var(--hand);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.hand-l{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-linecap:round;opacity:.7}
+.arw{fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.svg-t{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
+
+/* rx */
+.pill{width:58px;height:30px;flex:none}
+.rx-card{display:flex;gap:12px;align-items:flex-start}
+.rx-card h3{font-size:1rem}
+.rx-card p{font-size:.86rem;line-height:1.55;color:var(--muted)}
+.dose{font-family:var(--font-mono);font-size:.84rem;color:var(--ink);background:var(--surface-2);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.vax{display:flex;flex-direction:column;gap:6px;border-top:4px solid var(--amber)}
+.vax .when{font-family:var(--font-mono);font-size:.86rem;color:var(--amber);font-weight:600}
+.vax p{font-size:.86rem;line-height:1.55;color:var(--muted)}
+.vax.no{border-top-color:var(--red)} .vax.no .when{color:var(--red)}
+.syr{width:40px;height:40px;stroke:var(--amber);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.vax.no .syr{stroke:var(--red)}
+
+/* weight chart */
+.wchart{min-width:520px}
+.wchart text{font-family:var(--font-body);font-size:12px;fill:var(--ink)}
+.wchart .ax{font-family:var(--font-mono);font-size:11px;fill:var(--muted)}
+.wchart .gl{stroke:var(--line)}
+.wchart .rng{fill:var(--teal);fill-opacity:.85}
+.wchart .rv{font-family:var(--font-mono);font-size:11px;fill:var(--ink)}
+
+/* red flags */
+.rf{display:flex;gap:12px;align-items:flex-start;border-color:var(--red);background:var(--red-soft)}
+.rf svg{flex:none;width:42px;height:42px;stroke:var(--red);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.rf h3{font-size:1rem;color:var(--red)}
+.rf p{font-size:.86rem;line-height:1.55}
+
+/* pimp */
+.pimp{background:var(--plum-soft);border:1.5px solid var(--plum);border-radius:var(--r);padding:20px}
+.pimp h2{color:var(--plum)}
+details{margin-top:14px;background:var(--surface);border-radius:12px;border:1px solid var(--line);padding:10px 14px}
+summary{cursor:pointer;font-weight:600;color:var(--plum)}
+details[open] summary{margin-bottom:8px}
+
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+footer ol{padding-left:1.2em}
+
+@media (max-width:860px){
+  .g4,.leo{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3,.why{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:620px){
+  .hero{grid-template-columns:1fr}
+  .hero-art{max-width:260px;order:-1}
+  .g2,.g3,.why,.fh,.diseases{grid-template-columns:1fr}
+  .fh svg{justify-self:center}
+  .out{grid-template-columns:1fr}
+  .calc{grid-template-columns:1fr}
+  .branch{grid-template-columns:1fr}
+}
+@media (max-width:440px){ .g4,.leo{grid-template-columns:1fr} }
+</style>
+
+<!-- shared symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="hand" viewBox="-30 -20 60 36" overflow="visible">
+      <path class="hand-f" d="M-27 -1 C-27 -10 -19 -13 -9 -12 L19 -10 C27 -9 28 -3 27 0 C28 4 26 10 19 10 L-9 12 C-19 13 -27 8 -27 -1Z"/>
+      <path class="hand-f" d="M-8 -11 C-6 -19 6 -21 11 -15 C12 -13 9 -11 4 -11Z"/>
+      <path class="hand-l" d="M7 -5 L24 -4 M7 0 L25 0.5 M7 5 L23 5.5"/>
+    </symbol>
+    <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10z" style="fill:var(--teal)"/>
+    </marker>
+  </defs>
+</svg>
+
+<nav class="toc" aria-label="สารบัญ"><div class="toc-inner"><a href="index.html" style="color:var(--plum);border-color:var(--plum)">← คลังเรียน</a>
+  <a href="#why">ทำไมต้องฝากครรภ์</a><a href="#timeline">ไทม์ไลน์ 40 wk</a><a href="#first">ครั้งแรก</a><a href="#labs">Lab &amp; Thal</a>
+  <a href="#visit">ทุกครั้งที่นัด</a><a href="#leopold">Leopold</a><a href="#screen">Screening</a><a href="#rx">ยา &amp; วัคซีน</a>
+  <a href="#weight">น้ำหนัก</a><a href="#redflags">Red flags</a><a href="#pimp">Pimp Q</a>
+</div></nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <div>
+    <span class="eyebrow">OB/GYN rotation · Antenatal care</span>
+    <h1>ฝากครรภ์ <span>ANC</span><br>ฉบับเข้าใจด้วยภาพ</h1>
+    <p class="lede">สรุปการดูแลหญิงตั้งครรภ์ตั้งแต่ครั้งแรกจนครบกำหนด ใช้ภาษาไทยเป็นหลักและคงศัพท์เทคนิคเป็นภาษาอังกฤษ อ้างอิงแนวทาง <span class="en">ACOG</span>, <span class="en">Williams Obstetrics</span>, <span class="en">Beckmann &amp; Ling</span> และคู่มือ ANC กรมอนามัย</p>
+    <div class="pitch">
+      <span class="eyebrow">Elevator pitch</span>
+      <b>ANC คือการ "เช็กระยะ" แม่และทารกเป็นช่วงๆ ตลอด 40 สัปดาห์</b> เพื่อ (1) กำหนดอายุครรภ์ให้แม่น (2) คัดกรองโรคที่ป้องกันหรือรักษาได้ก่อนสาย และ (3) เตรียมแม่ให้พร้อมคลอดอย่างปลอดภัย
+    </div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 300 300" role="img" aria-label="ภาพมดลูกตั้งครรภ์และวงแหวน 40 สัปดาห์">
+    <circle cx="150" cy="150" r="138" fill="none" style="stroke:var(--line)" stroke-width="10"/>
+    <circle cx="150" cy="150" r="138" fill="none" style="stroke:var(--rose-mid)" stroke-width="10" stroke-dasharray="289 867" transform="rotate(-90 150 150)"/>
+    <circle cx="150" cy="150" r="138" fill="none" style="stroke:var(--rose)" stroke-width="10" stroke-dasharray="0 289 289 867" transform="rotate(-90 150 150)" opacity=".75"/>
+    <circle cx="150" cy="150" r="138" fill="none" style="stroke:var(--plum)" stroke-width="10" stroke-dasharray="0 578 289 867" transform="rotate(-90 150 150)" opacity=".7"/>
+    <text x="250" y="62" class="svg-t" style="font-size:13px;fill:var(--rose)">T1</text>
+    <text x="34" y="252" class="svg-t" style="font-size:13px;fill:var(--rose)">T2</text>
+    <text x="34" y="56" class="svg-t" style="font-size:13px;fill:var(--plum)">T3</text>
+    <path class="ut" d="M150 52 C206 52 232 104 228 158 C224 214 190 246 150 246 C110 246 76 214 72 158 C68 104 94 52 150 52Z"/>
+    <circle class="fet" cx="146" cy="90" r="24"/>
+    <ellipse class="fet" cx="156" cy="146" rx="34" ry="50" transform="rotate(-8 156 146)"/>
+    <circle class="fet" cx="150" cy="206" r="30"/>
+    <path class="fet-l" d="M126 128 C112 134 110 150 120 156 M128 168 C114 176 116 190 128 190"/>
+    <path class="back" d="M184 104 C200 140 196 176 176 194"/>
+  </svg>
+</header>
+
+<!-- WHY -->
+<section id="why">
+  <div class="sec-head">
+    <span class="eyebrow">The "Why"</span>
+    <h2>ทำไมต้องฝากครรภ์ให้เร็วและครบ</h2>
+    <p class="muted">ลองนึกภาพการขับรถเดินทางไกล 40 สัปดาห์ ANC คือจุดแวะเช็กรถตามระยะ แต่ละจุดมีงานเฉพาะของมัน ถ้าข้ามจุดไป ปัญหาบางอย่างจะสายเกินแก้</p>
+  </div>
+  <div class="why">
+    <div class="card">
+      <svg viewBox="0 0 48 48" class="ico"><rect x="7" y="10" width="34" height="31" rx="4" class="f"/><path d="M7 18h34M16 6v8M32 6v8M15 26h4M22 26h4M29 26h4M15 33h4M22 33h4"/></svg>
+      <h3>กำหนดอายุครรภ์ให้แม่น</h3>
+      <p class="small muted">GA ที่ผิดทำให้ทุกอย่างผิดตาม เช่น เรียก preterm ผิด, ชักนำคลอด post-term ผิด, อ่านผล screening ผิด <b>U/S ไตรมาสแรก (CRL) แม่นที่สุด</b></p>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 48 48" class="ico"><path d="M24 5 L39 11 V23 C39 33 32 40 24 43 C16 40 9 33 9 23 V11Z" class="f"/><path d="M17 24l5 5 9-10"/></svg>
+      <h3>คัดกรองโรคที่ป้องกันได้</h3>
+      <p class="small muted">HIV, syphilis, HBV (ป้องกันติดเชื้อแม่สู่ลูก), thalassemia, GDM, preeclampsia, Rh isoimmunization ล้วนมี "หน้าต่างเวลา" ที่ต้องตรวจให้ทัน</p>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 48 48" class="ico"><circle cx="24" cy="24" r="17" class="f"/><path d="M24 13v11l7 5"/></svg>
+      <h3>เตรียมคลอดและความรู้แม่</h3>
+      <p class="small muted">สอนนับลูกดิ้น, อาการอันตราย, โภชนาการ, การเลี้ยงลูกด้วยนมแม่ และวางแผนสถานที่คลอด</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="sec-head">
+    <span class="eyebrow">ภาพรวม 40 สัปดาห์</span>
+    <h2>ไทม์ไลน์: นัดไหน ทำอะไร</h2>
+    <p class="muted">แถบสีบอก "ช่วงเวลาที่ควรทำ" ของแต่ละรายการ กรมอนามัยแนะนำ <b>อย่างน้อย 8 ครั้ง</b> ส่วน ACOG ใช้ความถี่แบบดั้งเดิม (ทุก 4 → 2 → 1 สัปดาห์)</p>
+  </div>
+  <div class="card scroll-x" style="padding:12px">
+    <svg class="tl" viewBox="0 0 880 392" role="img" aria-label="ไทม์ไลน์การฝากครรภ์ 0 ถึง 40 สัปดาห์">
+      <!-- trimester bands -->
+      <rect class="tri" x="60" y="8" width="266" height="26" rx="6"/>
+      <rect class="tri" x="328" y="8" width="264" height="26" rx="6"/>
+      <rect class="tri" x="594" y="8" width="264" height="26" rx="6"/>
+      <text class="tri-t" x="193" y="26" text-anchor="middle">ไตรมาส 1 · 0–13⁺⁶ wk</text>
+      <text class="tri-t" x="460" y="26" text-anchor="middle">ไตรมาส 2 · 14–27⁺⁶ wk</text>
+      <text class="tri-t" x="726" y="26" text-anchor="middle">ไตรมาส 3 · 28 wk – คลอด</text>
+      <!-- grid -->
+      <g class="grid-l">
+        <line x1="60" y1="56" x2="60" y2="380"/><line x1="136" y1="56" x2="136" y2="380"/><line x1="212" y1="56" x2="212" y2="380"/>
+        <line x1="288" y1="56" x2="288" y2="380"/><line x1="364" y1="56" x2="364" y2="380"/><line x1="440" y1="56" x2="440" y2="380"/>
+        <line x1="516" y1="56" x2="516" y2="380"/><line x1="592" y1="56" x2="592" y2="380"/><line x1="668" y1="56" x2="668" y2="380"/>
+        <line x1="744" y1="56" x2="744" y2="380"/><line x1="820" y1="56" x2="820" y2="380"/>
+      </g>
+      <g class="wk" text-anchor="middle">
+        <text x="60" y="50">0</text><text x="136" y="50">4</text><text x="212" y="50">8</text><text x="288" y="50">12</text>
+        <text x="364" y="50">16</text><text x="440" y="50">20</text><text x="516" y="50">24</text><text x="592" y="50">28</text>
+        <text x="668" y="50">32</text><text x="744" y="50">36</text><text x="820" y="50">40</text>
+      </g>
+
+      <!-- row 1 visits -->
+      <text class="lab" x="62" y="76">นัดฝากครรภ์ (กรมอนามัย 8 ครั้ง)</text>
+      <rect x="60" y="89" width="228" height="10" rx="5" class="b-rose" style="stroke:none;fill-opacity:.9"/>
+      <text x="170" y="116" text-anchor="middle" class="small" style="font-size:11px;fill:var(--rose)">ครั้งแรก ≤12 wk (ยิ่งเร็วยิ่งดี)</text>
+      <g>
+        <circle class="dot" cx="288" cy="94" r="11"/><text class="dot-t" x="288" y="98" text-anchor="middle">1</text>
+        <circle class="dot" cx="440" cy="94" r="11"/><text class="dot-t" x="440" y="98" text-anchor="middle">2</text>
+        <circle class="dot" cx="554" cy="94" r="11"/><text class="dot-t" x="554" y="98" text-anchor="middle">3</text>
+        <circle class="dot" cx="630" cy="94" r="11"/><text class="dot-t" x="630" y="98" text-anchor="middle">4</text>
+        <circle class="dot" cx="706" cy="94" r="11"/><text class="dot-t" x="706" y="98" text-anchor="middle">5</text>
+        <circle class="dot" cx="744" cy="94" r="11"/><text class="dot-t" x="744" y="98" text-anchor="middle">6</text>
+        <circle class="dot" cx="782" cy="94" r="11"/><text class="dot-t" x="782" y="98" text-anchor="middle">7</text>
+        <circle class="dot" cx="820" cy="94" r="11"/><text class="dot-t" x="820" y="98" text-anchor="middle">8</text>
+      </g>
+
+      <!-- row 2 ultrasound -->
+      <text class="lab" x="62" y="140">Ultrasound</text>
+      <rect class="bar b-teal" x="193" y="148" width="133" height="20" rx="8"/>
+      <text x="259" y="162" text-anchor="middle">Dating (CRL) · NT</text>
+      <rect class="bar b-teal" x="402" y="148" width="76" height="20" rx="8"/>
+      <text x="440" y="162" text-anchor="middle">Anatomy</text>
+      <rect class="bar b-teal" x="630" y="148" width="190" height="20" rx="8" stroke-dasharray="4 3"/>
+      <text x="725" y="162" text-anchor="middle">Growth/AFI ตามข้อบ่งชี้</text>
+
+      <!-- row 3 labs -->
+      <text class="lab" x="62" y="196">Lab &amp; คัดกรอง</text>
+      <rect class="bar b-plum" x="174" y="204" width="114" height="20" rx="8"/>
+      <text x="231" y="218" text-anchor="middle">Lab I</text>
+      <rect class="bar b-plum" x="326" y="204" width="152" height="20" rx="8"/>
+      <text x="402" y="218" text-anchor="middle">Down screening (Quad)</text>
+      <rect class="bar b-plum" x="516" y="204" width="76" height="20" rx="8"/>
+      <text x="554" y="218" text-anchor="middle">50 g GCT</text>
+      <rect class="bar b-plum" x="592" y="204" width="114" height="20" rx="8"/>
+      <text x="649" y="218" text-anchor="middle">Lab II</text>
+      <rect class="bar b-teal" x="744" y="204" width="38" height="20" rx="8"/>
+      <text x="763" y="218" text-anchor="middle">GBS</text>
+
+      <!-- row 4 vaccines -->
+      <text class="lab" x="62" y="252">วัคซีน &amp; Anti-D</text>
+      <rect class="bar b-amber" x="573" y="260" width="171" height="20" rx="8"/>
+      <text x="658" y="274" text-anchor="middle">Tdap 27–36 wk</text>
+      <rect class="bar b-amber" x="668" y="286" width="95" height="20" rx="8"/>
+      <text x="715" y="300" text-anchor="middle">RSV 32–36⁺⁶</text>
+      <circle cx="592" cy="296" r="7" style="fill:var(--red)"/>
+      <text x="582" y="300" text-anchor="end" style="fill:var(--red);font-weight:600">Anti-D 28 wk (Rh−)</text>
+      <text x="62" y="274" style="fill:var(--amber)">dT ครั้งแรก (ตามประวัติ) · Flu/COVID-19 ได้ทุกไตรมาส</text>
+
+      <!-- row 5 aspirin -->
+      <text class="lab" x="62" y="326">Low-dose aspirin (high risk preeclampsia)</text>
+      <rect class="bar b-rose" x="288" y="334" width="532" height="14" rx="7"/>
+      <text x="296" y="345" style="font-size:11px">เริ่ม 12–28 wk (ดีที่สุด &lt;16) → จนคลอด</text>
+
+      <!-- row 6 ACOG frequency -->
+      <text class="lab" x="62" y="370" style="fill:var(--teal)">ความถี่ (ACOG):</text>
+      <text x="300" y="370" style="fill:var(--teal)">ทุก 4 wk จนถึง 28 wk</text>
+      <text x="600" y="370" style="fill:var(--teal)">ทุก 2 wk</text>
+      <text x="750" y="370" style="fill:var(--teal)">ทุกสัปดาห์</text>
+    </svg>
+  </div>
+  <p class="legend-scroll">บนมือถือ เลื่อนแผนภาพไปทางซ้าย–ขวาได้ · <span style="color:var(--teal)">GBS</span> และ RSV เป็นแนวทาง ACOG สหรัฐฯ ในไทยให้ดูนโยบายของโรงพยาบาล</p>
+
+  <div class="grid g4 visits">
+    <div class="visit"><div class="num"><b>1</b><span>≤12 wk</span></div><p>ซักประวัติ ตรวจร่างกาย ประเมินความเสี่ยง · <b>Lab I</b> · U/S dating · dT · ให้ยาเสริม · counseling Down/Thal</p></div>
+    <div class="visit"><div class="num"><b>2</b><span>20 wk</span></div><p><b>Anatomy scan</b> และ growth · ทบทวนความเสี่ยง · ฟังผล Down screening</p></div>
+    <div class="visit"><div class="num"><b>3</b><span>26 wk</span></div><p>คัดกรอง <b>GDM</b> (24–28 wk) · พิจารณา Tdap</p></div>
+    <div class="visit"><div class="num"><b>4</b><span>30 wk</span></div><p>ติดตาม fundal height/growth · <b>Lab II</b></p></div>
+    <div class="visit"><div class="num"><b>5</b><span>34 wk</span></div><p>ตรวจครรภ์ตามปกติ · Lab II ถ้ายังไม่ได้ตรวจ</p></div>
+    <div class="visit"><div class="num"><b>6</b><span>36 wk</span></div><p>ท่าทารก (<b>Leopold</b>) · U/S ตามข้อบ่งชี้ · GBS (ACOG)</p></div>
+    <div class="visit"><div class="num"><b>7</b><span>38 wk</span></div><p>ประเมินสุขภาพทารก · วางแผนคลอด · ทบทวนอาการเจ็บครรภ์จริง</p></div>
+    <div class="visit"><div class="num"><b>8</b><span>40 wk</span></div><p><b>NST</b> + ปริมาณน้ำคร่ำ · วางแผนกรณีเกินกำหนด</p></div>
+  </div>
+</section>
+
+<!-- FIRST VISIT -->
+<section id="first">
+  <div class="sec-head">
+    <span class="eyebrow">First visit</span>
+    <h2>ครั้งแรก: นับอายุครรภ์ และเขียน GPAL ให้ถูก</h2>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Naegele's rule <span class="muted small">(ใช้ได้เมื่อรอบเดือนสม่ำเสมอ 28 วัน)</span></h3>
+      <p class="small muted" style="margin:4px 0 12px">LMP <b>+7 วัน</b>, <b>−3 เดือน</b>, <b>+1 ปี</b> = EDD (เท่ากับ LMP + 280 วัน)</p>
+      <div class="naegele" aria-label="ตัวอย่าง LMP 10 มกราคม 2026 คำนวณได้ EDD 17 ตุลาคม 2026">
+        <div class="cal"><div class="top">LMP</div><div class="d">10</div><div class="m">ม.ค. 2026</div></div>
+        <span class="op">+7 d</span><span class="op">−3 m</span><span class="op">+1 y</span>
+        <span class="arrow">→</span>
+        <div class="cal edd"><div class="top">EDD</div><div class="d">17</div><div class="m">ต.ค. 2026</div></div>
+      </div>
+      <form class="calc" id="calc" onsubmit="return false">
+        <label for="lmp">ลองใส่ LMP</label>
+        <input type="date" id="lmp">
+      </form>
+      <div class="out" aria-live="polite">
+        <div><div class="k">EDD</div><div class="v" id="o-edd">—</div></div>
+        <div><div class="k">GA วันนี้</div><div class="v mono" id="o-ga">—</div></div>
+        <div><div class="k">ไตรมาส</div><div class="v" id="o-tri">—</div></div>
+      </div>
+      <p class="small muted" style="margin-top:8px">ค่าตั้งต้นเป็นตัวอย่าง (LMP ย้อนหลัง 20 สัปดาห์จากวันนี้) ปี พ.ศ. แสดงตาม locale ไทย</p>
+    </div>
+    <div class="card">
+      <h3>เมื่อไหร่ต้องเชื่อ U/S มากกว่า LMP <span class="tag acog">ACOG CO 700</span></h3>
+      <p class="small muted" style="margin:4px 0 8px">ถ้า GA จาก U/S ต่างจาก LMP เกินค่านี้ ให้ <b>redate ตาม U/S</b></p>
+      <div class="scroll-x">
+      <table>
+        <thead><tr><th>GA ตอนทำ U/S</th><th>วัดจาก</th><th class="mono">ต่างกันเกิน</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">≤ 8⁺⁶ wk</td><td>CRL</td><td class="mono">&gt; 5 วัน</td></tr>
+          <tr><td class="mono">9⁰ – 13⁺⁶ wk</td><td>CRL</td><td class="mono">&gt; 7 วัน</td></tr>
+          <tr><td class="mono">14⁰ – 15⁺⁶ wk</td><td>BPD, HC, AC, FL</td><td class="mono">&gt; 7 วัน</td></tr>
+          <tr><td class="mono">16⁰ – 21⁺⁶ wk</td><td>BPD, HC, AC, FL</td><td class="mono">&gt; 10 วัน</td></tr>
+          <tr><td class="mono">22⁰ – 27⁺⁶ wk</td><td>BPD, HC, AC, FL</td><td class="mono">&gt; 14 วัน</td></tr>
+          <tr><td class="mono">≥ 28 wk</td><td>BPD, HC, AC, FL</td><td class="mono">&gt; 21 วัน</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="small muted" style="margin-top:8px">ยิ่ง U/S ช้า ยิ่งคลาดเคลื่อนมาก จึงยอมให้ต่างได้มากขึ้น ถ้าไม่มี U/S ก่อน 22 wk ถือเป็น <i>suboptimally dated pregnancy</i></p>
+    </div>
+  </div>
+
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card">
+      <h3>อ่าน GPAL (TPAL) ให้คล่อง</h3>
+      <p class="small muted">ตัวอย่าง: ตั้งครรภ์ครั้งที่ 3 เคยคลอดครบกำหนด 1 คน (ยังมีชีวิต) และแท้ง 1 ครั้ง</p>
+      <div class="gpal" aria-label="G3 P1011">
+        <div class="box g"><b>G3</b><span>Gravida<br>ตั้งครรภ์ทั้งหมด</span></div>
+        <div class="box"><b>1</b><span>Term<br>≥37 wk</span></div>
+        <div class="box"><b>0</b><span>Preterm<br>20–36⁺⁶ wk</span></div>
+        <div class="box"><b>1</b><span>Abortion<br>&lt;20 wk</span></div>
+        <div class="box"><b>1</b><span>Living<br>บุตรมีชีวิต</span></div>
+      </div>
+      <p class="small" style="margin-top:10px">เขียนว่า <b class="mono">G3P1011</b> · ครรภ์แฝดนับ G = 1 ครั้ง แต่นับ L ตามจำนวนบุตร</p>
+    </div>
+    <div class="card">
+      <h3>ซักประวัติครั้งแรก ให้ครอบคลุม</h3>
+      <ul class="clean small">
+        <li><b>LMP</b> ความสม่ำเสมอของรอบเดือน การคุมกำเนิดก่อนตั้งครรภ์</li>
+        <li><b>ประวัติทางสูติกรรม</b>: preterm, preeclampsia, GDM, PPH, C-section</li>
+        <li><b>โรคประจำตัว</b>: HT, DM, thyroid, SLE, โรคหัวใจ, โรคไต, epilepsy</li>
+        <li><b>ยา</b>ที่ใช้อยู่ (ระวัง teratogen เช่น valproate, warfarin, isotretinoin, ACEI)</li>
+        <li><b>ประวัติครอบครัว</b>: thalassemia, โรคทางพันธุกรรม, DM, twins</li>
+        <li><b>สังคม</b>: บุหรี่ แอลกอฮอล์ สารเสพติด ความรุนแรงในครอบครัว (IPV) สุขภาพจิต</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- LABS -->
+<section id="labs">
+  <div class="sec-head">
+    <span class="eyebrow">Prenatal labs</span>
+    <h2>Lab I: เลือดหนึ่งครั้ง ตอบหลายคำถาม</h2>
+    <p class="muted">สีจุกหลอดเป็นตัวช่วยจำ (จุกม่วง EDTA = whole blood, จุกแดง = serum) สีจริงอาจต่างกันตามผู้ผลิต รายการที่มีป้าย <span class="tag th">TH</span> อยู่ในชุด Lab I ของกรมอนามัย ป้าย <span class="tag acog">ACOG</span> คือรายการที่ ACOG แนะนำเพิ่ม</p>
+  </div>
+  <div class="grid g3">
+    <div class="card lab-card">
+      <svg viewBox="0 0 34 56" aria-hidden="true"><rect x="8" y="2" width="18" height="9" rx="2" style="fill:#7b3fa8"/><path class="tube-body" d="M9 11h16v34a8 8 0 0 1-16 0z"/><path class="tube-blood" d="M10 26h14v19a7 7 0 0 1-14 0z"/></svg>
+      <div><h3>CBC (Hb, Hct, MCV) <span class="tag th">TH</span></h3><p>หาภาวะซีด (Hb &lt;11 g/dL ในไตรมาส 1 และ 3) และ MCV ใช้คัดกรอง thalassemia</p></div>
+    </div>
+    <div class="card lab-card">
+      <svg viewBox="0 0 34 56" aria-hidden="true"><rect x="8" y="2" width="18" height="9" rx="2" style="fill:#7b3fa8"/><path class="tube-body" d="M9 11h16v34a8 8 0 0 1-16 0z"/><path class="tube-blood" d="M10 26h14v19a7 7 0 0 1-14 0z"/></svg>
+      <div><h3>DCIP <span class="tag th">TH</span></h3><p>คัดกรอง <b>HbE</b> ใช้คู่กับ MCV หรือ OF (one-tube osmotic fragility)</p></div>
+    </div>
+    <div class="card lab-card">
+      <svg viewBox="0 0 34 56" aria-hidden="true"><rect x="8" y="2" width="18" height="9" rx="2" style="fill:#7b3fa8"/><path class="tube-body" d="M9 11h16v34a8 8 0 0 1-16 0z"/><path class="tube-blood" d="M10 26h14v19a7 7 0 0 1-14 0z"/></svg>
+      <div><h3>Blood group ABO/Rh <span class="tag th">TH</span> + Antibody screen <span class="tag acog">ACOG</span></h3><p>ถ้า Rh(D) negative และยังไม่ sensitized ต้องวางแผน anti-D</p></div>
+    </div>
+    <div class="card lab-card">
+      <svg viewBox="0 0 34 56" aria-hidden="true"><rect x="8" y="2" width="18" height="9" rx="2" style="fill:#c62f2f"/><path class="tube-body" d="M9 11h16v34a8 8 0 0 1-16 0z"/><path class="tube-blood" d="M10 32h14v13a7 7 0 0 1-14 0z"/><path d="M10 26h14v6H10z" style="fill:#f3d36b"/></svg>
+      <div><h3>VDRL/RPR (หรือ TPHA) <span class="tag th">TH</span></h3><p>Syphilis รักษาด้วย <b>benzathine penicillin G</b> ป้องกัน congenital syphilis</p></div>
+    </div>
+    <div class="card lab-card">
+      <svg viewBox="0 0 34 56" aria-hidden="true"><rect x="8" y="2" width="18" height="9" rx="2" style="fill:#c62f2f"/><path class="tube-body" d="M9 11h16v34a8 8 0 0 1-16 0z"/><path class="tube-blood" d="M10 32h14v13a7 7 0 0 1-14 0z"/><path d="M10 26h14v6H10z" style="fill:#f3d36b"/></svg>
+      <div><h3>Anti-HIV · HBsAg <span class="tag th">TH</span></h3><p>ป้องกันการติดเชื้อจากแม่สู่ลูก (PMTCT) ด้วย ART และ HBIG + วัคซีนแก่ทารก</p></div>
+    </div>
+    <div class="card lab-card">
+      <svg viewBox="0 0 34 56" aria-hidden="true"><path class="cup" d="M5 14h24l-3 36a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4z"/><rect x="3" y="8" width="28" height="7" rx="2" class="cup"/><path d="M8 30h18" style="stroke:var(--amber);stroke-width:1.2"/></svg>
+      <div><h3>Urine dipstick <span class="tag th">TH</span> / Urine culture <span class="tag acog">ACOG</span></h3><p>หา protein, glucose และ <b>asymptomatic bacteriuria</b> ที่ต้องรักษาเพื่อลดความเสี่ยง pyelonephritis</p></div>
+    </div>
+  </div>
+  <p class="small muted" style="margin-top:10px">ACOG แนะนำเพิ่ม: <b>Rubella IgG</b>, <b>HCV</b> (ทุกการตั้งครรภ์), <b>Chlamydia/Gonorrhea</b> (อายุ &lt;25 ปีหรือมีความเสี่ยง), Pap/HPV ถ้าถึงรอบ · กรมอนามัยแนะนำตรวจสามีด้วย (thalassemia, syphilis, HIV) · <b>Lab II</b> ช่วงไตรมาส 3: Hb/Hct, VDRL, anti-HIV, urine</p>
+
+  <div class="card" style="margin-top:18px">
+    <div class="sec-head" style="margin-bottom:12px">
+      <span class="eyebrow">High-yield ในไทย</span>
+      <h3 style="font-size:1.25rem">Thalassemia couple screening</h3>
+      <p class="small muted">เป้าหมายคือหา <b>คู่เสี่ยง (at-risk couple)</b> ไม่ใช่แค่หาพาหะ ถ้ามีฝ่ายเดียวเป็นพาหะ ลูกจะไม่เป็นโรครุนแรงในกลุ่มเป้าหมาย</p>
+    </div>
+    <div class="flow">
+      <div class="node start"><b>ภรรยา</b>: MCV (หรือ OF) + DCIP</div>
+      <div class="down"></div>
+      <div class="branch">
+        <div><span class="br-lab">ปกติทั้งคู่</span><div class="down"></div><div class="node end-ok">MCV ≥80 fL (OF −) และ DCIP −<br><b>ความเสี่ยงต่ำ จบการคัดกรอง</b></div></div>
+        <div><span class="br-lab">ผิดปกติอย่างใดอย่างหนึ่ง</span><div class="down"></div><div class="node">ตรวจ <b>สามี</b>: MCV/OF + DCIP</div>
+          <div class="down"></div>
+          <div class="branch" style="grid-template-columns:1fr 1fr;gap:8px">
+            <div><span class="br-lab">สามีปกติ</span><div class="down"></div><div class="node end-ok small">ความเสี่ยงต่ำต่อโรครุนแรง</div></div>
+            <div><span class="br-lab">สามีผิดปกติ</span><div class="down"></div><div class="node small"><b>Hb typing</b> ทั้งคู่ ± PCR α-thal 1</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="down"></div>
+      <div class="node end-risk"><b>คู่เสี่ยง</b> → Genetic counseling + <b>Prenatal diagnosis</b><br><span class="small">CVS (10–13 wk) · Amniocentesis (≥15 wk) · Cordocentesis (≥18 wk)</span></div>
+    </div>
+    <div class="diseases">
+      <div><b>Hb Bart's hydrops fetalis</b>α-thal 1 / α-thal 1 · เสียชีวิตในครรภ์ แม่เสี่ยง preeclampsia และ PPH</div>
+      <div><b>β-thal major</b>Homozygous β-thal · ต้องให้เลือดตลอดชีวิต</div>
+      <div><b>β-thal / HbE disease</b>พบบ่อยในไทย · ความรุนแรงแตกต่างกันได้มาก</div>
+    </div>
+  </div>
+</section>
+
+<!-- EVERY VISIT -->
+<section id="visit">
+  <div class="sec-head">
+    <span class="eyebrow">Every visit</span>
+    <h2>ทุกครั้งที่นัด ตรวจอะไรบ้าง</h2>
+    <p class="muted">หกอย่างนี้ใช้เวลาไม่กี่นาที แต่จับ preeclampsia, GDM, growth restriction และทารกผิดท่าได้</p>
+  </div>
+  <div class="grid g3">
+    <div class="card ico-card">
+      <svg viewBox="0 0 48 48" class="ico"><circle cx="20" cy="24" r="13" class="f"/><path d="M20 24l6-6M20 13v3M9 24h3M31 24h-3"/><path d="M33 24h6v14H24"/></svg>
+      <h3>Blood pressure</h3><p><b>≥140/90</b> สองครั้งห่างกัน 4 ชม. หลัง 20 wk = gestational HT · <b>≥160/110</b> = severe range</p>
+    </div>
+    <div class="card ico-card">
+      <svg viewBox="0 0 48 48" class="ico"><rect x="7" y="9" width="34" height="32" rx="6" class="f"/><rect x="15" y="14" width="18" height="9" rx="2"/><path d="M24 23v-5"/></svg>
+      <h3>น้ำหนัก</h3><p>เทียบกับเป้าตาม BMI ก่อนตั้งครรภ์ น้ำหนักขึ้นเร็วผิดปกติร่วมกับบวม ให้นึกถึง preeclampsia</p>
+    </div>
+    <div class="card ico-card">
+      <svg viewBox="0 0 48 48" class="ico"><rect x="19" y="4" width="10" height="40" rx="2" class="f"/><rect x="21" y="10" width="6" height="5" style="fill:var(--teal);stroke:none"/><rect x="21" y="18" width="6" height="5" style="fill:var(--amber);stroke:none"/><rect x="21" y="26" width="6" height="5" style="fill:var(--plum);stroke:none"/></svg>
+      <h3>Urine dipstick</h3><p><b>Protein</b> (preeclampsia) และ <b>glucose</b> (GDM) ถ้าผิดปกติให้ตรวจยืนยันต่อ</p>
+    </div>
+    <div class="card ico-card">
+      <svg viewBox="0 0 48 48" class="ico"><circle cx="17" cy="24" r="11" class="f"/><circle cx="17" cy="24" r="3"/><path d="M28 24h16v6H17M32 30v-3M36 30v-3M40 30v-3"/></svg>
+      <h3>Fundal height</h3><p>ช่วง 20–34 wk <b>ความสูง (cm) ≈ GA (wk)</b> ต่างเกิน 2–3 cm ให้ส่ง U/S (ลองเลื่อนแผนภาพด้านล่าง)</p>
+    </div>
+    <div class="card ico-card">
+      <svg viewBox="0 0 48 48" class="ico"><path d="M24 40 C10 30 6 22 6 16 a8 8 0 0 1 18-3 a8 8 0 0 1 18 3 c0 6-4 14-18 24z" class="f"/><path d="M10 22h7l3-5 4 10 3-5h11"/></svg>
+      <h3>Fetal heart rate</h3><p>Doppler ได้ยินตั้งแต่ราว 10–12 wk · ปกติ <b>110–160 bpm</b></p>
+    </div>
+    <div class="card ico-card">
+      <svg viewBox="0 0 48 48" class="ico"><ellipse cx="24" cy="29" rx="9" ry="13" class="f"/><circle cx="17" cy="12" r="2.6"/><circle cx="22" cy="9.5" r="2.6"/><circle cx="27.5" cy="9.5" r="2.6"/><circle cx="32" cy="12" r="2.4"/></svg>
+      <h3>ลูกดิ้น &amp; อาการ</h3><p>ถามเรื่องลูกดิ้น เลือดออก น้ำเดิน ท้องแข็ง ปวดศีรษะ ตามัว ทุกครั้ง</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <div class="fh">
+      <svg viewBox="0 0 260 340" role="img" aria-label="ระดับยอดมดลูกตามอายุครรภ์">
+        <path class="torso" d="M62 0 C50 60 42 112 46 160 C50 206 32 252 30 340 L230 340 C228 252 210 206 214 160 C218 112 210 60 198 0 Z"/>
+        <ellipse id="ut" class="uterus" cx="130" cy="252" rx="56" ry="72"/>
+        <line class="lm" x1="40" y1="64" x2="225" y2="64"/><text class="lm-t" x="226" y="60" text-anchor="end">Xiphoid</text>
+        <path d="M124 56 L130 66 L136 56" fill="none" style="stroke:var(--fetus-line)" stroke-width="1.5"/>
+        <line class="lm" x1="40" y1="180" x2="225" y2="180"/><text class="lm-t" x="226" y="176" text-anchor="end">สะดือ (Umbilicus)</text>
+        <ellipse cx="130" cy="180" rx="4" ry="6" style="fill:none;stroke:var(--fetus-line)" stroke-width="1.6"/>
+        <line class="lm" x1="40" y1="296" x2="225" y2="296"/><text class="lm-t" x="226" y="312" text-anchor="end">Symphysis pubis</text>
+        <path d="M100 300 Q130 288 160 300" fill="none" style="stroke:var(--fetus-line)" stroke-width="2"/>
+        <line id="tape" class="tape" x1="58" y1="296" x2="58" y2="180"/>
+        <line id="fund" class="fund-line" x1="70" y1="180" x2="190" y2="180"/>
+        <text id="fund-t" x="72" y="174" style="font-size:11px;fill:var(--rose);font-weight:600;font-family:var(--font-body)">Fundus</text>
+      </svg>
+      <div class="slider">
+        <span class="eyebrow">Interactive · Fundal height</span>
+        <label for="ga" class="ga-read"><span id="ga-v">20</span> <span style="font-size:1rem">สัปดาห์</span></label>
+        <input type="range" id="ga" min="12" max="40" step="1" value="20" aria-describedby="fh-desc">
+        <div class="mono small muted" style="display:flex;justify-content:space-between"><span>12</span><span>20</span><span>28</span><span>36</span><span>40</span></div>
+        <div class="fh-desc" id="fh-desc"></div>
+        <p class="small muted"><span style="color:var(--amber);font-weight:600">เส้นสีส้ม</span> = สายวัดจาก symphysis ถึงยอดมดลูก · ภาพเป็นแผนภาพโดยประมาณ (Williams/Beckmann)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEOPOLD -->
+<section id="leopold">
+  <div class="sec-head">
+    <span class="eyebrow">Physical exam · หลัง ~28–30 wk</span>
+    <h2>Leopold maneuvers 4 ขั้น</h2>
+    <p class="muted">ภาพมองจากด้านหน้าผู้ป่วยที่นอนหงาย (ศีรษะผู้ป่วยอยู่ด้านบน) เส้นประสีม่วง = หลังทารก ตอบให้ได้ 3 คำถาม: <b>Lie</b> (แนวตัว), <b>Presentation</b> (ส่วนนำ), <b>Position</b> (หลังอยู่ด้านไหน) และ engagement</p>
+  </div>
+  <div class="leo">
+    <div class="card">
+      <svg viewBox="0 0 200 222" role="img" aria-label="ขั้นที่ 1 Fundal grip">
+        <path class="ut" d="M100 20 C150 20 175 70 172 125 C168 180 135 207 100 207 C65 207 32 180 28 125 C25 70 50 20 100 20Z"/>
+        <circle class="fet" cx="97" cy="62" r="22"/><ellipse class="fet" cx="104" cy="108" rx="28" ry="42" transform="rotate(-8 104 108)"/><circle class="fet" cx="100" cy="166" r="25"/>
+        <path class="fet-l" d="M80 94 C68 99 66 112 74 116 M82 124 C70 130 72 142 80 142"/><path class="back" d="M128 76 C142 104 140 136 122 152"/>
+        <g transform="translate(66 34) rotate(28)"><use href="#hand" x="-30" y="-20" width="60" height="36"/></g>
+        <g transform="translate(134 34) scale(-1 1) rotate(28)"><use href="#hand" x="-30" y="-20" width="60" height="36"/></g>
+        <path class="arw" d="M84 14 Q100 4 116 14" marker-end="url(#ah)" marker-start="url(#ah)"/>
+      </svg>
+      <h3><b>1</b>Fundal grip</h3>
+      <p>มือทั้งสองคลำ <b>ยอดมดลูก</b>: อะไรอยู่ข้างบน? <b>ก้น</b> = ใหญ่ นุ่ม ไม่เรียบ · <b>ศีรษะ</b> = กลม แข็ง โยกได้ (ballottable) → บอก <b>lie และ presentation</b></p>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 200 222" role="img" aria-label="ขั้นที่ 2 Umbilical grip">
+        <path class="ut" d="M100 20 C150 20 175 70 172 125 C168 180 135 207 100 207 C65 207 32 180 28 125 C25 70 50 20 100 20Z"/>
+        <circle class="fet" cx="97" cy="62" r="22"/><ellipse class="fet" cx="104" cy="108" rx="28" ry="42" transform="rotate(-8 104 108)"/><circle class="fet" cx="100" cy="166" r="25"/>
+        <path class="fet-l" d="M80 94 C68 99 66 112 74 116 M82 124 C70 130 72 142 80 142"/><path class="back" d="M128 76 C142 104 140 136 122 152"/>
+        <g transform="translate(36 112) rotate(-75)"><use href="#hand" x="-30" y="-20" width="60" height="36"/></g>
+        <g transform="translate(164 112) scale(-1 1) rotate(-75)"><use href="#hand" x="-30" y="-20" width="60" height="36"/></g>
+        <path class="arw" d="M12 150 L28 150" marker-end="url(#ah)"/><path class="arw" d="M188 150 L172 150" marker-end="url(#ah)"/>
+        <text class="svg-t" x="150" y="200" style="fill:var(--plum)">back</text><text class="svg-t" x="30" y="200">small parts</text>
+      </svg>
+      <h3><b>2</b>Umbilical (lateral) grip</h3>
+      <p>มือวางสองข้างลำตัว กดสลับกัน ด้านที่ <b>เรียบ แข็ง ต่อเนื่อง</b> = หลังทารก ด้านที่ <b>เป็นปุ่มเล็กๆ ขยับได้</b> = แขนขา → บอก <b>position</b></p>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 200 222" role="img" aria-label="ขั้นที่ 3 Pawlik's grip">
+        <path class="ut" d="M100 20 C150 20 175 70 172 125 C168 180 135 207 100 207 C65 207 32 180 28 125 C25 70 50 20 100 20Z"/>
+        <circle class="fet" cx="97" cy="62" r="22"/><ellipse class="fet" cx="104" cy="108" rx="28" ry="42" transform="rotate(-8 104 108)"/><circle class="fet" cx="100" cy="166" r="25"/>
+        <path class="fet-l" d="M80 94 C68 99 66 112 74 116 M82 124 C70 130 72 142 80 142"/><path class="back" d="M128 76 C142 104 140 136 122 152"/>
+        <g transform="translate(104 196) rotate(180)"><use href="#hand" x="-30" y="-20" width="60" height="36"/></g>
+        <path class="arw" d="M66 180 L80 180" marker-end="url(#ah)"/><path class="arw" d="M140 180 L126 180" marker-end="url(#ah)"/>
+      </svg>
+      <h3><b>3</b>Pawlik's grip</h3>
+      <p>มือเดียวจับส่วนนำ <b>เหนือ symphysis pubis</b> ระหว่างนิ้วโป้งกับนิ้วอื่น ยังโยกได้ = <b>ยังไม่ engage</b> · ยืนยันว่าส่วนนำคืออะไร</p>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 200 222" role="img" aria-label="ขั้นที่ 4 Pelvic grip">
+        <path class="ut" d="M100 20 C150 20 175 70 172 125 C168 180 135 207 100 207 C65 207 32 180 28 125 C25 70 50 20 100 20Z"/>
+        <circle class="fet" cx="97" cy="62" r="22"/><ellipse class="fet" cx="104" cy="108" rx="28" ry="42" transform="rotate(-8 104 108)"/><circle class="fet" cx="100" cy="166" r="25"/>
+        <path class="fet-l" d="M80 94 C68 99 66 112 74 116 M82 124 C70 130 72 142 80 142"/><path class="back" d="M128 76 C142 104 140 136 122 152"/>
+        <g transform="translate(58 166) rotate(62)"><use href="#hand" x="-30" y="-20" width="60" height="36"/></g>
+        <g transform="translate(142 166) scale(-1 1) rotate(62)"><use href="#hand" x="-30" y="-20" width="60" height="36"/></g>
+        <text class="svg-t" x="100" y="14" text-anchor="middle">ผู้ตรวจหันไปทางปลายเท้า ↓</text>
+      </svg>
+      <h3><b>4</b>Pelvic grip</h3>
+      <p>ผู้ตรวจ <b>หันหน้าไปทางปลายเท้า</b>ผู้ป่วย ใช้ปลายนิ้วกดลงตามแนว pelvic inlet ดู <b>engagement</b> และ <b>cephalic prominence</b> (attitude: flexion/extension)</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENING -->
+<section id="screen">
+  <div class="sec-head">
+    <span class="eyebrow">Screening by trimester</span>
+    <h2>คัดกรองตามไตรมาส</h2>
+  </div>
+  <div class="card scroll-x" style="padding:6px 6px 0">
+    <table>
+      <thead><tr><th>เรื่อง</th><th>ช่วงเวลา</th><th>วิธี / เกณฑ์</th><th>แหล่ง</th></tr></thead>
+      <tbody>
+        <tr><td><b>Aneuploidy</b> (Down syndrome)</td><td class="mono">≥10 wk<br>11–13⁺⁶ wk<br>15–22 wk</td><td><b>cfDNA</b> (NIPT) · <b>First-trimester combined</b> (NT + PAPP-A + hCG) · <b>Quad test</b><br><span class="muted">เสนอให้ทุกคนไม่ว่าอายุเท่าไร ผลบวก = ต้องยืนยันด้วย diagnostic test (CVS/amnio)</span></td><td class="small">ACOG PB 226 · กรมอนามัย (quad 14–18 wk)</td></tr>
+        <tr><td><b>Anatomy scan</b></td><td class="mono">18–22 wk</td><td>ความพิการโครงสร้าง ตำแหน่งรก ความยาวปากมดลูก</td><td class="small">ACOG</td></tr>
+        <tr><td><b>GDM</b></td><td class="mono">24–28 wk</td><td><b>50 g GCT</b> (ไม่ต้องอดอาหาร) ค่าตัด 130–140 mg/dL → ถ้าเกิน ทำ <b>100 g OGTT</b> 3 ชม.<br><span class="muted">Carpenter–Coustan: <span class="mono">95 / 180 / 155 / 140</span> ผิดปกติ ≥2 ค่า = GDM · มีความเสี่ยง (BMI สูง, เคยเป็น GDM ฯลฯ) ให้คัดกรองตั้งแต่ครั้งแรก</span></td><td class="small">ACOG PB 190 · กรมอนามัย</td></tr>
+        <tr><td><b>Rh(D) negative</b></td><td class="mono">28 wk</td><td>Antibody screen ซ้ำ → <b>Anti-D Ig 300 µg IM</b> และให้อีกครั้งภายใน <b>72 ชม.</b>หลังคลอดถ้าทารก Rh+ (รวมถึงหลังเลือดออก หัตถการ หรือการแท้ง)<br><span class="muted">พบน้อยในคนไทย แต่ออกข้อสอบบ่อย</span></td><td class="small">ACOG PB 181</td></tr>
+        <tr><td><b>GBS</b></td><td class="mono">36⁰–37⁺⁶ wk</td><td>Rectovaginal culture ถ้าบวก ให้ <b>intrapartum penicillin G</b> ขณะเจ็บครรภ์</td><td class="small">ACOG CO 797</td></tr>
+        <tr><td><b>Lab II</b></td><td class="mono">~28–34 wk</td><td>Hb/Hct, VDRL, anti-HIV, urine</td><td class="small">กรมอนามัย</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- RX -->
+<section id="rx">
+  <div class="sec-head">
+    <span class="eyebrow">Supplements &amp; vaccines</span>
+    <h2>ยาเสริม และวัคซีน</h2>
+  </div>
+  <div class="grid g2">
+    <div class="card rx-card">
+      <svg class="pill" viewBox="0 0 58 30" aria-hidden="true"><rect x="2" y="4" width="54" height="22" rx="11" style="fill:var(--teal-soft);stroke:var(--teal)" stroke-width="1.5"/><path d="M29 4h16a11 11 0 0 1 0 22H29z" style="fill:var(--teal)"/></svg>
+      <div><h3>Folic acid <span class="dose">0.4 mg/วัน</span></h3><p>เริ่ม <b>อย่างน้อย 1 เดือนก่อนตั้งครรภ์</b> ถึงไตรมาส 1 ป้องกัน <b>neural tube defect</b> · เคยมีลูก NTD ใช้ <span class="dose">4 mg/วัน</span></p></div>
+    </div>
+    <div class="card rx-card">
+      <svg class="pill" viewBox="0 0 58 30" aria-hidden="true"><ellipse cx="29" cy="15" rx="22" ry="12" style="fill:#8a2b2b;stroke:var(--ink)" stroke-width="1"/><path d="M12 15h34" style="stroke:#e9b0a8" stroke-width="1.5"/></svg>
+      <div><h3>Iron <span class="dose">elemental Fe 30–60 mg/วัน</span></h3><p>ป้องกัน iron deficiency anemia (WHO) · ในไทยมักให้ในรูปยารวม เช่น iron + folic acid + iodine (Triferdine)</p></div>
+    </div>
+    <div class="card rx-card">
+      <svg class="pill" viewBox="0 0 58 30" aria-hidden="true"><circle cx="29" cy="15" r="12" style="fill:var(--plum-soft);stroke:var(--plum)" stroke-width="1.5"/><text x="29" y="19" text-anchor="middle" style="font:600 11px var(--font-mono);fill:var(--plum)">I</text></svg>
+      <div><h3>Iodine <span class="dose">150 µg/วัน</span></h3><p>สำคัญต่อพัฒนาการสมองทารก กรมอนามัยแนะนำให้ไอโอดีนเสริมตลอดการตั้งครรภ์และให้นมบุตร</p></div>
+    </div>
+    <div class="card rx-card">
+      <svg class="pill" viewBox="0 0 58 30" aria-hidden="true"><rect x="8" y="3" width="42" height="24" rx="8" style="fill:var(--surface-2);stroke:var(--muted)" stroke-width="1.5"/><path d="M29 6v18" style="stroke:var(--muted)"/></svg>
+      <div><h3>Calcium</h3><p>กรมอนามัยให้ calcium เสริมทุกวัน WHO แนะนำ 1.5–2 g/วัน ในกลุ่มที่บริโภคแคลเซียมน้อย เพื่อลดความเสี่ยง preeclampsia</p></div>
+    </div>
+  </div>
+  <div class="callout warn" style="margin-top:14px">
+    <b>Low-dose aspirin 81 mg/วัน</b> <span class="tag acog">ACOG CO 743</span> เริ่ม 12–28 wk (ดีที่สุด <b>ก่อน 16 wk</b>) จนคลอด เมื่อมีความเสี่ยงสูง ≥1 ข้อ: เคยเป็น preeclampsia, ครรภ์แฝด, chronic HT, pregestational DM, โรคไต, SLE/APS หรือความเสี่ยงปานกลาง ≥2 ข้อ (ครรภ์แรก, BMI &gt;30, อายุ ≥35 ฯลฯ) · บางสถาบันใช้ 150 mg ตามแนวทาง ISSHP/FIGO
+  </div>
+
+  <h3 style="margin:22px 0 10px;font-size:1.15rem">วัคซีนระหว่างตั้งครรภ์</h3>
+  <div class="grid g3">
+    <div class="card vax">
+      <svg class="syr" viewBox="0 0 48 48"><path d="M30 6l12 12M36 12L14 34l-6 6M14 34l-4-4M33 9L11 31l6 6 22-22M20 26l4 4M25 21l4 4"/></svg>
+      <h3>Tdap</h3><span class="when">27–36 wk · ทุกครรภ์</span><p>ภูมิผ่านรกไปป้องกัน <b>pertussis</b> ในทารกแรกเกิด ให้ช่วงต้นของ 27–36 wk ดีที่สุด</p>
+    </div>
+    <div class="card vax">
+      <svg class="syr" viewBox="0 0 48 48"><path d="M30 6l12 12M36 12L14 34l-6 6M14 34l-4-4M33 9L11 31l6 6 22-22M20 26l4 4M25 21l4 4"/></svg>
+      <h3>dT</h3><span class="when">ครั้งแรก · ตามประวัติ</span><p>กรมอนามัยให้ตั้งแต่ฝากครรภ์ครั้งแรก จำนวนเข็มขึ้นกับประวัติวัคซีนเดิม ช่วง 27–36 wk ใช้ Tdap แทนได้</p>
+    </div>
+    <div class="card vax">
+      <svg class="syr" viewBox="0 0 48 48"><path d="M30 6l12 12M36 12L14 34l-6 6M14 34l-4-4M33 9L11 31l6 6 22-22M20 26l4 4M25 21l4 4"/></svg>
+      <h3>Influenza (inactivated)</h3><span class="when">ทุกไตรมาส</span><p>หญิงตั้งครรภ์เสี่ยงไข้หวัดใหญ่รุนแรง กรมอนามัยระบุให้ได้ตั้งแต่อายุครรภ์ 4 เดือน</p>
+    </div>
+    <div class="card vax">
+      <svg class="syr" viewBox="0 0 48 48"><path d="M30 6l12 12M36 12L14 34l-6 6M14 34l-4-4M33 9L11 31l6 6 22-22M20 26l4 4M25 21l4 4"/></svg>
+      <h3>COVID-19</h3><span class="when">ทุกไตรมาส</span><p>ACOG แนะนำได้ทุกช่วงอายุครรภ์ (กรมอนามัย: ตั้งแต่ 12 wk)</p>
+    </div>
+    <div class="card vax">
+      <svg class="syr" viewBox="0 0 48 48"><path d="M30 6l12 12M36 12L14 34l-6 6M14 34l-4-4M33 9L11 31l6 6 22-22M20 26l4 4M25 21l4 4"/></svg>
+      <h3>RSV (Abrysvo)</h3><span class="when">32⁰–36⁺⁶ wk</span><p>หนึ่งเข็ม ตามฤดูกาล RSV (สหรัฐฯ ก.ย.–ม.ค.) ประเทศเขตร้อนให้ทำตามแนวทางท้องถิ่น · ทางเลือกคือให้ monoclonal antibody แก่ทารก</p>
+    </div>
+    <div class="card vax no">
+      <svg class="syr" viewBox="0 0 48 48"><path d="M30 6l12 12M36 12L14 34l-6 6M14 34l-4-4M33 9L11 31l6 6 22-22"/><path d="M6 6l36 36" style="stroke-width:2.6"/></svg>
+      <h3>ห้ามให้: Live vaccines</h3><span class="when">MMR · Varicella</span><p>ถ้า rubella non-immune ให้ MMR <b>หลังคลอด</b> (ให้นมบุตรได้)</p>
+    </div>
+  </div>
+</section>
+
+<!-- WEIGHT -->
+<section id="weight">
+  <div class="sec-head">
+    <span class="eyebrow">Gestational weight gain</span>
+    <h2>น้ำหนักควรขึ้นเท่าไร</h2>
+    <p class="muted">ตาม BMI ก่อนตั้งครรภ์ (IOM 2009 ครรภ์เดี่ยว) ยิ่ง BMI สูง ยิ่งควรขึ้นน้อย</p>
+  </div>
+  <div class="card scroll-x">
+    <svg class="wchart" viewBox="0 0 560 220" role="img" aria-label="กราฟช่วงน้ำหนักที่ควรเพิ่มตาม BMI">
+      <g class="gl">
+        <line x1="190" y1="10" x2="190" y2="186"/><line x1="275" y1="10" x2="275" y2="186"/><line x1="360" y1="10" x2="360" y2="186"/><line x1="445" y1="10" x2="445" y2="186"/><line x1="530" y1="10" x2="530" y2="186"/>
+      </g>
+      <g class="ax" text-anchor="middle"><text x="190" y="204">0</text><text x="275" y="204">5</text><text x="360" y="204">10</text><text x="445" y="204">15</text><text x="530" y="204">20 kg</text></g>
+      <text x="8" y="32">Underweight</text><text x="8" y="46" class="ax">BMI &lt;18.5</text>
+      <rect class="rng" x="402.5" y="20" width="93.5" height="24" rx="6"/><text class="rv" x="500" y="37">12.5–18</text>
+      <text x="8" y="76">Normal</text><text x="8" y="90" class="ax">18.5–24.9</text>
+      <rect class="rng" x="385.5" y="64" width="76.5" height="24" rx="6"/><text class="rv" x="466" y="81">11.5–16</text>
+      <text x="8" y="120">Overweight</text><text x="8" y="134" class="ax">25–29.9</text>
+      <rect class="rng" x="309" y="108" width="76.5" height="24" rx="6"/><text class="rv" x="390" y="125">7–11.5</text>
+      <text x="8" y="164">Obese</text><text x="8" y="178" class="ax">≥30</text>
+      <rect class="rng" x="275" y="152" width="68" height="24" rx="6"/><text class="rv" x="348" y="169">5–9</text>
+    </svg>
+  </div>
+  <p class="small muted" style="margin-top:8px">บางโรงพยาบาลในไทยใช้ BMI cutoff สำหรับคนเอเชีย (overweight ≥23, obese ≥25) ให้ตรวจสอบแนวทางของโรงพยาบาลที่ฝึกงาน</p>
+</section>
+
+<!-- RED FLAGS -->
+<section id="redflags">
+  <div class="sec-head">
+    <span class="eyebrow">Patient education</span>
+    <h2>อาการอันตราย: ต้องสอนแม่ทุกคน</h2>
+    <p class="muted">ถ้ามีอาการเหล่านี้ ให้มาโรงพยาบาลทันที ไม่ต้องรอวันนัด</p>
+  </div>
+  <div class="grid g3">
+    <div class="card rf"><svg viewBox="0 0 48 48"><path d="M24 6 C24 6 12 20 12 28 a12 12 0 0 0 24 0 C36 20 24 6 24 6Z"/></svg>
+      <div><h3>เลือดออกทางช่องคลอด</h3><p>นึกถึง <b>placenta previa</b> (ไม่เจ็บ) หรือ <b>abruption</b> (เจ็บ ท้องแข็ง) · ห้ามตรวจภายในก่อนรู้ตำแหน่งรก</p></div></div>
+    <div class="card rf"><svg viewBox="0 0 48 48"><path d="M14 10 C14 10 8 18 8 22 a6 6 0 0 0 12 0 C20 18 14 10 14 10Z M32 14 C32 14 26 22 26 26 a6 6 0 0 0 12 0 C38 22 32 14 32 14Z M6 40 q6 -5 12 0 t12 0 t12 0"/></svg>
+      <div><h3>น้ำเดิน</h3><p>สงสัย <b>PROM/PPROM</b> ยืนยันด้วย speculum (pooling, nitrazine, ferning) เสี่ยงติดเชื้อและสายสะดือย้อย</p></div></div>
+    <div class="card rf"><svg viewBox="0 0 48 48"><ellipse cx="20" cy="27" rx="8" ry="12"/><circle cx="14" cy="11" r="2.4"/><circle cx="19" cy="8.5" r="2.4"/><circle cx="24.5" cy="9" r="2.4"/><path d="M38 12v22M32 28l6 6 6-6"/></svg>
+      <div><h3>ลูกดิ้นน้อยลง</h3><p>สอนนับลูกดิ้น เช่น ควรได้ <b>10 ครั้งภายใน 2 ชม.</b> (วิธีนับขึ้นกับโรงพยาบาล) ถ้าน้อยลง ทำ <b>NST</b></p></div></div>
+    <div class="card rf"><svg viewBox="0 0 48 48"><path d="M4 24 C10 14 38 14 44 24 C38 34 10 34 4 24Z"/><circle cx="24" cy="24" r="5"/><path d="M36 4 l-5 8 h6 l-5 8"/></svg>
+      <div><h3>ปวดศีรษะรุนแรง ตามัว จุกลิ้นปี่</h3><p>Severe features ของ <b>preeclampsia</b> วัด BP ตรวจ CBC (platelet), LFT, Cr, urine protein</p></div></div>
+    <div class="card rf"><svg viewBox="0 0 48 48"><path d="M4 32 q5 -18 10 0 t10 0 t10 0 t10 0"/><path d="M4 40h40"/></svg>
+      <div><h3>ท้องแข็งสม่ำเสมอก่อน 37 wk</h3><p>สงสัย <b>preterm labor</b> ประเมิน cervix และพิจารณา corticosteroids, tocolysis และ MgSO₄ (neuroprotection &lt;32 wk) ตามข้อบ่งชี้</p></div></div>
+    <div class="card rf"><svg viewBox="0 0 48 48"><path d="M20 30V8a4 4 0 0 1 8 0v22a8 8 0 1 1-8 0z"/><circle cx="24" cy="36" r="3"/><path d="M34 12h6M34 18h4M34 24h6"/></svg>
+      <div><h3>ไข้ ปัสสาวะแสบขัด</h3><p>นึกถึง <b>pyelonephritis</b>, chorioamnionitis, ไข้หวัดใหญ่ หญิงตั้งครรภ์เกิดอาการรุนแรงได้เร็วกว่า</p></div></div>
+  </div>
+</section>
+
+<!-- PIMP -->
+<section id="pimp">
+  <div class="pimp">
+    <span class="eyebrow" style="color:var(--plum)">The pimp question</span>
+    <h2 style="margin:6px 0 10px">ลองตอบก่อนเปิดเฉลย</h2>
+    <p>หญิงไทย <b>G1P0 GA 10 wk</b> มาฝากครรภ์ครั้งแรก ผล Lab I: <b>DCIP positive</b>, <b>MCV 84 fL</b> · สามีตรวจได้ <b>MCV 68 fL</b>, DCIP negative</p>
+    <p style="margin-top:8px"><b>คู่นี้เสี่ยงต่อโรค thalassemia รุนแรงชนิดใดมากที่สุด และขั้นตอนต่อไปคืออะไร?</b></p>
+    <details>
+      <summary>เปิดเฉลย</summary>
+      <ul class="clean small">
+        <li><b>ภรรยา</b>: DCIP + แต่ MCV ปกติ → น่าจะเป็น <b>HbE trait</b> (โอกาสเป็นพาหะ α-thal 1 ต่ำเพราะ MCV ไม่เล็ก)</li>
+        <li><b>สามี</b>: microcytosis ที่ DCIP − → อาจเป็น <b>β-thal trait</b>, α-thal 1 trait หรือ iron deficiency</li>
+        <li>ความเสี่ยงหลักคือลูกเป็น <b>β-thal/HbE disease</b> ถ้าสามีเป็น β-thal trait (โอกาส 1 ใน 4)</li>
+        <li><b>ขั้นต่อไป</b>: ทำ <b>Hb typing</b> ทั้งคู่ ถ้าสามีมี HbA₂ สูง (β-thal trait) = คู่เสี่ยง → genetic counseling และเสนอ <b>prenatal diagnosis</b> (CVS 10–13 wk หรือ amniocentesis ≥15 wk) · ถ้า HbA₂ ปกติ ให้ตรวจ PCR α-thal 1 และประเมินภาวะขาดเหล็ก</li>
+      </ul>
+      <p class="small muted" style="margin-top:6px">คำถามต่อไปที่อาจารย์จะถาม: ถ้าทารกเป็น Hb Bart's hydrops แม่มีความเสี่ยงทางสูติกรรมอะไรบ้าง?</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <p><b>หมายเหตุ</b>: หน้านี้เป็นสื่อการเรียนสำหรับนักศึกษาแพทย์ ไม่ใช่คำแนะนำทางการแพทย์สำหรับบุคคล ตัวเลขอิงตามมาตรฐานใน Williams/Beckmann และแนวทางล่าสุดที่หาได้ แต่ควรตรวจสอบ ACOG bulletin และแนวทางของโรงพยาบาลฉบับปัจจุบันอีกครั้งเมื่อขึ้นวอร์ด</p>
+  <p style="margin-top:10px"><b>แหล่งอ้างอิง</b></p>
+  <ol>
+    <li>Cunningham FG, et al. <i>Williams Obstetrics</i>, 26th ed. Ch. Prenatal Care.</li>
+    <li>Beckmann CRB, et al. <i>Beckmann and Ling's Obstetrics and Gynecology</i>, 9th ed. Ch. Preconception &amp; Antepartum Care.</li>
+    <li>ACOG Committee Opinion 700: Methods for Estimating the Due Date.</li>
+    <li>ACOG Practice Bulletin 190: Gestational Diabetes Mellitus · PB 226: Screening for Fetal Chromosomal Abnormalities · PB 181: Prevention of Rh D Alloimmunization.</li>
+    <li>ACOG Committee Opinion 797: Prevention of Group B Streptococcal Early-Onset Disease · CO 743: Low-Dose Aspirin Use During Pregnancy.</li>
+    <li><a href="https://cmss.org/wp-content/uploads/2026/06/ACOG-2026-Maternal-Immunization-Schedule.pdf" target="_blank" rel="noopener">ACOG 2026 Maternal Immunization Schedule</a></li>
+    <li><a href="https://cloud-atg.moph.go.th/promote/sites/default/files/%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%ADANC.pdf" target="_blank" rel="noopener">คู่มือการฝากครรภ์ (ANC) กรมอนามัย กระทรวงสาธารณสุข</a></li>
+    <li>Institute of Medicine. <i>Weight Gain During Pregnancy: Reexamining the Guidelines</i>, 2009.</li>
+  </ol>
+</footer>
+</div>
+
+<script>
+(function(){
+  // ---------- EDD calculator ----------
+  var lmp = document.getElementById('lmp');
+  var oEdd = document.getElementById('o-edd'), oGa = document.getElementById('o-ga'), oTri = document.getElementById('o-tri');
+  var DAY = 86400000;
+  function toISO(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+  function fmt(d){ try{ return d.toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'}); }catch(e){ return toISO(d); } }
+  var today = new Date(); today.setHours(0,0,0,0);
+  function calc(){
+    if(!lmp.value){ oEdd.textContent='—'; oGa.textContent='—'; oTri.textContent='—'; return; }
+    var p = lmp.value.split('-'); var d = new Date(+p[0], +p[1]-1, +p[2]);
+    var edd = new Date(d.getTime()); edd.setDate(edd.getDate()+280);
+    var days = Math.round((today - d)/DAY);
+    oEdd.textContent = fmt(edd);
+    if(days < 0){ oGa.textContent='LMP อยู่ในอนาคต'; oTri.textContent='—'; return; }
+    var w = Math.floor(days/7), r = days%7;
+    oGa.textContent = w + '⁺' + r + ' wk';
+    oTri.textContent = w < 14 ? 'ไตรมาส 1' : w < 28 ? 'ไตรมาส 2' : w <= 42 ? 'ไตรมาส 3' + (w>=42?' (post-term)': w>=41?' (late-term)':'') : 'เกิน 42 wk แล้ว';
+  }
+  var def = new Date(today.getTime() - 140*DAY);
+  lmp.value = toISO(def);
+  lmp.addEventListener('input', calc); lmp.addEventListener('change', calc);
+  calc();
+
+  // ---------- Fundal height ----------
+  var ga = document.getElementById('ga'), gaV = document.getElementById('ga-v'), desc = document.getElementById('fh-desc');
+  var ut = document.getElementById('ut'), fund = document.getElementById('fund'), fundT = document.getElementById('fund-t'), tape = document.getElementById('tape');
+  var pts = [[12,290],[16,235],[20,180],[36,68],[38,74],[40,88]];
+  function yAt(w){
+    for(var i=0;i<pts.length-1;i++){
+      var a=pts[i], b=pts[i+1];
+      if(w>=a[0] && w<=b[0]){ return a[1] + (b[1]-a[1])*(w-a[0])/(b[0]-a[0]); }
+    }
+    return pts[pts.length-1][1];
+  }
+  function text(w){
+    if(w<16) return '<b>12 wk</b>: มดลูกเพิ่งโผล่พ้น <b>symphysis pubis</b> เริ่มคลำได้ทางหน้าท้อง';
+    if(w<20) return '<b>~16 wk</b>: ยอดมดลูกอยู่ <b>กึ่งกลาง</b>ระหว่าง symphysis กับสะดือ';
+    if(w===20) return '<b>20 wk</b>: ยอดมดลูกอยู่ <b>ระดับสะดือ</b> (จุดอ้างอิงสำคัญ) · จากนี้ไปวัดเป็น cm ได้';
+    if(w<=34) return '<b>'+w+' wk</b>: fundal height ≈ <b class="mono">'+w+' cm</b> (±2 cm) ถ้าต่างเกิน 3 cm ให้นึกถึง FGR/oligohydramnios (เล็ก) หรือ macrosomia/polyhydramnios/twins/GA ผิด (ใหญ่)';
+    if(w<=36) return '<b>'+w+' wk</b>: ยอดมดลูกขึ้นใกล้ <b>xiphoid</b> (สูงสุด) · fundal height ≈ '+w+' cm';
+    return '<b>'+w+' wk</b>: ยอดมดลูก <b>ลดต่ำลง</b>เล็กน้อยเพราะส่วนนำเคลื่อนลงอุ้งเชิงกราน (<b>lightening</b>) พบชัดในครรภ์แรก fundal height จึงไม่เท่ากับ GA อีกต่อไป';
+  }
+  function draw(){
+    var w = +ga.value, y = yAt(w), bottom = 325;
+    var ry = (bottom - y)/2, rx = Math.min(84, 20 + (bottom - y)*0.34);
+    ut.setAttribute('cy', (y + bottom)/2); ut.setAttribute('ry', ry); ut.setAttribute('rx', rx);
+    fund.setAttribute('y1', y); fund.setAttribute('y2', y);
+    fund.setAttribute('x1', 130 - rx*0.75); fund.setAttribute('x2', 130 + rx*0.75);
+    fundT.setAttribute('y', y - 6); fundT.setAttribute('x', 130 - rx*0.75);
+    tape.setAttribute('y2', y);
+    tape.style.opacity = (w>=20 && w<=36) ? 1 : .25;
+    gaV.textContent = w; desc.innerHTML = text(w);
+  }
+  ga.addEventListener('input', draw);
+  draw();
+})();
+</script>
+
+</body>
+</html>

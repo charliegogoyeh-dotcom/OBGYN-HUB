@@ -3,16 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
-</head>
-<body>
 <title>คลังเรียน OB/GYN</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
-/* Layout: the cover + table of contents of the "สมุดชมพู" series. A rotation progress ring up top, then topic cards grouped like chapters. */
+/* Layout: an overworld map like a platform-game level select. A HUD bar (title + flag count) sits on top,
+   then one winding path through three worlds (Lecture → Team teaching → OPOB) ending at a castle.
+   A uterus mascot walks along the path toward the pointer; each level node opens a card to enter or plant a flag.
+   A list view (search + filters) stays one tap away for quick lookup. */
 :root{
   --bg:#fbf5f8; --surface:#ffffff; --surface-2:#f6ecf2;
   --ink:#2a1530; --muted:#6c5873; --line:#ead8e3;
@@ -20,10 +19,15 @@
   --teal:#0d7471; --teal-soft:#dcf1ee;
   --plum:#6a3d8a; --plum-soft:#efe4f6;
   --amber:#a86400; --amber-soft:#fcefd8;
+  /* map */
+  --grass:#d9f0d2; --grass-2:#c4e6b9; --hill:#a9d99a; --hill-line:#6fae63;
+  --road:#f3d9a4; --road-edge:#c99a52; --sky:#eaf6ff;
+  --node:#f5c23a; --node-edge:#a86b00; --node-done:#0d7471; --node-lock:#cdbfc6;
   --font-display:"Mitr","IBM Plex Sans Thai",system-ui,sans-serif;
   --font-body:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
   --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   --r:16px;
+  color-scheme:light;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#1a1120; --surface:#241929; --surface-2:#2d2033;
@@ -32,6 +36,9 @@
   --teal:#56c7bc; --teal-soft:#14302e;
   --plum:#c39be0; --plum-soft:#2f2140;
   --amber:#f0aa48; --amber-soft:#35260f;
+  --grass:#1f2e22; --grass-2:#26392a; --hill:#2f4a33; --hill-line:#4f7a53;
+  --road:#5a4630; --road-edge:#8a6a40; --sky:#1c2230;
+  --node:#e9b52f; --node-edge:#f5d27a; --node-done:#56c7bc; --node-lock:#5a4a60;
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#1a1120; --surface:#241929; --surface-2:#2d2033;
@@ -40,192 +47,504 @@
   --teal:#56c7bc; --teal-soft:#14302e;
   --plum:#c39be0; --plum-soft:#2f2140;
   --amber:#f0aa48; --amber-soft:#35260f;
+  --grass:#1f2e22; --grass-2:#26392a; --hill:#2f4a33; --hill-line:#4f7a53;
+  --road:#5a4630; --road-edge:#8a6a40; --sky:#1c2230;
+  --node:#e9b52f; --node-edge:#f5d27a; --node-done:#56c7bc; --node-lock:#5a4a60;
   color-scheme:dark}
 
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.65;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
-.wrap{max-width:1000px;margin:0 auto}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:max(40px,env(safe-area-inset-bottom,0px))}
+.wrap{max-width:1100px;margin:0 auto}
 h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.3;text-wrap:balance;margin:0}
 p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
 .eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
 .muted{color:var(--muted)}
 :focus-visible{outline:3px solid var(--rose);outline-offset:2px;border-radius:8px}
 
-/* cover */
-.cover{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding-block:40px 24px;border-bottom:1px solid var(--line)}
-.cover h1{font-size:clamp(2.2rem,6vw,3.4rem);font-weight:600}
-.cover h1 span{color:var(--rose)}
-.cover .lede{margin-top:10px;max-width:56ch}
-.ring{width:150px;height:150px}
-.ring .bgc{fill:none;stroke:var(--line);stroke-width:12}
-.ring .fg{fill:none;stroke:var(--rose);stroke-width:12;stroke-linecap:round;transition:stroke-dasharray .4s ease}
-.ring .n{font-family:var(--font-display);font-size:30px;fill:var(--ink)}
-.ring .l{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
+/* HUD */
+.hud{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;padding-block:max(20px,env(safe-area-inset-top,0px)) 14px}
+.hud h1{font-size:clamp(1.6rem,4.5vw,2.4rem);font-weight:600}
+.hud h1 span{color:var(--rose)}
+.hud .sub{font-size:.92rem;margin-top:2px}
+.score{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:var(--surface);border:1.5px solid var(--line);font-family:var(--font-mono);font-size:.84rem;font-weight:600;white-space:nowrap}
+.pill.big{font-size:1rem;border-color:var(--rose);color:var(--rose)}
+.pill svg{width:16px;height:16px}
+.views{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
+.views button{border:0;background:none;padding:6px 14px;font-size:.88rem;font-weight:500}
+.views button[aria-pressed="true"]{background:var(--rose);color:var(--bg)}
 
-/* controls */
-.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-block:20px 6px}
+/* map */
+.mapbox{position:relative;border-radius:22px;overflow:hidden;border:2px solid var(--line);background:var(--grass);touch-action:pan-y;user-select:none;-webkit-user-select:none}
+#map{display:block;width:100%;height:auto}
+.road{fill:none;stroke:var(--road);stroke-linecap:round;stroke-linejoin:round}
+.road-edge{fill:none;stroke:var(--road-edge);stroke-linecap:round;stroke-linejoin:round}
+.road-dash{fill:none;stroke:var(--surface);stroke-width:3;stroke-dasharray:2 14;stroke-linecap:round;opacity:.75}
+.road-done{fill:none;stroke:var(--rose-mid);stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.deco-hill{fill:var(--hill);stroke:var(--hill-line);stroke-width:2}
+.deco-bush{fill:var(--grass-2);stroke:var(--hill-line);stroke-width:1.5}
+.deco-flower{fill:var(--rose-mid)}
+.deco-cloud{fill:var(--surface);opacity:.75}
+.deco-water{fill:var(--sky);stroke:var(--line);stroke-width:2}
+.node{cursor:pointer;outline:none}
+.node .base{fill:var(--node-edge);opacity:.35}
+.node .disc{fill:var(--node);stroke:var(--node-edge);stroke-width:3;transition:transform .15s ease}
+.node .n{font-family:var(--font-mono);font-weight:600;font-size:13.5px;fill:#3a2400;pointer-events:none}
+.node.done .disc{fill:var(--node-done);stroke:var(--teal)}
+.node.done .n{fill:#fff}
+.node.lock .disc{fill:var(--node-lock);stroke:var(--muted)}
+.node:hover .disc,.node:focus-visible .disc,.node.sel .disc{transform:scale(1.14)}
+.node:focus-visible .ring{stroke:var(--rose);stroke-width:3;fill:none}
+.node .ring{fill:none;stroke:none}
+.node.next .pulse{fill:none;stroke:var(--rose);stroke-width:3;opacity:0}
+.flag{pointer-events:none;transform-box:fill-box;transform-origin:50% 100%}
+.flag .pole{stroke:var(--ink);stroke-width:2.5;stroke-linecap:round}
+.flag .cloth{fill:var(--rose)}
+.flag .heart{fill:#fff}
+.sign rect{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+.sign .post{stroke:var(--road-edge);stroke-width:4;stroke-linecap:round}
+.sign text{font-family:var(--font-display);font-size:14px;fill:var(--ink)}
+.sign .w{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;fill:var(--rose);font-weight:600}
+.castle .wall{fill:var(--surface);stroke:var(--ink);stroke-width:2.5;stroke-linejoin:round}
+.castle .door{fill:var(--ink)}
+.castle .pennant{fill:var(--rose)}
+.castle text{font-family:var(--font-display);font-size:13px;fill:var(--ink)}
+.start text{font-family:var(--font-mono);font-weight:600;font-size:12px;fill:#fff;letter-spacing:.08em}
+.start rect{fill:var(--rose)}
+#hero{pointer-events:none}
+#hero .body{fill:#f7a8c4;stroke:#9c2459;stroke-width:2.5;stroke-linejoin:round}
+#hero .tube{fill:none;stroke:#9c2459;stroke-width:4;stroke-linecap:round}
+#hero .tube-in{fill:none;stroke:#f7a8c4;stroke-width:2;stroke-linecap:round}
+#hero .ovary{fill:#ffd6e4;stroke:#9c2459;stroke-width:2}
+#hero .eye{fill:#2a1530}
+#hero .shine{fill:#fff}
+#hero .blush{fill:#ff7aa5;opacity:.55}
+#hero .mouth{fill:none;stroke:#2a1530;stroke-width:2;stroke-linecap:round}
+#hero .foot{fill:#9c2459}
+#hero .shadow{fill:#000;opacity:.13}
+.hint{position:absolute;left:12px;bottom:12px;padding:5px 11px;border-radius:999px;background:var(--surface);border:1.5px solid var(--line);font-size:.8rem;color:var(--muted);pointer-events:none;transition:opacity .4s}
+
+/* level card */
+.card{position:fixed;z-index:20;left:50%;bottom:max(16px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(460px,calc(100% - 24px));
+  background:var(--surface);border:2px solid var(--ink);border-radius:20px;padding:16px 18px 14px;box-shadow:0 6px 0 var(--ink),0 18px 40px rgba(0,0,0,.18)}
+.card .lv{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);font-weight:600}
+.card h2{font-size:1.25rem;margin-top:2px}
+.card .en{font-size:.86rem;color:var(--muted)}
+.card .desc{font-size:.9rem;color:var(--muted);margin-top:8px;line-height:1.55}
+.card .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:12px;border:2px solid var(--ink);background:var(--rose);color:#fff;font-weight:600;font-size:.95rem;text-decoration:none;box-shadow:0 3px 0 var(--ink);transition:transform .08s}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.btn.alt{background:var(--surface);color:var(--ink)}
+.btn.alt[aria-pressed="true"]{background:var(--teal-soft);border-color:var(--teal);color:var(--teal);box-shadow:0 3px 0 var(--teal)}
+.card .x{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--muted);font-size:1rem}
+.card .nav{margin-left:auto;display:flex;gap:6px}
+.card .nav button{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);font-size:1rem}
+.card .nav button:disabled{opacity:.35;cursor:default}
+
+/* list view (old hub) */
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-block:4px 6px}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
-.chip{font:500 .86rem var(--font-body);padding:5px 13px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chip{font:500 .86rem var(--font-body);padding:5px 13px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--rose);border-color:var(--rose);color:var(--bg)}
 .search{margin-left:auto;flex:1 1 200px;max-width:280px}
 .search input{width:100%;font:inherit;font-size:.92rem;padding:7px 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
-
 h2.group{font-size:1.2rem;margin:26px 0 12px;display:flex;align-items:baseline;gap:10px}
 h2.group small{font-family:var(--font-mono);font-size:.78rem;color:var(--muted);font-weight:500}
-
-/* cards */
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.card{position:relative;display:flex;flex-direction:column;gap:8px;padding:16px 16px 14px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);min-width:0;transition:transform .15s ease,border-color .15s ease}
-.card.live:hover{transform:translateY(-2px);border-color:var(--rose-mid)}
-.card .top{display:flex;align-items:center;gap:10px}
-.card .ico{width:44px;height:44px;flex:none;border-radius:12px;display:grid;place-items:center;background:var(--rose-soft)}
-.card .ico svg{width:28px;height:28px;stroke:var(--rose);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.card .num{font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
-.card h3{font-size:1.1rem}
-.card h3 a{color:inherit;text-decoration:none}
-.card h3 a::after{content:"";position:absolute;inset:0;border-radius:var(--r)}
-.card .en{font-size:.84rem;color:var(--muted);margin-top:-6px}
-.card .desc{font-size:.88rem;color:var(--muted);line-height:1.55}
-.card .meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:auto;padding-top:4px}
-.tag{font-family:var(--font-mono);font-size:.7rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--plum)}
-.date{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);margin-left:auto}
-.done{position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--muted);cursor:pointer;user-select:none}
-.done input{accent-color:var(--teal);width:16px;height:16px}
-.card.read{border-color:var(--teal)}
-.card.read .ico{background:var(--teal-soft)}
-.card.read .ico svg{stroke:var(--teal)}
-
-.card.planned{background:transparent;border-style:dashed}
-.card.planned .ico{background:var(--surface-2)}
-.card.planned .ico svg{stroke:var(--muted)}
-.card.planned h3{color:var(--muted)}
-.ask{font-family:var(--font-mono);font-size:.76rem;background:var(--surface-2);color:var(--ink);padding:4px 8px;border-radius:8px;align-self:flex-start;word-break:break-word}
-
+.tcard{position:relative;display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);min-width:0}
+.tcard .num{font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.tcard h3{font-size:1.06rem}
+.tcard h3 a{color:inherit;text-decoration:none}
+.tcard h3 a:hover{color:var(--rose)}
+.tcard .en{font-size:.84rem;color:var(--muted);margin-top:-4px}
+.tcard .desc{font-size:.86rem;color:var(--muted);line-height:1.55}
+.tcard .meta{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:4px}
+.tcard.read{border-color:var(--teal)}
+.mini-flag{display:inline-flex;align-items:center;gap:5px;font-size:.82rem;padding:4px 10px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface)}
+.mini-flag[aria-pressed="true"]{border-color:var(--teal);color:var(--teal);background:var(--teal-soft)}
 .empty{padding:28px;border-radius:var(--r);border:1.5px dashed var(--line);text-align:center;color:var(--muted)}
-.empty b{color:var(--ink)}
-.note{margin-top:28px;padding:14px 16px;border-radius:12px;background:var(--surface-2);font-size:.88rem;color:var(--muted)}
+.note{margin-top:20px;padding:14px 16px;border-radius:12px;background:var(--surface-2);font-size:.88rem;color:var(--muted)}
 .note b{color:var(--ink)}
-
-@media (max-width:860px){ .grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
-@media (max-width:560px){
-  .grid{grid-template-columns:1fr}
-  .cover{grid-template-columns:1fr} .ring{width:120px;height:120px}
-  .search{margin-left:0;max-width:none}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.84rem;color:var(--muted);margin-top:12px}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:-2px;margin-right:6px;border:2px solid}
+@media (max-width:860px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.grid{grid-template-columns:1fr}.score{margin-left:0}.search{margin-left:0;max-width:none}.hint{font-size:.74rem}}
+@media (prefers-reduced-motion: no-preference){
+  .node.next .pulse{animation:pulse 1.6s ease-out infinite}
+  @keyframes pulse{0%{opacity:.8;r:20}100%{opacity:0;r:34}}
+  .flag.plant{animation:plant .5s cubic-bezier(.2,1.6,.4,1)}
+  @keyframes plant{0%{transform:scaleY(0)}100%{transform:scaleY(1)}}
+  .card{animation:pop .22s cubic-bezier(.2,1.3,.4,1)}
+  @keyframes pop{from{transform:translate(-50%,24px);opacity:0}}
+  .deco-cloud{animation:drift 26s ease-in-out infinite alternate}
+  @keyframes drift{to{transform:translateX(40px)}}
 }
-@media (prefers-reduced-motion: reduce){.card,.ring .fg{transition:none}}
 </style>
-
+</head>
+<body>
 <div class="wrap">
-  <header class="cover">
+  <header class="hud">
     <div>
-      <span class="eyebrow">OB/GYN rotation · Study hub</span>
+      <span class="eyebrow">OB/GYN rotation · World map</span>
       <h1>คลังเรียน <span>OB/GYN</span></h1>
-      <p class="lede muted">รวมหน้าสอนฉบับภาพตามตารางการเรียน OB/GYN ทั้ง 25 หัวข้อ แบ่งเป็น Lecture, Team teaching และ OPOB (หัตถการแบบ OSCE checklist) ติ๊ก "อ่านแล้ว" เพื่อติดตามความคืบหน้า หัวข้อที่ยังจัดทำอยู่จะเปลี่ยนเป็นลิงก์เมื่อเสร็จ</p>
+      <p class="sub muted">เดินไปตามทางทีละด่าน อ่านจบแล้วปักธง 🚩 ไว้ให้รู้ว่าผ่านแล้ว</p>
     </div>
-    <svg class="ring" viewBox="0 0 150 150" role="img" aria-label="ความคืบหน้าการอ่าน">
-      <circle class="bgc" cx="75" cy="75" r="60"/>
-      <circle class="fg" id="ring-fg" cx="75" cy="75" r="60" stroke-dasharray="0 377" transform="rotate(-90 75 75)"/>
-      <text class="n" id="ring-n" x="75" y="80" text-anchor="middle">0/0</text>
-      <text class="l" x="75" y="100" text-anchor="middle">อ่านแล้ว / ทั้งหลักสูตร</text>
-    </svg>
+    <div class="score">
+      <span class="pill big" id="flagCount" title="ปักธงแล้ว / ทั้งหมด"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 15V1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3.5 2h9l-2.5 3 2.5 3h-9z" fill="currentColor"/></svg><b id="fc">0/0</b></span>
+      <span class="pill" id="w1">W1 0/0</span><span class="pill" id="w2">W2 0/0</span><span class="pill" id="w3">W3 0/0</span>
+      <div class="views" role="group" aria-label="มุมมอง">
+        <button type="button" data-view="map" aria-pressed="true">🗺 แผนที่</button>
+        <button type="button" data-view="list" aria-pressed="false">☰ รายการ</button>
+      </div>
+    </div>
   </header>
 
-  <div class="controls">
-    <div class="chips" role="group" aria-label="กรองตามหมวด" id="chips">
-      <button class="chip" type="button" data-f="all" aria-pressed="true">ทั้งหมด</button>
-      <button class="chip" type="button" data-f="lecture" aria-pressed="false">Lecture</button>
-      <button class="chip" type="button" data-f="team" aria-pressed="false">Team teaching</button>
-      <button class="chip" type="button" data-f="opob" aria-pressed="false">OPOB</button>
-      <button class="chip" type="button" data-f="unread" aria-pressed="false">ยังไม่อ่าน</button>
+  <section id="mapView" aria-label="แผนที่ด่าน">
+    <div class="mapbox" id="mapbox">
+      <svg id="map" role="group" aria-label="ทางเดินผ่านด่านทั้งหมด"></svg>
+      <span class="hint" id="hint">ลากเมาส์ไปตามทาง น้องมดลูกจะเดินตาม · แตะด่านเพื่อเปิด</span>
     </div>
-    <label class="search"><span class="muted" style="position:absolute;left:-9999px">ค้นหา</span><input id="q" type="search" placeholder="ค้นหาหัวข้อ เช่น HIV, labor"></label>
-  </div>
+    <div class="legend">
+      <span><i style="background:var(--node);border-color:var(--node-edge)"></i>ยังไม่ผ่าน</span>
+      <span><i style="background:var(--node-done);border-color:var(--teal)"></i>ปักธงแล้ว</span>
+      <span>W1 Lecture · W2 Team teaching · W3 OPOB (OSCE)</span>
+      <span>ใช้ปุ่มลูกศร ← → เดินทีละด่าน · Enter เพื่อเปิด</span>
+    </div>
+  </section>
 
-  <div id="list">
-    
-  </div>
+  <section id="listView" hidden aria-label="รายการหัวข้อ">
+    <div class="controls">
+      <div class="chips" role="group" aria-label="กรองตามหมวด" id="chips">
+        <button class="chip" type="button" data-f="all" aria-pressed="true">ทั้งหมด</button>
+        <button class="chip" type="button" data-f="lecture" aria-pressed="false">Lecture</button>
+        <button class="chip" type="button" data-f="team" aria-pressed="false">Team teaching</button>
+        <button class="chip" type="button" data-f="opob" aria-pressed="false">OPOB</button>
+        <button class="chip" type="button" data-f="unread" aria-pressed="false">ยังไม่ปักธง</button>
+      </div>
+      <label class="search"><span style="position:absolute;left:-9999px">ค้นหา</span><input id="q" type="search" placeholder="ค้นหาหัวข้อ เช่น HIV, labor"></label>
+    </div>
+    <div id="list"></div>
+  </section>
 
-  <p class="note"><b>หมายเหตุ</b>: สื่อการเรียนสำหรับนักศึกษาแพทย์ ไม่ใช่คำแนะนำทางการแพทย์สำหรับบุคคล · สถานะ "อ่านแล้ว" และ OSCE checklist เก็บไว้ในเบราว์เซอร์เครื่องนี้เท่านั้น</p>
+  <p class="note"><b>หมายเหตุ</b>: สื่อการเรียนสำหรับนักศึกษาแพทย์ ไม่ใช่คำแนะนำทางการแพทย์สำหรับบุคคล · ธงที่ปักไว้และ OSCE checklist เก็บไว้ในเบราว์เซอร์เครื่องนี้เท่านั้น</p>
 </div>
+
+<div class="card" id="card" role="dialog" aria-modal="false" aria-labelledby="cTitle" hidden></div>
 
 <script>
 (function(){
   var TOPICS=[{"category": "Obstetrics", "date": "14 ต.ค. 2026", "desc": "ไทม์ไลน์ 40 สัปดาห์ · Lab I และ thalassemia couple screening · fundal height slider · Leopold · วัคซีน · red flags", "group": "lecture", "icon": "pregnancy", "keywords": "antenatal prenatal ฝากครรภ์ naegele gpal thalassemia leopold", "num": "1", "order": 1, "status": "live", "title": "ฝากครรภ์ ANC ฉบับภาพ", "titleEn": "Antenatal care", "url": "anc.html", "id": "anc"}, {"category": "Obstetrics", "date": "14 ต.ค. 2026", "desc": "4 ระยะของการคลอด · จำลอง dilatation และ station · partograph · cardinal movements · ขั้นตอนทำคลอด · AMTSL", "group": "lecture", "icon": "labor", "keywords": "labor delivery partograph cardinal movements amtsl laceration คลอด", "num": "2", "order": 2, "status": "live", "title": "คลอดปกติ ฉบับภาพ", "titleEn": "Conduct of normal labor", "url": "labor.html", "id": "labor"}, {"category": "Obstetrics", "date": "15 ต.ค. 2026", "desc": "Protraction vs arrest · จำลอง MVU · เส้นผ่านศูนย์กลางศีรษะ · รูปร่างเชิงกราน · ลำดับการจัดการ", "group": "lecture", "icon": "labor", "keywords": "dystocia cpd arrest protraction oxytocin pelvis", "num": "3", "order": 3, "status": "live", "title": "การคลอดยาก", "titleEn": "Dystocia", "url": "dystocia.html", "id": "dystocia"}, {"category": "Obstetrics", "date": "15 ต.ค. 2026", "desc": "Spiral artery · เครื่องมือจัดประเภท · severe features · ยาลดความดัน · MgSO₄ · eclampsia/HELLP", "group": "lecture", "icon": "heart", "keywords": "preeclampsia eclampsia hellp magnesium labetalol hypertension", "num": "4", "order": 4, "status": "live", "title": "ความดันโลหิตสูงในครรภ์", "titleEn": "Hypertensive disorders in pregnancy", "url": "hdp.html", "id": "hdp"}, {"category": "Obstetrics", "date": "15 ต.ค. 2026", "desc": "4 เส้นทางของโรค · cervical length · แผนตาม GA · steroids, MgSO₄, tocolysis, antibiotics · วินิจฉัย PROM", "group": "lecture", "icon": "drop", "keywords": "preterm labor prom pprom tocolysis betamethasone nifedipine", "num": "5", "order": 5, "status": "live", "title": "เจ็บครรภ์คลอดก่อนกำหนด และถุงน้ำแตกก่อนเจ็บครรภ์", "titleEn": "Preterm labor and PROM", "url": "ptl-prom.html", "id": "ptl-prom"}, {"category": "Obstetrics", "date": "15 ต.ค. 2026", "desc": "นิยาม WHO 2025 · living ligatures · 4T · shock index · MOTIVE bundle · uterotonics · escalation", "group": "lecture", "icon": "drop", "keywords": "pph hemorrhage atony oxytocin txa motive", "num": "6", "order": 6, "status": "live", "title": "ตกเลือดหลังคลอด", "titleEn": "Postpartum hemorrhage", "url": "pph.html", "id": "pph"}, {"category": "Obstetrics", "date": "15 ต.ค. 2026", "desc": "นิยาม maternal death · MMR ไทย 2562–2566 · Three delays · EmONC 9 signal functions · คำนวณ MMR", "group": "lecture", "icon": "pregnancy", "keywords": "safe motherhood maternal mortality mmr three delays emonc", "num": "7", "order": 7, "status": "live", "title": "การตั้งครรภ์ที่ปลอดภัย", "titleEn": "Safe Motherhood", "url": "safe-motherhood.html", "id": "safe-motherhood"}, {"category": "Gynecology", "date": "15 ต.ค. 2026", "desc": "กราฟประสิทธิภาพ · กลไก · เปรียบเทียบวิธี · เครื่องมือ US MEC 2024 · emergency contraception", "group": "lecture", "icon": "flask", "keywords": "contraception iud implant coc dmpa mec emergency", "num": "8", "order": 8, "status": "live", "title": "การคุมกำเนิด", "titleEn": "Contraception", "url": "contraception.html", "id": "contraception"}, {"category": "Gynecology", "date": "15 ต.ค. 2026", "desc": "เกณฑ์ FIGO · PALM-COEIN แบบกดดู · myoma FIGO 0–8 · ตามช่วงอายุ · acute AUB", "group": "lecture", "icon": "uterus", "keywords": "aub palm coein heavy menstrual bleeding endometrial biopsy", "num": "9", "order": 9, "status": "live", "title": "เลือดออกผิดปกติจากโพรงมดลูก", "titleEn": "Abnormal uterine bleeding", "url": "aub.html", "id": "aub"}, {"category": "Gynecology", "date": "15 ต.ค. 2026", "desc": "กราฟฮอร์โมนตกไข่ vs ไม่ตกไข่ · PCOS 2023 · endometrial hyperplasia · AUB-E", "group": "lecture", "icon": "uterus", "keywords": "anovulation pcos hyperplasia progestin aub-o aub-e", "num": "10", "order": 10, "status": "live", "title": "AUB-O และ AUB-E", "titleEn": "AUB-O and AUB-E", "url": "aub-oe.html", "id": "aub-oe"}, {"category": "Gynecology", "date": "15 ต.ค. 2026", "desc": "Myoma vs adenomyosis vs endometriosis · ก้อนรังไข่ · torsion · Bartholin · vaginitis กล้องจุลทรรศน์", "group": "lecture", "icon": "uterus", "keywords": "myoma adenomyosis endometriosis ovarian cyst torsion bartholin vaginitis", "num": "11", "order": 11, "status": "live", "title": "โรคไม่ร้ายแรงที่พบบ่อยในสตรี", "titleEn": "Common benign diseases of female", "url": "benign.html", "id": "benign"}, {"category": "Obstetrics", "date": "15 ต.ค. 2026", "desc": "3 ช่วงเวลาที่ลูกติดเชื้อ · ยาต้านไวรัสทำงานตรงไหน · เครื่องมือ VL → แผนคลอด · ยาป้องกันทารก ไทย vs DHHS", "group": "team", "icon": "virus", "keywords": "hiv pmtct art zidovudine infant prophylaxis", "num": "1", "order": 21, "status": "live", "title": "HIV ในหญิงตั้งครรภ์ ฉบับภาพ", "titleEn": "HIV in pregnancy (PMTCT)", "url": "hiv.html", "id": "hiv"}, {"category": "Gynecology", "date": "15 ต.ค. 2026", "desc": "เทียบ 3 มะเร็ง · HPV → มะเร็ง · FIGO staging แบบกดดู · คัดกรอง HPV DNA · brachytherapy และ point A", "group": "team", "icon": "virus", "keywords": "cervical endometrial ovarian cancer figo staging radiotherapy brachytherapy hpv", "num": "2", "order": 22, "status": "live", "title": "มะเร็งทางนรีเวช + รังสีรักษา", "titleEn": "Gyn malignancy + Radiotherapy", "url": "gyn-malig.html", "id": "gyn-malig"}, {"category": "Gynecology", "date": "15 ต.ค. 2026", "desc": "STRAW+10 · กลไกร้อนวูบวาบ · HT ข้อบ่งชี้/ข้อห้าม · timing window · ทางเลือกไม่ใช้ฮอร์โมน · คำนวณ OSTA", "group": "team", "icon": "heart", "keywords": "menopause hormone therapy hot flash osteoporosis fezolinetant osta", "num": "3", "order": 23, "status": "live", "title": "วัยหมดระดับประจำเดือน", "titleEn": "Menopause", "url": "menopause.html", "id": "menopause"}, {"category": "OSCE", "date": "15 ต.ค. 2026", "desc": "HELPERR · McRoberts · suprapubic pressure · Rubin/Woods · OSCE checklist 18 ข้อ", "group": "opob", "icon": "book", "keywords": "shoulder dystocia helperr mcroberts osce", "num": "1", "order": 31, "status": "live", "title": "Shoulder dystocia", "titleEn": "Shoulder dystocia drill", "url": "shoulder-dystocia.html", "id": "shoulder-dystocia"}, {"category": "OSCE", "date": "15 ต.ค. 2026", "desc": "Modified Pomeroy · ตำแหน่งฝังยาใหม่ (MHRA) · OSCE checklist 2 สถานี", "group": "opob", "icon": "book", "keywords": "tubal resection sterilization pomeroy implant implanon jadelle osce", "num": "2", "order": 32, "status": "live", "title": "ทำหมันหญิง และฝังยาคุม", "titleEn": "TR, implantation", "url": "tr-implant.html", "id": "tr-implant"}, {"category": "OSCE", "date": "15 ต.ค. 2026", "desc": "Hands off the breech · Løvset · Mauriceau · OSCE checklist", "group": "opob", "icon": "book", "keywords": "breech assisted delivery lovset mauriceau osce", "num": "3", "order": 33, "status": "live", "title": "ช่วยคลอดท่าก้น", "titleEn": "Breech assisting", "url": "breech.html", "id": "breech"}, {"category": "OSCE", "date": "15 ต.ค. 2026", "desc": "Cu-IUD vs LNG-IUS · ข้อห้าม · tenaculum, sound, flange · OSCE checklist", "group": "opob", "icon": "book", "keywords": "iud mirena lng-ius insertion osce", "num": "4", "order": 34, "status": "live", "title": "ใส่ห่วงอนามัย และ Mirena", "titleEn": "IUD + Mirena", "url": "iud.html", "id": "iud"}, {"category": "OSCE", "date": "15 ต.ค. 2026", "desc": "เงื่อนไขก่อนเจาะ · ขั้นตอนด้วยภาพ · สีน้ำคร่ำ · cord prolapse · OSCE checklist", "group": "opob", "icon": "book", "keywords": "amniotomy arm rupture membranes osce", "num": "5", "order": 35, "status": "live", "title": "เจาะถุงน้ำคร่ำ", "titleEn": "Amniotomy", "url": "amniotomy.html", "id": "amniotomy"}, {"category": "OSCE", "date": "15 ต.ค. 2026", "desc": "Retained placenta · เตรียม · เซาะด้วยสันมือ · ระวัง accreta · OSCE checklist", "group": "opob", "icon": "book", "keywords": "manual removal placenta retained osce", "num": "6", "order": 36, "status": "live", "title": "ล้วงรก", "titleEn": "Manual removal of placenta", "url": "mrp.html", "id": "mrp"}, {"category": "OSCE", "date": "15 ต.ค. 2026", "desc": "Mediolateral 60° · เย็บซ่อม 3 ชั้น · rectal exam · นับผ้าและเข็ม · OSCE checklist", "group": "opob", "icon": "book", "keywords": "episiotomy perineal repair normal delivery osce", "num": "7", "order": 37, "status": "live", "title": "ทำคลอดปกติ และเย็บฝีเย็บ", "titleEn": "NL / episiotomy", "url": "nl-episiotomy.html", "id": "nl-episiotomy"}, {"category": "OSCE", "date": "15 ต.ค. 2026", "desc": "ใส่ speculum · spatula + cytobrush · bimanual · OSCE checklist", "group": "opob", "icon": "book", "keywords": "pelvic exam pap smear speculum bimanual osce", "num": "8", "order": 38, "status": "live", "title": "ตรวจภายใน และ Pap smear", "titleEn": "PV & Pap", "url": "pv-pap.html", "id": "pv-pap"}, {"category": "OSCE", "date": "15 ต.ค. 2026", "desc": "Paracervical block · สัญญาณว่าเสร็จ · ตรวจ villi · perforation · OSCE checklist", "group": "opob", "icon": "book", "keywords": "mva manual vacuum aspiration dc curettage osce", "num": "9", "order": 39, "status": "live", "title": "MVA และ D/C", "titleEn": "MVA & D/C", "url": "mva-dc.html", "id": "mva-dc"}, {"category": "OSCE", "date": "15 ต.ค. 2026", "desc": "เงื่อนไข · flexion point · ทิศทางดึง · เกณฑ์หยุด · subgaleal hemorrhage · OSCE checklist", "group": "opob", "icon": "book", "keywords": "vacuum extraction operative vaginal delivery osce", "num": "10", "order": 40, "status": "live", "title": "การใช้เครื่องดูดสุญญากาศช่วยคลอด", "titleEn": "Vacuum extraction", "url": "vacuum.html", "id": "vacuum"}, {"category": "OSCE", "date": "15 ต.ค. 2026", "desc": "Cervical biopsy · polypectomy · marsupialization · vaginal packing · FB removal · OSCE checklist", "group": "opob", "icon": "book", "keywords": "cervical biopsy polypectomy bartholin marsupialization vaginal packing foreign body osce", "num": "11", "order": 41, "status": "live", "title": "หัตถการนรีเวชเล็ก", "titleEn": "Cx bx, polypectomy, marsupialization, Vg packing, remove FB", "url": "minor-gyn.html", "id": "minor-gyn"}];
-  var ICONS={
-    pregnancy:'<path d="M12 4a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/><path d="M9 12c-2 2-2 6 0 8h7c2.5 0 3.5-3 2-5.5-1.2-2-3.5-2.5-5-2.5z"/>',
-    labor:'<circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="10" stroke-dasharray="2 2"/>',
-    virus:'<circle cx="12" cy="12" r="5"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/>',
-    heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/><path d="M5 12h4l2-3 2 5 2-2h4"/>',
-    drop:'<path d="M12 3s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11z"/>',
-    flask:'<path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M8 15h8"/>',
-    uterus:'<path d="M4 6c3 0 4 2 5 4h6c1-2 2-4 5-4"/><path d="M9 10c0 4 1 6 3 6s3-2 3-6"/><path d="M12 16v5"/>',
-    book:'<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h7"/>'
-  };
-  var READ_KEY='obgyn-hub-read', read={};
+  var GROUPS=[['lecture','Lecture','บรรยาย','W1'],['team','Team teaching','สอนร่วม','W2'],['opob','OPOB','หัตถการ · OSCE checklist','W3']];
+  var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS='http://www.w3.org/2000/svg';
+  var READ_KEY='obgyn-hub-read', POS_KEY='obgyn-hub-pos', VIEW_KEY='obgyn-hub-view', read={};
   try{ read=JSON.parse(localStorage.getItem(READ_KEY)||'{}')||{}; }catch(e){ read={}; }
   function saveRead(){ try{ localStorage.setItem(READ_KEY, JSON.stringify(read)); }catch(e){} }
-
-  var topics=[], filter='all', q='';
-  var list=document.getElementById('list');
   function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
   function safeUrl(u){ return /^[a-z0-9-]+\.html$/.test(u||'') ? u : ''; }
-
-  var GROUPS=[['lecture','Lecture','บรรยาย'],['team','Team teaching','สอนร่วม'],['opob','OPOB','หัตถการ · OSCE checklist']];
   function isLive(t){ return t.status!=='planned' && !!safeUrl(t.url); }
-  function card(t){
-    var live=isLive(t), isRead=live && !!read[t.id];
-    var icon=ICONS[t.icon]||ICONS.book;
-    return '<article class="card'+(live?' live':' planned')+(isRead?' read':'')+'">'
-      + '<div class="top"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true">'+icon+'</svg></div>'
-      + '<span class="num">'+(t.num?('ข้อ '+esc(t.num)):'')+(live?'':' · กำลังจัดทำ')+'</span></div>'
-      + '<h3>'+(live?'<a href="'+esc(safeUrl(t.url))+'" target="_blank" rel="noopener">'+esc(t.title)+'</a>':esc(t.title))+'</h3>'
-      + (t.titleEn?'<p class="en">'+esc(t.titleEn)+'</p>':'')
-      + (t.desc?'<p class="desc">'+esc(t.desc)+'</p>':'')
-      + '<div class="meta">'+(t.category?'<span class="tag">'+esc(t.category)+'</span>':'')
-      + (live?'<label class="done"><input type="checkbox" data-id="'+esc(t.id)+'"'+(isRead?' checked':'')+'> อ่านแล้ว</label>':'')
-      + (t.date&&live?'<span class="date">'+esc(t.date)+'</span>':'')+'</div></article>';
+  function $(id){ return document.getElementById(id); }
+
+  // levels in path order: group order, then topic order
+  var levels=[];
+  GROUPS.forEach(function(g,gi){
+    TOPICS.filter(function(t){return (t.group||'lecture')===g[0];}).sort(function(a,b){return a.order-b.order;})
+      .forEach(function(t,i){ levels.push({t:t,gi:gi,code:(gi+1)+'-'+(i+1)}); });
+  });
+
+  /* ---------- HUD ---------- */
+  function hud(){
+    var live=levels.filter(function(l){return isLive(l.t);});
+    $('fc').textContent=live.filter(function(l){return read[l.t.id];}).length+'/'+levels.length;
+    GROUPS.forEach(function(g,gi){
+      var ls=levels.filter(function(l){return l.gi===gi;});
+      $('w'+(gi+1)).textContent=g[3]+' '+ls.filter(function(l){return read[l.t.id];}).length+'/'+ls.length;
+      $('w'+(gi+1)).title=g[1]+' · '+g[2];
+    });
   }
-  function render(){
-    var live=topics.filter(isLive);
-    var nRead=live.filter(function(t){return read[t.id];}).length;
-    var c=2*Math.PI*60, frac=topics.length?nRead/topics.length:0;
-    document.getElementById('ring-fg').setAttribute('stroke-dasharray',(c*frac).toFixed(1)+' '+c.toFixed(1));
-    document.getElementById('ring-n').textContent=nRead+'/'+topics.length;
-    if(!topics.length){ list.innerHTML='<div class="empty"><b>ยังไม่มีหัวข้อในคลัง</b><br>เริ่มหัวข้อแรกในแชท แล้วหน้าสอนจะมาอยู่ที่นี่</div>'; return; }
+
+  /* ---------- map geometry ---------- */
+  var svg=$('map'), box=$('mapbox'), G={}, samples=[], nodeIdx=[], W=0, H=0;
+  function el(tag,attrs,parent){ var e=document.createElementNS(NS,tag); for(var k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+  function rand(seed){ var x=Math.sin(seed*9301+49297)*233280; return x-Math.floor(x); }
+  // Catmull-Rom through points → cubic bezier path
+  function smooth(p){
+    var d='M'+p[0][0].toFixed(1)+' '+p[0][1].toFixed(1);
+    for(var i=0;i<p.length-1;i++){
+      var a=p[i-1]||p[i], b=p[i], c=p[i+1], e=p[i+2]||c;
+      d+=' C'+(b[0]+(c[0]-a[0])/6).toFixed(1)+' '+(b[1]+(c[1]-a[1])/6).toFixed(1)+' '+(c[0]-(e[0]-b[0])/6).toFixed(1)+' '+(c[1]-(e[1]-b[1])/6).toFixed(1)+' '+c[0].toFixed(1)+' '+c[1].toFixed(1);
+    }
+    return d;
+  }
+  function layout(){
+    W=Math.max(300,Math.round(box.clientWidth));
+    var cols=W<520?3:W<820?4:6, pad=W<520?46:70, rowH=W<520?138:150, top=W<520?96:104;
+    var n=levels.length, rows=Math.ceil(n/cols), stepX=(W-pad*2)/(cols-1);
+    var pts=[], wp=[];
+    var start=[pad-(W<520?20:30), top-56];
+    wp.push(start);
+    levels.forEach(function(l,i){
+      var r=Math.floor(i/cols), c=i%cols, rev=r%2===1;
+      var x=pad+(rev?(cols-1-c):c)*stepX;
+      var y=top+r*rowH+Math.sin((i+1)*1.7)*(rowH*.16);
+      if(c===0&&r>0){ // turn around the edge between rows
+        var px=pts[i-1][0], py=pts[i-1][1], edge=rev?Math.min(W-14,px+pad*.8):Math.max(14,px-pad*.8);
+        wp.push([edge,(py+y)/2]);
+      }
+      pts.push([x,y]); wp.push([x,y]);
+    });
+    var last=pts[pts.length-1], lastRev=(rows-1)%2===1;
+    var castle=[lastRev?Math.max(pad*.9,last[0]-stepX*.9):Math.min(W-pad*.9,last[0]+stepX*.9), last[1]+(W<520?70:40)];
+    if((n%cols)===0){ castle=[last[0]+(lastRev?-1:1)*Math.min(stepX*.8,pad*.6), last[1]+rowH*.6]; }
+    wp.push(castle);
+    H=Math.round(Math.max(castle[1],last[1])+ (W<520?96:110));
+    return {pts:pts,wp:wp,start:start,castle:castle,cols:cols};
+  }
+
+  function build(){
+    var L=layout();
+    svg.setAttribute('viewBox','0 0 '+W+' '+H); svg.setAttribute('width',W); svg.setAttribute('height',H);
+    svg.innerHTML='';
+    var deco=el('g',{'aria-hidden':'true'},svg);
+    // clouds
+    for(var i=0;i<Math.round(W/260);i++){ var cx=rand(i+3)*W, cy=18+rand(i+11)*40;
+      var cg=el('g',{class:'deco-cloud',style:'animation-delay:-'+(i*5)+'s'},deco);
+      el('ellipse',{cx:cx,cy:cy,rx:34,ry:12},cg); el('ellipse',{cx:cx+18,cy:cy-7,rx:20,ry:12},cg); el('ellipse',{cx:cx-16,cy:cy-4,rx:16,ry:10},cg); }
+    // pond
+    el('ellipse',{class:'deco-water',cx:W*.78,cy:H*.5,rx:Math.min(70,W*.12),ry:22,opacity:.9},deco);
+    // hills/bushes/flowers away from path
+    var avoid=L.wp.concat([L.castle]);
+    function far(x,y,d){ for(var k=0;k<avoid.length;k++){ var dx=avoid[k][0]-x, dy=avoid[k][1]-y; if(dx*dx+dy*dy<d*d) return false; } return true; }
+    var placed=0;
+    for(var s=0;s<260&&placed<Math.round(W*H/16000);s++){
+      var x=14+rand(s*3+1)*(W-28), y=70+rand(s*7+2)*(H-90), kind=rand(s*5+9);
+      if(!far(x,y,56)) continue; placed++;
+      if(kind<.3){ el('path',{class:'deco-hill',d:'M'+(x-30)+' '+(y+12)+' Q'+(x-24)+' '+(y-26)+' '+x+' '+(y-28)+' Q'+(x+24)+' '+(y-26)+' '+(x+30)+' '+(y+12)+'Z'},deco);
+        el('circle',{cx:x-7,cy:y-12,r:2.4,fill:'var(--hill-line)'},deco); el('circle',{cx:x+7,cy:y-12,r:2.4,fill:'var(--hill-line)'},deco); }
+      else if(kind<.7){ el('path',{class:'deco-bush',d:'M'+(x-16)+' '+(y+6)+' a8 8 0 0 1 8-12 a9 9 0 0 1 16 0 a8 8 0 0 1 8 12z'},deco); }
+      else { var fg=el('g',{},deco); [[0,0],[7,4],[-6,5]].forEach(function(o){ el('circle',{class:'deco-flower',cx:x+o[0],cy:y+o[1],r:3.2},fg); el('circle',{cx:x+o[0],cy:y+o[1],r:1.2,fill:'var(--node)'},fg); }); }
+    }
+    // road
+    var d=smooth(L.wp);
+    el('path',{class:'road-edge',d:d,'stroke-width':W<520?26:30},svg);
+    el('path',{class:'road',d:d,'stroke-width':W<520?20:24},svg);
+    var done=el('path',{class:'road-done',d:d,'stroke-width':W<520?8:10,'stroke-dasharray':'0 99999'},svg);
+    el('path',{class:'road-dash',d:d},svg);
+    // sample path for walking
+    var probe=el('path',{d:d,fill:'none',stroke:'none'},svg), len=probe.getTotalLength(); samples=[];
+    for(var t=0;t<=len;t+=4){ var p=probe.getPointAtLength(t); samples.push([p.x,p.y,t]); }
+    probe.remove();
+    function nearest(pt){ var bi=0,bd=1e12; for(var j=0;j<samples.length;j++){ var dx=samples[j][0]-pt[0], dy=samples[j][1]-pt[1], dd=dx*dx+dy*dy; if(dd<bd){bd=dd;bi=j;} } return bi; }
+    nodeIdx=L.pts.map(nearest);
+    G.startIdx=0; G.castleIdx=samples.length-1;
+    // progress along road = up to furthest flagged node
+    var far2=-1; levels.forEach(function(l,i){ if(read[l.t.id]) far2=i; });
+    if(far2>=0) done.setAttribute('stroke-dasharray',samples[nodeIdx[far2]][2].toFixed(1)+' 99999');
+    // start pad
+    var sg=el('g',{class:'start','aria-hidden':'true'},svg);
+    el('rect',{x:L.start[0]-30,y:L.start[1]-13,width:60,height:24,rx:12},sg);
+    el('text',{x:L.start[0],y:L.start[1]+4,'text-anchor':'middle'},sg).textContent='START';
+    // world signs
+    GROUPS.forEach(function(g,gi){
+      var first=levels.findIndex(function(l){return l.gi===gi;}); if(first<0) return;
+      var p=L.pts[first], sx=Math.min(W-70,Math.max(70,p[0]+(gi===0?(W<520?78:96):0))), sy=p[1]-(gi===0?62:56);
+      var gg=el('g',{class:'sign','aria-hidden':'true'},svg);
+      el('line',{class:'post',x1:sx,y1:sy+12,x2:sx,y2:sy+30},gg);
+      var label=g[1], wdt=Math.max(92,label.length*8.4+24);
+      el('rect',{x:sx-wdt/2,y:sy-24,width:wdt,height:38,rx:8},gg);
+      el('text',{class:'w',x:sx,y:sy-9,'text-anchor':'middle'},gg).textContent='WORLD '+(gi+1);
+      el('text',{x:sx,y:sy+8,'text-anchor':'middle'},gg).textContent=label;
+    });
+    // castle
+    var c=L.castle, cg2=el('g',{class:'castle','aria-hidden':'true'},svg);
+    el('path',{class:'wall',d:'M'+(c[0]-30)+' '+(c[1]+18)+'V'+(c[1]-14)+'h8v-8h8v8h8v-8h8v8h8v-8h8v8h0V'+(c[1]+18)+'Z'},cg2);
+    el('path',{class:'door',d:'M'+(c[0]-7)+' '+(c[1]+18)+'v-12a7 7 0 0 1 14 0v12z'},cg2);
+    el('line',{x1:c[0],y1:c[1]-22,x2:c[0],y2:c[1]-44,stroke:'var(--ink)','stroke-width':2},cg2);
+    el('path',{class:'pennant',d:'M'+c[0]+' '+(c[1]-44)+'l16 5-16 5z'},cg2);
+    el('text',{x:c[0],y:c[1]+36,'text-anchor':'middle'},cg2).textContent='สอบ Shelf 🏁';
+    // nodes
+    var ng=el('g',{},svg); G.nodes=[];
+    var nextI=levels.findIndex(function(l){return isLive(l.t)&&!read[l.t.id];});
+    levels.forEach(function(l,i){
+      var p=L.pts[i], live=isLive(l.t), isRead=live&&read[l.t.id];
+      var g=el('g',{class:'node'+(isRead?' done':'')+(live?'':' lock')+(i===nextI?' next':''),tabindex:'0',role:'button','data-i':i,
+        'aria-label':'ด่าน '+l.code+' '+l.t.title+(isRead?' · ปักธงแล้ว':'')},ng);
+      el('ellipse',{class:'base',cx:p[0],cy:p[1]+7,rx:20,ry:7},g);
+      el('circle',{class:'pulse',cx:p[0],cy:p[1],r:20},g);
+      el('circle',{class:'ring',cx:p[0],cy:p[1],r:23},g);
+      var disc=el('circle',{class:'disc',cx:p[0],cy:p[1],r:19},g); disc.style.transformOrigin=p[0]+'px '+p[1]+'px';
+      el('text',{class:'n',x:p[0],y:p[1]+4.6,'text-anchor':'middle'},g).textContent=l.code;
+      el('title',{},g).textContent=l.t.title+(l.t.titleEn?' · '+l.t.titleEn:'');
+      if(isRead) flag(ng,p,false,l.t.id);
+      G.nodes.push(g);
+    });
+    // hero (drawn last, on top)
+    G.hero=heroEl(svg);
+    G.pos=Math.min(G.pos==null?startPos():G.pos,samples.length-1); G.target=G.pos;
+    if(G.sel!=null&&G.nodes[G.sel]) G.nodes[G.sel].classList.add('sel');
+    drawHero(0);
+  }
+  function startPos(){
+    var p=null; try{ p=localStorage.getItem(POS_KEY); }catch(e){}
+    var i=p!=null?levels.findIndex(function(l){return l.t.id===p;}):-1;
+    if(i<0){ i=levels.findIndex(function(l){return isLive(l.t)&&!read[l.t.id];}); }
+    return i<0?0:nodeIdx[i];
+  }
+  function flag(parent,p,anim,id){
+    var f=el('g',{class:'flag'+(anim?' plant':''),'data-flag':id},parent);
+    var x=p[0]-14, y=p[1]-8;
+    el('line',{class:'pole',x1:x,y1:y,x2:x,y2:y-30},f);
+    el('path',{class:'cloth',d:'M'+(x-1)+' '+(y-30)+'h-18l5 7-5 7h18z'},f);
+    el('path',{class:'heart',d:'M'+(x-9)+' '+(y-19)+'c-3-2-4.5-3.6-4.5-5.2a2.2 2.2 0 0 1 4.5-.8 2.2 2.2 0 0 1 4.5.8c0 1.6-1.5 3.2-4.5 5.2z'},f);
+    return f;
+  }
+
+  /* ---------- hero: an original uterus mascot ---------- */
+  function heroEl(parent){
+    var g=el('g',{id:'hero','aria-hidden':'true'},parent);
+    el('ellipse',{class:'shadow',cx:0,cy:2,rx:16,ry:4.5},g);
+    var b=el('g',{class:'bob'},g);
+    var legL=el('ellipse',{class:'foot',cx:-6,cy:-1,rx:5,ry:3.5},b), legR=el('ellipse',{class:'foot',cx:6,cy:-1,rx:5,ry:3.5},b);
+    // tubes as arms (fimbria hands with ovaries)
+    var armL=el('g',{},b), armR=el('g',{},b);
+    el('path',{class:'tube',d:'M-13 -26 C-22 -30 -26 -40 -22 -46'},armL); el('path',{class:'tube-in',d:'M-13 -26 C-22 -30 -26 -40 -22 -46'},armL);
+    el('circle',{class:'ovary',cx:-23,cy:-48,r:4.5},armL);
+    el('path',{class:'tube',d:'M13 -26 C22 -30 26 -40 22 -46'},armR); el('path',{class:'tube-in',d:'M13 -26 C22 -30 26 -40 22 -46'},armR);
+    el('circle',{class:'ovary',cx:23,cy:-48,r:4.5},armR);
+    el('path',{class:'body',d:'M-17 -32 C-17 -42 17 -42 17 -32 C17 -18 10 -10 5 -6 L5 -2 L-5 -2 L-5 -6 C-10 -10 -17 -18 -17 -32Z'},b);
+    var face=el('g',{},b);
+    el('ellipse',{class:'eye',cx:-6,cy:-27,rx:2.6,ry:3.4},face); el('ellipse',{class:'eye',cx:6,cy:-27,rx:2.6,ry:3.4},face);
+    el('circle',{class:'shine',cx:-5.2,cy:-28.4,r:1},face); el('circle',{class:'shine',cx:6.8,cy:-28.4,r:1},face);
+    el('ellipse',{class:'blush',cx:-11,cy:-21,rx:3.2,ry:2},face); el('ellipse',{class:'blush',cx:11,cy:-21,rx:3.2,ry:2},face);
+    el('path',{class:'mouth',d:'M-3.5 -20 Q0 -16.5 3.5 -20'},face);
+    return {g:g,b:b,face:face,legL:legL,legR:legR,armL:armL,armR:armR};
+  }
+  var tick=0;
+  function drawHero(moving){
+    var h=G.hero; if(!h||!samples.length) return;
+    var i=Math.max(0,Math.min(samples.length-1,Math.round(G.pos))), p=samples[i];
+    var s=W<520?.95:1.15;
+    h.g.setAttribute('transform','translate('+p[0].toFixed(1)+' '+(p[1]-10).toFixed(1)+') scale('+(G.face||1)*s+' '+s+')');
+    var bob=moving&&!RM?Math.abs(Math.sin(tick*.35))*-4:0, sw=moving&&!RM?Math.sin(tick*.35)*3:0;
+    h.b.setAttribute('transform','translate(0 '+bob.toFixed(1)+')');
+    h.legL.setAttribute('cx',(-6+sw).toFixed(1)); h.legR.setAttribute('cx',(6-sw).toFixed(1));
+    h.armL.setAttribute('transform','rotate('+(moving&&!RM?sw*4:0).toFixed(1)+' -13 -26)');
+    h.armR.setAttribute('transform','rotate('+(moving&&!RM?-sw*4:0).toFixed(1)+' 13 -26)');
+  }
+  var raf=0;
+  function loop(){
+    raf=0; if(G.target==null) return;
+    var diff=G.target-G.pos, moving=Math.abs(diff)>.5;
+    if(moving){
+      var step=RM?Math.abs(diff):Math.min(Math.abs(diff),Math.max(1.2,Math.abs(diff)*.06));
+      var dir=diff>0?1:-1, nx=samples[Math.min(samples.length-1,Math.round(G.pos+dir*3))][0]-samples[Math.round(G.pos)][0];
+      if(Math.abs(nx)>.3) G.face=nx>0?1:-1;
+      G.pos+=dir*step; tick++;
+      drawHero(true); raf=requestAnimationFrame(loop);
+    } else { G.pos=G.target; drawHero(false); if(G.arrive){ var f=G.arrive; G.arrive=null; f(); } }
+  }
+  function walkTo(idx,then){ G.target=idx; G.arrive=then||null; if(!raf) raf=requestAnimationFrame(loop); }
+
+  function svgPoint(ev){ var r=svg.getBoundingClientRect(); return [(ev.clientX-r.left)*W/r.width,(ev.clientY-r.top)*H/r.height]; }
+  function nearestSample(pt){ var bi=0,bd=1e12; for(var j=0;j<samples.length;j+=2){ var dx=samples[j][0]-pt[0], dy=samples[j][1]-pt[1], dd=dx*dx+dy*dy; if(dd<bd){bd=dd;bi=j;} } return {i:bi,d:Math.sqrt(bd)}; }
+  var hinted=false;
+  svg.addEventListener('pointermove',function(ev){
+    if(ev.pointerType==='touch') return;      // บนจอสัมผัส: แตะด่านแล้วค่อยเดิน
+    var n=nearestSample(svgPoint(ev)); if(n.d>140) return;
+    walkTo(n.i);
+    if(!hinted){ hinted=true; $('hint').style.opacity='0'; }
+  });
+
+  /* ---------- level card ---------- */
+  function openLevel(i,walk){
+    var l=levels[i]; if(!l) return;
+    if(G.sel!=null&&G.nodes[G.sel]) G.nodes[G.sel].classList.remove('sel');
+    G.sel=i; G.nodes[i].classList.add('sel');
+    try{ localStorage.setItem(POS_KEY,l.t.id); }catch(e){}
+    if(walk!==false) walkTo(nodeIdx[i]);
+    var t=l.t, live=isLive(t), isRead=!!read[t.id], g=GROUPS[l.gi];
+    $('card').innerHTML='<button type="button" class="x" data-close aria-label="ปิด">✕</button>'+
+      '<span class="lv">World '+(l.gi+1)+' · ด่าน '+esc(l.code)+' · '+esc(g[1])+'</span>'+
+      '<h2 id="cTitle">'+esc(t.title)+'</h2>'+(t.titleEn?'<p class="en">'+esc(t.titleEn)+'</p>':'')+
+      (t.desc?'<p class="desc">'+esc(t.desc)+'</p>':'')+
+      '<div class="acts">'+(live?'<a class="btn" href="'+esc(safeUrl(t.url))+'">▶ เข้าด่าน</a>'+
+        '<button type="button" class="btn alt" data-flagbtn="'+esc(t.id)+'" aria-pressed="'+isRead+'">'+(isRead?'🚩 ปักธงแล้ว · ถอนธง':'🚩 ปักธง (อ่านแล้ว)')+'</button>':'<span class="muted">กำลังจัดทำ</span>')+
+        '<span class="nav"><button type="button" data-go="-1" aria-label="ด่านก่อนหน้า"'+(i===0?' disabled':'')+'>‹</button><button type="button" data-go="1" aria-label="ด่านถัดไป"'+(i===levels.length-1?' disabled':'')+'>›</button></span></div>';
+    $('card').hidden=false;
+  }
+  function closeCard(){ $('card').hidden=true; if(G.sel!=null&&G.nodes[G.sel]){ G.nodes[G.sel].classList.remove('sel'); G.nodes[G.sel].focus({preventScroll:true}); } G.sel=null; }
+  function toggleFlag(id){
+    var i=levels.findIndex(function(l){return l.t.id===id;}); if(i<0) return;
+    if(read[id]) delete read[id]; else read[id]=true; saveRead();
+    var pos=G.pos, sel=i; G.pos=pos; build(); hud(); renderList();
+    if(read[id]){ var f=svg.querySelector('[data-flag="'+id+'"]'); if(f) f.classList.add('plant'); }
+    openLevel(sel,false);
+  }
+  svg.addEventListener('click',function(ev){
+    var n=ev.target.closest('.node'); if(!n) return;
+    openLevel(+n.getAttribute('data-i'));
+  });
+  svg.addEventListener('keydown',function(ev){
+    var n=ev.target.closest('.node'); if(!n) return; var i=+n.getAttribute('data-i');
+    if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); openLevel(i); }
+    else if(ev.key==='ArrowRight'||ev.key==='ArrowDown'){ ev.preventDefault(); var j=Math.min(levels.length-1,i+1); G.nodes[j].focus(); walkTo(nodeIdx[j]); }
+    else if(ev.key==='ArrowLeft'||ev.key==='ArrowUp'){ ev.preventDefault(); var k=Math.max(0,i-1); G.nodes[k].focus(); walkTo(nodeIdx[k]); }
+  });
+  $('card').addEventListener('click',function(ev){
+    var b;
+    if(ev.target.closest('[data-close]')){ closeCard(); return; }
+    if((b=ev.target.closest('[data-flagbtn]'))){ toggleFlag(b.getAttribute('data-flagbtn')); return; }
+    if((b=ev.target.closest('[data-go]'))){ var j=G.sel+(+b.getAttribute('data-go')); if(levels[j]){ openLevel(j); G.nodes[j].focus({preventScroll:true}); } }
+  });
+  document.addEventListener('keydown',function(ev){ if(ev.key==='Escape'&&!$('card').hidden) closeCard(); });
+
+  /* ---------- list view ---------- */
+  var filter='all', q='';
+  function renderList(){
     function match(t){
-      if(filter==='unread' && (!isLive(t) || read[t.id])) return false;
+      if(filter==='unread' && read[t.id]) return false;
       if(q){ var hay=(t.title+' '+(t.titleEn||'')+' '+(t.desc||'')+' '+(t.keywords||'')).toLowerCase(); if(hay.indexOf(q)<0) return false; }
       return true;
     }
     var html='';
-    GROUPS.forEach(function(g){
-      if(filter!=='all' && filter!=='unread' && filter!==g[0]) return;
-      var items=topics.filter(function(t){return (t.group||'lecture')===g[0] && match(t);});
-      var all=topics.filter(function(t){return (t.group||'lecture')===g[0];});
-      var done=all.filter(isLive).length;
-      html+='<h2 class="group">'+g[1]+' <small>'+g[2]+' · พร้อมอ่าน '+done+'/'+all.length+'</small></h2>';
-      html+= items.length?'<div class="grid">'+items.map(card).join('')+'</div>':'<div class="empty">ไม่พบหัวข้อที่ตรงกับตัวกรอง</div>';
+    GROUPS.forEach(function(g,gi){
+      if(filter!=='all'&&filter!=='unread'&&filter!==g[0]) return;
+      var ls=levels.filter(function(l){return l.gi===gi;}), items=ls.filter(function(l){return match(l.t);});
+      html+='<h2 class="group">World '+(gi+1)+' · '+g[1]+' <small>'+g[2]+' · ปักธง '+ls.filter(function(l){return read[l.t.id];}).length+'/'+ls.length+'</small></h2>';
+      html+=items.length?'<div class="grid">'+items.map(function(l){var t=l.t,r=!!read[t.id],live=isLive(t);
+        return '<article class="tcard'+(r?' read':'')+'"><span class="num">ด่าน '+esc(l.code)+'</span><h3>'+(live?'<a href="'+esc(safeUrl(t.url))+'">'+esc(t.title)+'</a>':esc(t.title))+'</h3>'+
+          (t.titleEn?'<p class="en">'+esc(t.titleEn)+'</p>':'')+(t.desc?'<p class="desc">'+esc(t.desc)+'</p>':'')+
+          '<div class="meta">'+(live?'<button type="button" class="mini-flag" data-flagbtn="'+esc(t.id)+'" aria-pressed="'+r+'">'+(r?'🚩 ปักธงแล้ว':'ปักธง')+'</button>':'')+'</div></article>';}).join('')+'</div>'
+        :'<div class="empty">ไม่พบหัวข้อที่ตรงกับตัวกรอง</div>';
     });
-    list.innerHTML=html;
+    $('list').innerHTML=html;
   }
+  $('list').addEventListener('click',function(ev){ var b=ev.target.closest('[data-flagbtn]'); if(!b) return; var id=b.getAttribute('data-flagbtn');
+    if(read[id]) delete read[id]; else read[id]=true; saveRead(); renderList(); hud(); build(); });
+  $('chips').addEventListener('click',function(e){ var b=e.target.closest('.chip'); if(!b) return; filter=b.dataset.f;
+    Array.prototype.forEach.call(this.children,function(x){x.setAttribute('aria-pressed',x===b?'true':'false');}); renderList(); });
+  $('q').addEventListener('input',function(){ q=this.value.trim().toLowerCase(); renderList(); });
 
-  list.addEventListener('change',function(e){
-    var cb=e.target; if(!cb.matches('input[type=checkbox][data-id]')) return;
-    if(cb.checked) read[cb.dataset.id]=true; else delete read[cb.dataset.id];
-    saveRead(); render();
-  });
-  document.getElementById('chips').addEventListener('click',function(e){
-    var b=e.target.closest('.chip'); if(!b) return;
-    filter=b.dataset.f;
-    Array.prototype.forEach.call(this.children,function(x){x.setAttribute('aria-pressed', x===b?'true':'false');});
-    render();
-  });
-  document.getElementById('q').addEventListener('input',function(){ q=this.value.trim().toLowerCase(); render(); });
+  function setView(v){
+    v=v==='list'?'list':'map';
+    $('mapView').hidden=v!=='map'; $('listView').hidden=v!=='list';
+    document.querySelectorAll('[data-view]').forEach(function(b){ b.setAttribute('aria-pressed',String(b.dataset.view===v)); });
+    if(v!=='map') closeCard();
+    try{ localStorage.setItem(VIEW_KEY,v); }catch(e){}
+    if(v==='map') build();
+  }
+  document.querySelector('.views').addEventListener('click',function(e){ var b=e.target.closest('[data-view]'); if(b) setView(b.dataset.view); });
 
-  topics=TOPICS; render();
+  var lastW=0, rt=0;
+  window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(function(){ if(!$('mapView').hidden&&Math.abs(box.clientWidth-lastW)>8){ lastW=box.clientWidth; var sel=G.sel; G.pos=null; build(); if(sel!=null&&!$('card').hidden) openLevel(sel,false); G.pos=G.target=nodeIdx[sel!=null?sel:0]; drawHero(false);} },150); });
+
+  hud(); renderList();
+  var v0='map'; try{ v0=localStorage.getItem(VIEW_KEY)||'map'; }catch(e){}
+  setView(v0); lastW=box.clientWidth;
 })();
 </script>
-
 </body>
 </html>
